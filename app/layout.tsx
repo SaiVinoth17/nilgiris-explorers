@@ -130,36 +130,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     availableLanguage: ["en", "ta", "hi"],
                   }
                 },
-                {
-                  "@type": "FAQPage",
-                  "@id": "https://nilgirisexplorers.com/#faq",
-                  mainEntity: [
-                    {
-                      "@type": "Question",
-                      name: "How can I book an Ooty sightseeing cab?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "You can book an Ooty sightseeing cab directly through our website using the Booking Widget, or by clicking the WhatsApp button to contact our support team 24/7."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Do your tour packages include hotel stays?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Yes, we offer fully customizable tour packages that can include premium hotel stays, luxury resorts, or budget cottages depending on your preference."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Is the Nilgiri Mountain Railway (Toy Train) included?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "We can incorporate the Toy Train experience into your Ooty & Coonoor combo tour itinerary upon request. Advance booking is recommended."
-                      }
-                    }
-                  ]
-                },
+
                 {
                   "@type": "BreadcrumbList",
                   "@id": "https://nilgirisexplorers.com/#breadcrumb",

@@ -46,6 +46,8 @@ export default function FaqSection() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": "https://nilgirisexplorers.com/#faq",
+    "name": "Frequently Asked Questions",
     "mainEntity": faqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,
