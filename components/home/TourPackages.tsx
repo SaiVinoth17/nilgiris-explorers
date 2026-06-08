@@ -124,15 +124,13 @@ export default function TourPackages() {
                       </div>
                     )}
                   </div>
-                  <a
-                    href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in the ${pkg.name} package. Please share details.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={`/packages/${pkg.slug}`}
                     className="btn-primary text-sm py-2.5 px-5"
                   >
-                    {pkg.price > 0 ? "Book Now" : "Customize"}
+                    View Details
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

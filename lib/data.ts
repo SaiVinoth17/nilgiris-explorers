@@ -139,7 +139,66 @@ export const destinations = [
 
 export const tourPackages = [
   {
+    id: 8,
+    slug: "ooty-coonoor-3-day-package",
+    name: "Ooty & Coonoor Explorer Package – 3 Days",
+    description: "A comprehensive 3-day premium tour covering the finest attractions in Ooty, the scenic Pykara circuit, and the misty hills of Coonoor.",
+    highlights: ["Doddabetta Peak", "Pykara Waterfalls", "Dolphin's Nose", "Tea Factory & Museum", "Pine Forest", "Heritage Train"],
+    duration: "3 Days / 2 Nights",
+    price: 8500,
+    originalPrice: 11000,
+    persons: "Up to 4",
+    image: "/images/stunning_panoramic_hero.png",
+    badge: "Best Seller",
+    badgeColor: "emerald",
+    includes: ["Private Premium AC Cab", "Driver Bata & Tolls", "Hotel Pickup & Drop", "Local Native Guide"],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Ooty Sightseeing",
+        description: "Explore the highest peaks and the most colorful gardens of the Queen of Hill Stations.",
+        locations: [
+          "Doddabetta Peak",
+          "Tea Factory and Museum",
+          "Wax Museum",
+          "Botanical Garden",
+          "Rose Garden",
+          "Ooty Lake (Boathouse)"
+        ]
+      },
+      {
+        day: "Day 2",
+        title: "Pykara Circuit",
+        description: "Drive through stunning pine forests and rolling grasslands towards the spectacular Pykara waterfalls.",
+        locations: [
+          "Golf Links (Outside View)",
+          "Pine Forest",
+          "Kamaraj Sagar Dam (Outside View)",
+          "School Mund",
+          "9th Mile Shooting Place",
+          "Pykara Water Falls",
+          "Pykara Boat House"
+        ]
+      },
+      {
+        day: "Day 3",
+        title: "Coonoor Sightseeing",
+        description: "Experience the heritage charm of Coonoor with its misty viewpoints and sprawling tea estates.",
+        locations: [
+          "Valley View Point",
+          "MRC (Outside View)",
+          "Golf Links (Outside View)",
+          "Sim's Park",
+          "Tea Garden",
+          "Lamb's Rock",
+          "Dolphin Nose"
+        ]
+      }
+    ]
+  },
+  {
     id: 1,
+    slug: "ooty-sightseeing-day-tour",
     name: "Ooty Sightseeing Day Tour",
     description: "Explore all major Ooty attractions in a single day with an expert guide and premium vehicle.",
     highlights: ["Botanical Garden", "Doddabetta Peak", "Ooty Lake", "Rose Garden", "Tea Factory & Museum"],
@@ -148,12 +207,14 @@ export const tourPackages = [
     originalPrice: 2500,
     persons: "Up to 4",
     image: "/images/tour_ooty.jpg",
-    badge: "Best Seller",
-    badgeColor: "emerald",
+    badge: "Popular",
+    badgeColor: "blue",
     includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Free Bus Stand Pickup"],
+    itinerary: []
   },
   {
     id: 2,
+    slug: "ooty-coonoor-combo-tour",
     name: "Ooty & Coonoor Combo Tour",
     description: "A complete experience covering the top highlights of both beautiful mountain towns.",
     highlights: ["Sim's Park Coonoor", "Valley View Point", "Lamb's Rock", "Ooty Lake", "Dolphin's Nose"],
@@ -165,9 +226,11 @@ export const tourPackages = [
     badge: "Popular",
     badgeColor: "blue",
     includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Local Map Guide"],
+    itinerary: []
   },
   {
     id: 3,
+    slug: "honeymoon-special-standard",
     name: "Honeymoon Special (Standard)",
     description: "Create beautiful memories with a highly romantic and private tour designed for couples.",
     highlights: ["Rose Garden Walk", "Private Boat Ride", "Sunset at Doddabetta", "Romantic Campfire Setup"],
@@ -179,9 +242,11 @@ export const tourPackages = [
     badge: "Romantic",
     badgeColor: "rose",
     includes: ["Standard Hotel Stay", "Private Couple Cab", "Breakfast Included", "Surprise Floral Welcome"],
+    itinerary: []
   },
   {
     id: 4,
+    slug: "honeymoon-special-luxury",
     name: "Honeymoon Special (Luxury)",
     description: "An ultra-premium, all-inclusive luxury romantic getaway through Ooty's misty paradise.",
     highlights: ["Tea Estate Private Walk", "VIP Boat Cruise", "Luxury Valley View Resort", "Candlelight Dinner"],
@@ -193,9 +258,11 @@ export const tourPackages = [
     badge: "Premium Luxury",
     badgeColor: "rose",
     includes: ["5-Star Resort Stay", "Private Luxury SUV", "All Meals & Decor", "Private Guide Assistance"],
+    itinerary: []
   },
   {
     id: 5,
+    slug: "friends-family-group-package",
     name: "Friends & Family Group Package",
     description: "The perfect group package for friends or families traveling together. Fun, flexible, and affordable.",
     highlights: ["Mudumalai Safari", "Pykara Boat House", "Campfire with Music", "Trekking & Hiking Trails"],
@@ -207,9 +274,11 @@ export const tourPackages = [
     badge: "Group Tour",
     badgeColor: "purple",
     includes: ["Comfortable Tempo Traveller", "Homestay Accommodation", "Driver Allowance & Taxes", "Local Hiking Guide"],
+    itinerary: []
   },
   {
     id: 6,
+    slug: "adventure-wilderness-special",
     name: "Adventure & Wilderness Special",
     description: "An off-beat, thrilling adventure featuring private jungle jeep safaris and high-altitude trekking.",
     highlights: ["Avalanche Lake Permit", "Mudumalai Forest Safari", "Jungle Trekking", "Bison Valley View"],
@@ -221,9 +290,11 @@ export const tourPackages = [
     badge: "Adventure",
     badgeColor: "orange",
     includes: ["4x4 Mountain Jeep", "Jungle Guide Fee", "Avalanche Entry Permits", "Packed Picnic Lunch"],
+    itinerary: []
   },
   {
     id: 7,
+    slug: "educational-student-group-tour",
     name: "Educational / Student Group Tour",
     description: "An educational and fun-filled expedition for schools, colleges, and academic groups.",
     highlights: ["Tea Museum Visit", "Botanical Garden Study", "Tribal Museum", "Safe & Guided Travel"],
@@ -235,6 +306,7 @@ export const tourPackages = [
     badge: "Educational",
     badgeColor: "green",
     includes: ["Premium Large Maxi Cabs", "Dormitory Group Stay", "All Meals (Veg)", "Industrial Entry Fees Included"],
+    itinerary: []
   },
 ];
 
