@@ -229,9 +229,14 @@ export default function Footer() {
           <p className="text-white/25 text-xs">
             © 2026 Nilgiris Explorers Tours & Travels. All rights reserved.
           </p>
-          <p className="text-white/18 text-xs">
-            Explore Beyond The Mist
-          </p>
+          <a
+            href="https://wa.me/917604904217"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/25 text-xs hover:text-[#00D26A] transition-colors duration-300"
+          >
+            Designed & Developed by Sai Vinoth
+          </a>
           <div className="flex items-center gap-1">
             <span className="text-xs text-white/20">Trusted by</span>
             <span className="text-xs font-semibold" style={{ color: "#00D26A" }}>10,000+ travelers</span>
