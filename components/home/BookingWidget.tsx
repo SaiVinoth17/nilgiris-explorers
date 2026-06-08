@@ -532,7 +532,7 @@ function BookingWidgetContent() {
                   {activeTab === "tour" ? "Free Custom Planning" : activeTab === "cab" ? "All-Inclusive Sightseeing Cab Fares" : "Direct-to-Owner Cottage Rates"}
                 </div>
                 <div className="text-xs text-white/40 mt-0.5">
-                  {activeTab === "tour" && "Our travel experts reply within 2 hours · No booking fees"}
+                  {activeTab === "tour" && "We reply directly within 2 hours • No booking fees"}
                   {activeTab === "cab" && "Includes clean vehicle, expert hill driver, and fuel"}
                   {activeTab === "stay" && "Verified properties, campfire, group dorms, catering setups available"}
                 </div>

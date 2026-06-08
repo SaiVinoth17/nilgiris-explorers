@@ -26,7 +26,7 @@ export default function HowItWorks() {
             Plan Your Trip <span className="gradient-text">In 5 Simple Steps</span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            From your first message to your last memory — our travel experts handle every detail so you can simply enjoy the Nilgiris.
+            From your first message to your last memory — we personally handle every detail so you can simply enjoy the Nilgiris.
           </p>
         </motion.div>
 

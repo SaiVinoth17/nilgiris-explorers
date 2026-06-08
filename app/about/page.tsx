@@ -56,7 +56,7 @@ export default function AboutPage() {
                   Founded in the heart of Ooty, Nilgiris Explorers Tours & Travels is an independently owned local tourism and travel service. We are focused on providing personalized travel experiences across the entire Nilgiris region, catering to those who seek authentic, premium journeys.
                 </p>
                 <p>
-                  Today, we are proud to be recognized as Ooty's leading travel agency and cab service provider. We don't just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and our team of verified local expert drivers ensure that your safety and comfort are never compromised.
+                  Today, we are proud to be recognized as Ooty's leading travel agency and cab service provider. We don't just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and owner-managed network of verified local drivers ensure that your safety, comfort, and personalized service are never compromised.
                 </p>
                 <p>
                   Whether you're looking for a romantic honeymoon package, a thrilling wildlife safari in Mudumalai, or a simple airport transfer from Coimbatore, we bring a touch of luxury and deep local knowledge to every trip.
@@ -76,8 +76,8 @@ export default function AboutPage() {
             <div className="relative h-[500px] lg:h-[700px] rounded-3xl overflow-hidden glass-card p-2">
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/about_team.jpg"
-                  alt="Our Fleet and Team in Ooty"
+                  src="/images/dest_tea_estate.jpg"
+                  alt="Scenic Tea Estate in Nilgiris"
                   fill
                   className="object-cover"
                 />

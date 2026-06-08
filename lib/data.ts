@@ -687,7 +687,7 @@ export const features = [
   {
     icon: "HeadphonesIcon",
     title: "Post-Trip Support",
-    description: "Lost something? Need recommendations? Our team is available even after your trip ends.",
+    description: "Lost something? Need recommendations? We are directly available even after your trip ends.",
     gradient: "from-indigo-500 to-violet-600",
   },
 ];
@@ -722,7 +722,7 @@ export const steps = [
   {
     step: "02",
     title: "Get a Free Itinerary",
-    description: "Our travel experts craft a personalised day-by-day itinerary with pricing — within 2 hours.",
+    description: "We craft a personalised day-by-day itinerary with pricing - directly for you within 2 hours.",
     icon: "Map",
   },
   {

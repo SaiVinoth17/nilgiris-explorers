@@ -282,7 +282,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                   )}
                 </div>
                 <p className="text-emerald-100/70 mb-8 text-sm">
-                  Click below to chat with our travel experts on WhatsApp and customize this tour.
+                  Click below to chat with our local experts directly on WhatsApp and customize this tour.
                 </p>
                 <a 
                   href={`https://wa.me/919585219509?text=${encodeURIComponent(whatsappText)}`}

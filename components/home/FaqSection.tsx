@@ -127,7 +127,7 @@ export default function FaqSection() {
         <div className="mt-12 text-center">
           <p className="text-white/50 mb-4">Still have questions?</p>
           <Link href="/contact" className="btn-secondary">
-            Contact Our Support Team
+            Contact Us Directly
           </Link>
         </div>
       </div>

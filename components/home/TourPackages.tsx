@@ -33,7 +33,7 @@ export default function TourPackages() {
             Premium <span className="gradient-text">Tour Packages</span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            Handcrafted itineraries designed by Nilgiris travel experts for an unforgettable experience.
+            Handcrafted itineraries designed by local experts for an unforgettable experience.
           </p>
         </motion.div>
 

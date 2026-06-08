@@ -22,7 +22,7 @@ export default function TermsPage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-white mb-4">1. Booking Policies</h2>
             <p className="mb-4">
-              By booking a cab or tour package with Nilgiris Explorers, you agree to these terms and conditions. All bookings are subject to vehicle availability. A booking is only confirmed once an advance payment has been received and acknowledged by our team.
+              By booking a cab or tour package with Nilgiris Explorers, you agree to these terms and conditions. All bookings are subject to vehicle availability. A booking is only confirmed once an advance payment has been received and acknowledged by us directly.
             </p>
           </section>
 

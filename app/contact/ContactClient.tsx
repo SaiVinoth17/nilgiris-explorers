@@ -90,7 +90,7 @@ export default function ContactClient() {
             Let's Plan Your <span className="gradient-text">Perfect Trip</span>
           </h1>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            Have questions? Want to customize a tour? We're just a message away. Our team responds within minutes.
+            Have questions? Want to customize a tour? We're just a message away. We respond directly within minutes.
           </p>
         </motion.div>
 

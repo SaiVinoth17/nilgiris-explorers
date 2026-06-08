@@ -123,10 +123,10 @@ export default function AboutSection() {
                 Nilgiris Explorers was born in 2021 from a deep love for the mountains of Ooty. Our founders — lifelong Nilgiris residents — watched visitors struggle to discover the true soul of this place: the hidden lakes, the misty sunrise trails, the tea estate walks unknown to guidebooks.
               </p>
               <p>
-                We set out to change that. As a full-service travel agency, we design every tour around your interests, pace, and budget. From a romantic honeymoon in the mist to a thrilling wildlife safari in Mudumalai, every itinerary is handcrafted by our team of local experts.
+                We set out to change that. As a full-service travel agency, we design every tour around your interests, pace, and budget. From a romantic honeymoon in the mist to a thrilling wildlife safari in Mudumalai, every itinerary is handcrafted with personalized service and direct communication with local experts.
               </p>
               <p>
-                Today, with 50+ vehicles, a team of 30+ certified guides, and partnerships with the finest resorts in the Nilgiris, we've helped over 10,000 travelers create memories that last a lifetime.
+                Today, with 50+ vehicles, a trusted network of certified guides, and direct partnerships with the finest resorts in the Nilgiris, our owner-operated business has helped over 10,000 travelers create memories that last a lifetime.
               </p>
             </div>
 
