@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car, ChevronDown
@@ -17,6 +18,17 @@ const destinations = [
   "Custom Itinerary",
 ];
 
+const slugMap: Record<string, string> = {
+  "ooty-lake": "Ooty & Surroundings",
+  "doddabetta-peak": "Doddabetta Peak",
+  "botanical-garden": "Ooty & Surroundings",
+  "tea-estates": "Ooty & Surroundings",
+  "pykara-lake": "Pykara Lake & Falls",
+  "avalanche-lake": "Avalanche Lake",
+  "mudumalai-reserve": "Mudumalai Wildlife",
+  "coonoor": "Coonoor"
+};
+
 const tourTypes = [
   { value: "sightseeing", label: "🗺️ Sightseeing Tour" },
   { value: "wildlife", label: "🐘 Wildlife Safari" },
@@ -32,7 +44,8 @@ const durations = ["1 Day", "2 Days", "3 Days", "4–5 Days", "1 Week", "Flexibl
 
 type WidgetTab = "tour" | "cab" | "stay";
 
-export default function BookingWidget() {
+function BookingWidgetContent() {
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<WidgetTab>("tour");
 
   // Tour Form State
@@ -44,6 +57,14 @@ export default function BookingWidget() {
     travelers: "2",
     message: "",
   });
+
+  useEffect(() => {
+    const destSlug = searchParams?.get("dest");
+    if (destSlug && slugMap[destSlug]) {
+      setTourForm(prev => ({ ...prev, destination: slugMap[destSlug] }));
+      setActiveTab("tour");
+    }
+  }, [searchParams]);
 
   // Cab Form State
   const [cabForm, setCabForm] = useState({
@@ -139,7 +160,7 @@ export default function BookingWidget() {
               >
                 {/* Destination */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="trip-destination" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Where do you want to go?
                   </label>
                   <div className="relative">
@@ -160,7 +181,7 @@ export default function BookingWidget() {
 
                 {/* Tour Type */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="tour-type" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Type of Experience
                   </label>
                   <div className="relative">
@@ -181,7 +202,7 @@ export default function BookingWidget() {
 
                 {/* Travel Date */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="travel-date" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Preferred Travel Date
                   </label>
                   <div className="relative">
@@ -199,7 +220,7 @@ export default function BookingWidget() {
 
                 {/* Duration */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="trip-duration" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Trip Duration
                   </label>
                   <div className="relative">
@@ -220,7 +241,7 @@ export default function BookingWidget() {
 
                 {/* Travelers */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="travelers-count" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Number of Travelers
                   </label>
                   <div className="relative">
@@ -242,7 +263,7 @@ export default function BookingWidget() {
 
                 {/* Special Requests */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="special-requests" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Special Requests (optional)
                   </label>
                   <div className="relative">
@@ -271,12 +292,13 @@ export default function BookingWidget() {
               >
                 {/* Circuit Dropdown */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="cab-circuit" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Select Sightseeing Circuit
                   </label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#00D26A]" />
                     <select
+                      id="cab-circuit"
                       value={cabForm.circuit}
                       onChange={(e) => setCabForm({ ...cabForm, circuit: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -290,12 +312,13 @@ export default function BookingWidget() {
 
                 {/* Vehicle Class Selector */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="cab-type" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Preferred Cab Type
                   </label>
                   <div className="relative">
                     <Car className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-violet-400" />
                     <select
+                      id="cab-type"
                       value={cabForm.vehicle}
                       onChange={(e) => setCabForm({ ...cabForm, vehicle: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -311,12 +334,13 @@ export default function BookingWidget() {
 
                 {/* Travel Date */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="cab-date" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Sightseeing Date
                   </label>
                   <div className="relative">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-blue-400" />
                     <input
+                      id="cab-date"
                       type="date"
                       value={cabForm.date}
                       min={today}
@@ -328,12 +352,13 @@ export default function BookingWidget() {
 
                 {/* Guests */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="cab-guests" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Number of Guests
                   </label>
                   <div className="relative">
                     <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-rose-400" />
                     <select
+                      id="cab-guests"
                       value={cabForm.guests}
                       onChange={(e) => setCabForm({ ...cabForm, guests: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -349,12 +374,13 @@ export default function BookingWidget() {
 
                 {/* Pickup point */}
                 <div className="sm:col-span-2">
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="cab-pickup" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Pickup Location / Hotel Address
                   </label>
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-cyan-400" />
                     <input
+                      id="cab-pickup"
                       type="text"
                       placeholder="e.g. Ooty Railway Station, Lake View Hotel, Sterling Resorts..."
                       value={cabForm.pickup}
@@ -377,12 +403,13 @@ export default function BookingWidget() {
               >
                 {/* Stay Type */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-type" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Choose stay / Cottage type
                   </label>
                   <div className="relative">
                     <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#00D26A]" />
                     <select
+                      id="stay-type"
                       value={stayForm.stayType}
                       onChange={(e) => setStayForm({ ...stayForm, stayType: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -396,12 +423,13 @@ export default function BookingWidget() {
 
                 {/* Check In Date */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-checkin" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Check-In Date
                   </label>
                   <div className="relative">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-blue-400" />
                     <input
+                      id="stay-checkin"
                       type="date"
                       value={stayForm.checkin}
                       min={today}
@@ -413,12 +441,13 @@ export default function BookingWidget() {
 
                 {/* Check Out Date */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-checkout" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Check-Out Date
                   </label>
                   <div className="relative">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-amber-400" />
                     <input
+                      id="stay-checkout"
                       type="date"
                       value={stayForm.checkout}
                       min={stayForm.checkin || today}
@@ -430,12 +459,13 @@ export default function BookingWidget() {
 
                 {/* Rooms count */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-rooms" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Rooms Required
                   </label>
                   <div className="relative">
                     <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-rose-400" />
                     <select
+                      id="stay-rooms"
                       value={stayForm.rooms}
                       onChange={(e) => setStayForm({ ...stayForm, rooms: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -451,12 +481,13 @@ export default function BookingWidget() {
 
                 {/* Guests count */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-guests" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Guests Count
                   </label>
                   <div className="relative">
                     <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-violet-400" />
                     <select
+                      id="stay-guests"
                       value={stayForm.guests}
                       onChange={(e) => setStayForm({ ...stayForm, guests: e.target.value })}
                       className="input-field pl-11 cursor-pointer"
@@ -470,12 +501,13 @@ export default function BookingWidget() {
 
                 {/* Special Requests */}
                 <div>
-                  <label className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
+                  <label htmlFor="stay-special" className="text-xs text-white/50 font-medium uppercase tracking-wider mb-2 block">
                     Special Stays Requests
                   </label>
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-cyan-400" />
                     <input
+                      id="stay-special"
                       type="text"
                       placeholder="Campfire setup, breakfast included…"
                       value={stayForm.special}
@@ -522,6 +554,14 @@ export default function BookingWidget() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function BookingWidget() {
+  return (
+    <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-emerald-500">Loading booking widget...</div>}>
+      <BookingWidgetContent />
+    </Suspense>
   );
 }
 

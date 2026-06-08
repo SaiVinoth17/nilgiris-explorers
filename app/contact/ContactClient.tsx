@@ -18,9 +18,9 @@ const contactMethods = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "hello@nilgirisexplorers.com",
+    value: "nilgiriexplorersootytourstrave@gmail.com",
     description: "Reply within 2 hours",
-    href: "mailto:hello@nilgirisexplorers.com",
+    href: "mailto:nilgiriexplorersootytourstrave@gmail.com",
     color: "from-blue-500 to-indigo-600",
   },
   {

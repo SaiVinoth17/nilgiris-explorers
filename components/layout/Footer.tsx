@@ -96,12 +96,12 @@ export default function Footer() {
                 </div>
                 +91 95852 19509
               </a>
-              <a href="mailto:hello@nilgirisexplorers.com" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors group">
+              <a href="mailto:nilgiriexplorersootytourstrave@gmail.com" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors group">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0"
                      style={{ background: "rgba(0,210,106,0.10)" }}>
                   <Mail className="w-3.5 h-3.5" style={{ color: "#00D26A" }} />
                 </div>
-                hello@nilgirisexplorers.com
+                nilgiriexplorersootytourstrave@gmail.com
               </a>
               <div className="flex items-start gap-3 text-white/55 text-sm">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"

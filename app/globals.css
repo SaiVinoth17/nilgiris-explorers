@@ -275,7 +275,7 @@ p, span, a, li, label, input, textarea, select, button {
   width: 100%;
   transition: all 0.2s ease;
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 1rem; /* Updated to 16px to prevent iOS auto-zoom */
   appearance: none;
 }
 

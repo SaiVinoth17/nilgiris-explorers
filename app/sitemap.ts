@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { destinations } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://nilgirisexplorers.com";
   const now = new Date();
 
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/tours`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/destinations`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
@@ -12,4 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
+
+  const destinationPages: MetadataRoute.Sitemap = destinations.map((dest) => ({
+    url: `${baseUrl}/destinations/${dest.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  return [...staticPages, ...destinationPages];
 }

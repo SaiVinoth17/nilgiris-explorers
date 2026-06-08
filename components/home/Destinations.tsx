@@ -1,9 +1,11 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Star, MapPin, Clock, ArrowRight } from "lucide-react";
 import { destinations } from "@/lib/data";
+import DestinationModal from "./DestinationModal";
 
 const tagColors: Record<string, string> = {
   "Most Popular": "bg-[#00D26A]/20 text-[#00D26A] border-[#00D26A]/30",
@@ -17,6 +19,8 @@ const tagColors: Record<string, string> = {
 };
 
 export default function Destinations() {
+  const [selectedDestination, setSelectedDestination] = useState<any | null>(null);
+
   return (
     <section id="destinations" className="section-pad" style={{ background: '#0B1D17' }}>
       <div className="container-default">
@@ -47,6 +51,7 @@ export default function Destinations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
+              onClick={() => setSelectedDestination(dest)}
               className="group relative rounded-2xl overflow-hidden cursor-pointer card-hover bg-[#0f2820]"
             >
               {/* Image */}
@@ -102,6 +107,13 @@ export default function Destinations() {
             </motion.div>
           ))}
         </div>
+
+        {/* Modal */}
+        <DestinationModal 
+          isOpen={!!selectedDestination} 
+          onClose={() => setSelectedDestination(null)} 
+          destination={selectedDestination} 
+        />
 
         {/* CTA */}
         <motion.div

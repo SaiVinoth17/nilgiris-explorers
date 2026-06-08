@@ -25,6 +25,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nilgirisexplorers.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Nilgiris Explorers Tours & Travels | Ooty Taxi Service & Tour Packages",
     template: "%s | Nilgiris Explorers",
@@ -154,6 +157,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         "@type": "Answer",
                         text: "We can incorporate the Toy Train experience into your Ooty & Coonoor combo tour itinerary upon request. Advance booking is recommended."
                       }
+                    }
+                  ]
+                },
+                {
+                  "@type": "BreadcrumbList",
+                  "@id": "https://nilgirisexplorers.com/#breadcrumb",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://nilgirisexplorers.com/"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Destinations",
+                      "item": "https://nilgirisexplorers.com/destinations"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "Tours",
+                      "item": "https://nilgirisexplorers.com/tours"
                     }
                   ]
                 }

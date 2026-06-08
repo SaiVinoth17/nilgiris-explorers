@@ -191,7 +191,7 @@ export default function Navbar() {
                             key={item.label}
                             href={item.href}
                             onClick={() => setMobileOpen(false)}
-                            className="block py-2 px-4 rounded-lg text-sm text-white/50 hover:text-white hover:bg-[#00D26A]/6 transition-colors"
+                            className="block py-3 px-4 rounded-lg text-base text-white/50 hover:text-white hover:bg-[#00D26A]/6 transition-colors"
                             style={{ fontFamily: "var(--font-jakarta)" }}
                           >
                             {item.label}

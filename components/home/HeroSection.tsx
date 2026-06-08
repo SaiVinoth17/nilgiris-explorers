@@ -30,6 +30,7 @@ export default function HeroSection() {
           alt="Nilgiris Explorers - Premium Ooty Cab and Tour Booking"
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center scale-110"
           sizes="100vw"
         />
