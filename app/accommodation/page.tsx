@@ -119,7 +119,7 @@ export default function AccommodationPage() {
                       {stay.highlights.map((h, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4 text-[#00D26A] flex-shrink-0" />
-                          <span className="text-xs text-white/60 truncate">{h}</span>
+                          <span className="text-xs text-white/60 truncate min-w-0 flex-1">{h}</span>
                         </div>
                       ))}
                     </div>

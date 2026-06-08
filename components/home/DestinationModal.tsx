@@ -80,25 +80,25 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                     <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                       <Clock className="w-5 h-5 text-emerald-400" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="text-xs text-white/50 mb-0.5">Duration</div>
-                      <div className="text-sm font-medium text-white">{destination.duration}</div>
+                      <div className="text-sm font-medium text-white truncate" title={destination.duration}>{destination.duration}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-5 h-5 text-blue-400" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="text-xs text-white/50 mb-0.5">Distance</div>
-                      <div className="text-sm font-medium text-white">{destination.distance}</div>
+                      <div className="text-sm font-medium text-white truncate" title={destination.distance}>{destination.distance}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
                       <CalendarDays className="w-5 h-5 text-amber-400" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="text-xs text-white/50 mb-0.5">Best Time</div>
                       <div className="text-sm font-medium text-white truncate" title={destination.bestTime}>{destination.bestTime}</div>
                     </div>
@@ -107,7 +107,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                     <div className="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
                       <Navigation className="w-5 h-5 text-violet-400" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="text-xs text-white/50 mb-0.5">Places Covered</div>
                       <div className="text-sm font-medium text-white truncate" title={destination.placesCovered}>{destination.placesCovered}</div>
                     </div>

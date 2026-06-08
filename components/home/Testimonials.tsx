@@ -131,7 +131,7 @@ export default function Testimonials() {
                 <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${t2.avatarBg} flex items-center justify-center text-xs font-bold text-white flex-shrink-0`}>
                   {t2.avatar}
                 </div>
-                <div className="text-xs font-medium text-white truncate">{t2.name.split(" ")[0]}</div>
+                <div className="text-xs font-medium text-white truncate min-w-0 flex-1">{t2.name.split(" ")[0]}</div>
               </div>
               <div className="flex gap-0.5">
                 {[...Array(t2.rating)].map((_, si) => (

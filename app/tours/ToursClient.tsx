@@ -153,7 +153,7 @@ export default function ToursClient() {
                   {pkg.highlights.map((h) => (
                     <div key={h} className="flex items-center gap-1.5">
                       <CheckCircle className="w-3.5 h-3.5 text-[#00D26A] flex-shrink-0" />
-                      <span className="text-xs text-white/60 truncate">{h}</span>
+                      <span className="text-xs text-white/60 truncate min-w-0 flex-1">{h}</span>
                     </div>
                   ))}
                 </div>
