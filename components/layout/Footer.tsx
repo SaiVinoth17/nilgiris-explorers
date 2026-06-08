@@ -233,9 +233,10 @@ export default function Footer() {
             href="https://wa.me/917604904217"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/25 text-xs hover:text-[#00D26A] transition-colors duration-300"
+            className="text-white/25 text-xs transition-all duration-300 group"
           >
-            Designed & Developed by Sai Vinoth
+            <span className="group-hover:text-white/50 transition-colors">Designed & Developed by </span>
+            <span className="text-amber-400 group-hover:text-amber-300 group-hover:drop-shadow-[0_0_12px_rgba(251,191,36,0.8)] transition-all duration-300 font-medium">Sai Vinoth</span>
           </a>
           <div className="flex items-center gap-1">
             <span className="text-xs text-white/20">Trusted by</span>
