@@ -26,9 +26,6 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nilgirisexplorers.com"),
-  alternates: {
-    canonical: "/",
-  },
   title: {
     default: "Nilgiris Explorers Tours & Travels | Ooty Taxi Service & Tour Packages",
     template: "%s | Nilgiris Explorers",

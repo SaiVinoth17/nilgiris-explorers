@@ -3,7 +3,6 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy | Nilgiris Explorers",
   description: "Privacy Policy for Nilgiris Explorers. Learn how we handle your data and protect your privacy.",
-  robots: { index: false, follow: true }
 };
 
 export default function PrivacyPolicyPage() {

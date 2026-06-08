@@ -2,8 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Nilgiris Explorers",
-  description: "Terms and conditions for booking cabs and tour packages with Nilgiris Explorers.",
-  robots: { index: false, follow: true }
+  description: "Read the terms and conditions for booking cabs, tours, and services with Nilgiris Explorers.",
 };
 
 export default function TermsPage() {

@@ -14,6 +14,14 @@ import TravelGuidePreview from "@/components/home/TravelGuidePreview";
 import AboutSection from "@/components/home/AboutSection";
 import FleetSection from "@/components/home/FleetSection";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col overflow-x-hidden bg-forest relative">
