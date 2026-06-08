@@ -533,7 +533,7 @@ function BookingWidgetContent() {
                 </div>
                 <div className="text-xs text-white/40 mt-0.5">
                   {activeTab === "tour" && "Our travel experts reply within 2 hours · No booking fees"}
-                  {activeTab === "cab" && "Includes clean vehicle, expert hill driver, fuel, all tolls and parking charges"}
+                  {activeTab === "cab" && "Includes clean vehicle, expert hill driver, and fuel"}
                   {activeTab === "stay" && "Verified properties, campfire, group dorms, catering setups available"}
                 </div>
               </div>

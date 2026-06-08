@@ -1,0 +1,2 @@
+audit2.js:6: const searchRegex = /(Private Premium AC Cab|Driver Bata|Tolls)/i;
+components\home\BookingWidget.tsx:536: {activeTab === "cab" && "Includes clean vehicle, expert hill driver, fuel, all tolls and parking charges"}

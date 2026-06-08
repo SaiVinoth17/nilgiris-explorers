@@ -151,7 +151,7 @@ export const tourPackages = [
     image: "/images/stunning_panoramic_hero.png",
     badge: "Best Seller",
     badgeColor: "emerald",
-    includes: ["Private Premium AC Cab", "Driver Bata & Tolls", "Hotel Pickup & Drop", "Local Native Guide"],
+    includes: ["Hotel Pickup & Drop", "Local Native Guide"],
     exclusions: ["Flight / Train Tickets", "Entry Fees at Monuments/Parks", "Personal Expenses", "Meals not mentioned"],
     faqs: [
       { question: "Is the toy train ticket included?", answer: "Toy train tickets are subject to availability and need to be booked separately on the IRCTC portal well in advance. We provide drop and pickup at the stations." },
@@ -214,7 +214,7 @@ export const tourPackages = [
     image: "/images/tour_ooty.jpg",
     badge: "Popular",
     badgeColor: "blue",
-    includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Free Bus Stand Pickup"],
+    includes: ["Free Bus Stand Pickup"],
     exclusions: ["Entry Fees at Monuments/Parks", "Personal Expenses", "Meals", "Guide Fees"],
     faqs: [
       { question: "What is the duration of this tour?", answer: "The tour typically lasts 8 to 10 hours depending on the traffic and time spent at each location." },
@@ -250,7 +250,7 @@ export const tourPackages = [
     image: "/images/stunning_pykara.png",
     badge: "Nature",
     badgeColor: "emerald",
-    includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Local Map Guide"],
+    includes: ["Local Map Guide"],
     exclusions: ["Boating Fees at Pykara", "Entry Fees", "Personal Expenses", "Meals"],
     faqs: [
       { question: "Can we swim in Pykara Lake?", answer: "No, swimming is strictly prohibited by the Forest Department. However, speed boating is available." },
@@ -286,7 +286,7 @@ export const tourPackages = [
     image: "/images/stunning_panoramic_hero.png",
     badge: "Heritage",
     badgeColor: "amber",
-    includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Local Map Guide"],
+    includes: ["Local Map Guide"],
     exclusions: ["Entry Fees", "Personal Expenses", "Meals"],
     faqs: [
       { question: "Is the road to Dolphin's Nose safe?", answer: "Yes, our drivers are highly experienced in navigating the steep and narrow ghat roads of Coonoor safely." }
@@ -321,7 +321,7 @@ export const tourPackages = [
     image: "/images/tour_doddabetta_view.jpg",
     badge: "Romantic",
     badgeColor: "rose",
-    includes: ["Standard Hotel Stay", "Private Couple Cab", "Breakfast Included", "Surprise Floral Welcome"],
+    includes: ["Standard Hotel Stay", "Breakfast Included", "Surprise Floral Welcome"],
     itinerary: []
   },
   {
@@ -337,7 +337,7 @@ export const tourPackages = [
     image: "/images/stunning_tea_estate.png",
     badge: "Premium Luxury",
     badgeColor: "rose",
-    includes: ["5-Star Resort Stay", "Private Luxury SUV", "All Meals & Decor", "Private Guide Assistance"],
+    includes: ["5-Star Resort Stay", "All Meals & Decor", "Private Guide Assistance"],
     itinerary: []
   },
   {
@@ -353,7 +353,7 @@ export const tourPackages = [
     image: "/images/real_innova.jpg",
     badge: "Group Tour",
     badgeColor: "purple",
-    includes: ["Comfortable Tempo Traveller", "Homestay Accommodation", "Driver Allowance & Taxes", "Local Hiking Guide"],
+    includes: ["Homestay Accommodation", "Local Hiking Guide"],
     itinerary: []
   },
   {
@@ -369,7 +369,7 @@ export const tourPackages = [
     image: "/images/real_mudumalai.jpg",
     badge: "Adventure",
     badgeColor: "orange",
-    includes: ["4x4 Mountain Jeep", "Jungle Guide Fee", "Avalanche Entry Permits", "Packed Picnic Lunch"],
+    includes: ["Jungle Guide Fee", "Avalanche Entry Permits", "Packed Picnic Lunch"],
     itinerary: []
   },
   {
@@ -385,7 +385,7 @@ export const tourPackages = [
     image: "/images/tour_stone_house.jpg",
     badge: "Educational",
     badgeColor: "green",
-    includes: ["Premium Large Maxi Cabs", "Dormitory Group Stay", "All Meals (Veg)", "Industrial Entry Fees Included"],
+    includes: ["Dormitory Group Stay", "All Meals (Veg)", "Industrial Entry Fees Included"],
     itinerary: []
   },
 ];
