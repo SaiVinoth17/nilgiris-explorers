@@ -236,8 +236,9 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                 <div className="mb-6">
                   {pkg.price > 0 ? (
                     <div className="flex flex-col items-center justify-center gap-1">
+                      <span className="text-xs text-white/50 tracking-wide uppercase font-medium mb-1">Starting From</span>
                       <span className="text-4xl font-bold text-white">₹{pkg.price.toLocaleString()}</span>
-                      <span className="text-sm text-white/50">Starting price for {pkg.persons}</span>
+                      <span className="text-xs text-white/40 mt-2 italic text-center">Contact us for custom tour plans and group pricing.</span>
                     </div>
                   ) : (
                     <div className="text-xl font-bold gradient-text">Custom Pricing</div>

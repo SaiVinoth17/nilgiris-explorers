@@ -23,7 +23,7 @@ const upcomingTrips = hasUpcomingTrips ? [
 ] : [];
 
 const tripHistory = [
-  { id: "NE2025089", destination: "Ooty Sightseeing", date: "Mar 12, 2025", amount: 1800, rating: 5 },
+  { id: "NE2025089", destination: "Ooty Sightseeing", date: "Mar 12, 2025", amount: 2000, rating: 5 },
   { id: "NE2025056", destination: "Coonoor & Sim's Park", date: "Feb 3, 2025", amount: 2400, rating: 5 },
   { id: "NE2025023", destination: "Coimbatore Airport Transfer", date: "Jan 18, 2025", amount: 1200, rating: 4 },
   { id: "NE2024198", destination: "Mudumalai Wildlife Safari", date: "Dec 28, 2024", amount: 4800, rating: 5 },

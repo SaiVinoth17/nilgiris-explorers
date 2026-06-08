@@ -103,34 +103,49 @@ export default function TourPackages() {
                 <div className="flex-1" />
 
                 {/* Pricing + CTA */}
-                <div className="pt-4 border-t border-white/8 flex items-center justify-between">
-                  <div>
-                    {pkg.price > 0 ? (
-                      <>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-2xl font-bold text-white">₹{pkg.price.toLocaleString()}</span>
-                          {pkg.originalPrice > 0 && (
-                            <span className="text-sm text-white/30 line-through">₹{pkg.originalPrice.toLocaleString()}</span>
-                          )}
+                <div className="pt-4 border-t border-white/8 flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      {pkg.price > 0 ? (
+                        <>
+                          <div className="flex flex-col">
+                            <span className="text-xs text-white/50 font-medium tracking-wide uppercase mb-0.5">Starting From</span>
+                            <div className="flex items-baseline gap-2">
+                              <span className="text-2xl font-bold text-white">₹{pkg.price.toLocaleString()}</span>
+                              {pkg.originalPrice > 0 && (
+                                <span className="text-sm text-white/30 line-through">₹{pkg.originalPrice.toLocaleString()}</span>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div>
+                          <div className="text-lg font-bold gradient-text">Custom Price</div>
+                          <div className="text-xs text-white/40">Based on itinerary</div>
                         </div>
-                        <div className="text-xs text-white/40 flex items-center gap-1 mt-0.5">
-                          <Users className="w-3 h-3" /> {pkg.persons}
-                        </div>
-                      </>
-                    ) : (
-                      <div>
-                        <div className="text-lg font-bold gradient-text">Custom Price</div>
-                        <div className="text-xs text-white/40">Based on itinerary</div>
-                      </div>
-                    )}
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={`/packages/${pkg.slug}`}
+                        className="btn-secondary bg-white/5 text-white hover:bg-white/10 text-xs py-2.5 px-3 rounded-lg border border-white/10"
+                      >
+                        Details
+                      </Link>
+                      <a
+                        href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking the ${pkg.name}. Please share details.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary text-xs py-2.5 px-4 flex items-center gap-1"
+                      >
+                        Book Now
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
-                  <Link
-                    href={`/packages/${pkg.slug}`}
-                    className="btn-primary text-sm py-2.5 px-5"
-                  >
-                    View Details
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="text-[10px] text-center text-white/40 italic">
+                    Contact us for custom tour plans and group pricing.
+                  </div>
                 </div>
               </div>
             </motion.div>

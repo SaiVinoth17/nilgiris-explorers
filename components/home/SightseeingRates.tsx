@@ -139,33 +139,35 @@ export default function SightseeingRates() {
                   <span className="font-semibold text-white/80">Key Attractions:</span> {selectedCircuit.places}
                 </p>
 
-                {/* Grid of Vehicles and exact fares */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                {/* Single Flat Rate Display per Circuit */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedCircuit.rates.map((rate, i) => (
                     <motion.div
                       key={rate.vehicle}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.04 }}
-                      className="glass border border-white/5 p-5 rounded-2xl flex flex-col justify-between group hover:border-[#00D26A]/40 transition-colors"
+                      className="glass border border-white/5 p-6 rounded-2xl flex flex-col justify-between group hover:border-[#00D26A]/40 transition-colors relative overflow-hidden"
                     >
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-white font-semibold text-sm group-hover:text-[#00D26A] transition-colors">{rate.vehicle}</span>
-                          <span className="text-[10px] bg-white/10 text-white/60 px-2 py-0.5 rounded-full font-medium">{rate.capacity} Seater</span>
-                        </div>
-                        <div className="text-2xl font-extrabold text-white mt-1">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
+                      
+                      <div className="relative z-10 flex flex-col items-center text-center">
+                        <span className="text-xs text-white/50 tracking-wide uppercase font-medium mb-2">Starting From</span>
+                        <div className="text-4xl font-bold text-white mb-4">
                           ₹{rate.price.toLocaleString()}
-                          <span className="text-[10px] text-white/40 font-normal ml-1">all inclusive</span>
                         </div>
+                        <p className="text-xs text-white/40 italic mb-6">
+                          Contact us for custom tour plans and group pricing.
+                        </p>
                       </div>
+
                       <a
                         href={buildWhatsAppMessage("sightseeing", selectedCircuit.name, rate.price, rate.vehicle)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 w-full py-2.5 rounded-xl text-xs font-semibold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] flex items-center justify-center gap-1 shadow-lg shadow-[#00D26A]/10 opacity-90 group-hover:opacity-100 transition-opacity"
+                        className="w-full py-3.5 rounded-xl text-sm font-bold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] flex items-center justify-center gap-1.5 shadow-xl shadow-[#00D26A]/20 hover:scale-[1.02] transition-transform"
                       >
-                        Book Cab <ArrowRight className="w-3.5 h-3.5" />
+                        Book via WhatsApp <ArrowRight className="w-4 h-4" />
                       </a>
                     </motion.div>
                   ))}
