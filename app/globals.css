@@ -538,3 +538,32 @@ select.input-field {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* ============================================================
+   MOBILE & TOUCH OPTIMIZATIONS
+   ============================================================ */
+/* Improve tap highlight on mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Fix iOS Safari overscroll/bounce effect */
+html, body {
+  overscroll-behavior-y: none;
+}
+
+/* Ensure smooth scrolling with hardware acceleration */
+.smooth-scroll-wrapper {
+  -webkit-overflow-scrolling: touch;
+  will-change: transform;
+}
+
+/* Touch targets must be at least 44x44px for accessibility */
+button, 
+a, 
+input, 
+select {
+  touch-action: manipulation;
+}

@@ -12,6 +12,7 @@ import Gallery from "@/components/home/Gallery";
 import FaqSection from "@/components/home/FaqSection";
 import TravelGuidePreview from "@/components/home/TravelGuidePreview";
 import AboutSection from "@/components/home/AboutSection";
+import FleetSection from "@/components/home/FleetSection";
 
 export default function HomePage() {
   return (
@@ -21,7 +22,7 @@ export default function HomePage() {
       <TrustSection />
       <Destinations />
       <TourPackages />
-      {/* SightseeingRates removed as per user request */}
+      <FleetSection />
       <WhyChooseUs />
       <HowItWorks />
       <InteractiveMap />

@@ -152,10 +152,15 @@ export const tourPackages = [
     badge: "Best Seller",
     badgeColor: "emerald",
     includes: ["Private Premium AC Cab", "Driver Bata & Tolls", "Hotel Pickup & Drop", "Local Native Guide"],
+    exclusions: ["Flight / Train Tickets", "Entry Fees at Monuments/Parks", "Personal Expenses", "Meals not mentioned"],
+    faqs: [
+      { question: "Is the toy train ticket included?", answer: "Toy train tickets are subject to availability and need to be booked separately on the IRCTC portal well in advance. We provide drop and pickup at the stations." },
+      { question: "Can we customize the itinerary?", answer: "Yes, this is a private tour so the itinerary is highly flexible based on your preferences and time constraints." }
+    ],
     itinerary: [
       {
         day: "Day 1",
-        title: "Ooty Sightseeing",
+        title: "Ooty Local Sightseeing",
         description: "Explore the highest peaks and the most colorful gardens of the Queen of Hill Stations.",
         locations: [
           "Doddabetta Peak",
@@ -168,12 +173,12 @@ export const tourPackages = [
       },
       {
         day: "Day 2",
-        title: "Pykara Circuit",
+        title: "Pykara Scenic Tour",
         description: "Drive through stunning pine forests and rolling grasslands towards the spectacular Pykara waterfalls.",
         locations: [
           "Golf Links (Outside View)",
           "Pine Forest",
-          "Kamaraj Sagar Dam (Outside View)",
+          "Kamaraj Sagar Dam",
           "School Mund",
           "9th Mile Shooting Place",
           "Pykara Water Falls",
@@ -182,7 +187,7 @@ export const tourPackages = [
       },
       {
         day: "Day 3",
-        title: "Coonoor Sightseeing",
+        title: "Coonoor Heritage Tour",
         description: "Experience the heritage charm of Coonoor with its misty viewpoints and sprawling tea estates.",
         locations: [
           "Valley View Point",
@@ -210,7 +215,27 @@ export const tourPackages = [
     badge: "Popular",
     badgeColor: "blue",
     includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Free Bus Stand Pickup"],
-    itinerary: []
+    exclusions: ["Entry Fees at Monuments/Parks", "Personal Expenses", "Meals", "Guide Fees"],
+    faqs: [
+      { question: "What is the duration of this tour?", answer: "The tour typically lasts 8 to 10 hours depending on the traffic and time spent at each location." },
+      { question: "Is hotel pickup available?", answer: "Yes, complimentary pickup is provided from hotels within a 3km radius of Ooty Bus Stand." }
+    ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Ooty Core Sightseeing",
+        description: "A full day exploring the botanical marvels and scenic heights of Ooty.",
+        locations: [
+          "Doddabetta Peak",
+          "Tea Factory and Museum",
+          "Wax Museum",
+          "Botanical Garden",
+          "Rose Garden",
+          "Ooty Lake (Boathouse)",
+          "Thread Garden"
+        ]
+      }
+    ]
   },
   {
     id: 2,
@@ -226,7 +251,27 @@ export const tourPackages = [
     badge: "Nature",
     badgeColor: "emerald",
     includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Local Map Guide"],
-    itinerary: []
+    exclusions: ["Boating Fees at Pykara", "Entry Fees", "Personal Expenses", "Meals"],
+    faqs: [
+      { question: "Can we swim in Pykara Lake?", answer: "No, swimming is strictly prohibited by the Forest Department. However, speed boating is available." },
+      { question: "Is the pine forest safe for families?", answer: "Yes, the 6th Mile Pine Forest is a very popular and safe tourist spot." }
+    ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Pykara Scenic Circuit",
+        description: "Drive through the rolling downs and pristine forests of the Pykara route.",
+        locations: [
+          "Golf Links (Outside View)",
+          "6th Mile Pine Forest",
+          "Kamaraj Sagar Dam",
+          "School Mund",
+          "9th Mile Shooting Spot",
+          "Pykara Waterfalls",
+          "Pykara Boat House"
+        ]
+      }
+    ]
   },
   {
     id: 9,
@@ -242,7 +287,26 @@ export const tourPackages = [
     badge: "Heritage",
     badgeColor: "amber",
     includes: ["Fuel & Driver Allowances", "Sightseeing Cab", "Parking & Tolls", "Local Map Guide"],
-    itinerary: []
+    exclusions: ["Entry Fees", "Personal Expenses", "Meals"],
+    faqs: [
+      { question: "Is the road to Dolphin's Nose safe?", answer: "Yes, our drivers are highly experienced in navigating the steep and narrow ghat roads of Coonoor safely." }
+    ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Coonoor Heritage Circuit",
+        description: "Discover the spectacular viewpoints and lush tea estates of Coonoor.",
+        locations: [
+          "Valley View Point",
+          "MRC (Outside View)",
+          "Golf Links",
+          "Sim's Park",
+          "Tea Garden",
+          "Lamb's Rock",
+          "Dolphin's Nose"
+        ]
+      }
+    ]
   },
   {
     id: 3,

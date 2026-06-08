@@ -191,6 +191,43 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                   </div>
                 </div>
               )}
+
+              {/* Exclusions */}
+              {pkg.exclusions && (
+                <div>
+                  <h2 className="text-3xl font-display font-bold text-white mb-6">Exclusions</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {pkg.exclusions.map((exc: string, i: number) => (
+                      <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                        <div className="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center flex-shrink-0">
+                          <div className="w-2 h-2 rounded-full bg-rose-400" />
+                        </div>
+                        <span className="text-white/70">{exc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* FAQs */}
+              {pkg.faqs && pkg.faqs.length > 0 && (
+                <div>
+                  <h2 className="text-3xl font-display font-bold text-white mb-6">Frequently Asked Questions</h2>
+                  <div className="space-y-4">
+                    {pkg.faqs.map((faq: {question: string, answer: string}, i: number) => (
+                      <div key={i} className="glass p-6 rounded-2xl border border-white/10">
+                        <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
+                          <span className="text-[#00D26A] font-display">Q.</span>
+                          {faq.question}
+                        </h3>
+                        <p className="text-white/60 pl-7 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
