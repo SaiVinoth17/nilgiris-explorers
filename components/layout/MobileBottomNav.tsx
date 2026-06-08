@@ -25,7 +25,7 @@ export default function MobileBottomNav() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 w-full z-50 md:hidden transition-transform duration-300 ease-in-out ${
+      className={`fixed bottom-0 left-0 w-full z-[70] md:hidden transition-transform duration-300 ease-in-out ${
         isVisible ? "translate-y-0" : "translate-y-full"
       }`}
     >

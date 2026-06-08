@@ -35,9 +35,9 @@ export default function HeroSection() {
           sizes="100vw"
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 hero-gradient pointer-events-none" />
         {/* Additional dark vignette on sides */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
       </motion.div>
 
       {/* Cinematic Mist Atmosphere */}

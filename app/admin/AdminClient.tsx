@@ -559,7 +559,7 @@ export default function AdminClient() {
   return (
     <div className="min-h-screen pt-20 flex bg-[#071410] text-slate-100 overflow-x-hidden selection:bg-brand-500/30 selection:text-white">
       {/* Toast Notification Container */}
-      <div className="fixed top-24 right-6 z-50 flex flex-col gap-2 pointer-events-none">
+      <div className="fixed top-24 right-6 z-[300] flex flex-col gap-2 pointer-events-none">
         <AnimatePresence>
           {toasts.map((t) => (
             <motion.div
@@ -592,7 +592,7 @@ export default function AdminClient() {
       <motion.aside
         initial={{ x: -60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className={`fixed top-20 left-0 bottom-0 z-30 glass-dark border-r border-white/6 flex flex-col transition-all duration-300 ${
+        className={`fixed top-20 left-0 bottom-0 z-40 glass-dark border-r border-white/6 flex flex-col transition-all duration-300 ${
           sidebarCollapsed ? "w-16" : "w-56"
         }`}
       >
@@ -929,7 +929,7 @@ export default function AdminClient() {
                 {/* Simulated Floating Tooltip */}
                 {hoveredChartIndex !== null && (
                   <div
-                    className="absolute z-20 glass border border-[#00D26A]/40 p-3 rounded-xl shadow-2xl pointer-events-none transition-all duration-200"
+                    className="absolute z-50 glass border border-[#00D26A]/40 p-3 rounded-xl shadow-2xl pointer-events-none transition-all duration-200"
                     style={{
                       left: `${35 + hoveredChartIndex * 16.5}%`,
                       top: "20px",
@@ -1873,7 +1873,7 @@ export default function AdminClient() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
             >
               {/* Close backdrop click */}
               <div className="absolute inset-0" onClick={() => setActiveModal(null)} />

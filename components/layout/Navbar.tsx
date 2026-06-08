@@ -41,7 +41,7 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
             ? "bg-[#071410]/85 backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.4)] border-b border-white/5 py-3"
             : "bg-transparent py-6"
@@ -93,7 +93,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.97 }}
                       transition={{ duration: 0.16 }}
-                      className="absolute top-full left-0 mt-2 w-52 rounded-xl py-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[#00D26A]/15"
+                      className="absolute top-full left-0 z-50 mt-2 w-52 rounded-xl py-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[#00D26A]/15"
                       style={{ background: "#0f2820" }}
                     >
                       {link.dropdown.map((item) => (
@@ -148,7 +148,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             {/* Drawer */}
@@ -157,7 +157,7 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ type: "spring", stiffness: 280, damping: 28 }}
-              className="fixed inset-y-0 right-0 z-50 w-72 flex flex-col pt-20 pb-8 px-5 lg:hidden border-l border-[#00D26A]/10"
+              className="fixed inset-y-0 right-0 z-[60] w-72 flex flex-col pt-20 pb-8 px-5 lg:hidden border-l border-[#00D26A]/10"
               style={{ background: "#071410" }}
             >
               {/* Mobile Logo */}

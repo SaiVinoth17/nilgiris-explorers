@@ -1,0 +1,142 @@
+app\about\page.tsx:24: <div className="absolute inset-0 z-0">
+app\about\page.tsx:32: <div className="absolute inset-0 bg-[#0B1D17]/85 backdrop-blur-sm" />
+app\about\page.tsx:35: <div className="container-default relative z-10 text-center">
+app\about\page.tsx:84: <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-transparent to-transparent" />
+app\about\page.tsx:108: desc: "Every vehicle undergoes rigorous maintenance checks, and every driver is background-verified. Your safety on the mountain roads is our absolute priority."
+app\about\page.tsx:138: <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,210,106,0.1)_0%,transparent_70%)]" />
+app\about\page.tsx:139: <div className="container-default relative z-10 text-center max-w-3xl mx-auto">
+app\accommodation\page.tsx:53: <div className="absolute top-10 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#00D26A]/5 to-[#0B9FD4]/5 rounded-full blur-[130px] pointer-events-none" />
+app\accommodation\page.tsx:55: <div className="container-default relative z-10">
+app\accommodation\page.tsx:100: <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#16332a] via-transparent to-transparent" />
+app\admin\AdminClient.tsx:562: <div className="fixed top-24 right-6 z-50 flex flex-col gap-2 pointer-events-none">
+app\admin\AdminClient.tsx:595: className={`fixed top-20 left-0 bottom-0 z-30 glass-dark border-r border-white/6 flex flex-col transition-all duration-300 ${
+app\admin\AdminClient.tsx:932: className="absolute z-20 glass border border-[#00D26A]/40 p-3 rounded-xl shadow-2xl pointer-events-none transition-all duration-200"
+app\admin\AdminClient.tsx:1128: <Search className="w-4 h-4 text-white/30 absolute left-3.5 top-1/2 -translate-y-1/2" />
+app\admin\AdminClient.tsx:1290: <Search className="w-4 h-4 text-white/30 absolute left-3.5 top-1/2 -translate-y-1/2" />
+app\admin\AdminClient.tsx:1431: <Search className="w-4 h-4 text-white/30 absolute left-3.5 top-1/2 -translate-y-1/2" />
+app\admin\AdminClient.tsx:1576: <Search className="w-4 h-4 text-white/30 absolute left-3.5 top-1/2 -translate-y-1/2" />
+app\admin\AdminClient.tsx:1658: <Search className="w-4 h-4 text-white/30 absolute left-3.5 top-1/2 -translate-y-1/2" />
+app\admin\AdminClient.tsx:1800: <span className="text-[10px] font-bold text-[#00D26A] opacity-0 group-hover:opacity-100 transition-opacity bg-[#071410] border border-[#00D26A]/30 px-1.5 py-0.5 rounded absolute -translate-y-6">
+app\admin\AdminClient.tsx:1876: className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
+app\admin\AdminClient.tsx:1879: <div className="absolute inset-0" onClick={() => setActiveModal(null)} />
+app\admin\AdminClient.tsx:1886: className="glass border border-white/12 rounded-3xl p-6 md:p-8 w-full max-w-xl relative z-10 shadow-2xl flex flex-col justify-between"
+app\contact\ContactClient.tsx:163: <div className="absolute inset-0 pointer-events-none border border-white/10 rounded-xl" />
+app\destinations\page.tsx:15: <div className="absolute inset-0 z-0">
+app\destinations\page.tsx:23: <div className="absolute inset-0 bg-[#0B1D17]/85 backdrop-blur-sm" />
+app\destinations\page.tsx:26: <div className="container-default relative z-10 text-center">
+app\destinations\[slug]\page.tsx:88: <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />
+app\destinations\[slug]\page.tsx:90: <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
+app\destinations\[slug]\page.tsx:92: <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+app\destinations\[slug]\page.tsx:95: <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-sm font-semibold">
+app\globals.css:152: HERO GRADIENT — Forest dark overlay
+app\globals.css:356: position: absolute;
+app\globals.css:442: .img-overlay {
+app\globals.css:446: .img-overlay::after {
+app\globals.css:448: position: absolute;
+app\globals.css:509: position: absolute;
+app\locations\[slug]\page.tsx:99: <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/40 to-transparent" />
+app\locations\[slug]\page.tsx:101: <div className="absolute bottom-0 left-0 w-full p-8 md:p-12">
+app\packages\[slug]\page.tsx:98: <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />
+app\packages\[slug]\page.tsx:100: <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
+app\packages\[slug]\page.tsx:102: <span className={`px-4 py-1.5 rounded-full text-sm font-semibold border backdrop-blur-md ${
+app\packages\[slug]\page.tsx:112: <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-sm font-semibold">
+app\packages\[slug]\page.tsx:151: <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#00D26A] before:to-transparent">
+app\packages\[slug]\page.tsx:154: <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-forest bg-[#00D26A] text-forest font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
+app\tours\ToursClient.tsx:97: <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+app\tours\ToursClient.tsx:136: <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent" />
+app\tours\ToursClient.tsx:140: <div className="absolute top-3 right-3 flex items-center gap-1 glass px-2.5 py-1 rounded-lg">
+components\home\AboutSection.tsx:50: <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-2xl pointer-events-none" />
+components\home\AboutSection.tsx:53: <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center mb-6 shadow-xl relative z-10 animate-pulse">
+components\home\AboutSection.tsx:56: <h3 className="font-display text-2xl font-bold text-white mb-2 relative z-10">Nilgiris Explorers Tours & Travels</h3>
+components\home\AboutSection.tsx:68: className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-5 shadow-2xl"
+components\home\AboutSection.tsx:95: className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2"
+components\home\BookingWidget.tsx:103: <section id="booking" className="relative py-0 -mt-20 z-20">
+components\home\BookingWidget.tsx:111: className="relative bg-[#0f2820]/80 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)] border border-emerald-500/20"
+components\home\BookingWidget.tsx:167: <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#00D26A]" />
+components\home\BookingWidget.tsx:188: <Compass className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-violet-400" />
+components\home\BookingWidget.tsx:209: <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-blue-400" />
+components\home\BookingWidget.tsx:227: <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-amber-400" />
+components\home\BookingWidget.tsx:248: <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-rose-400" />
+components\home\BookingWidget.tsx:270: <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-cyan-400" />
+components\home\BookingWidget.tsx:299: <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#00D26A]" />
+components\home\BookingWidget.tsx:319: <Car className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-violet-400" />
+components\home\BookingWidget.tsx:341: <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-blue-400" />
+components\home\BookingWidget.tsx:359: <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-rose-400" />
+components\home\BookingWidget.tsx:381: <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-cyan-400" />
+components\home\BookingWidget.tsx:410: <Home className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#00D26A]" />
+components\home\BookingWidget.tsx:430: <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-blue-400" />
+components\home\BookingWidget.tsx:448: <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-amber-400" />
+components\home\BookingWidget.tsx:466: <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-rose-400" />
+components\home\BookingWidget.tsx:488: <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-violet-400" />
+components\home\BookingWidget.tsx:508: <MessageSquare className="absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-cyan-400" />
+components\home\DestinationContent.tsx:67: <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
+components\home\DestinationContent.tsx:79: className="absolute inset-0 z-0 origin-center"
+components\home\DestinationContent.tsx:90: <div className="absolute inset-0 bg-forest/80 backdrop-blur-sm" />
+components\home\DestinationContent.tsx:99: <div className="absolute left-4 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 h-1/2 w-1 bg-white/10 rounded-full z-20 hidden xl:block">
+components\home\DestinationContent.tsx:114: <div className="relative z-10 w-full -mt-[100vh]">
+components\home\DestinationModal.tsx:26: className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
+components\home\DestinationModal.tsx:30: <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 pointer-events-none">
+components\home\DestinationModal.tsx:47: <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
+components\home\DestinationModal.tsx:52: className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/60 transition-colors border border-white/10"
+components\home\DestinationModal.tsx:58: <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col justify-end">
+components\home\DestinationModal.tsx:60: <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+components\home\DestinationModal.tsx:63: <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-xs font-semibold">
+components\home\DestinationModal.tsx:160: <div className="p-6 border-t border-white/10 bg-black/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+components\home\Destinations.tsx:66: <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-transparent" />
+components\home\Destinations.tsx:69: <div className={`absolute top-3 left-3 tag-badge border text-xs ${tagColors[dest.tag] || "bg-white/10 text-white/70 border-white/20"}`}>
+components\home\Destinations.tsx:73: {/* Rating overlay */}
+components\home\FleetSection.tsx:45: <div className={`absolute inset-0 bg-gradient-to-br ${vehicle.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
+components\home\FleetSection.tsx:50: <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+components\home\Gallery.tsx:53: <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+components\home\Gallery.tsx:60: <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+components\home\Gallery.tsx:78: className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+components\home\Gallery.tsx:101: className="absolute top-4 right-4 w-10 h-10 rounded-full glass border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+components\home\Gallery.tsx:107: <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+components\home\Gallery.tsx:118: <div className="absolute bottom-10 left-0 right-0 text-center">
+components\home\HeroSection.tsx:27: <motion.div style={{ y }} className="absolute inset-0 z-0">
+components\home\HeroSection.tsx:37: {/* Gradient overlay */}
+components\home\HeroSection.tsx:40: <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35" />
+components\home\HeroSection.tsx:49: className="relative z-10 container-default pt-24 pb-16"
+components\home\HeroSection.tsx:140: className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
+components\home\HowItWorks.tsx:36: <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-px bg-gradient-to-b from-[#00D26A]/60 via-[#0B9FD4]/60 to-[#00A855]/60 -translate-x-1/2" />
+components\home\HowItWorks.tsx:72: className="w-14 h-14 rounded-full bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center font-display text-xl font-bold text-white flex-shrink-0 z-10 shadow-[0_0_20px_rgba(0,210,106,0.4)]"
+components\home\InteractiveMap.tsx:20: <div className="container-default relative z-10">
+components\home\InteractiveMap.tsx:39: className="absolute inset-0 w-full h-full border-0 pointer-events-none z-0"
+components\home\InteractiveMap.tsx:44: {/* Subtle overlay to ensure custom brand markers remain clearly visible over the complex satellite imagery */}
+components\home\InteractiveMap.tsx:45: <div className="absolute inset-0 bg-[#0B1D17]/40 z-10 pointer-events-none" />
+components\home\InteractiveMap.tsx:51: className="absolute group z-20"
+components\home\InteractiveMap.tsx:68: <div className={`absolute inset-0 rounded-full border-2 border-[#00D26A] -z-10 ${activePin === loc.id ? 'animate-ping' : ''}`} />
+components\home\InteractiveMap.tsx:78: className="absolute top-12 left-1/2 -translate-x-1/2 w-64 p-4 rounded-2xl shadow-2xl backdrop-blur-md"
+components\home\SightseeingRates.tsx:34: <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#00D26A]/5 rounded-full blur-[120px] pointer-events-none" />
+components\home\SightseeingRates.tsx:36: <div className="container-default relative z-10">
+components\home\SightseeingRates.tsx:58: <div className="flex p-1.5 rounded-full glass border border-white/8 relative z-10 shadow-lg">
+components\home\SightseeingRates.tsx:152: <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
+components\home\SightseeingRates.tsx:154: <div className="relative z-10 flex flex-col items-center text-center">
+components\home\SightseeingRates.tsx:271: <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent" />
+components\home\SightseeingRates.tsx:275: <span className="absolute top-3 right-3 flex items-center gap-0.5 glass px-2 py-0.5 rounded-lg text-[10px] font-semibold text-white">
+components\home\Testimonials.tsx:59: <Quote className="absolute top-8 right-8 w-12 h-12 text-[#00D26A]/10" />
+components\home\TourPackages.tsx:60: <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent" />
+components\home\TourPackages.tsx:63: <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${badgeColors[pkg.badge] || "from-gray-600 to-gray-700"} shadow-lg`}>
+components\home\TourPackages.tsx:68: <div className="absolute top-3 right-3 flex items-center gap-1 glass px-2.5 py-1 rounded-lg">
+components\home\TravelGuidePreview.tsx:71: <div className="absolute top-4 right-4 bg-[#0B1D17]/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
+components\home\TravelGuidePreview.tsx:82: <Link href={guide.link} className="after:absolute after:inset-0">
+components\layout\MobileBottomNav.tsx:28: className={`fixed bottom-0 left-0 w-full z-50 md:hidden transition-transform duration-300 ease-in-out ${
+components\layout\MobileBottomNav.tsx:32: <div className="bg-[#0B1D17]/95 backdrop-blur-lg border-t border-white/10 px-2 py-2 flex items-center justify-between shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+components\layout\MobileBottomNav.tsx:51: <div className="bg-[#25D366] p-2.5 rounded-full mb-1 shadow-lg shadow-[#25D366]/30 absolute -top-6 border-4 border-[#0B1D17]">
+components\layout\Navbar.tsx:44: className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+components\layout\Navbar.tsx:46: ? "bg-[#071410]/85 backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.4)] border-b border-white/5 py-3"
+components\layout\Navbar.tsx:53: <div className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md' : 'bg-white/90 backdrop-blur-md shadow-lg'}`}>
+components\layout\Navbar.tsx:96: className="absolute top-full left-0 mt-2 w-52 rounded-xl py-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[#00D26A]/15"
+components\layout\Navbar.tsx:151: className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+components\layout\Navbar.tsx:160: className="fixed inset-y-0 right-0 z-50 w-72 flex flex-col pt-20 pb-8 px-5 lg:hidden border-l border-[#00D26A]/10"
+components\layout\ThemeToggle.tsx:29: className={`absolute transition-all duration-300 ${
+components\layout\ThemeToggle.tsx:35: className={`absolute transition-all duration-300 ${
+components\layout\WhatsAppWidget.tsx:21: className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25d366] shadow-[0_4px_24px_rgba(37,211,102,0.5)] flex items-center justify-center animate-pulse-ring"
+components\layout\WhatsAppWidget.tsx:24: <span className="absolute inset-0 rounded-full bg-[#25d366] opacity-30 animate-ping" />
+components\layout\WhatsAppWidget.tsx:26: className="w-7 h-7 text-white relative z-10"
+components\layout\WhatsAppWidget.tsx:35: <span className="absolute right-16 bg-[#0B1D17] text-white text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg border border-white/10 pointer-events-none">
+components\ui\AtmosphericMist.tsx:16: <div className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${className}`}>
+components\ui\AtmosphericMist.tsx:28: className="absolute inset-0 bg-white"
+components\ui\AtmosphericMist.tsx:40: {/* Layer 2: Fast drifting fog overlay */}
+components\ui\AtmosphericMist.tsx:42: className="absolute inset-[-20%] bg-white mix-blend-screen"
+components\ui\AtmosphericMist.tsx:55: <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_10%,_#0B1D17_100%)] opacity-90" />

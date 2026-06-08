@@ -18,7 +18,7 @@ export default function WhatsAppWidget() {
       transition={{ delay: 2, type: "spring", stiffness: 300, damping: 20 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25d366] shadow-[0_4px_24px_rgba(37,211,102,0.5)] flex items-center justify-center animate-pulse-ring"
+      className="fixed bottom-6 right-6 z-[80] w-14 h-14 rounded-full bg-[#25d366] shadow-[0_4px_24px_rgba(37,211,102,0.5)] flex items-center justify-center animate-pulse-ring group"
     >
       {/* Pulse ring */}
       <span className="absolute inset-0 rounded-full bg-[#25d366] opacity-30 animate-ping" />

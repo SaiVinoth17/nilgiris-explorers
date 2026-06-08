@@ -57,7 +57,7 @@ export default function TourPackages() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent pointer-events-none" />
 
                 {/* Badge */}
                 <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${badgeColors[pkg.badge] || "from-gray-600 to-gray-700"} shadow-lg`}>

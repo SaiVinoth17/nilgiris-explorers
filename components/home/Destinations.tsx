@@ -63,7 +63,7 @@ export default function Destinations() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-transparent pointer-events-none" />
 
                 {/* Tag badge */}
                 <div className={`absolute top-3 left-3 tag-badge border text-xs ${tagColors[dest.tag] || "bg-white/10 text-white/70 border-white/20"}`}>
