@@ -106,9 +106,9 @@ export default function TrustSection() {
             whileHover={{ scale: 1.02 }}
             className="bg-gradient-to-br from-[#0B1D17] to-emerald-950 p-8 rounded-3xl border border-emerald-500/30 flex flex-col items-center text-center shadow-2xl shadow-emerald-500/10"
           >
-            <div className="w-24 h-24 rounded-full border-4 border-emerald-500/30 mb-4 overflow-hidden bg-black/40 relative">
+            <div className="w-24 h-24 rounded-full border-4 border-emerald-500/30 mb-4 overflow-hidden bg-white relative">
               <Image 
-                src="/images/circle-icon.png" 
+                src="/images/owner-logo.png" 
                 alt="Business Owner" 
                 fill 
                 className="object-contain p-2"
