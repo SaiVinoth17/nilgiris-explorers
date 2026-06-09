@@ -49,7 +49,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#00D26A' }} />
             <span className="text-sm text-white/80 font-medium tracking-wide">
-              Premium Travel Agency · Ooty, Nilgiris
+              Premium Local Experts · Ooty, Nilgiris
             </span>
           </div>
 

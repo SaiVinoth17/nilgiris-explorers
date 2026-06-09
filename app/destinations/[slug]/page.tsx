@@ -2,7 +2,7 @@ import { destinations } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MapPin, Clock, CalendarDays, Navigation, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import { Camera, Users, Sun, ArrowLeft, ArrowRight, MapPin, Compass } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -14,13 +14,13 @@ export async function generateMetadata({ params }: { params: { slug: string } | 
   const url = `https://nilgirisexplorers.com/destinations/${dest.slug}`;
   
   return {
-    title: `${dest.name} Sightseeing & Tours | Nilgiris Explorers`,
+    title: `The ${dest.name} Travel Guide | Nilgiris Explorers`,
     description: dest.description,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${dest.name} Sightseeing & Tours`,
+      title: `The ${dest.name} Travel Guide`,
       description: dest.description,
       url: url,
       images: [dest.image],
@@ -36,7 +36,8 @@ export async function generateStaticParams() {
 
 export default async function DestinationPage({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const destination = destinations.find((d) => d.slug === resolvedParams.slug);
+  // Use 'any' type temporarily to allow access to the new fields without full TS interface updates if needed
+  const destination: any = destinations.find((d) => d.slug === resolvedParams.slug);
 
   if (!destination) {
     notFound();
@@ -58,26 +59,15 @@ export default async function DestinationPage({ params }: { params: { slug: stri
               url: url,
               image: `https://nilgirisexplorers.com${destination.image}`,
               publicAccess: true,
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Ooty",
-                addressRegion: "Tamil Nadu",
-                addressCountry: "IN"
-              }
             }),
           }}
         />
       </head>
       <Navbar />
-      <main className="min-h-screen bg-forest pt-32 pb-16">
-        <div className="container-default">
-          <Link href="/destinations" className="inline-flex items-center gap-2 text-white/50 hover:text-white mb-8 transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Sightseeing Destinations
-          </Link>
-          
-          {/* Hero Section */}
-          <div className="relative h-[400px] md:h-[500px] w-full rounded-3xl overflow-hidden mb-12 shadow-2xl">
+      <main className="min-h-screen bg-[#0B1D17]">
+        {/* Magazine Style Hero */}
+        <div className="relative h-[70vh] md:h-[85vh] w-full flex items-end justify-center pb-20">
+          <div className="absolute inset-0">
             <Image
               src={destination.image}
               alt={destination.name}
@@ -85,130 +75,92 @@ export default async function DestinationPage({ params }: { params: { slug: stri
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />
-            
-            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-sm">
-                  {destination.tag}
-                </span>
-                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-sm text-sm font-semibold">
-                  <Star className="w-4 h-4 fill-amber-400" />
-                  {destination.rating} ({destination.reviews} Reviews)
-                </div>
-              </div>
-              <h1 className="font-display text-5xl md:text-7xl font-bold text-white drop-shadow-lg max-w-4xl">
-                {destination.name}
-              </h1>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/40 to-black/20" />
+          </div>
+          
+          <div className="relative z-10 container-default text-center">
+            <Link href="/#explore" className="inline-flex items-center gap-2 text-white/50 hover:text-white mb-8 transition-colors uppercase tracking-widest text-xs font-bold">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Explorer
+            </Link>
+            <span className="block text-emerald-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-6">
+              {destination.tag}
+            </span>
+            <h1 className="font-display text-6xl md:text-8xl lg:text-[140px] font-bold text-white drop-shadow-2xl leading-none tracking-tight mb-8">
+              {destination.name}
+            </h1>
+            <p className="text-white/80 text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+              {destination.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="container-default max-w-5xl py-20">
+          
+          {/* Story & Experience Split */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-6 flex items-center gap-2">
+                <Compass className="w-4 h-4" /> The Story
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed font-light">
+                {destination.story || destination.description}
+              </p>
+            </div>
+            <div>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-6 flex items-center gap-2">
+                <MapPin className="w-4 h-4" /> The Experience
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed font-light">
+                {destination.experience || "A breathtaking journey through the Nilgiris."}
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-12">
-              <div className="prose prose-invert prose-lg max-w-none">
-                <p className="text-white/80 leading-relaxed text-xl">
-                  {destination.description}
-                </p>
-              </div>
-
-              {/* Highlights */}
-              {destination.highlights && (
-                <div>
-                  <h2 className="text-3xl font-display font-bold text-white mb-6">Key Highlights</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {destination.highlights.map((highlight: string, i: number) => (
-                      <div key={i} className="flex items-center gap-3 glass p-4 rounded-xl border border-white/5">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-                        <span className="text-white/80">{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Included Experiences */}
-              {destination.includedExperiences && (
-                <div>
-                  <h2 className="text-3xl font-display font-bold text-white mb-6">What's Included in Our Tours</h2>
-                  <div className="space-y-4">
-                    {destination.includedExperiences.map((exp: string, i: number) => (
-                      <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
-                        <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                        </div>
-                        <span className="text-white/90 font-medium text-lg">{exp}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+          {/* Intelligence Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24">
+            <div className="glass-card rounded-3xl p-8 border border-white/10">
+              <Camera className="w-8 h-8 text-amber-400 mb-6" />
+              <h3 className="text-white font-bold mb-3">Photography Guide</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                {destination.photographyGuide || "Capture the scenic views and misty mountains."}
+              </p>
             </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Info Card */}
-              <div className="glass p-8 rounded-2xl border border-white/10 space-y-6">
-                <h3 className="text-xl font-bold text-white mb-2">Trip Information</h3>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/50 mb-1">Distance from Ooty</div>
-                    <div className="font-medium text-white text-lg">{destination.distance}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-emerald-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/50 mb-1">Ideal Duration</div>
-                    <div className="font-medium text-white text-lg">{destination.duration}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                    <CalendarDays className="w-6 h-6 text-amber-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/50 mb-1">Best Time to Visit</div>
-                    <div className="font-medium text-white text-lg">{destination.bestTime}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                    <Navigation className="w-6 h-6 text-violet-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/50 mb-1">Places Covered En Route</div>
-                    <div className="font-medium text-white text-lg">{destination.placesCovered}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Booking CTA */}
-              <div className="bg-emerald-900/40 p-8 rounded-2xl border border-emerald-500/30 text-center shadow-2xl shadow-emerald-900/20">
-                <h3 className="text-2xl font-bold text-white mb-3">Ready to Visit?</h3>
-                <p className="text-emerald-100/70 mb-8">
-                  Let us plan your perfect trip to {destination.name} with our expert guides and premium vehicles.
-                </p>
-                <a 
-                  href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full justify-center shadow-xl shadow-emerald-500/20 py-4 flex items-center gap-2"
-                >
-                  Book This Tour <ArrowRight className="w-5 h-5" />
-                </a>
-              </div>
+            <div className="glass-card rounded-3xl p-8 border border-white/10">
+              <Users className="w-8 h-8 text-blue-400 mb-6" />
+              <h3 className="text-white font-bold mb-3">Ideal Traveler</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                {destination.travelerType || "Perfect for all nature lovers."}
+              </p>
+            </div>
+            <div className="glass-card rounded-3xl p-8 border border-white/10">
+              <Sun className="w-8 h-8 text-rose-400 mb-6" />
+              <h3 className="text-white font-bold mb-3">Best Time to Visit</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                {destination.bestTime}
+              </p>
             </div>
           </div>
+
+          {/* Minimalist CTA */}
+          <div className="border-t border-white/10 pt-20 text-center">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
+              Ready to explore {destination.name}?
+            </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto mb-10">
+              Speak directly with our local experts on WhatsApp to craft your personalized journey.
+            </p>
+            <a 
+              href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello, I'm inspired by the ${destination.name} guide on your website. I'd like help planning a trip here.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-10 py-5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold transition-all gap-3 shadow-[0_0_40px_rgba(16,185,129,0.3)]"
+            >
+              Plan Trip On WhatsApp <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+
         </div>
       </main>
       <Footer />

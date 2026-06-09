@@ -83,7 +83,7 @@ export default function Footer() {
             </p>
 
             <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
-              Ooty's most trusted travel agency — crafting unforgettable tour experiences
+              Ooty's most trusted local experts — crafting unforgettable tour experiences
               across the Nilgiris mountains since 2018.
             </p>
 

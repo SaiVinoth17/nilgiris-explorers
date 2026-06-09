@@ -6,7 +6,7 @@ import AboutSection from "@/components/home/AboutSection";
 
 export const metadata: Metadata = {
   title: "About Us | Nilgiris Explorers",
-  description: "Learn about Nilgiris Explorers, Ooty's most trusted travel agency. We offer premium taxi services, custom tour packages, and expert local guides.",
+  description: "Learn about Nilgiris Explorers, Ooty's most trusted local experts. We offer premium taxi services, custom tour packages, and expert local guides.",
 };
 
 const stats = [
@@ -56,7 +56,7 @@ export default function AboutPage() {
                   Founded in the heart of Ooty, Nilgiris Explorers Tours & Travels is an independently owned local tourism and travel service. We are focused on providing personalized travel experiences across the entire Nilgiris region, catering to those who seek authentic, premium journeys.
                 </p>
                 <p>
-                  Today, we are proud to be recognized as Ooty's leading travel agency and cab service provider. We don't just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and owner-managed network of verified local drivers ensure that your safety, comfort, and personalized service are never compromised.
+                  Today, we are proud to be recognized as Ooty's leading local experts and cab service provider. We don't just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and owner-managed network of verified local drivers ensure that your safety, comfort, and personalized service are never compromised.
                 </p>
                 <p>
                   Whether you're looking for a romantic honeymoon package, a thrilling wildlife safari in Mudumalai, or a simple airport transfer from Coimbatore, we bring a touch of luxury and deep local knowledge to every trip.

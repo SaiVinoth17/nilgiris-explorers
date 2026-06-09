@@ -168,7 +168,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                   onClick={onClose}
                   className="btn-primary w-full sm:w-auto px-8 shadow-lg shadow-emerald-500/20 whitespace-nowrap flex items-center justify-center gap-2"
                 >
-                  Book This Tour <ArrowRight className="w-4 h-4" />
+                  Plan This Journey <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
 

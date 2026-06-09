@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
+import StoryChapters from "@/components/home/StoryChapters";
 
-const TourPackages = dynamic(() => import("@/components/home/TourPackages"));
+const InteractiveExplorer = dynamic(() => import("@/components/home/InteractiveExplorer"));
+const HiddenGems = dynamic(() => import("@/components/home/HiddenGems"));
+const JourneyRecommender = dynamic(() => import("@/components/home/JourneyRecommender"));
 const TrustSection = dynamic(() => import("@/components/home/TrustSection"));
-const Destinations = dynamic(() => import("@/components/home/Destinations"));
-const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
-const TravelGuidePreview = dynamic(() => import("@/components/home/TravelGuidePreview"));
 const FaqSection = dynamic(() => import("@/components/home/FaqSection"));
-const BookingWidget = dynamic(() => import("@/components/home/BookingWidget"));
+const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 
 import { Metadata } from "next";
 
@@ -19,15 +19,39 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-forest relative">
+    <main className="flex min-h-screen flex-col overflow-x-hidden bg-forest relative selection:bg-emerald-500/30 selection:text-white">
+      {/* Chapter 1: Welcome */}
       <HeroSection />
-      <TourPackages />
+      
+      {/* Chapters 2-5: The Destinations Story */}
+      <StoryChapters />
+
+      {/* Chapter 6: Interactive Discovery */}
+      <InteractiveExplorer />
+      
+      {/* Local Authority & Trust */}
+      <HiddenGems />
       <TrustSection />
-      <Destinations />
-      <Testimonials />
-      <TravelGuidePreview />
+      
+      {/* Chapter 7: The Conclusion / Planning */}
+      <section className="section-pad bg-[#0B1D17]">
+        <div className="container-default">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+              Ready To Experience The <span className="text-emerald-400">Nilgiris?</span>
+            </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              Skip the generic packages. Let us craft a journey that matches your inspiration.
+            </p>
+          </div>
+          <JourneyRecommender />
+        </div>
+      </section>
+
       <FaqSection />
-      <BookingWidget />
+      
+      {/* Silent floating assistant */}
+      <WhatsAppWidget />
     </main>
   );
 }

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "Book trusted Ooty taxi services, sightseeing tours, airport transfers, honeymoon packages, and customized travel experiences with Nilgiris Explorers Tours & Travels.",
   keywords: [
     "Ooty Tour Packages",
-    "Nilgiris Travel Agency",
+    "Nilgiris Local Experts",
     "Ooty Sightseeing Tour",
     "Ooty Tourism",
     "Coonoor Tour Packages",

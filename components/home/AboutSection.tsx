@@ -83,7 +83,7 @@ export default function AboutSection() {
               className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2"
             >
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
-              <span className="text-white text-sm font-medium">Ooty's Favourite Travel Agency Since 2021</span>
+              <span className="text-white text-sm font-medium">Ooty's Favourite Local Experts Since 2021</span>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function AboutSection() {
                 Nilgiris Explorers was born in 2021 from a deep love for the mountains of Ooty. Our founders — lifelong Nilgiris residents — watched visitors struggle to discover the true soul of this place: the hidden lakes, the misty sunrise trails, the tea estate walks unknown to guidebooks.
               </p>
               <p>
-                We set out to change that. As a full-service travel agency, we design every tour around your interests, pace, and budget. From a romantic honeymoon in the mist to a thrilling wildlife safari in Mudumalai, every itinerary is handcrafted with personalized service and direct communication with local experts.
+                We set out to change that. As a full-service local experts, we design every tour around your interests, pace, and budget. From a romantic honeymoon in the mist to a thrilling wildlife safari in Mudumalai, every itinerary is handcrafted with personalized service and direct communication with local experts.
               </p>
               <p>
                 Today, with 50+ vehicles, a trusted network of certified guides, and direct partnerships with the finest resorts in the Nilgiris, our owner-operated business has helped over 10,000 travelers create memories that last a lifetime.
@@ -116,7 +116,7 @@ export default function AboutSection() {
 
             {/* Values */}
             <div className="grid grid-cols-3 gap-4 mt-8">
-              {["Award-Winning Agency", "Local Expert Guides", "100% Customizable"].map((val, i) => (
+              {["Award-Winning Local Experts", "Local Expert Guides", "100% Customizable"].map((val, i) => (
                 <div key={val} className="text-center p-4 glass-card rounded-xl">
                   <div className="text-2xl mb-2">{["🏆", "🏔️", "✨"][i]}</div>
                   <div className="text-xs font-semibold text-white">{val}</div>
