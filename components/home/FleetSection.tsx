@@ -72,7 +72,7 @@ export default function FleetSection() {
                 </div>
 
                 <a
-                  href={`https://wa.me/917604904217?text=${encodeURIComponent(`Hello! I'm interested in booking a ${vehicle.name} (${vehicle.model}) for my Nilgiris trip. Please share availability.`)}`}
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a ${vehicle.name} (${vehicle.model}) for my Nilgiris trip. Please share availability.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3.5 rounded-xl text-sm font-bold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] flex items-center justify-center gap-2 shadow-xl shadow-[#00D26A]/20 hover:scale-[1.02] transition-transform"

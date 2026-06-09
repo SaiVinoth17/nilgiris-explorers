@@ -199,7 +199,7 @@ export default async function DestinationPage({ params }: { params: { slug: stri
                   Let us plan your perfect trip to {destination.name} with our expert guides and premium vehicles.
                 </p>
                 <a 
-                  href={`https://wa.me/917604904217?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary w-full justify-center shadow-xl shadow-emerald-500/20 py-4 flex items-center gap-2"

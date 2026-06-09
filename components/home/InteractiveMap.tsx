@@ -87,7 +87,7 @@ export default function InteractiveMap() {
                         {loc.price}
                       </div>
                       <Link
-                        href={`https://wa.me/917604904217?text=Hi,%20I%20want%20to%20book%20a%20cab%20for%20${loc.name}%20sightseeing`}
+                        href={`https://wa.me/919585219509?text=Hi,%20I%20want%20to%20book%20a%20cab%20for%20${loc.name}%20sightseeing`}
                         target="_blank"
                         className="text-xs bg-[#00D26A] text-white px-3 py-1.5 rounded-lg font-medium hover:bg-[#00A855] transition-colors"
                       >

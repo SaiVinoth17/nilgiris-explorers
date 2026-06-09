@@ -25,7 +25,7 @@ export default function SightseeingRates() {
     } else if (type === "stay") {
       message = `Hello Nilgiris Explorers! 🏔️\n\nI'd like to make an Accommodation Enquiry:\n🏡 Stay Type: ${detail}\n💰 Rate Reference: Starting at ₹${price}/night\n\nPlease share availability and package details. Thank you!`;
     }
-    return `https://wa.me/917604904217?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/919585219509?text=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -340,7 +340,7 @@ export default function SightseeingRates() {
                 </div>
 
                 <a
-                  href={`https://wa.me/917604904217?text=${encodeURIComponent("Hello! I'm interested in booking accommodations (cottage/resort) in Ooty. Please share available options and price quotes.")}`}
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent("Hello! I'm interested in booking accommodations (cottage/resort) in Ooty. Please share available options and price quotes.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-4 rounded-2xl text-sm font-semibold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] flex items-center justify-center gap-1.5 shadow-xl shadow-[#00D26A]/10"

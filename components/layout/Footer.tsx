@@ -89,7 +89,7 @@ export default function Footer() {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <a href="tel:+917604904217" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors group">
+              <a href="tel:+919585219509" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors group">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors flex-shrink-0"
                      style={{ background: "rgba(0,210,106,0.10)" }}>
                   <Phone className="w-3.5 h-3.5" style={{ color: "#00D26A" }} />
@@ -189,7 +189,7 @@ export default function Footer() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/917604904217?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+              href="https://wa.me/919585219509?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-xl transition-all duration-200"
@@ -229,12 +229,7 @@ export default function Footer() {
           <p className="text-white/25 text-xs">
             © 2026 Nilgiris Explorers Tours & Travels. All rights reserved.
           </p>
-          <a
-            href="https://wa.me/917604904217"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/25 text-xs transition-all duration-300 group"
-          >
+          <a href="https://wa.me/917604904217" target="_blank" rel="noopener noreferrer" className="text-white/25 text-xs transition-all duration-300 group">
             <span className="group-hover:text-white/50 transition-colors">Designed & Developed by </span>
             <span className="text-amber-400 group-hover:text-amber-300 group-hover:drop-shadow-[0_0_12px_rgba(251,191,36,0.8)] transition-all duration-300 font-medium">Sai Vinoth</span>
           </a>

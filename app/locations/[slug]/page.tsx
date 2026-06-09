@@ -161,7 +161,7 @@ export default async function LocationPage({ params }: { params: { slug: string 
                   Looking for a reliable taxi or a customized tour package covering {loc.name}? Get a free quote instantly.
                 </p>
                 <a 
-                  href={`https://wa.me/917604904217?text=${encodeURIComponent(whatsappText)}`}
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent(whatsappText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3.5 rounded-xl text-sm font-bold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] flex items-center justify-center gap-2 shadow-xl hover:scale-[1.02] transition-transform"

@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   logo: "https://nilgirisexplorers.com/images/logo-dark.png",
                   contactPoint: {
                     "@type": "ContactPoint",
-                    telephone: "+91-7604904217",
+                    telephone: "+91-9585219509",
                     contactType: "customer service",
                     areaServed: "IN",
                     availableLanguage: ["en", "ta", "hi"],

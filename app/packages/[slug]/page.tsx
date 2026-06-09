@@ -304,7 +304,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                   Click below to chat with our local experts directly on WhatsApp and customize this tour.
                 </p>
                 <a 
-                  href={`https://wa.me/917604904217?text=${encodeURIComponent(whatsappText)}`}
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent(whatsappText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary w-full justify-center shadow-xl shadow-emerald-500/20 py-4 flex items-center gap-2"
