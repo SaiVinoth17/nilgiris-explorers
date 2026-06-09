@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Play, Star, Shield, Clock, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,17 +16,11 @@ const trustBadges = [
 ];
 
 export default function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background with Parallax */}
-      <motion.div 
-        style={{ y, opacity }}
-        className="absolute inset-0 w-full h-full parallax-mobile-disabled"
+      <div 
+        className="absolute inset-0 w-full h-full"
       >
         <Image
           src="/images/stunning_panoramic_hero.png" // Updated to use the premium panoramic hero image
@@ -41,14 +35,13 @@ export default function HeroSection() {
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
         {/* Additional dark vignette on sides */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
-      </motion.div>
+      </div>
 
       {/* Cinematic Mist Atmosphere */}
       <AtmosphericMist opacity={0.35} />
 
       {/* Content */}
       <motion.div
-        style={{ opacity }}
         className="relative z-10 container-default pt-24 pb-16"
       >
         <div className="max-w-4xl">
@@ -109,7 +102,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        /* removed initial */
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"

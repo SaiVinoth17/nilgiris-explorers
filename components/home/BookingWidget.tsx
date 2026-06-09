@@ -103,11 +103,7 @@ function BookingWidgetContent() {
     <section id="booking" className="relative py-0 -mt-20 z-20">
       <div className="container-default">
         <div className="max-w-5xl mx-auto">
-          <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          <div
           className="relative bg-[#0f2820] rounded-3xl p-6 sm:p-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)] border border-emerald-500/20"
         >
           {/* Top Form Switcher Tabs */}
@@ -152,7 +148,7 @@ function BookingWidgetContent() {
             {activeTab === "tour" && (
               <motion.div
                 key="tour-form"
-                initial={{ opacity: 0, y: 10 }}
+                /* removed initial */
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
@@ -284,7 +280,7 @@ function BookingWidgetContent() {
             {activeTab === "cab" && (
               <motion.div
                 key="cab-form"
-                initial={{ opacity: 0, y: 10 }}
+                /* removed initial */
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
@@ -395,7 +391,7 @@ function BookingWidgetContent() {
             {activeTab === "stay" && (
               <motion.div
                 key="stay-form"
-                initial={{ opacity: 0, y: 10 }}
+                /* removed initial */
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
@@ -550,7 +546,7 @@ function BookingWidgetContent() {
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>
-        </motion.div>
+        </div>
         </div>
       </div>
     </section>

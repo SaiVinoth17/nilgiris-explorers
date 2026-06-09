@@ -54,9 +54,9 @@ export default function TravelGuidePreview() {
           {guides.map((guide, index) => (
             <motion.div
               key={guide.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              /* removed initial */
+              /* removed whileInView */
+              /* removed viewport */
               transition={{ delay: index * 0.1 }}
               className="glass-card rounded-2xl overflow-hidden group card-hover flex flex-col h-full"
             >

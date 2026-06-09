@@ -67,7 +67,7 @@ export default function TripPlannerWizard() {
         <div className="h-2 w-full bg-black/40 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-emerald-500 rounded-full"
-            initial={{ width: 0 }}
+            /* removed initial */
             animate={{ width: `${(step / 5) * 100}%` }}
             transition={{ duration: 0.3 }}
           />
@@ -80,7 +80,7 @@ export default function TripPlannerWizard() {
           {step === 1 && (
             <motion.div
               key="step1"
-              initial={{ opacity: 0, x: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
@@ -115,7 +115,7 @@ export default function TripPlannerWizard() {
           {step === 2 && (
             <motion.div
               key="step2"
-              initial={{ opacity: 0, x: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
@@ -150,7 +150,7 @@ export default function TripPlannerWizard() {
           {step === 3 && (
             <motion.div
               key="step3"
-              initial={{ opacity: 0, x: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
@@ -190,7 +190,7 @@ export default function TripPlannerWizard() {
           {step === 4 && (
             <motion.div
               key="step4"
-              initial={{ opacity: 0, x: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
@@ -223,7 +223,7 @@ export default function TripPlannerWizard() {
           {step === 5 && (
             <motion.div
               key="step5"
-              initial={{ opacity: 0, scale: 0.95 }}
+              /* removed initial */
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className="flex flex-col items-center text-center h-full py-6"

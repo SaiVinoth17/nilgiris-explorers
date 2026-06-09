@@ -11,11 +11,7 @@ export default function FleetSection() {
     <section id="fleet" className="section-pad section-forest relative overflow-hidden">
       <div className="container-default">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-16"
         >
           <span className="inline-block section-label-text mb-3">
@@ -27,17 +23,13 @@ export default function FleetSection() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             Travel in comfort and safety with our meticulously maintained, AC-equipped, and GPS-tracked tourist vehicles.
           </p>
-        </motion.div>
+        </div>
 
         {/* Fleet Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {showcaseFleet.map((vehicle, i) => (
-            <motion.div
-              key={vehicle.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+            <div
+              key={i}
               className="glass-card rounded-3xl overflow-hidden group hover:border-[#00D26A]/50 transition-colors duration-500"
             >
               {/* Image Placeholder - Replace with actual images if available */}
@@ -88,7 +80,7 @@ export default function FleetSection() {
                   Enquire Vehicle <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

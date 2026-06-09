@@ -108,10 +108,10 @@ export default function TrustSection() {
           >
             <div className="w-24 h-24 rounded-full border-4 border-emerald-500/30 mb-4 overflow-hidden bg-white relative">
               <Image 
-                src="/images/owner-logo.png" 
+                src="/images/support-agent.png" 
                 alt="Business Owner" 
                 fill 
-                className="object-contain p-2"
+                className="object-cover"
               />
             </div>
             <h3 className="text-2xl font-display font-bold text-white mb-1">Need Help Planning?</h3>

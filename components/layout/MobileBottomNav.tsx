@@ -2,20 +2,33 @@
 import { PhoneCall, MessageCircle, Map } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+
 
 export default function MobileBottomNav() {
   const [isVisible, setIsVisible] = useState(true);
-  const { scrollY } = useScroll();
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest > previous && latest > 100) {
-      setIsVisible(false); // scrolling down
-    } else {
-      setIsVisible(true);  // scrolling up
-    }
-  });
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            setIsVisible(false); // scrolling down
+          } else {
+            setIsVisible(true);  // scrolling up
+          }
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div

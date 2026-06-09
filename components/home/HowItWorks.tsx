@@ -12,11 +12,7 @@ export default function HowItWorks() {
       <div className="container-default">
         <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-16"
         >
           <span className="inline-block section-label-text mb-3">
@@ -28,7 +24,7 @@ export default function HowItWorks() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             From your first message to your last memory — we personally handle every detail so you can simply enjoy the Nilgiris.
           </p>
-        </motion.div>
+        </div>
 
         {/* Steps */}
         <div className="relative">
@@ -40,12 +36,8 @@ export default function HowItWorks() {
               const Icon = iconMap[step.icon] || Smartphone;
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
+                <div
                   key={step.step}
-                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
                   className={`flex items-center gap-8 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"} flex-col`}
                 >
                   {/* Content Card */}
@@ -64,36 +56,28 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Step Number Circle (center) */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.3, type: "spring", stiffness: 300 }}
+                  <div
                     className="w-14 h-14 rounded-full bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center font-display text-xl font-bold text-white flex-shrink-0 z-10 shadow-[0_0_20px_rgba(0,210,106,0.4)]"
                   >
                     {step.step}
-                  </motion.div>
+                  </div>
 
                   {/* Spacer for alternating layout */}
                   <div className="flex-1 hidden md:block" />
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+        <div
           className="mt-14 text-center"
         >
           <Link href="/tours" className="btn-primary text-base px-10 py-4 text-lg">
             Browse Tour Packages
           </Link>
-        </motion.div>
+        </div>
         </div>
       </div>
     </section>

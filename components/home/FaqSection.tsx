@@ -82,12 +82,8 @@ export default function FaqSection() {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
               className={`glass-card rounded-2xl overflow-hidden transition-all duration-300 ${
                 openIndex === index ? 'border-[#00D26A]/30 bg-[#16332a]' : 'border-white/5 hover:border-[#00D26A]/20'
               }`}
@@ -109,7 +105,7 @@ export default function FaqSection() {
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
+                    /* removed initial */
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -120,7 +116,7 @@ export default function FaqSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 

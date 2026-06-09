@@ -36,9 +36,9 @@ export default function SightseeingRates() {
       <div className="container-default relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          /* removed initial */
+          /* removed whileInView */
+          /* removed viewport */
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
@@ -97,7 +97,7 @@ export default function SightseeingRates() {
           {activeTab === "sightseeing" && (
             <motion.div
               key="sightseeing-tab"
-              initial={{ opacity: 0, y: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
@@ -144,7 +144,7 @@ export default function SightseeingRates() {
                   {selectedCircuit.rates.map((rate, i) => (
                     <motion.div
                       key={rate.vehicle}
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      /* removed initial */
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.04 }}
                       className="glass border border-white/5 p-6 rounded-2xl flex flex-col justify-between group hover:border-[#00D26A]/40 transition-colors relative overflow-hidden"
@@ -189,7 +189,7 @@ export default function SightseeingRates() {
           {activeTab === "transfers" && (
             <motion.div
               key="transfers-tab"
-              initial={{ opacity: 0, y: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
@@ -251,7 +251,7 @@ export default function SightseeingRates() {
           {activeTab === "stays" && (
             <motion.div
               key="stays-tab"
-              initial={{ opacity: 0, y: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}

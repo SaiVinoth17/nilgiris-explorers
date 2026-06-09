@@ -38,11 +38,7 @@ export default function AboutSection() {
         {/* Main about layout */}
         <div className="grid lg:grid-cols-2 gap-14 items-center mb-20">
           {/* Left — Brand Card (No picture) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+          <div
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden h-96 sm:h-[480px] bg-gradient-to-br from-[#16332a] to-[#0a0e1a] border border-white/5 flex flex-col justify-center items-center p-8 text-center shadow-2xl">
@@ -60,11 +56,7 @@ export default function AboutSection() {
             </div>
 
             {/* Floating stats card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+            <div
               className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-5 shadow-2xl"
             >
               <div className="flex items-center gap-3 mb-3">
@@ -84,27 +76,19 @@ export default function AboutSection() {
                   <div className="text-xs text-white/40">Expert Drivers</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Floating local tag */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+            <div
               className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2"
             >
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
               <span className="text-white text-sm font-medium">Ooty's Favourite Travel Agency Since 2021</span>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right — Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+          <div
           >
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center">
@@ -139,15 +123,11 @@ export default function AboutSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Animated Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="glass-card rounded-3xl p-8 sm:p-12"
         >
           <div className="text-center mb-10">
@@ -157,22 +137,18 @@ export default function AboutSection() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {stats.map((stat, i) => (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
                 <div className="font-display text-4xl sm:text-5xl font-bold gradient-text mb-2">
                   <CountUp target={stat.value} suffix={stat.suffix} decimals={stat.decimals || 0} />
                 </div>
                 <div className="text-white/50 text-sm font-medium">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

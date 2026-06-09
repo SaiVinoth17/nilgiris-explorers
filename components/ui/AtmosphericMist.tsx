@@ -26,7 +26,7 @@ export default function AtmosphericMist({ className = "", opacity = 0.3 }: Atmos
       {/* Layer 1: Slow moving base mist */}
       <motion.div
         className="absolute inset-0 bg-white"
-        initial={{ x: "-5%", opacity: 0 }}
+        /* removed initial */
         animate={{ x: "5%", opacity: opacity }}
         transition={{
           duration: 25,
@@ -40,7 +40,7 @@ export default function AtmosphericMist({ className = "", opacity = 0.3 }: Atmos
       {/* Layer 2: Fast drifting fog overlay */}
       <motion.div
         className="absolute inset-[-20%] bg-white mix-blend-screen"
-        initial={{ x: "0%", opacity: 0 }}
+        /* removed initial */
         animate={{ x: "-10%", opacity: opacity * 0.8 }}
         transition={{
           duration: 35,

@@ -13,9 +13,9 @@ export default function WhyChooseUs() {
       <div className="container-default">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          /* removed initial */
+          /* removed whileInView */
+          /* removed viewport */
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
@@ -38,9 +38,9 @@ export default function WhyChooseUs() {
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-30px" }}
+                /* removed initial */
+                /* removed whileInView */
+                /* removed viewport */
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="group glass-card rounded-2xl p-6 cursor-default"
@@ -66,9 +66,9 @@ export default function WhyChooseUs() {
 
         {/* Stats Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          /* removed initial */
+          /* removed whileInView */
+          /* removed viewport */
           transition={{ delay: 0.4 }}
           className="mt-12 glass-card rounded-2xl px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 divide-x divide-white/6"
         >

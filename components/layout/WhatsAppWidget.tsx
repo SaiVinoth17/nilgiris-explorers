@@ -17,9 +17,11 @@ export default function WhatsAppWidget() {
   // Auto-scroll to latest message when step or open state changes
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-      }, 150);
+      window.requestAnimationFrame(() => {
+        if (messagesEndRef.current) {
+          messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
     }
   }, [step, isOpen]);
 
@@ -86,7 +88,7 @@ export default function WhatsAppWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
+            /* removed initial */
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/80 z-[80] sm:hidden"
@@ -100,7 +102,7 @@ export default function WhatsAppWidget() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              /* removed initial */
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
@@ -303,7 +305,7 @@ export default function WhatsAppWidget() {
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Booking Assistant"
-          initial={{ scale: 0, opacity: 0 }}
+          /* removed initial */
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 1, type: "spring", stiffness: 300, damping: 20 }}
           whileHover={{ scale: 1.05 }}

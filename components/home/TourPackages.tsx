@@ -19,11 +19,7 @@ export default function TourPackages() {
     <section id="tours" className="section-pad section-forest">
       <div className="container-default">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-14"
         >
           <span className="inline-block section-label-text mb-3">
@@ -35,17 +31,13 @@ export default function TourPackages() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             Handcrafted itineraries designed by local experts for an unforgettable experience.
           </p>
-        </motion.div>
+        </div>
 
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tourPackages.map((pkg, i) => (
-            <motion.div
+            <div
               key={pkg.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
               className="group glass-card rounded-2xl overflow-hidden card-hover flex flex-col"
             >
               {/* Image */}
@@ -148,16 +140,12 @@ export default function TourPackages() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+        <div
           className="mt-12 glass-card rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center gap-4">
@@ -172,7 +160,7 @@ export default function TourPackages() {
           <Link href="/tours" className="btn-primary whitespace-nowrap px-8 py-4">
             Build Custom Tour <ArrowRight className="w-5 h-5" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

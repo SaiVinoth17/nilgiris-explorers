@@ -19,7 +19,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
         <>
           {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0 }}
+            /* removed initial */
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
@@ -29,7 +29,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
           {/* Modal Container */}
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 pointer-events-none">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              /* removed initial */
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}

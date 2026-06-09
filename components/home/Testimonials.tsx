@@ -27,9 +27,9 @@ export default function Testimonials() {
         <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          /* removed initial */
+          /* removed whileInView */
+          /* removed viewport */
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
@@ -49,7 +49,7 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 60 }}
+              /* removed initial */
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -60 }}
               transition={{ duration: 0.45, ease: "easeOut" }}

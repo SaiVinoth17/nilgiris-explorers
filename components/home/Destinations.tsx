@@ -25,11 +25,7 @@ export default function Destinations() {
     <section id="destinations" className="section-pad" style={{ background: '#0B1D17' }}>
       <div className="container-default">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-14"
         >
           <span className="section-label mb-3">Popular Destinations</span>
@@ -40,17 +36,13 @@ export default function Destinations() {
           <p className="text-white/50 max-w-xl mx-auto text-lg leading-relaxed">
             From misty peaks to serene lakes — discover the most breathtaking spots in the Nilgiris mountains.
           </p>
-        </motion.div>
+        </div>
 
         {/* Destination Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {destinations.map((dest, i) => (
-            <motion.div
+            <div
               key={dest.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
               onClick={() => setSelectedDestination(dest)}
               className="group relative rounded-2xl overflow-hidden cursor-pointer card-hover bg-[#0f2820]"
             >
@@ -104,7 +96,7 @@ export default function Destinations() {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -116,17 +108,13 @@ export default function Destinations() {
         />
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+        <div
           className="text-center mt-10"
         >
           <Link href="/#booking" className="btn-secondary text-base px-8 py-3.5">
             View All Destinations <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

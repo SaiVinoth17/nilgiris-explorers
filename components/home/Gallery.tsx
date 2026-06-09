@@ -12,11 +12,7 @@ export default function Gallery() {
     <section id="gallery" className="section-pad bg-[#0B1D17]">
       <div className="container-default">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-14"
         >
           <span className="inline-block section-label-text mb-3">
@@ -28,17 +24,13 @@ export default function Gallery() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             Breathtaking moments captured across tea estates, mountains, wildlife reserves, and misty valleys.
           </p>
-        </motion.div>
+        </div>
 
         {/* Masonry Grid */}
         <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
           {galleryImages.map((img, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.45, delay: i * 0.06 }}
               className="break-inside-avoid group relative overflow-hidden rounded-xl cursor-pointer"
               onClick={() => setLightbox(i)}
             >
@@ -63,7 +55,7 @@ export default function Gallery() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -72,14 +64,14 @@ export default function Gallery() {
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
-            initial={{ opacity: 0 }}
+            /* removed initial */
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
             onClick={() => setLightbox(null)}
           >
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
+              /* removed initial */
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
