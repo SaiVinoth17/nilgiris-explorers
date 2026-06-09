@@ -127,7 +127,7 @@ export default async function GuidePage({ params }: { params: { slug: string } |
                 Stop planning and start experiencing. Book a custom tour package or a reliable local cab with our expert native drivers today.
               </p>
               <a 
-                href={`https://wa.me/919585219509?text=${encodeURIComponent(whatsappText)}`}
+                href={`https://wa.me/917604904217?text=${encodeURIComponent(whatsappText)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl text-sm font-bold text-[#0a0e1a] bg-gradient-to-r from-[#00D26A] to-[#0B9FD4] shadow-xl hover:scale-105 transition-transform"

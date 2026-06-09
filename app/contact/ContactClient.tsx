@@ -12,7 +12,7 @@ const contactMethods = [
     title: "Call / WhatsApp",
     value: "+91 95852 19509",
     description: "Available 24/7 for bookings",
-    href: "tel:+919585219509",
+    href: "tel:+917604904217",
     color: "from-[#00D26A] to-[#00A855]",
   },
   {
@@ -64,7 +64,7 @@ export default function ContactClient() {
 
   const onSubmit = (data: ContactFormData) => {
     const msg = `Hello Nilgiris Explorers!\n\nName: ${data.name}\nEmail: ${data.email || "N/A"}\nPhone: ${data.phone}\nService: ${data.service || "N/A"}\n\nMessage: ${data.message || "N/A"}`;
-    window.open(`https://wa.me/919585219509?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/917604904217?text=${encodeURIComponent(msg)}`, "_blank");
     setSent(true);
     setTimeout(() => setSent(false), 5000);
   };
@@ -131,7 +131,7 @@ export default function ContactClient() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
-              href="https://wa.me/919585219509?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20cab%20and%20tour%20services."
+              href="https://wa.me/917604904217?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20cab%20and%20tour%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 bg-[#25d366]/10 hover:bg-[#25d366]/20 border border-[#25d366]/30 rounded-xl p-5 transition-all duration-200 group"

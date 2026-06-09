@@ -44,7 +44,7 @@ export default function AccommodationPage() {
   const handleWhatsAppEnquiry = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Hello Nilgiris Explorers! 🏔️\n\nI'd like to book Ooty Stay & Accommodations:\n👤 Name: ${form.name || "Guest"}\n📞 Contact: ${form.mobile || "TBD"}\n🏡 Stay Type: ${form.stayType}\n📅 Check-In: ${form.checkin || "TBD"}\n📅 Check-Out: ${form.checkout || "TBD"}\n🔑 Rooms Required: ${form.rooms}\n👥 Number of Guests: ${form.guests}\n💬 Special Requests: ${form.special || "None"}\n\nPlease share availability and complete quotes. Thank you!`;
-    window.open(`https://wa.me/919585219509?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/917604904217?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   return (

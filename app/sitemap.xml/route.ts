@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { destinations, tourPackages } from "@/lib/data";
+import { guides } from "@/lib/seo-data";
 
 export async function GET() {
   const baseUrl = "https://nilgirisexplorers.com";
@@ -12,6 +13,7 @@ export async function GET() {
     { url: `${baseUrl}/about`, priority: "0.8", freq: "monthly" },
     { url: `${baseUrl}/contact`, priority: "0.8", freq: "monthly" },
     { url: `${baseUrl}/faq`, priority: "0.7", freq: "monthly" },
+    { url: `${baseUrl}/trip-planner`, priority: "0.9", freq: "weekly" },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -47,6 +49,17 @@ export async function GET() {
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>`;
+  });
+
+  // Guides
+  guides.forEach(guide => {
+    xml += `
+  <url>
+    <loc>${baseUrl}/guides/${guide.slug}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>`;
   });
 

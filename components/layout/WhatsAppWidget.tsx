@@ -70,7 +70,7 @@ export default function WhatsAppWidget() {
   };
 
   const handleWhatsAppRedirect = () => {
-    window.open(`https://wa.me/919585219509?text=${buildMessage()}`, "_blank");
+    window.open(`https://wa.me/917604904217?text=${buildMessage()}`, "_blank");
     setIsOpen(false);
     setTimeout(() => {
       setStep(1);

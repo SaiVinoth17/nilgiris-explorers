@@ -162,7 +162,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                   Ready to experience the beauty of {destination.name}?
                 </p>
                 <a 
-                  href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
+                  href={`https://wa.me/917604904217?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={onClose}

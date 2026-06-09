@@ -136,6 +136,14 @@ export const guides = [
     readTime: "12 min read"
   },
   {
+    slug: "pykara-travel-guide",
+    title: "Pykara Travel Guide | Waterfalls, Lake & Pine Forest",
+    description: "Plan your trip to Pykara. A complete guide to Pykara Lake boating, waterfalls trekking, and exploring the 6th Mile Pine Forest.",
+    image: "/images/stunning_pykara.png",
+    content: "Pykara is a pristine village renowned for its namesake river, lake, and waterfalls. The area is enveloped by dense shola forests and is a protected heritage site. Highlights include speed boating at the lake, walking through the towering Pine Forests, and admiring the scenic Wenlock Downs.",
+    readTime: "8 min read"
+  },
+  {
     slug: "ooty-family-tour-guide",
     title: "Ooty Family Tour Guide | Kid-Friendly Activities",
     description: "Traveling to Ooty with kids? Discover the best family-friendly hotels, activities, and sightseeing spots.",

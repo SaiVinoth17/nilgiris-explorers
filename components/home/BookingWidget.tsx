@@ -541,7 +541,7 @@ function BookingWidgetContent() {
 
             {/* Send to WhatsApp */}
             <a
-              href={`https://wa.me/919585219509?text=${buildWhatsAppMessage()}`}
+              href={`https://wa.me/917604904217?text=${buildWhatsAppMessage()}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center"

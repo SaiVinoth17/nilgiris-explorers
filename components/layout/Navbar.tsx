@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+919585219509"
+              href="tel:+917604904217"
               className="flex items-center gap-2 text-sm text-white/65 hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-jakarta)" }}
             >
@@ -215,7 +215,7 @@ export default function Navbar() {
 
               <div className="mt-auto space-y-3">
                 <a
-                  href="tel:+919585219509"
+                  href="tel:+917604904217"
                   className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors px-4"
                 >
                   <Phone className="w-4 h-4 text-[#00D26A]" />

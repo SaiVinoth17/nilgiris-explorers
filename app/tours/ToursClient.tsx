@@ -198,7 +198,7 @@ export default function ToursClient() {
                         Details
                       </Link>
                       <a
-                        href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking the ${pkg.name}. Please share details.`)}`}
+                        href={`https://wa.me/917604904217?text=${encodeURIComponent(`Hello! I'm interested in booking the ${pkg.name}. Please share details.`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary text-xs py-2.5 px-4 flex items-center gap-1"
@@ -233,7 +233,7 @@ export default function ToursClient() {
             Tell us your dream Nilgiris experience. We'll craft a fully customized itinerary just for you — any dates, any budget, any destinations.
           </p>
           <a
-            href={`https://wa.me/919585219509?text=${encodeURIComponent("Hello! I'd like to build a custom Nilgiris tour package. Please help me plan my trip.")}`}
+            href={`https://wa.me/917604904217?text=${encodeURIComponent("Hello! I'd like to build a custom Nilgiris tour package. Please help me plan my trip.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-base px-10 py-4"

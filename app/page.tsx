@@ -26,19 +26,13 @@ export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col overflow-x-hidden bg-forest relative">
       <HeroSection />
-      <BookingWidget />
+      <TourPackages />
       <TrustSection />
       <Destinations />
-      <TourPackages />
-      <FleetSection />
-      <WhyChooseUs />
-      <HowItWorks />
-      <InteractiveMap />
       <Testimonials />
-      <Gallery />
-      <FaqSection />
       <TravelGuidePreview />
-      <AboutSection />
+      <FaqSection />
+      <BookingWidget />
     </main>
   );
 }

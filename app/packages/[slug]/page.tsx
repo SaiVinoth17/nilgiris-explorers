@@ -77,6 +77,25 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
             }),
           }}
         />
+        {pkg.faqs && pkg.faqs.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: pkg.faqs.map((faq) => ({
+                  "@type": "Question",
+                  name: faq.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faq.answer
+                  }
+                }))
+              })
+            }}
+          />
+        )}
       </head>
       <Navbar />
       <main className="min-h-screen bg-forest pt-32 pb-16">
@@ -285,7 +304,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                   Click below to chat with our local experts directly on WhatsApp and customize this tour.
                 </p>
                 <a 
-                  href={`https://wa.me/919585219509?text=${encodeURIComponent(whatsappText)}`}
+                  href={`https://wa.me/917604904217?text=${encodeURIComponent(whatsappText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary w-full justify-center shadow-xl shadow-emerald-500/20 py-4 flex items-center gap-2"
