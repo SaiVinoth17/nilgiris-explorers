@@ -85,7 +85,6 @@ export default function DestinationContent() {
                 priority={index === 0}
                 className="object-cover"
                 sizes="100vw"
-                unoptimized={true}
               />
               <div className="absolute inset-0 bg-forest/80 backdrop-blur-sm" />
               <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/60 to-transparent" />

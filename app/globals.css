@@ -550,13 +550,35 @@ select.input-field {
 }
 
 /* Fix iOS Safari overscroll/bounce effect */
-html, body {
+body {
   overscroll-behavior-y: none;
 }
 
 /* Ensure smooth scrolling with hardware acceleration */
 .smooth-scroll-wrapper {
   -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize Framer Motion and heavy animations on mobile */
+@media (max-width: 768px) {
+  /* Reduce heavy backdrop filters further on mobile */
+  .backdrop-blur-xl, .backdrop-blur-2xl, .backdrop-blur-lg, .backdrop-blur-md {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+  
+  /* Disable heavy parallax/transform on mobile to prevent jank */
+  .parallax-mobile-disabled {
+    transform: translateZ(0) !important;
+    will-change: auto !important;
+  }
+}
+
+/* Global hardware acceleration for animated elements */
+.card-hover, .glass-card, [style*="translateY"], [style*="scale"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
   will-change: transform;
 }
 

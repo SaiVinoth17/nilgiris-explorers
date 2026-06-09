@@ -94,7 +94,7 @@ export default function WhatsAppWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-[#0B1D17]/95 backdrop-blur-xl border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px]"
+              className="bg-[#0B1D17]/95 backdrop-blur-sm border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px]"
             >
               {/* Header */}
               <div className="bg-emerald-600/20 border-b border-emerald-500/20 p-5 flex items-center justify-between">

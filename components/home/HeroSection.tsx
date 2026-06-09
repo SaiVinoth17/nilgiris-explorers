@@ -22,9 +22,12 @@ export default function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Parallax background */}
-      <motion.div style={{ y }} className="absolute inset-0 z-0">
+    <section ref={ref} className="relative h-[100svh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Background with Parallax */}
+      <motion.div 
+        style={{ y, opacity }}
+        className="absolute inset-0 w-full h-full parallax-mobile-disabled"
+      >
         <Image
           src="/images/stunning_panoramic_hero.png" // Updated to use the premium panoramic hero image
           alt="Nilgiris Explorers - Premium Ooty Cab and Tour Booking"

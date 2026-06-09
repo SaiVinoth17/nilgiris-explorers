@@ -68,7 +68,7 @@ export default function TravelGuidePreview() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute top-4 right-4 bg-[#0B1D17]/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
+                <div className="absolute top-4 right-4 bg-[#0B1D17]/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
                   <Calendar className="w-3.5 h-3.5" style={{ color: '#00D26A' }} />
                   <span className="text-xs font-semibold text-white/80">{guide.date}</span>
                 </div>

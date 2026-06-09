@@ -99,7 +99,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
             
             <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
               <div className="flex items-center gap-3 mb-4">
-                <span className={`px-4 py-1.5 rounded-full text-sm font-semibold border backdrop-blur-md ${
+                <span className={`px-4 py-1.5 rounded-full text-sm font-semibold border backdrop-blur-sm ${
                   pkg.badgeColor === 'emerald' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
                   pkg.badgeColor === 'blue' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
                   pkg.badgeColor === 'rose' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' :
@@ -109,7 +109,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                 }`}>
                   {pkg.badge}
                 </span>
-                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-sm font-semibold">
+                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-sm text-sm font-semibold">
                   <Star className="w-4 h-4 fill-amber-400" />
                   4.9 (150+ Reviews)
                 </div>

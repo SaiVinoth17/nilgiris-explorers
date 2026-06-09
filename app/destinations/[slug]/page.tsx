@@ -89,10 +89,10 @@ export default async function DestinationPage({ params }: { params: { slug: stri
             
             <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
               <div className="flex items-center gap-3 mb-4">
-                <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-sm">
                   {destination.tag}
                 </span>
-                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-sm font-semibold">
+                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-sm text-sm font-semibold">
                   <Star className="w-4 h-4 fill-amber-400" />
                   {destination.rating} ({destination.reviews} Reviews)
                 </div>

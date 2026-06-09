@@ -75,7 +75,7 @@ export default function InteractiveMap() {
                     initial={{ opacity: 0, y: 10, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                    className="absolute top-12 left-1/2 -translate-x-1/2 w-64 p-4 rounded-2xl shadow-2xl backdrop-blur-md"
+                    className="absolute top-12 left-1/2 -translate-x-1/2 w-64 p-4 rounded-2xl shadow-2xl backdrop-blur-sm"
                     style={{ background: '#16332a', border: '1px solid rgba(0,210,106,0.20)' }}
                   >
                     <h4 className="text-lg font-bold text-gray-900 text-white mb-1">{loc.name}</h4>

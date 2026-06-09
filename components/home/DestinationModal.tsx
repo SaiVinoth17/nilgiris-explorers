@@ -49,7 +49,7 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                 {/* Close Button */}
                 <button 
                   onClick={onClose}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/60 transition-colors border border-white/10"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors border border-white/10"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -57,10 +57,10 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                 {/* Title & Badges */}
                 <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-sm">
                       {destination.tag}
                     </span>
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-md text-xs font-semibold">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 backdrop-blur-sm text-xs font-semibold">
                       <Star className="w-3.5 h-3.5 fill-amber-400" />
                       {destination.rating} ({destination.reviews})
                     </div>
