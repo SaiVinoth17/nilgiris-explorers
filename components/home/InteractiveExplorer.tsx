@@ -37,10 +37,10 @@ export default function InteractiveExplorer() {
           {/* Map Grid / Cards */}
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {coreDestinations.map((dest) => (
-              <div 
+              <button 
                 key={dest.id}
                 onClick={() => setActiveDest(dest)}
-                className={`group relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/5] border transition-all duration-500 touch-feedback skeleton
+                className={`group text-left w-full relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/5] border transition-all duration-500 touch-feedback skeleton block
                   ${activeDest?.id === dest.id ? "border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)] scale-[1.02]" : "border-white/10 hover:border-white/30"}
                 `}
               >
@@ -48,18 +48,18 @@ export default function InteractiveExplorer() {
                   src={dest.image} 
                   alt={dest.name} 
                   fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
                 
-                <div className="absolute bottom-0 left-0 w-full p-6">
+                <div className="absolute bottom-0 left-0 w-full p-6 pointer-events-none">
                   <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
                     <MapPin className="w-4 h-4" />
                     {dest.tag}
                   </div>
                   <h3 className="text-3xl font-display font-bold text-white">{dest.name}</h3>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
