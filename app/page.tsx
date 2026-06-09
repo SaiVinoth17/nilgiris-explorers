@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden bg-forest relative selection:bg-emerald-500/30 selection:text-white">
+    <main className="flex min-h-screen flex-col bg-forest relative selection:bg-emerald-500/30 selection:text-white">
       {/* Chapter 1: Welcome */}
       <HeroSection />
       

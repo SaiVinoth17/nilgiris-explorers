@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="font-body antialiased bg-[#0B1D17] text-white overflow-x-hidden">
+      <body className="font-body antialiased bg-[#0B1D17] text-white overflow-x-clip">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
           <Navbar />
           <main className="pb-16 md:pb-0"> {/* Padding bottom to prevent content hiding behind mobile nav */}

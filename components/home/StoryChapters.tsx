@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const chapters = [
   {
@@ -36,33 +36,43 @@ const chapters = [
 
 export default function StoryChapters() {
   const [activeChapter, setActiveChapter] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      // Very simple, high-performance scroll tracking based on window position
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      // Start tracking after the hero section (assume ~100vh)
-      const startOffset = windowHeight;
-      const chapterHeight = windowHeight * 1.5; // Each chapter takes 1.5 viewport heights to scroll
-      
-      if (scrollY >= startOffset) {
-        const index = Math.min(
-          chapters.length - 1,
-          Math.floor((scrollY - startOffset) / chapterHeight)
-        );
-        if (index >= 0) {
-          setActiveChapter(index);
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!containerRef.current) return;
+          const rect = containerRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const chapterHeight = windowHeight * 1.5;
+          
+          // rect.top goes negative as we scroll past the start of the container
+          const scrolledDistance = -rect.top;
+          
+          if (scrolledDistance >= 0) {
+            const index = Math.min(
+              chapters.length - 1,
+              Math.max(0, Math.floor(scrolledDistance / chapterHeight))
+            );
+            setActiveChapter(index);
+          } else {
+            setActiveChapter(0);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="relative bg-black" style={{ height: `${chapters.length * 150}vh` }}>
+    <div ref={containerRef} className="relative bg-black" style={{ height: `${chapters.length * 150}vh` }}>
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
         {chapters.map((chapter, index) => (
           <div 
