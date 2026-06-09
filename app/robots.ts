@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/dashboard/"],
+      disallow: ["/dashboard/"],
     },
     sitemap: "https://nilgirisexplorers.com/sitemap.xml",
   };
