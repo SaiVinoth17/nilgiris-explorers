@@ -92,7 +92,7 @@ export default function StoryChapters() {
             
             <div className="absolute bottom-0 left-0 w-full h-full flex flex-col justify-end p-8 md:p-16 lg:p-24 max-w-4xl">
               <span className="text-amber-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block">
-                Chapter 0{index + 2}
+                Chapter 0{index + 1}
               </span>
               <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-tight">
                 {chapter.title}
