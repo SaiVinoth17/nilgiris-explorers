@@ -3,7 +3,9 @@ import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
+import dynamic from "next/dynamic";
+
+const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import PageTransition from "@/components/layout/PageTransition";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";

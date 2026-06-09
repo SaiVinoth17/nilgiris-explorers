@@ -89,7 +89,7 @@ export default function WhatsAppWidget() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80] sm:hidden"
+            className="fixed inset-0 bg-black/80 z-[80] sm:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
@@ -104,7 +104,7 @@ export default function WhatsAppWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-[#0B1D17]/95 backdrop-blur-sm border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px]"
+              className="bg-[#0B1D17]/95 border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px]"
             >
               {/* Header */}
               <div className="bg-emerald-600/20 border-b border-emerald-500/20 p-5 flex items-center justify-between">
@@ -132,32 +132,20 @@ export default function WhatsAppWidget() {
               <div className="p-5 flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-4">
                 {/* Step 1 & 2: Welcome & Package */}
                 <div className="flex flex-col gap-3">
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]"
-                  >
+                  <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]">
                     👋 Welcome to Nilgiris Explorers!
                     <br />
                     How can we help you today?
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]"
-                  >
+                  <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]">
                     Which package are you interested in?
-                  </motion.div>
+                  </div>
 
                   <div className="flex flex-col gap-2 mt-1">
-                    {packages.map((pkg, i) => (
-                      <motion.button
+                    {packages.map((pkg) => (
+                      <button
                         key={pkg}
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 + i * 0.1 }}
                         onClick={() => handlePackageSelect(pkg)}
                         className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 border ${
                           formData.package === pkg
@@ -166,16 +154,14 @@ export default function WhatsAppWidget() {
                         }`}
                       >
                         {pkg}
-                      </motion.button>
+                      </button>
                     ))}
                   </div>
                 </div>
 
                 {/* Step 3: Travelers */}
                 {step >= 3 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <div
                     className="flex flex-col gap-3 mt-2"
                   >
                     <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
@@ -202,14 +188,12 @@ export default function WhatsAppWidget() {
                         </button>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* Step 4: Date */}
                 {step >= 4 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <div
                     className="flex flex-col gap-3 mt-2"
                   >
                     <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
@@ -239,14 +223,12 @@ export default function WhatsAppWidget() {
                         Next <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* Step 5: Pickup */}
                 {step >= 5 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <div
                     className="flex flex-col gap-3 mt-2"
                   >
                     <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
@@ -276,14 +258,12 @@ export default function WhatsAppWidget() {
                         See Summary <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* Step 6: Summary */}
                 {step >= 6 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <div
                     className="flex flex-col gap-3 mt-2 pb-4"
                   >
                     <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
@@ -309,7 +289,7 @@ export default function WhatsAppWidget() {
                       <MessageCircle className="w-5 h-5 fill-current" />
                       Continue on WhatsApp
                     </button>
-                  </motion.div>
+                  </div>
                 )}
                 
                 {/* Auto-scroll target */}

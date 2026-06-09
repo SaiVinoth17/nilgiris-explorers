@@ -70,13 +70,12 @@ export default function DestinationContent() {
           return (
             <motion.div
               key={`bg-${stop.id}`}
-              initial={{ opacity: 0, scale: 1 }}
+              initial={{ opacity: 0 }}
               animate={{ 
-                opacity: isActive ? 1 : 0,
-                scale: isActive ? 1.05 : 1
+                opacity: isActive ? 1 : 0
               }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="absolute inset-0 z-0 origin-center"
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="absolute inset-0 z-0 origin-center will-change-opacity transform-gpu"
             >
               <Image
                 src={stop.image}
@@ -85,8 +84,9 @@ export default function DestinationContent() {
                 priority={index === 0}
                 className="object-cover"
                 sizes="100vw"
+                quality={75}
               />
-              <div className="absolute inset-0 bg-forest/80 backdrop-blur-sm" />
+              <div className="absolute inset-0 bg-forest/80" />
               <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/60 to-transparent" />
             </motion.div>
           );

@@ -23,7 +23,7 @@ export default function MobileBottomNav() {
         isVisible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="bg-[#0B1D17]/95 backdrop-blur-sm border-t border-white/10 px-2 py-2 flex items-center justify-between shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+      <div className="bg-[#0B1D17]/95 border-t border-white/10 px-2 py-2 flex items-center justify-between shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
         <a 
           href="tel:+917604904217"
           className="flex flex-col items-center justify-center w-full py-1.5 text-white/80 hover:text-white"

@@ -53,14 +53,14 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
-            ? "bg-[#071410]/85 backdrop-blur-sm shadow-[0_4px_32px_rgba(0,0,0,0.4)] border-b border-white/5 py-3"
+            ? "bg-[#071410]/95 shadow-[0_4px_32px_rgba(0,0,0,0.4)] border-b border-white/5 py-3"
             : "bg-transparent py-6"
         }`}
       >
         <div className="container-default flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0 transition-transform duration-300 hover:scale-[1.02]">
-            <div className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md' : 'bg-white/90 backdrop-blur-sm shadow-lg'}`}>
+            <div className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md' : 'bg-white/90 shadow-lg'}`}>
               <Image
                 src="/images/horizontal-logo-v3.png"
                 alt="Nilgiris Explorers"
@@ -158,7 +158,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[100] bg-black/80 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             {/* Drawer */}

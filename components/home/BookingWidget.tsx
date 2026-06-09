@@ -108,7 +108,7 @@ function BookingWidgetContent() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="relative bg-[#0f2820]/80 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)] border border-emerald-500/20"
+          className="relative bg-[#0f2820] rounded-3xl p-6 sm:p-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)] border border-emerald-500/20"
         >
           {/* Top Form Switcher Tabs */}
           <div className="flex border-b border-emerald-500/10 mb-8 overflow-x-auto scrollbar-none gap-2 pb-2">

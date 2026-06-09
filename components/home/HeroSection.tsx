@@ -53,50 +53,30 @@ export default function HeroSection() {
       >
         <div className="max-w-4xl">
           {/* Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6"
-          >
+          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#00D26A' }} />
             <span className="text-sm text-white/80 font-medium tracking-wide">
               Premium Travel Agency · Ooty, Nilgiris
             </span>
-          </motion.div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] text-white mb-6"
-          >
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] text-white mb-6">
             Explore The{" "}
             <span className="gradient-text">Nilgiris</span>
             <br />
             In Style
-          </motion.h1>
+          </h1>
 
           {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-lg sm:text-xl text-white/65 max-w-2xl mb-10 leading-relaxed"
-          >
+          <p className="text-lg sm:text-xl text-white/65 max-w-2xl mb-10 leading-relaxed">
             Experience Ooty, Coonoor, Avalanche, Pykara, and Mudumalai with
             expertly crafted tour packages, knowledgeable local guides, and
             unforgettable travel memories — all tailored just for you.
-          </motion.p>
+          </p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.65 }}
-            className="flex flex-wrap items-center gap-4 mb-16"
-          >
+          <div className="flex flex-wrap items-center gap-4 mb-16">
             <Link href="/tours" className="btn-primary text-base px-7 py-4">
               Book Your Ride
               <ArrowRight className="w-5 h-5" />
@@ -105,21 +85,13 @@ export default function HeroSection() {
               Explore Packages
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Trust badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8 }}
-            className="flex flex-wrap gap-3"
-          >
-            {trustBadges.map(({ icon: Icon, value, label }, i) => (
-              <motion.div
+          <div className="flex flex-wrap gap-3">
+            {trustBadges.map(({ icon: Icon, value, label }) => (
+              <div
                 key={label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9 + i * 0.1 }}
                 className="glass flex items-center gap-2.5 px-4 py-3 rounded-xl card-hover"
               >
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0,210,106,0.15)' }}>
@@ -129,9 +101,9 @@ export default function HeroSection() {
                   <div className="text-sm font-bold text-white">{value}</div>
                   <div className="text-xs text-white/50">{label}</div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 
