@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/lib/data";
 
@@ -26,11 +26,10 @@ export default function Testimonials() {
       <div className="container-default">
         <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <motion.div
+        <div
           /* removed initial */
           /* removed whileInView */
           /* removed viewport */
-          transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
           <span className="inline-block section-label-text mb-3">
@@ -42,17 +41,14 @@ export default function Testimonials() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             Thousands of happy travelers, one common thread — an unforgettable Nilgiris experience.
           </p>
-        </motion.div>
+        </div>
 
         {/* Main Testimonial Card */}
         <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
+          <>
+            <div
               key={current}
               /* removed initial */
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -60 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
               className="glass-card rounded-3xl p-8 sm:p-12 relative"
             >
               {/* Quote icon */}
@@ -84,8 +80,8 @@ export default function Testimonials() {
                   <div className="text-sm font-medium text-[#00D26A]">{t.package}</div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </>
 
           {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-8">

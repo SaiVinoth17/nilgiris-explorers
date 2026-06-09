@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -17,9 +17,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+    <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="w-10 h-10 rounded-full glass flex items-center justify-center relative overflow-hidden text-gray-800 text-white"
       aria-label="Toggle Theme"
@@ -38,6 +36,6 @@ export function ThemeToggle() {
           size={20}
         />
       </div>
-    </motion.button>
+    </button>
   );
 }

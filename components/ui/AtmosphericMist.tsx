@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+
 
 interface AtmosphericMistProps {
   className?: string;
@@ -8,9 +8,6 @@ interface AtmosphericMistProps {
 }
 
 export default function AtmosphericMist({ className = "", opacity = 0.3 }: AtmosphericMistProps) {
-  const shouldReduceMotion = useReducedMotion();
-
-  if (shouldReduceMotion) return null;
 
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${className}`}>
@@ -24,30 +21,16 @@ export default function AtmosphericMist({ className = "", opacity = 0.3 }: Atmos
       </svg>
 
       {/* Layer 1: Slow moving base mist */}
-      <motion.div
+      <div
         className="absolute inset-0 bg-white"
         /* removed initial */
-        animate={{ x: "5%", opacity: opacity }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "linear",
-        }}
         style={{ filter: "url(#mist-noise) blur(24px)", opacity: 0.4 }}
       />
       
       {/* Layer 2: Fast drifting fog overlay */}
-      <motion.div
+      <div
         className="absolute inset-[-20%] bg-white mix-blend-screen"
         /* removed initial */
-        animate={{ x: "-10%", opacity: opacity * 0.8 }}
-        transition={{
-          duration: 35,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "linear",
-        }}
         style={{ filter: "url(#mist-noise) blur(32px)", opacity: 0.3 }}
       />
       

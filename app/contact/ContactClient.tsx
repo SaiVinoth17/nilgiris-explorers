@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion } from "framer-motion";
+
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Mountain } from "lucide-react";
 
 const contactMethods = [
@@ -74,10 +74,7 @@ export default function ContactClient() {
       <div className="container-default">
         <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-14"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -92,7 +89,7 @@ export default function ContactClient() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             Have questions? Want to customize a tour? We're just a message away. We respond directly within minutes.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Left — Contact Methods + Map */}
@@ -100,11 +97,8 @@ export default function ContactClient() {
             {contactMethods.map((method, i) => {
               const Icon = method.icon;
               const content = (
-                <motion.div
+                <div
                   key={method.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
                   className="glass-card rounded-xl p-5 flex items-start gap-4 group card-hover"
                 >
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${method.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform`}>
@@ -115,7 +109,7 @@ export default function ContactClient() {
                     <div className="text-white font-semibold text-sm mb-0.5">{method.value}</div>
                     <div className="text-white/40 text-xs">{method.description}</div>
                   </div>
-                </motion.div>
+                </div>
               );
               return method.href ? (
                 <a key={method.title} href={method.href} target={method.href.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer">
@@ -127,10 +121,7 @@ export default function ContactClient() {
             })}
 
             {/* WhatsApp CTA */}
-            <motion.a
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 }}
+            <a
               href="https://wa.me/919585219509?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20cab%20and%20tour%20services."
               target="_blank"
               rel="noopener noreferrer"
@@ -146,13 +137,10 @@ export default function ContactClient() {
                 <div className="text-[#25d366] font-bold text-sm">Chat on WhatsApp</div>
                 <div className="text-white/40 text-xs">Instant reply · Fastest way to book</div>
               </div>
-            </motion.a>
+            </a>
 
             {/* Map placeholder */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
+            <div
               className="glass-card rounded-xl overflow-hidden h-40 relative"
             >
               <iframe
@@ -161,29 +149,24 @@ export default function ContactClient() {
                 title="Nilgiris Explorers Location"
               />
               <div className="absolute inset-0 pointer-events-none border border-white/10 rounded-xl" />
-            </motion.div>
+            </div>
           </div>
 
           {/* Right — Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+          <div
             className="lg:col-span-3 glass-card rounded-2xl p-8"
           >
             <h2 className="font-display text-2xl font-bold text-white mb-2">Send Us a Message</h2>
             <p className="text-white/40 text-sm mb-6">We'll respond within 2 hours during business hours.</p>
 
             {sent ? (
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+              <div
                 className="text-center py-16"
               >
                 <CheckCircle className="w-16 h-16 text-[#00D26A] mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
                 <p className="text-white/50">We've received your inquiry and will respond shortly.</p>
-              </motion.div>
+              </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -264,7 +247,7 @@ export default function ContactClient() {
                 </p>
               </form>
             )}
-          </motion.div>
+          </div>
         </div>
         </div>
       </div>

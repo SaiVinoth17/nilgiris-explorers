@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import {
   MapPin, Users, ArrowRight, Sparkles, HelpCircle,
   Shield, CheckCircle2, Building, Home, BedDouble, Calendar, Star, Car
@@ -35,11 +35,10 @@ export default function SightseeingRates() {
 
       <div className="container-default relative z-10">
         {/* Header */}
-        <motion.div
+        <div
           /* removed initial */
           /* removed whileInView */
           /* removed viewport */
-          transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
           <span className="inline-block section-label-text mb-3">
@@ -51,7 +50,7 @@ export default function SightseeingRates() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             No hidden costs, no commission. Pick from our verified sightseeing circuits, outstation transfers, or local stay options.
           </p>
-        </motion.div>
+        </div>
 
         {/* Categories Tab Selector */}
         <div className="flex justify-center mb-10">
@@ -93,14 +92,11 @@ export default function SightseeingRates() {
         </div>
 
         {/* Tab Contents */}
-        <AnimatePresence mode="wait">
+        <>
           {activeTab === "sightseeing" && (
-            <motion.div
+            <div
               key="sightseeing-tab"
               /* removed initial */
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             >
               {/* Circuits Side Picker */}
@@ -142,11 +138,9 @@ export default function SightseeingRates() {
                 {/* Single Flat Rate Display per Circuit */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedCircuit.rates.map((rate, i) => (
-                    <motion.div
+                    <div
                       key={rate.vehicle}
                       /* removed initial */
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.04 }}
                       className="glass border border-white/5 p-6 rounded-2xl flex flex-col justify-between group hover:border-[#00D26A]/40 transition-colors relative overflow-hidden"
                     >
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
@@ -169,7 +163,7 @@ export default function SightseeingRates() {
                       >
                         Book via WhatsApp <ArrowRight className="w-4 h-4" />
                       </a>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -183,16 +177,13 @@ export default function SightseeingRates() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
 
           {activeTab === "transfers" && (
-            <motion.div
+            <div
               key="transfers-tab"
               /* removed initial */
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
               className="glass-card rounded-3xl p-6 sm:p-8 overflow-hidden"
             >
               <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
@@ -245,16 +236,13 @@ export default function SightseeingRates() {
                   </tbody>
                 </table>
               </div>
-            </motion.div>
+            </div>
           )}
 
           {activeTab === "stays" && (
-            <motion.div
+            <div
               key="stays-tab"
               /* removed initial */
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             >
               {/* Left Side: Stays Showcase */}
@@ -348,9 +336,9 @@ export default function SightseeingRates() {
                   Custom Accommodation Enquiry <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        </>
       </div>
     </section>
   );

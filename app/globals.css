@@ -60,6 +60,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Accessibility Focus States */
@@ -76,6 +77,32 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   PERFORMANCE UX & MICRO-INTERACTIONS
+   ============================================================ */
+
+/* Touch feedback for native app feel */
+.touch-feedback {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.touch-feedback:active {
+  transform: scale(0.98);
+}
+
+/* Skeleton Loading Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: var(--radius-md);
 }
 
 /* ============================================================

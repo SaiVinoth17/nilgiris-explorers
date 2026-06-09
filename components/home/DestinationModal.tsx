@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
 import { X, Star, MapPin, Clock, CalendarDays, CheckCircle2, Navigation, ArrowRight } from "lucide-react";
@@ -14,25 +14,20 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
   if (!destination) return null;
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <div
             /* removed initial */
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             onClick={onClose}
             className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm"
           />
 
           {/* Modal Container */}
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 pointer-events-none">
-            <motion.div
+            <div
               /* removed initial */
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
               className="w-full max-w-4xl max-h-[90vh] bg-forest border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden pointer-events-auto"
             >
               {/* Header Image Area */}
@@ -172,10 +167,10 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                 </a>
               </div>
 
-            </motion.div>
+            </div>
           </div>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }

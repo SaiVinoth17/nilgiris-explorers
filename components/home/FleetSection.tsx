@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import { Users, Briefcase, CheckCircle2, ArrowRight } from "lucide-react";
 import { fleet } from "@/lib/data";

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+
 import {
   MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car, ChevronDown
 } from "lucide-react";
@@ -144,14 +144,11 @@ function BookingWidgetContent() {
           </div>
 
           {/* Form Switcher Body */}
-          <AnimatePresence mode="wait">
+          <>
             {activeTab === "tour" && (
-              <motion.div
+              <div
                 key="tour-form"
                 /* removed initial */
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5"
               >
                 {/* Destination */}
@@ -274,16 +271,13 @@ function BookingWidgetContent() {
                     />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {activeTab === "cab" && (
-              <motion.div
+              <div
                 key="cab-form"
                 /* removed initial */
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5"
               >
                 {/* Circuit Dropdown */}
@@ -385,16 +379,13 @@ function BookingWidgetContent() {
                     />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {activeTab === "stay" && (
-              <motion.div
+              <div
                 key="stay-form"
                 /* removed initial */
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5"
               >
                 {/* Stay Type */}
@@ -512,9 +503,9 @@ function BookingWidgetContent() {
                     />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
+          </>
 
           {/* Bottom bar */}
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-white/8">

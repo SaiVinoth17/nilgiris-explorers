@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import {
   Home, Star, Users, CheckCircle2, ArrowRight, Shield, Coffee, Flame, Car, HelpCircle, Calendar, MessageSquare, Sparkles
@@ -54,10 +54,7 @@ export default function AccommodationPage() {
 
       <div className="container-default relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -72,7 +69,7 @@ export default function AccommodationPage() {
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
             From secluded wooden tea plantation cottages to heritage British-era colonial bungalows — choose a stay crafted for luxury and comfort.
           </p>
-        </motion.div>
+        </div>
 
         {/* 2-Column Showcase and Enquiry */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
@@ -82,11 +79,8 @@ export default function AccommodationPage() {
               <Sparkles className="w-5 h-5 text-[#00D26A]" /> Handpicked Stays
             </h2>
             {accommodationPackages.map((stay, index) => (
-              <motion.div
+              <div
                 key={stay.id}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group glass-card rounded-2xl overflow-hidden card-hover grid grid-cols-1 md:grid-cols-12 gap-0"
               >
                 {/* Image panel */}
@@ -142,7 +136,7 @@ export default function AccommodationPage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -152,9 +146,7 @@ export default function AccommodationPage() {
               <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-[#0B9FD4]" /> Stay Inquiry Form
               </h2>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
                 className="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10"
               >
                 <form onSubmit={handleWhatsAppEnquiry} className="space-y-4">
@@ -289,7 +281,7 @@ export default function AccommodationPage() {
                     Check Stay Availability <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

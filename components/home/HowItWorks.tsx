@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
 import { Smartphone, UserCheck, Car, Map, Home } from "lucide-react";
 import { steps } from "@/lib/data";

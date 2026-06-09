@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { galleryImages } from "@/lib/data";
@@ -61,20 +61,15 @@ export default function Gallery() {
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
+      <>
         {lightbox !== null && (
-          <motion.div
+          <div
             /* removed initial */
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
             onClick={() => setLightbox(null)}
           >
-            <motion.div
+            <div
               /* removed initial */
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="relative max-w-4xl w-full max-h-[85vh] rounded-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
@@ -112,10 +107,10 @@ export default function Gallery() {
                   {galleryImages[lightbox].alt}
                 </span>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+      </>
     </section>
   );
 }

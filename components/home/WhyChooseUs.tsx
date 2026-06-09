@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import { MapPin, Navigation, Eye, BadgeCheck, Calendar, PhoneCall, Shield, Headphones, Sparkles, Users } from "lucide-react";
 import { features } from "@/lib/data";
 
@@ -12,11 +12,10 @@ export default function WhyChooseUs() {
     <section id="why-us" className="section-pad section-forest">
       <div className="container-default">
         {/* Header */}
-        <motion.div
+        <div
           /* removed initial */
           /* removed whileInView */
           /* removed viewport */
-          transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
           <span className="inline-block section-label-text mb-3">
@@ -29,21 +28,19 @@ export default function WhyChooseUs() {
           <p className="text-white/50 max-w-xl mx-auto text-lg">
             We've earned the trust of 10,000+ travelers by delivering expertly curated journeys, world-class hospitality, and memories that last a lifetime.
           </p>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((feature, i) => {
             const Icon = iconMap[feature.icon] || MapPin;
             return (
-              <motion.div
+              <div
                 key={feature.title}
                 /* removed initial */
                 /* removed whileInView */
                 /* removed viewport */
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group glass-card rounded-2xl p-6 cursor-default"
+                className="group glass-card rounded-2xl p-6 cursor-default hover:-translate-y-1.5 transition-transform duration-200"
               >
                 {/* Icon */}
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -59,17 +56,16 @@ export default function WhyChooseUs() {
 
                 {/* Bottom accent */}
                 <div className={`mt-4 h-0.5 w-0 group-hover:w-full bg-gradient-to-r ${feature.gradient} transition-all duration-500 rounded-full`} />
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* Stats Bar */}
-        <motion.div
+        <div
           /* removed initial */
           /* removed whileInView */
           /* removed viewport */
-          transition={{ delay: 0.4 }}
           className="mt-12 glass-card rounded-2xl px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 divide-x divide-white/6"
         >
           {[
@@ -83,7 +79,7 @@ export default function WhyChooseUs() {
               <div className="text-white/40 text-sm">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

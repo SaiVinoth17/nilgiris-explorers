@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { MapPin, Navigation, Info, Car } from "lucide-react";
 import Link from "next/link";
 
@@ -51,9 +51,7 @@ export default function InteractiveMap() {
               className="absolute group z-20"
               style={{ left: `${loc.x}%`, top: `${loc.y}%`, transform: 'translate(-50%, -50%)' }}
             >
-              <motion.button
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setActivePin(activePin === loc.id ? null : loc.id)}
                 className={`relative w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors ${
                   activePin === loc.id 
@@ -66,15 +64,13 @@ export default function InteractiveMap() {
                 
                 {/* Ping animation */}
                 <div className={`absolute inset-0 rounded-full border-2 border-[#00D26A] -z-10 ${activePin === loc.id ? 'animate-ping' : ''}`} />
-              </motion.button>
+              </button>
 
               {/* Tooltip */}
-              <AnimatePresence>
+              <>
                 {activePin === loc.id && (
-                  <motion.div
+                  <div
                     /* removed initial */
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.9 }}
                     className="absolute top-12 left-1/2 -translate-x-1/2 w-64 p-4 rounded-2xl shadow-2xl backdrop-blur-sm"
                     style={{ background: '#16332a', border: '1px solid rgba(0,210,106,0.20)' }}
                   >
@@ -94,9 +90,9 @@ export default function InteractiveMap() {
                         Book
                       </Link>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
+              </>
             </div>
           ))}
         </div>

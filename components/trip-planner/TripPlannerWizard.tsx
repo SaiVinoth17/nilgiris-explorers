@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { Calendar, MapPin, Users, Clock, ArrowRight, ArrowLeft, MessageCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
 
@@ -65,24 +65,21 @@ export default function TripPlannerWizard() {
           </span>
         </div>
         <div className="h-2 w-full bg-black/40 rounded-full overflow-hidden">
-          <motion.div
+          <div
             className="h-full bg-emerald-500 rounded-full"
             /* removed initial */
-            animate={{ width: `${(step / 5) * 100}%` }}
-            transition={{ duration: 0.3 }}
+            style={{ width: `${(step / 5) * 100}%` }}
           />
         </div>
       </div>
 
       {/* Content */}
       <div className="min-h-[300px] relative z-10">
-        <AnimatePresence mode="wait">
+        <>
           {step === 1 && (
-            <motion.div
+            <div
               key="step1"
               /* removed initial */
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
             >
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">
@@ -109,15 +106,13 @@ export default function TripPlannerWizard() {
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {step === 2 && (
-            <motion.div
+            <div
               key="step2"
               /* removed initial */
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
             >
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">
@@ -144,15 +139,13 @@ export default function TripPlannerWizard() {
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {step === 3 && (
-            <motion.div
+            <div
               key="step3"
               /* removed initial */
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
             >
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">
@@ -184,15 +177,13 @@ export default function TripPlannerWizard() {
                   Continue <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </motion.div>
+            </div>
           )}
 
           {step === 4 && (
-            <motion.div
+            <div
               key="step4"
               /* removed initial */
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
               className="flex flex-col h-full"
             >
               <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">
@@ -217,15 +208,13 @@ export default function TripPlannerWizard() {
                   Get Recommendation <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </motion.div>
+            </div>
           )}
 
           {step === 5 && (
-            <motion.div
+            <div
               key="step5"
               /* removed initial */
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
               className="flex flex-col items-center text-center h-full py-6"
             >
               <div className="w-16 h-16 bg-emerald-500/20 border border-emerald-500 rounded-full flex items-center justify-center mb-6">
@@ -253,9 +242,9 @@ export default function TripPlannerWizard() {
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 Owner responds instantly
               </p>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        </>
       </div>
 
       {/* Back button */}

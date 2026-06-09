@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-import PageTransition from "@/components/layout/PageTransition";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
 
 // Brand Guide: Poppins SemiBold — Headings
@@ -164,7 +163,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
           <Navbar />
           <main className="pb-16 md:pb-0"> {/* Padding bottom to prevent content hiding behind mobile nav */}
-            <PageTransition>{children}</PageTransition>
+            {children}
           </main>
           <Footer />
           <WhatsAppWidget />

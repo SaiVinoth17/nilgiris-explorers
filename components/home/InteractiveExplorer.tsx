@@ -39,7 +39,7 @@ export default function InteractiveExplorer() {
               <div 
                 key={dest.id}
                 onClick={() => setActiveDest(dest)}
-                className={`group relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/5] border transition-all duration-500
+                className={`group relative rounded-3xl overflow-hidden cursor-pointer aspect-[4/5] border transition-all duration-500 touch-feedback skeleton
                   ${activeDest?.id === dest.id ? "border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)] scale-[1.02]" : "border-white/10 hover:border-white/30"}
                 `}
               >
@@ -68,7 +68,7 @@ export default function InteractiveExplorer() {
               <div className="glass-card rounded-3xl p-8 lg:p-10 border border-white/10 h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-500">
                 <button 
                   onClick={() => setActiveDest(null)}
-                  className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors lg:hidden"
+                  className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors lg:hidden touch-feedback"
                 >
                   <X className="w-5 h-5 text-white/60" />
                 </button>
@@ -120,14 +120,14 @@ export default function InteractiveExplorer() {
                 <div className="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
                   <a 
                     href={`/destinations/${activeDest.slug}`}
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors text-center"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition-colors text-center touch-feedback"
                   >
                     Read Full Guide
                   </a>
                   <a 
                     href={`https://wa.me/919585219509?text=Hello,%20I%20am%20interested%20in%20planning%20a%20trip%20to%20${activeDest.name}.`}
                     target="_blank"
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex justify-center items-center gap-2 transition-colors"
+                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex justify-center items-center gap-2 transition-colors touch-feedback"
                   >
                     Plan Trip Here <ArrowRight className="w-4 h-4" />
                   </a>

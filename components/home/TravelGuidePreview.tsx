@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
@@ -52,12 +52,11 @@ export default function TravelGuidePreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {guides.map((guide, index) => (
-            <motion.div
+            <div
               key={guide.title}
               /* removed initial */
               /* removed whileInView */
               /* removed viewport */
-              transition={{ delay: index * 0.1 }}
               className="glass-card rounded-2xl overflow-hidden group card-hover flex flex-col h-full"
             >
               <div className="relative h-56 w-full overflow-hidden">
@@ -91,7 +90,7 @@ export default function TravelGuidePreview() {
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import { Star, ShieldCheck, Map, PhoneCall, Award, ThumbsUp } from "lucide-react";
 import Link from "next/link";
@@ -48,8 +48,7 @@ export default function TrustSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {/* Guarantees */}
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <motion.div 
-              whileHover={{ y: -5 }}
+            <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
               <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
@@ -59,10 +58,9 @@ export default function TrustSection() {
                 <h3 className="text-white font-bold text-lg mb-1">No Hidden Fees</h3>
                 <p className="text-white/60 text-sm leading-relaxed">The price we quote is the price you pay. Tolls, parking, and driver bata are clearly communicated upfront.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
+            <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
               <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
@@ -72,10 +70,9 @@ export default function TrustSection() {
                 <h3 className="text-white font-bold text-lg mb-1">Native Drivers</h3>
                 <p className="text-white/60 text-sm leading-relaxed">Our drivers are born and raised in the Nilgiris. They navigate ghat roads safely and know the best local spots.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
+            <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
               <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
@@ -85,10 +82,9 @@ export default function TrustSection() {
                 <h3 className="text-white font-bold text-lg mb-1">Owner Operated</h3>
                 <p className="text-white/60 text-sm leading-relaxed">You deal directly with the business owner via WhatsApp for bookings, support, and customizations.</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
+            <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
               <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center">
@@ -98,12 +94,11 @@ export default function TrustSection() {
                 <h3 className="text-white font-bold text-lg mb-1">Top Rated</h3>
                 <p className="text-white/60 text-sm leading-relaxed">Consistently rated 5-stars by hundreds of families and honeymoon couples on Google.</p>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Owner Contact Card */}
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
+          <div
             className="bg-gradient-to-br from-[#0B1D17] to-emerald-950 p-8 rounded-3xl border border-emerald-500/30 flex flex-col items-center text-center shadow-2xl shadow-emerald-500/10"
           >
             <div className="w-24 h-24 rounded-full border-4 border-emerald-500/30 mb-4 overflow-hidden bg-white relative">
@@ -127,7 +122,7 @@ export default function TrustSection() {
               Chat on WhatsApp
             </a>
             <p className="text-emerald-400 text-xs font-medium">Instantly replies usually within 5 mins</p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Google Reviews Style Section */}

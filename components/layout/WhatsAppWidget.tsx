@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, MapPin, Users, ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
 export default function WhatsAppWidget() {
@@ -85,232 +84,208 @@ export default function WhatsAppWidget() {
   return (
     <>
       {/* Dark overlay for mobile to prevent background interaction */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            /* removed initial */
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-[80] sm:hidden"
-            onClick={() => setIsOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      <div
+        className={`fixed inset-0 bg-black/80 z-[80] sm:hidden transition-opacity duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
 
       {/* Floating Assistant Widget */}
       <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end">
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              /* removed initial */
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-[#0B1D17]/95 border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px]"
+        <div
+          className={`bg-[#0B1D17]/95 border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px] transition-all duration-300 ease-out origin-bottom-right ${
+            isOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 translate-y-4 invisible"
+          }`}
+        >
+          {/* Header */}
+          <div className="bg-emerald-600/20 border-b border-emerald-500/20 p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <MessageCircle className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm">Nilgiris Explorers</h3>
+                <p className="text-emerald-400 text-xs flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Online | Replies instantly
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors touch-feedback"
             >
-              {/* Header */}
-              <div className="bg-emerald-600/20 border-b border-emerald-500/20 p-5 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                    <MessageCircle className="w-5 h-5 text-white" />
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Chat Area */}
+          <div className="p-5 flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-4">
+            {/* Step 1 & 2: Welcome & Package */}
+            <div className="flex flex-col gap-3">
+              <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]">
+                👋 Welcome to Nilgiris Explorers!
+                <br />
+                How can we help you today?
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%] animate-in fade-in slide-in-from-bottom-2 duration-300 delay-150 fill-mode-both">
+                Which package are you interested in?
+              </div>
+
+              <div className="flex flex-col gap-2 mt-1 animate-in fade-in slide-in-from-bottom-2 duration-300 delay-300 fill-mode-both">
+                {packages.map((pkg) => (
+                  <button
+                    key={pkg}
+                    onClick={() => handlePackageSelect(pkg)}
+                    className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 border touch-feedback ${
+                      formData.package === pkg
+                        ? "bg-emerald-500 text-white border-emerald-400 shadow-lg shadow-emerald-500/20"
+                        : "bg-emerald-500/10 text-emerald-100 border-emerald-500/20 hover:bg-emerald-500/20"
+                    }`}
+                  >
+                    {pkg}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 3: Travelers */}
+            {step >= 3 && (
+              <div className="flex flex-col gap-3 mt-2 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
+                  {formData.package}
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%] delay-150 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  How many travelers?
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 mt-1 delay-300 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  {travelerOptions.map((opt) => (
+                    <button
+                      key={opt}
+                      onClick={() => handleTravelerSelect(opt)}
+                      className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all border touch-feedback ${
+                        formData.travelers === opt
+                          ? "bg-emerald-500 text-white border-emerald-400 shadow-lg"
+                          : "bg-emerald-500/10 text-emerald-100 border-emerald-500/20 hover:bg-emerald-500/20"
+                      }`}
+                    >
+                      <Users className="w-4 h-4" />
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Step 4: Date */}
+            {step >= 4 && (
+              <div className="flex flex-col gap-3 mt-2 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
+                  {formData.travelers} Travelers
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%] delay-150 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  Preferred travel date?
+                </div>
+
+                <div className="flex flex-col gap-2 delay-300 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  <div className="relative">
+                    <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
+                    <input
+                      type="date"
+                      min={today}
+                      value={formData.date}
+                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-11 py-3 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors [color-scheme:dark]"
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-sm">Nilgiris Explorers</h3>
-                    <p className="text-emerald-400 text-xs flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Online | Replies instantly
-                    </p>
+                  <button
+                    onClick={handleDateNext}
+                    disabled={!formData.date}
+                    className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all mt-1 touch-feedback"
+                  >
+                    Next <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Step 5: Pickup */}
+            {step >= 5 && (
+              <div className="flex flex-col gap-3 mt-2 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
+                  {formData.date}
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%] delay-150 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  Pickup Location?
+                </div>
+
+                <div className="flex flex-col gap-2 delay-300 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  <div className="relative">
+                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
+                    <input
+                      type="text"
+                      placeholder="E.g. Ooty Bus Stand, Coimbatore Airport..."
+                      value={formData.pickup}
+                      onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-white/30"
+                    />
+                  </div>
+                  <button
+                    onClick={handlePickupNext}
+                    disabled={!formData.pickup}
+                    className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all mt-1 touch-feedback"
+                  >
+                    See Summary <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Step 6: Summary */}
+            {step >= 6 && (
+              <div className="flex flex-col gap-3 mt-2 pb-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
+                  {formData.pickup}
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm text-white/90 self-start w-full max-w-[90%] shadow-lg delay-150 animate-in fade-in slide-in-from-bottom-2 fill-mode-both">
+                  <p className="font-semibold text-emerald-400 mb-3 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" /> Booking Summary
+                  </p>
+                  <div className="space-y-2 text-white/80">
+                    <p><span className="text-white/50">Package:</span> {formData.package}</p>
+                    <p><span className="text-white/50">Travelers:</span> {formData.travelers}</p>
+                    <p><span className="text-white/50">Date:</span> {formData.date}</p>
+                    <p><span className="text-white/50">Pickup:</span> {formData.pickup}</p>
                   </div>
                 </div>
+
                 <button
-                  onClick={() => setIsOpen(false)}
-                  className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                  onClick={handleWhatsAppRedirect}
+                  className="bg-[#25D366] hover:bg-[#20b858] text-white font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_4px_20px_rgba(37,211,102,0.3)] mt-2 touch-feedback delay-300 animate-in fade-in slide-in-from-bottom-2 fill-mode-both"
                 >
-                  <X className="w-4 h-4" />
+                  <MessageCircle className="w-5 h-5 fill-current" />
+                  Continue on WhatsApp
                 </button>
               </div>
-
-              {/* Chat Area */}
-              <div className="p-5 flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-4">
-                {/* Step 1 & 2: Welcome & Package */}
-                <div className="flex flex-col gap-3">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]">
-                    👋 Welcome to Nilgiris Explorers!
-                    <br />
-                    How can we help you today?
-                  </div>
-
-                  <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 shadow-sm self-start max-w-[85%]">
-                    Which package are you interested in?
-                  </div>
-
-                  <div className="flex flex-col gap-2 mt-1">
-                    {packages.map((pkg) => (
-                      <button
-                        key={pkg}
-                        onClick={() => handlePackageSelect(pkg)}
-                        className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 border ${
-                          formData.package === pkg
-                            ? "bg-emerald-500 text-white border-emerald-400 shadow-lg shadow-emerald-500/20"
-                            : "bg-emerald-500/10 text-emerald-100 border-emerald-500/20 hover:bg-emerald-500/20"
-                        }`}
-                      >
-                        {pkg}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Step 3: Travelers */}
-                {step >= 3 && (
-                  <div
-                    className="flex flex-col gap-3 mt-2"
-                  >
-                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
-                      {formData.package}
-                    </div>
-
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%]">
-                      How many travelers?
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 mt-1">
-                      {travelerOptions.map((opt) => (
-                        <button
-                          key={opt}
-                          onClick={() => handleTravelerSelect(opt)}
-                          className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all border ${
-                            formData.travelers === opt
-                              ? "bg-emerald-500 text-white border-emerald-400 shadow-lg"
-                              : "bg-emerald-500/10 text-emerald-100 border-emerald-500/20 hover:bg-emerald-500/20"
-                          }`}
-                        >
-                          <Users className="w-4 h-4" />
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 4: Date */}
-                {step >= 4 && (
-                  <div
-                    className="flex flex-col gap-3 mt-2"
-                  >
-                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
-                      {formData.travelers} Travelers
-                    </div>
-
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%]">
-                      Preferred travel date?
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-                        <input
-                          type="date"
-                          min={today}
-                          value={formData.date}
-                          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl px-11 py-3 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors [color-scheme:dark]"
-                        />
-                      </div>
-                      <button
-                        onClick={handleDateNext}
-                        disabled={!formData.date}
-                        className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all mt-1"
-                      >
-                        Next <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 5: Pickup */}
-                {step >= 5 && (
-                  <div
-                    className="flex flex-col gap-3 mt-2"
-                  >
-                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
-                      {formData.date}
-                    </div>
-
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-3.5 text-sm text-white/90 self-start max-w-[85%]">
-                      Pickup Location?
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-                        <input
-                          type="text"
-                          placeholder="E.g. Ooty Bus Stand, Coimbatore Airport..."
-                          value={formData.pickup}
-                          onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
-                          className="w-full bg-black/20 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-white/30"
-                        />
-                      </div>
-                      <button
-                        onClick={handlePickupNext}
-                        disabled={!formData.pickup}
-                        className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all mt-1"
-                      >
-                        See Summary <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 6: Summary */}
-                {step >= 6 && (
-                  <div
-                    className="flex flex-col gap-3 mt-2 pb-4"
-                  >
-                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-2xl rounded-tr-sm p-3.5 text-sm text-emerald-100 self-end max-w-[85%]">
-                      {formData.pickup}
-                    </div>
-
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm p-4 text-sm text-white/90 self-start w-full max-w-[90%] shadow-lg">
-                      <p className="font-semibold text-emerald-400 mb-3 flex items-center gap-2">
-                        <Sparkles className="w-4 h-4" /> Booking Summary
-                      </p>
-                      <div className="space-y-2 text-white/80">
-                        <p><span className="text-white/50">Package:</span> {formData.package}</p>
-                        <p><span className="text-white/50">Travelers:</span> {formData.travelers}</p>
-                        <p><span className="text-white/50">Date:</span> {formData.date}</p>
-                        <p><span className="text-white/50">Pickup:</span> {formData.pickup}</p>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={handleWhatsAppRedirect}
-                      className="bg-[#25D366] hover:bg-[#20b858] text-white font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_4px_20px_rgba(37,211,102,0.3)] mt-2"
-                    >
-                      <MessageCircle className="w-5 h-5 fill-current" />
-                      Continue on WhatsApp
-                    </button>
-                  </div>
-                )}
-                
-                {/* Auto-scroll target */}
-                <div ref={messagesEndRef} className="h-1 w-full flex-shrink-0" />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+            
+            {/* Auto-scroll target */}
+            <div ref={messagesEndRef} className="h-1 w-full flex-shrink-0" />
+          </div>
+        </div>
 
         {/* Toggle Button */}
-        <motion.button
+        <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Booking Assistant"
-          /* removed initial */
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1, type: "spring", stiffness: 300, damping: 20 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`w-14 h-14 rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.3)] flex items-center justify-center relative z-50 transition-colors duration-300 ${
+          className={`w-14 h-14 rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.3)] flex items-center justify-center relative z-50 transition-all duration-300 touch-feedback hover:scale-105 active:scale-95 ${
             isOpen ? "bg-[#1f2937] border border-white/10" : "bg-[#25d366] group"
           }`}
         >
@@ -329,7 +304,7 @@ export default function WhatsAppWidget() {
               </span>
             </>
           )}
-        </motion.button>
+        </button>
       </div>
     </>
   );

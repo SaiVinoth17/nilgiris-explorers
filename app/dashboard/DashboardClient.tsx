@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
 import { Car, Calendar, Star, CreditCard, User, MapPin, Clock, CheckCircle, AlertCircle, ArrowRight } from "lucide-react";
 
@@ -37,9 +37,7 @@ export default function DashboardClient() {
       <div className="container-default">
         <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="flex items-center gap-4 mb-8"
         >
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center text-white font-bold text-xl">
@@ -53,7 +51,7 @@ export default function DashboardClient() {
             <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span className="text-white font-semibold text-sm">4 Trips Completed</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Stats row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
@@ -63,11 +61,8 @@ export default function DashboardClient() {
             { icon: Star, label: "Avg Rating", value: "4.8★", color: "from-amber-500 to-orange-500" },
             { icon: CreditCard, label: "Total Spent", value: "₹10,200", color: "from-violet-500 to-purple-600" },
           ].map(({ icon: Icon, label, value, color }, i) => (
-            <motion.div
+            <div
               key={label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08 }}
               className="glass-card rounded-xl p-4"
             >
               <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center mb-3`}>
@@ -75,7 +70,7 @@ export default function DashboardClient() {
               </div>
               <div className="text-xl font-bold text-white">{value}</div>
               <div className="text-white/40 text-xs">{label}</div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -97,11 +92,8 @@ export default function DashboardClient() {
         </div>
 
         {/* Tab Content */}
-        <motion.div
+        <div
           key={activeTab}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
         >
           {activeTab === "Upcoming Trips" && (
             <div className="space-y-4">
@@ -217,7 +209,7 @@ export default function DashboardClient() {
               <p className="text-white/25 text-sm mt-1">This feature is being built for you</p>
             </div>
           )}
-        </motion.div>
+        </div>
         </div>
       </div>
     </div>

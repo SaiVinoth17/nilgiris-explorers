@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import { Clock, Users, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import { tourPackages } from "@/lib/data";

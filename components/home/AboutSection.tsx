@@ -1,8 +1,24 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+
 import { stats } from "@/lib/data";
 import { Mountain, Award, Heart } from "lucide-react";
+
+function useInView(ref: React.RefObject<any>, options: { once?: boolean } = {}) {
+  const [isInView, setIsInView] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        if (options.once) observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref, options.once]);
+  return isInView;
+}
 
 function CountUp({ target, suffix, decimals = 0 }: { target: number; suffix: string; decimals?: number }) {
   const [count, setCount] = useState(0);

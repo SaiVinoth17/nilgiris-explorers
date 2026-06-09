@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import { Clock, Users, CheckCircle, ArrowRight, Filter, Mountain, Search } from "lucide-react";
 import { tourPackages } from "@/lib/data";
@@ -41,10 +41,7 @@ export default function ToursClient() {
     <div className="min-h-screen pt-24 pb-20">
       <div className="container-default">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -59,15 +56,12 @@ export default function ToursClient() {
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
             From thrilling wildlife safaris to romantic mountain escapes — choose an experience crafted for your perfect Nilgiris journey.
           </p>
-        </motion.div>
+        </div>
 
         {/* Search & Filters */}
         <div className="flex flex-col lg:flex-row items-center gap-4 justify-between mb-10">
           {/* Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+          <div
             className="flex flex-wrap items-center gap-2 justify-center lg:justify-start"
           >
             <Filter className="w-4 h-4 text-white/40 text-white/40" />
@@ -84,13 +78,10 @@ export default function ToursClient() {
                 {f}
               </button>
             ))}
-          </motion.div>
+          </div>
 
           {/* Search & Sort */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+          <div
             className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto"
           >
             <div className="relative w-full sm:w-64">
@@ -112,17 +103,14 @@ export default function ToursClient() {
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
             </select>
-          </motion.div>
+          </div>
         </div>
 
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredPackages.map((pkg, i) => (
-            <motion.div
+            <div
               key={pkg.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group glass-card rounded-2xl overflow-hidden card-hover flex flex-col"
             >
               <div className="relative h-52 overflow-hidden">
@@ -213,16 +201,12 @@ export default function ToursClient() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Custom Tour CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+        <div
           className="mt-16 glass-card rounded-3xl p-10 text-center"
         >
           <div className="text-5xl mb-4">🗺️</div>
@@ -240,7 +224,7 @@ export default function ToursClient() {
           >
             Plan My Custom Tour <ArrowRight className="w-5 h-5" />
           </a>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 import Link from "next/link";
 
@@ -102,20 +102,17 @@ export default function FaqSection() {
                 </div>
               </button>
               
-              <AnimatePresence>
+              <>
                 {openIndex === index && (
-                  <motion.div
+                  <div
                     /* removed initial */
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 text-white/60 leading-relaxed border-t border-white/5 pt-4">
                       {faq.answer}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
+              </>
             </div>
           ))}
         </div>
