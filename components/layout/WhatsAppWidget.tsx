@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, MapPin, Users, ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
@@ -12,6 +12,16 @@ export default function WhatsAppWidget() {
     date: "",
     pickup: "",
   });
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to latest message when step or open state changes
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+      }, 150);
+    }
+  }, [step, isOpen]);
 
   // Prevent background scrolling when popup is open on mobile
   useEffect(() => {
@@ -301,6 +311,9 @@ export default function WhatsAppWidget() {
                     </button>
                   </motion.div>
                 )}
+                
+                {/* Auto-scroll target */}
+                <div ref={messagesEndRef} className="h-1 w-full flex-shrink-0" />
               </div>
             </motion.div>
           )}
