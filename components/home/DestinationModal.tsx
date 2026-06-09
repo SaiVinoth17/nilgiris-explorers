@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { X, Star, MapPin, Clock, CalendarDays, CheckCircle2, Navigation, ArrowRight } from "lucide-react";
+import { X, Star, MapPin, Clock, CalendarDays, CheckCircle2, Navigation, ArrowRight, Users, Camera } from "lucide-react";
 
 interface DestinationModalProps {
   isOpen: boolean;
@@ -100,11 +100,11 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                      <Navigation className="w-5 h-5 text-violet-400" />
+                      <Users className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-xs text-white/50 mb-0.5">Places Covered</div>
-                      <div className="text-sm font-medium text-white truncate" title={destination.placesCovered}>{destination.placesCovered}</div>
+                      <div className="text-xs text-white/50 mb-0.5">Ideal For</div>
+                      <div className="text-sm font-medium text-white truncate" title={destination.travelerType}>{destination.travelerType}</div>
                     </div>
                   </div>
                 </div>
@@ -113,11 +113,23 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="md:col-span-2 space-y-6">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-3">About {destination.name}</h3>
+                      <h3 className="text-xl font-bold text-white mb-3">The Experience</h3>
                       <p className="text-white/70 leading-relaxed">
-                        {destination.description}
+                        {destination.experience || destination.description}
                       </p>
                     </div>
+
+                    {destination.photographyGuide && (
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                          <Camera className="w-5 h-5 text-amber-400" />
+                          Photography Guide
+                        </h3>
+                        <p className="text-white/70 leading-relaxed">
+                          {destination.photographyGuide}
+                        </p>
+                      </div>
+                    )}
 
                     {destination.includedExperiences && (
                       <div>
