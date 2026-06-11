@@ -5,10 +5,10 @@ import { MapPin, Navigation, Info, Car } from "lucide-react";
 import Link from "next/link";
 
 const locations = [
-  { id: 1, name: "Ooty Lake", x: 48, y: 51, type: "attraction", desc: "Scenic lake offering boating.", price: "₹1,800 Cab" },
-  { id: 2, name: "Doddabetta Peak", x: 58, y: 52, type: "attraction", desc: "Highest peak in the Nilgiris.", price: "₹2,000 Cab" },
-  { id: 3, name: "Pykara Falls", x: 29, y: 42, type: "attraction", desc: "Beautiful waterfalls and boat house.", price: "₹2,500 Cab" },
-  { id: 4, name: "Coonoor", x: 70, y: 65, type: "town", desc: "Tea gardens and the toy train.", price: "₹2,200 Cab" },
+  { id: 1, name: "Ooty Lake", x: 48, y: 51, type: "attraction", desc: "Scenic lake offering boating.", price: "₹1,999 Cab" },
+  { id: 2, name: "Doddabetta Peak", x: 58, y: 52, type: "attraction", desc: "Highest peak in the Nilgiris.", price: "₹1,999 Cab" },
+  { id: 3, name: "Pykara Falls", x: 29, y: 42, type: "attraction", desc: "Beautiful waterfalls and boat house.", price: "₹2,499 Cab" },
+  { id: 4, name: "Coonoor", x: 70, y: 65, type: "town", desc: "Tea gardens and the toy train.", price: "₹2,499 Cab" },
   { id: 5, name: "Mudumalai", x: 19, y: 16, type: "safari", desc: "Wildlife sanctuary and tiger reserve.", price: "₹3,000 Cab" },
 ];
 

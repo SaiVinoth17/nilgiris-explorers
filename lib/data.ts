@@ -157,7 +157,7 @@ export const tourPackages = [
     description: "Explore the most beautiful and iconic attractions of Ooty in a single day.",
     highlights: ["Doddabetta Peak", "Botanical Garden", "Boat House", "Rose Garden", "Tea Factory"],
     duration: "1 Day (10 hrs)",
-    price: 2000,
+    price: 1999,
     originalPrice: 0,
     persons: "Up to 4",
     image: "/images/tour_ooty.jpg",
@@ -193,7 +193,7 @@ export const tourPackages = [
     description: "Discover the breathtaking beauty of Pykara waterfalls and pristine pine forests.",
     highlights: ["Pykara Waterfalls", "Pine Forest", "9th Mile", "Kamaraj Sagar Dam", "Pykara Boat House"],
     duration: "1 Day (10 hrs)",
-    price: 2500,
+    price: 2499,
     originalPrice: 0,
     persons: "Up to 4",
     image: "/images/stunning_pykara.png",
@@ -229,7 +229,7 @@ export const tourPackages = [
     description: "Experience the heritage charm of Coonoor with its misty viewpoints and sprawling tea estates.",
     highlights: ["Sim's Park", "Dolphin's Nose", "Lamb's Rock", "Valley View Point", "Tea Garden"],
     duration: "1 Day (10 hrs)",
-    price: 2500,
+    price: 2499,
     originalPrice: 0,
     persons: "Up to 4",
     image: "/images/stunning_panoramic_hero.png",
@@ -345,7 +345,8 @@ export const sightseeingCircuits = [
     name: "Ooty Sightseeing Package",
     places: "Doddabetta Peak, Tea Factory & Museum, Wax Museum, Botanical Garden, Rose Garden, Boat House",
     rates: [
-      { vehicle: "Standard Cab", price: 2000, capacity: "4+1" }
+      { vehicle: "4 Seater (Hatchback/Sedan)", price: 1999, capacity: "4+1" },
+      { vehicle: "7 Seater (Innova/SUV)", price: 2999, capacity: "7+1" }
     ]
   },
   {
@@ -353,7 +354,8 @@ export const sightseeingCircuits = [
     name: "Pykara Sightseeing Package",
     places: "Golf Links (View Point), Pine Forest, Kamaraj Sagar Dam, School Mund, 9th Mile Shooting Spot, Pykara Waterfalls, Pykara Boat House",
     rates: [
-      { vehicle: "Standard Cab", price: 2500, capacity: "4+1" }
+      { vehicle: "4 Seater (Hatchback/Sedan)", price: 2499, capacity: "4+1" },
+      { vehicle: "7 Seater (Innova/SUV)", price: 3499, capacity: "7+1" }
     ]
   },
   {
@@ -361,7 +363,8 @@ export const sightseeingCircuits = [
     name: "Coonoor Sightseeing Package",
     places: "Valley View Point, Sim's Park, Tea Garden, Lamb's Rock, Dolphin's Nose, Golf Links, MRC (Outside View)",
     rates: [
-      { vehicle: "Standard Cab", price: 2500, capacity: "4+1" }
+      { vehicle: "4 Seater (Hatchback/Sedan)", price: 2499, capacity: "4+1" },
+      { vehicle: "7 Seater (Innova/SUV)", price: 3499, capacity: "7+1" }
     ]
   }
 ];
