@@ -18,7 +18,6 @@ export default function InteractiveExplorer() {
   return (
     <section className="section-pad bg-[#0B1D17] relative overflow-hidden" id="explore">
       {/* Background Ambience Optimized */}
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(0,210,106,0.15)_0%,_transparent_70%)] pointer-events-none translate-x-1/2 -translate-y-1/2" />
       
       <div className="container-default relative z-10">

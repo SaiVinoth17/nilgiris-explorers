@@ -11,7 +11,7 @@ const journeyStops = [
     name: "Ooty",
     title: "The Queen of Hill Stations",
     description: "Begin your adventure in the bustling heart of the Nilgiris. Discover the historic Botanical Gardens, the tranquil Ooty Lake, and the majestic Doddabetta Peak.",
-    image: "/images/dest_new_ooty.png",
+    image: "/images/dest_new_ooty_lake.png",
     tags: ["Botanical Garden", "Ooty Lake", "Doddabetta Peak"],
   },
   {
