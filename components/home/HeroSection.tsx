@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { ArrowRight, Play, Star, Shield, Clock, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import CinematicMist from "@/components/ui/CinematicMist";
 
 
 // ... existing imports up to line 7 ...
@@ -36,8 +35,6 @@ export default function HeroSection() {
         <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/80 to-transparent pointer-events-none z-10" />
       </div>
 
-      {/* Cinematic Mist Atmosphere - Placed behind content, in front of background */}
-      <CinematicMist position="hero" opacity={0.8} />
 
 
       {/* Content */}
