@@ -23,13 +23,13 @@ export default function InteractiveExplorer() {
       <div className="container-default relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/80 text-sm font-medium tracking-wide mb-6">
-            Interactive Map
+            The Four Worlds
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Explore The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Nilgiris</span>
+            Four Landscapes, One <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Mountain Range</span>
           </h2>
           <p className="text-white/60 text-lg leading-relaxed">
-            Select a region below to uncover its secrets, photography spots, and the perfect time to visit.
+            The Nilgiris hold four distinct worlds within a single mountain range — misty peaks, tea valleys, sacred rivers, and wild jungles. Each one tells a different story.
           </p>
         </div>
 

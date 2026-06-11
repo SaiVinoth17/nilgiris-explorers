@@ -10,7 +10,8 @@ interface CinematicMistProps {
 
 // Highly optimized SVG procedural fog texture baked into a Data URI.
 // Rendered once by the browser into a static image buffer.
-const FOG_TEXTURE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fog'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005 0.01' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 -0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fog)'/%3E%3C/svg%3E")`;
+// Color matrix forces RGB to pure white (1), and Alpha to the Red channel of the noise, creating pure volumetric white fog.
+const FOG_TEXTURE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fog'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.008' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.2 0 0 0 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fog)'/%3E%3C/svg%3E")`;
 
 export default function CinematicMist({ position = "full", opacity = 1 }: CinematicMistProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -22,9 +23,9 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
   }, []);
 
   // Parallax mappings tied to window scroll
-  const parallaxY1 = useTransform(scrollY, [0, 2000], [0, -150]);
-  const parallaxY2 = useTransform(scrollY, [0, 2000], [0, -300]);
-  const parallaxY3 = useTransform(scrollY, [0, 2000], [0, 100]); // Moves down slightly
+  const parallaxY1 = useTransform(scrollY, [0, 2000], [0, -250]);
+  const parallaxY2 = useTransform(scrollY, [0, 2000], [0, -400]);
+  const parallaxY3 = useTransform(scrollY, [0, 2000], [0, 150]); // Moves down slightly for foreground depth
 
   if (!mounted) return null;
   if (shouldReduceMotion) return null;
@@ -33,7 +34,7 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
 
   return (
     <div
-      className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${
+      className={`absolute inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen ${
         position === "bottom" ? "top-auto h-[70vh]" : ""
       } ${position === "top" ? "bottom-auto h-[70vh]" : ""}`}
       style={{ opacity }}
@@ -47,11 +48,11 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
           x: ["-5%", "5%", "-5%"],
         }}
         transition={{
-          duration: 120,
+          duration: 160,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[20%] -inset-y-[20%] w-[140%] h-[140%] opacity-[0.25]"
+        className="absolute -inset-x-[20%] -inset-y-[20%] w-[140%] h-[140%] opacity-[0.3]"
         style={{
           backgroundImage: FOG_TEXTURE,
           backgroundSize: "cover",
@@ -68,11 +69,11 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
           x: ["5%", "-5%", "5%"],
         }}
         transition={{
-          duration: 90,
+          duration: 120,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[15%] -inset-y-[10%] w-[130%] h-[120%] opacity-[0.35]"
+        className="absolute -inset-x-[15%] -inset-y-[10%] w-[130%] h-[120%] opacity-[0.45]"
         style={{
           backgroundImage: FOG_TEXTURE,
           backgroundSize: "120% 120%",
@@ -91,11 +92,11 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
             x: ["-2%", "2%", "-2%"],
           }}
           transition={{
-            duration: 60,
+            duration: 90,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -inset-x-[10%] top-[20%] w-[120%] h-[100%] opacity-[0.4]"
+          className="absolute -inset-x-[10%] top-[10%] w-[120%] h-[110%] opacity-[0.6]"
           style={{
             backgroundImage: FOG_TEXTURE,
             backgroundSize: "150% 150%",
@@ -112,14 +113,14 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
       <motion.div
         animate={{
           x: ["0%", "-10%", "0%"],
-          opacity: [0.15, 0.3, 0.15],
+          opacity: [0.3, 0.6, 0.3],
         }}
         transition={{
-          duration: 40,
+          duration: 60,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -inset-x-[15%] bottom-0 w-[130%] h-[60%]"
+        className="absolute -inset-x-[15%] bottom-[-10%] w-[130%] h-[70%]"
         style={{
           backgroundImage: FOG_TEXTURE,
           backgroundSize: "200% 200%",
@@ -130,11 +131,12 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
 
       {/* Static Ground Fog Gradient (anchors the mist beautifully to edges) */}
       {(position === "bottom" || isHero) && (
-        <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#0B1D17]/80 via-[#0B1D17]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
       )}
       {position === "top" && (
-        <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-[#0B1D17]/80 via-[#0B1D17]/20 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-black/80 via-black/10 to-transparent" />
       )}
     </div>
   );
 }
+

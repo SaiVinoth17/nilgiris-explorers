@@ -7,7 +7,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "/" },
   {
-    label: "Packages",
+    label: "Experiences",
     href: "/tours",
     dropdown: [
       { label: "Ooty One Day Tour", href: "/tours" },
@@ -135,7 +135,7 @@ export default function Navbar() {
               +91 95852 19509
             </a>
             <Link href="/tours" className="btn-primary text-sm py-2.5 px-5 touch-feedback">
-              Plan Your Trip
+              Begin Your Journey
             </Link>
           </div>
 
@@ -219,7 +219,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
             className="btn-primary w-full justify-center touch-feedback"
           >
-            Plan Your Trip
+            Begin Your Journey
           </Link>
         </div>
       </div>

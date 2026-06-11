@@ -37,9 +37,9 @@ export default function WhatsAppWidget() {
   }, [isOpen]);
 
   const packages = [
-    "🚗 Ooty Sightseeing – ₹2,000",
-    "🌲 Pykara Sightseeing – ₹2,500",
-    "🌄 Coonoor Sightseeing – ₹2,500",
+    "🚗 Ooty Sightseeing – ₹1,999",
+    "🌲 Pykara Sightseeing – ₹2,499",
+    "🌄 Coonoor Sightseeing – ₹2,499",
     "✨ Ooty & Coonoor Explorer Package",
     "🗺️ Custom Tour Plan",
   ];

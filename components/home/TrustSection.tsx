@@ -35,13 +35,13 @@ export default function TrustSection() {
       <div className="container-default relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-4">
-            Why Book With Us
+            The People
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-            Your Trusted Local <span className="gradient-text">Experts</span>
+            Born and Raised in the <span className="gradient-text">Nilgiris</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            We are a 100% owner-operated local business. No middlemen, no hidden fees, just authentic Nilgiris hospitality.
+            Every road, every shortcut, every hidden waterfall — our drivers grew up here. When you travel with us, you're not hiring a service. You're gaining a friend who knows these mountains like the back of their hand.
           </p>
         </div>
 
@@ -55,8 +55,8 @@ export default function TrustSection() {
                 <ShieldCheck className="w-6 h-6 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-1">No Hidden Fees</h3>
-                <p className="text-white/60 text-sm leading-relaxed">The price we quote is the price you pay. Tolls, parking, and driver bata are clearly communicated upfront.</p>
+                <h3 className="text-white font-bold text-lg mb-1">Honest by Nature</h3>
+                <p className="text-white/60 text-sm leading-relaxed">In the hills, a handshake still means something. We quote one price, upfront, with everything included. No surprises on the road.</p>
               </div>
             </div>
 
@@ -67,8 +67,8 @@ export default function TrustSection() {
                 <Map className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-1">Native Drivers</h3>
-                <p className="text-white/60 text-sm leading-relaxed">Our drivers are born and raised in the Nilgiris. They navigate ghat roads safely and know the best local spots.</p>
+                <h3 className="text-white font-bold text-lg mb-1">They Grew Up on These Roads</h3>
+                <p className="text-white/60 text-sm leading-relaxed">Our drivers didn't learn these hairpin bends from a map. They walked them as children, rode them on cycles, and now they navigate them with decades of mountain instinct.</p>
               </div>
             </div>
 
@@ -79,8 +79,8 @@ export default function TrustSection() {
                 <ThumbsUp className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-1">Owner Operated</h3>
-                <p className="text-white/60 text-sm leading-relaxed">You deal directly with the business owner via WhatsApp for bookings, support, and customizations.</p>
+                <h3 className="text-white font-bold text-lg mb-1">One Family, One Promise</h3>
+                <p className="text-white/60 text-sm leading-relaxed">There's no call centre, no middleman. When you message us, you're talking to the person who built this from the ground up — and who'll make sure your journey is perfect.</p>
               </div>
             </div>
 
@@ -91,8 +91,8 @@ export default function TrustSection() {
                 <Award className="w-6 h-6 text-amber-400" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-1">Top Rated</h3>
-                <p className="text-white/60 text-sm leading-relaxed">Consistently rated 5-stars by hundreds of families and honeymoon couples on Google.</p>
+                <h3 className="text-white font-bold text-lg mb-1">The Stories They Tell</h3>
+                <p className="text-white/60 text-sm leading-relaxed">We don't chase ratings. We chase the look on a child's face seeing a wild elephant, or the silence of a couple watching sunrise from Doddabetta.</p>
               </div>
             </div>
           </div>
@@ -109,8 +109,8 @@ export default function TrustSection() {
                 className="object-cover"
               />
             </div>
-            <h3 className="text-2xl font-display font-bold text-white mb-1">Need Help Planning?</h3>
-            <p className="text-white/60 text-sm mb-6">Chat directly with the business owner</p>
+            <h3 className="text-2xl font-display font-bold text-white mb-1">Meet Your Guide</h3>
+            <p className="text-white/60 text-sm mb-6">Have a question about the mountains? Ask someone who lives here.</p>
             
             <a 
               href="https://wa.me/919585219509?text=Hello,%20I%20need%20help%20planning%20a%20trip%20to%20the%20Nilgiris."
@@ -119,9 +119,9 @@ export default function TrustSection() {
               className="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center justify-center gap-2 transition-colors mb-3"
             >
               <PhoneCall className="w-5 h-5" />
-              Chat on WhatsApp
+              Start a Conversation
             </a>
-            <p className="text-emerald-400 text-xs font-medium">Instantly replies usually within 5 mins</p>
+            <p className="text-emerald-400 text-xs font-medium">Usually replies within 5 minutes</p>
           </div>
         </div>
 
@@ -138,7 +138,7 @@ export default function TrustSection() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-white font-bold text-xl">Google Reviews</h3>
+                <h3 className="text-white font-bold text-xl">Traveler Stories</h3>
                 <div className="flex items-center gap-1.5">
                   <span className="text-white font-semibold">5.0</span>
                   <div className="flex">
@@ -151,7 +151,7 @@ export default function TrustSection() {
               </div>
             </div>
             <a href="#" className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
-              Write a Review →
+              Share Your Story →
             </a>
           </div>
 

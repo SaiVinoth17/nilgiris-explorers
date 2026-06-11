@@ -156,8 +156,8 @@ export default function JourneyRecommender() {
       {step === "result" && (
         <div className="animate-in zoom-in-95 duration-700">
           <div className="text-center mb-10">
-            <h3 className="text-4xl font-display font-bold text-white mb-4">Your Perfect Nilgiris Journey</h3>
-            <p className="text-white/60 text-lg">Handcrafted based on your unique preferences.</p>
+            <h3 className="text-4xl font-display font-bold text-white mb-4">Your Nilgiris Story</h3>
+            <p className="text-white/60 text-lg">Handcrafted from your inspirations.</p>
           </div>
 
           <div className="bg-[#0B1D17]/50 rounded-2xl p-6 md:p-8 border border-emerald-500/20 mb-8 max-w-2xl mx-auto backdrop-blur-sm">
@@ -217,7 +217,7 @@ export default function JourneyRecommender() {
               target="_blank"
               className="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center gap-2 transition-colors w-full sm:w-auto justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)]"
             >
-              Plan This Trip On WhatsApp <ArrowRight className="w-5 h-5" />
+              Bring This Journey to Life <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>

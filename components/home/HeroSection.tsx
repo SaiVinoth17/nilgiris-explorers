@@ -8,10 +8,10 @@ import CinematicMist from "@/components/ui/CinematicMist";
 
 // ... existing imports up to line 7 ...
 const trustBadges = [
-  { icon: Users, value: "10,000+", label: "Happy Travelers" },
-  { icon: Star, value: "4.9★", label: "Rating" },
-  { icon: Clock, value: "24/7", label: "Support" },
-  { icon: Shield, value: "100%", label: "Curated Experiences" },
+  { icon: Users, value: "2,637m", label: "Above Sea Level" },
+  { icon: Star, value: "Year-Round", label: "Mist" },
+  { icon: Clock, value: "UNESCO", label: "Biosphere" },
+  { icon: Shield, value: "Living", label: "Heritage" },
 ];
 
 export default function HeroSection() {
@@ -32,6 +32,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
         {/* Additional dark vignette on sides */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
+        {/* Massive fade to black at the bottom to transition seamlessly into StoryChapters */}
+        <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
       </div>
 
       {/* Cinematic Mist Atmosphere - Placed behind content, in front of background */}
@@ -39,39 +41,37 @@ export default function HeroSection() {
 
 
       {/* Content */}
-      <div className="relative z-10 container-default pt-24 pb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
+      <div className="relative z-10 container-default pt-24 pb-32 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
         <div className="max-w-4xl">
           {/* Label */}
           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#00D26A' }} />
             <span className="text-sm text-white/80 font-medium tracking-wide">
-              Premium Local Experts · Ooty, Nilgiris
+              A Journey Through the Mountains
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] text-white mb-6">
-            Explore The{" "}
-            <span className="gradient-text">Nilgiris</span>
-            <br />
-            In Style
+            Where the Mountains{" "}
+            <span className="gradient-text">Meet the Mist</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-white/65 max-w-2xl mb-10 leading-relaxed">
-            Experience Ooty, Coonoor, Avalanche, Pykara, and Mudumalai with
-            expertly crafted tour packages, knowledgeable local guides, and
-            unforgettable travel memories — all tailored just for you.
+            Seven thousand feet above the plains, ancient shola forests breathe
+            mist into valleys of tea and wildflowers. This is the Nilgiris —
+            where every road winds into a story waiting to be lived.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-4 mb-16">
             <Link href="/tours" className="btn-primary text-base px-7 py-4 touch-feedback">
-              Plan Your Trip
+              Begin the Journey
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link href="/#explore" className="btn-secondary text-base px-7 py-4 touch-feedback">
-              Explore Destinations
+              Discover What Awaits
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -97,9 +97,9 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 animate-in fade-in duration-1000 delay-1000 fill-mode-both">
-        <span className="text-xs text-white/30 tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent animate-bounce" />
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 animate-in fade-in duration-1000 delay-1000 fill-mode-both">
+        <span className="text-[10px] font-medium text-white/50 tracking-[0.3em] uppercase">Scroll</span>
+        <div className="w-[1px] h-10 bg-gradient-to-b from-white/40 via-white/10 to-transparent animate-pulse" />
       </div>
     </section>
   );

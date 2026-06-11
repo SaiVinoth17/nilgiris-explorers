@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What are the charges for Ooty sightseeing?",
-    answer: "Our local sightseeing packages start from ₹1,800 per day for a standard sedan (like Dzire/Etios), covering up to 100 km and 10 hours. SUV options like Innova start from ₹2,500. Fuel and driver charges are included.",
+    answer: "Our sightseeing journeys start from ₹1,999 for a 4-seater vehicle covering up to 100 km and 10 hours. For larger groups, 7-seater options start from ₹2,999. Fuel and driver charges are always included — no hidden costs.",
   },
   {
     question: "Do you provide airport transfers?",
@@ -70,13 +70,13 @@ export default function FaqSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
             <MessageCircleQuestion className="w-4 h-4" style={{ color: '#00D26A' }} />
-            <span className="text-sm font-semibold tracking-wide text-white/80">Help & Support</span>
+            <span className="text-sm font-semibold tracking-wide text-white/80">Before You Go</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
-            Frequently Asked <span className="gradient-text">Questions</span>
+            Everything You Need to <span className="gradient-text">Know</span>
           </h2>
           <p className="text-white/60 text-lg">
-            Find answers to common questions about booking cabs, tour packages, and sightseeing in Ooty.
+            Planning a journey to the Nilgiris? Here's everything previous travelers wished they'd known before arriving.
           </p>
         </div>
 
@@ -118,9 +118,9 @@ export default function FaqSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-white/50 mb-4">Still have questions?</p>
+          <p className="text-white/50 mb-4">Something else on your mind?</p>
           <Link href="/contact" className="btn-secondary">
-            Contact Us Directly
+            Ask Us Anything
           </Link>
         </div>
       </div>

@@ -40,16 +40,16 @@ export default function HomePage() {
         <TrustSection />
       </div>
       
-      {/* Chapter 7: The Conclusion / Planning */}
+      {/* Chapter 7: The Conclusion / Your Journey */}
       <section className="section-pad bg-[#0B1D17] relative">
         <CinematicMist position="top" opacity={0.4} />
         <div className="container-default">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-              Ready To Experience The <span className="text-emerald-400">Nilgiris?</span>
+              Your Journey, <span className="text-emerald-400">Your Way</span>
             </h2>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Skip the generic packages. Let us craft a journey that matches your inspiration.
+              Every traveler sees the Nilgiris differently. Tell us what moves you, and we'll show you the mountains through your eyes.
             </p>
           </div>
           <JourneyRecommender />
