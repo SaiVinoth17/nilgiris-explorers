@@ -55,19 +55,13 @@ export const metadata: Metadata = {
     title: "Nilgiris Explorers Tours & Travels | Ooty Taxi Service & Tour Packages",
     description:
       "Book trusted Ooty taxi services, sightseeing tours, airport transfers, honeymoon packages, and customized travel experiences with Nilgiris Explorers Tours & Travels.",
-    images: [{ url: "/images/real_hero.jpg", width: 1200, height: 630, alt: "Nilgiris Explorers Open Graph" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nilgiris Explorers Tours & Travels | Ooty Taxi Service & Tour Packages",
     description: "Book trusted Ooty taxi services, sightseeing tours, airport transfers, honeymoon packages, and customized travel experiences with Nilgiris Explorers Tours & Travels.",
-    images: ["/images/real_hero.jpg"],
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: "/images/circle-icon.png",
-    apple: "/images/app-icon.png",
-  },
   manifest: "/site.webmanifest",
 };
 
