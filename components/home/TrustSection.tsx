@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star, ShieldCheck, Map, PhoneCall, Award, ThumbsUp } from "lucide-react";
 import Link from "next/link";
@@ -33,7 +34,12 @@ export default function TrustSection() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container-default relative z-10">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-16"
+        >
           <span className="inline-block px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-4">
             The People
           </span>
@@ -43,16 +49,23 @@ export default function TrustSection() {
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
             Every road, every shortcut, every hidden waterfall — our drivers grew up here. When you travel with us, you're not hiring a service. You're gaining a friend who knows these mountains like the back of their hand.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.1 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16"
+        >
           {/* Guarantees */}
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
-              <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-emerald-400" />
+              <div className="relative w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-emerald-500/40 blur-md animate-pulse"></div>
+                <ShieldCheck className="w-6 h-6 text-emerald-400 relative z-10" />
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">Honest by Nature</h3>
@@ -63,8 +76,9 @@ export default function TrustSection() {
             <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
-              <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                <Map className="w-6 h-6 text-blue-400" />
+              <div className="relative w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-blue-500/40 blur-md animate-pulse"></div>
+                <Map className="w-6 h-6 text-blue-400 relative z-10" />
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">They Grew Up on These Roads</h3>
@@ -75,8 +89,9 @@ export default function TrustSection() {
             <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
-              <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                <ThumbsUp className="w-6 h-6 text-purple-400" />
+              <div className="relative w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-purple-500/40 blur-md animate-pulse"></div>
+                <ThumbsUp className="w-6 h-6 text-purple-400 relative z-10" />
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">One Family, One Promise</h3>
@@ -87,8 +102,9 @@ export default function TrustSection() {
             <div
               className="glass-card p-6 rounded-2xl border border-white/10 flex flex-col items-start gap-4"
             >
-              <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center">
-                <Award className="w-6 h-6 text-amber-400" />
+              <div className="relative w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-amber-500/40 blur-md animate-pulse"></div>
+                <Award className="w-6 h-6 text-amber-400 relative z-10" />
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">The Stories They Tell</h3>
@@ -123,10 +139,16 @@ export default function TrustSection() {
             </a>
             <p className="text-emerald-400 text-xs font-medium">Usually replies within 5 minutes</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Google Reviews Style Section */}
-        <div className="pt-12 border-t border-white/10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.2 }}
+          className="pt-12 border-t border-white/10"
+        >
           <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
             <div className="flex items-center gap-3">
               <div className="bg-white p-2 rounded-full">
@@ -159,12 +181,18 @@ export default function TrustSection() {
             {reviews.map((review, i) => (
               <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold ring-2 ring-emerald-500/50 shadow-[0_0_15px_rgba(0,210,106,0.3)]">
                     {review.avatar}
                   </div>
                   <div>
                     <div className="text-white font-medium text-sm">{review.name}</div>
-                    <div className="text-white/40 text-xs">{review.date}</div>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <div className="text-white/40 text-xs">{review.date}</div>
+                      <div className="flex items-center gap-1 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[10px] text-emerald-400 font-semibold tracking-wider uppercase">
+                        <ShieldCheck className="w-3 h-3" />
+                        Verified Traveler
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="flex mb-3">
@@ -176,7 +204,7 @@ export default function TrustSection() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

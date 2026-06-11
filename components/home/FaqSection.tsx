@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
-import { ChevronDown, MessageCircleQuestion } from "lucide-react";
+import { ChevronDown, MessageCircleQuestion, ShieldCheck, RefreshCw } from "lucide-react";
 import Link from "next/link";
 
 const faqs = [
@@ -66,8 +67,23 @@ export default function FaqSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
-      <div className="container-default max-w-4xl mx-auto">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="container-default max-w-4xl mx-auto"
+      >
         <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <div className="flex items-center gap-2 text-white/70 text-sm font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Secure Booking
+            </div>
+            <div className="flex items-center gap-2 text-white/70 text-sm font-medium">
+              <RefreshCw className="w-4 h-4 text-emerald-400" />
+              Free Rescheduling
+            </div>
+          </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
             <MessageCircleQuestion className="w-4 h-4" style={{ color: '#00D26A' }} />
             <span className="text-sm font-semibold tracking-wide text-white/80">Before You Go</span>
@@ -102,17 +118,19 @@ export default function FaqSection() {
                 </div>
               </button>
               
-              <>
-                {openIndex === index && (
-                  <div
-                    /* removed initial */
-                  >
-                    <div className="px-6 pb-6 text-white/60 leading-relaxed border-t border-white/5 pt-4">
-                      {faq.answer}
-                    </div>
-                  </div>
-                )}
-              </>
+              <motion.div
+                initial={false}
+                animate={{ 
+                  height: openIndex === index ? 'auto' : 0,
+                  opacity: openIndex === index ? 1 : 0
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 pb-6 text-white/60 leading-relaxed border-t border-white/5 pt-4">
+                  {faq.answer}
+                </div>
+              </motion.div>
             </div>
           ))}
         </div>
@@ -123,7 +141,7 @@ export default function FaqSection() {
             Ask Us Anything
           </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

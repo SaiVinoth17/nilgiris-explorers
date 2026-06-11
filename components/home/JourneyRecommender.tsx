@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Users, Camera, Leaf, Bird, Coffee, Landmark, Car, ArrowRight, CheckCircle2, RotateCcw, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "who" | "inspires" | "days" | "result";
 
@@ -74,154 +75,180 @@ export default function JourneyRecommender() {
         </div>
       )}
 
-      {step === "who" && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <h3 className="text-3xl font-display font-bold text-white mb-8">Who are you traveling with?</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Couple", "Family", "Friends", "Solo Traveler"].map((type) => (
-              <button
-                key={type}
-                onClick={() => { setWho(type); setStep("inspires"); }}
-                className="p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 hover:bg-white/5 transition-all text-center group"
-              >
-                <Users className="w-8 h-8 mx-auto mb-4 text-white/40 group-hover:text-emerald-400 transition-colors" />
-                <span className="text-white font-medium">{type}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {step === "inspires" && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <h3 className="text-3xl font-display font-bold text-white mb-2">What inspires you?</h3>
-          <p className="text-white/50 mb-8">Select up to 3 interests.</p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            {[
-              { id: "Photography", icon: Camera },
-              { id: "Nature", icon: Leaf },
-              { id: "Wildlife", icon: Bird },
-              { id: "Tea Culture", icon: Coffee },
-              { id: "Heritage", icon: Landmark },
-              { id: "Scenic Drives", icon: Car },
-            ].map((item) => {
-              const isSelected = inspires.includes(item.id);
-              return (
+      <AnimatePresence mode="wait">
+        {step === "who" && (
+          <motion.div
+            key="who"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+          >
+            <h3 className="text-3xl font-display font-bold text-white mb-8">Who are you traveling with?</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {["Couple", "Family", "Friends", "Solo Traveler"].map((type) => (
                 <button
-                  key={item.id}
-                  onClick={() => handleInspireToggle(item.id)}
-                  className={`p-4 rounded-xl border flex items-center gap-3 transition-all
-                    ${isSelected ? "border-emerald-500 bg-emerald-500/10 text-white" : "border-white/10 text-white/60 hover:bg-white/5"}
-                  `}
+                  key={type}
+                  onClick={() => { setWho(type); setStep("inspires"); }}
+                  className="p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 hover:bg-white/5 transition-all text-center group"
+                  style={{ transform: "translateZ(0)", willChange: "transform" }}
                 >
-                  <item.icon className={`w-5 h-5 ${isSelected ? "text-emerald-400" : ""}`} />
-                  <span className="font-medium">{item.id}</span>
+                  <Users className="w-8 h-8 mx-auto mb-4 text-white/40 group-hover:text-emerald-400 transition-colors" />
+                  <span className="text-white font-medium">{type}</span>
                 </button>
-              );
-            })}
-          </div>
-          
-          <div className="flex justify-between items-center">
-            <button onClick={() => setStep("who")} className="text-white/50 hover:text-white transition-colors">Back</button>
-            <button 
-              onClick={() => setStep("days")}
-              disabled={inspires.length === 0}
-              className="px-6 py-3 bg-white text-black font-bold rounded-full disabled:opacity-50 transition-opacity"
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      )}
+              ))}
+            </div>
+          </motion.div>
+        )}
 
-      {step === "days" && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <h3 className="text-3xl font-display font-bold text-white mb-8">How many days do you have?</h3>
-          <div className="flex flex-wrap gap-4 mb-12">
-            {["1", "2", "3", "4+"].map((d) => (
-              <button
-                key={d}
-                onClick={() => { setDays(d); setStep("result"); }}
-                className="w-16 h-16 rounded-full border border-white/10 hover:border-emerald-500 hover:bg-emerald-500/10 text-white text-xl font-display font-bold transition-all flex items-center justify-center"
+        {step === "inspires" && (
+          <motion.div
+            key="inspires"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+          >
+            <h3 className="text-3xl font-display font-bold text-white mb-2">What inspires you?</h3>
+            <p className="text-white/50 mb-8">Select up to 3 interests.</p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+              {[
+                { id: "Photography", icon: Camera },
+                { id: "Nature", icon: Leaf },
+                { id: "Wildlife", icon: Bird },
+                { id: "Tea Culture", icon: Coffee },
+                { id: "Heritage", icon: Landmark },
+                { id: "Scenic Drives", icon: Car },
+              ].map((item) => {
+                const isSelected = inspires.includes(item.id);
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleInspireToggle(item.id)}
+                    className={`p-4 rounded-xl border flex items-center gap-3 transition-all
+                      ${isSelected ? "border-emerald-500 bg-emerald-500/10 text-white" : "border-white/10 text-white/60 hover:bg-white/5"}
+                    `}
+                    style={{ transform: "translateZ(0)", willChange: "transform" }}
+                  >
+                    <item.icon className={`w-5 h-5 ${isSelected ? "text-emerald-400" : ""}`} />
+                    <span className="font-medium">{item.id}</span>
+                  </button>
+                );
+              })}
+            </div>
+            
+            <div className="flex justify-between items-center">
+              <button onClick={() => setStep("who")} className="text-white/50 hover:text-white transition-colors">Back</button>
+              <button 
+                onClick={() => setStep("days")}
+                disabled={inspires.length === 0}
+                className="px-6 py-3 bg-white text-black font-bold rounded-full disabled:opacity-50 transition-opacity"
               >
-                {d}
+                Continue
               </button>
-            ))}
-          </div>
-          <button onClick={() => setStep("inspires")} className="text-white/50 hover:text-white transition-colors">Back</button>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
 
-      {step === "result" && (
-        <div className="animate-in zoom-in-95 duration-700">
-          <div className="text-center mb-10">
-            <h3 className="text-4xl font-display font-bold text-white mb-4">Your Nilgiris Story</h3>
-            <p className="text-white/60 text-lg">Handcrafted from your inspirations.</p>
-          </div>
+        {step === "days" && (
+          <motion.div
+            key="days"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+          >
+            <h3 className="text-3xl font-display font-bold text-white mb-8">How many days do you have?</h3>
+            <div className="flex flex-wrap gap-4 mb-12">
+              {["1", "2", "3", "4+"].map((d) => (
+                <button
+                  key={d}
+                  onClick={() => { setDays(d); setStep("result"); }}
+                  className="w-16 h-16 rounded-full border border-white/10 hover:border-emerald-500 hover:bg-emerald-500/10 text-white text-xl font-display font-bold transition-all flex items-center justify-center"
+                >
+                  {d}
+                </button>
+              ))}
+            </div>
+            <button onClick={() => setStep("inspires")} className="text-white/50 hover:text-white transition-colors">Back</button>
+          </motion.div>
+        )}
 
-          <div className="bg-[#0B1D17]/50 rounded-2xl p-6 md:p-8 border border-emerald-500/20 mb-8 max-w-2xl mx-auto backdrop-blur-sm">
-            {(() => {
-              const rec = getRecommendation();
-              return (
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4 border-b border-white/10 pb-6">
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-emerald-400" />
-                    </div>
-                    <div>
-                      <p className="text-white/50 text-sm uppercase tracking-wider mb-1">Ideal Route</p>
-                      <p className="text-white text-lg font-bold">{rec.route}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4 border-b border-white/10 pb-6">
-                    <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle2 className="w-6 h-6 text-amber-400" />
-                    </div>
-                    <div>
-                      <p className="text-white/50 text-sm uppercase tracking-wider mb-2">Must-See Highlights</p>
-                      <ul className="space-y-2">
-                        {rec.highlights.map((h, i) => (
-                          <li key={i} className="text-white flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> {h}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+        {step === "result" && (
+          <motion.div
+            key="result"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+          >
+            <div className="text-center mb-10">
+              <h3 className="text-4xl font-display font-bold text-white mb-4">Your Nilgiris Story</h3>
+              <p className="text-white/60 text-lg">Handcrafted from your inspirations.</p>
+            </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                      <Car className="w-6 h-6 text-blue-400" />
-                    </div>
-                    <div>
-                      <p className="text-white/50 text-sm uppercase tracking-wider mb-1">Suggested Package ({rec.duration})</p>
-                      <p className="text-emerald-400 font-bold">{rec.packageSuggestion}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
+            <div className="gradient-border p-[1px] rounded-2xl mb-8 max-w-2xl mx-auto">
+              <div className="bg-[#0B1D17]/50 rounded-2xl p-6 md:p-8 border border-emerald-500/20 backdrop-blur-sm h-full w-full">
+                {(() => {
+                  const rec = getRecommendation();
+                  return (
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4 border-b border-white/10 pb-6">
+                        <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                          <MapPin className="w-6 h-6 text-emerald-400" />
+                        </div>
+                        <div>
+                          <p className="text-white/50 text-sm uppercase tracking-wider mb-1">Ideal Route</p>
+                          <p className="text-white text-lg font-bold">{rec.route}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-4 border-b border-white/10 pb-6">
+                        <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                          <CheckCircle2 className="w-6 h-6 text-amber-400" />
+                        </div>
+                        <div>
+                          <p className="text-white/50 text-sm uppercase tracking-wider mb-2">Must-See Highlights</p>
+                          <ul className="space-y-2">
+                            {rec.highlights.map((h, i) => (
+                              <li key={i} className="text-white flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> {h}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button 
-              onClick={() => { setStep("who"); setWho(""); setInspires([]); setDays(""); }}
-              className="px-6 py-4 rounded-xl border border-white/10 text-white hover:bg-white/5 font-medium flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
-            >
-              <RotateCcw className="w-4 h-4" /> Start Over
-            </button>
-            <a 
-              href={buildWhatsAppLink()}
-              target="_blank"
-              className="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center gap-2 transition-colors w-full sm:w-auto justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)]"
-            >
-              Bring This Journey to Life <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      )}
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                          <Car className="w-6 h-6 text-blue-400" />
+                        </div>
+                        <div>
+                          <p className="text-white/50 text-sm uppercase tracking-wider mb-1">Suggested Package ({rec.duration})</p>
+                          <p className="text-emerald-400 font-bold">{rec.packageSuggestion}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                onClick={() => { setStep("who"); setWho(""); setInspires([]); setDays(""); }}
+                className="px-6 py-4 rounded-xl border border-white/10 text-white hover:bg-white/5 font-medium flex items-center gap-2 transition-colors w-full sm:w-auto justify-center"
+              >
+                <RotateCcw className="w-4 h-4" /> Start Over
+              </button>
+              <a 
+                href={buildWhatsAppLink()}
+                target="_blank"
+                className="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center gap-2 transition-colors w-full sm:w-auto justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)] animate-pulse-glow"
+              >
+                Bring This Journey to Life <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
