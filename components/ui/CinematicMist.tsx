@@ -52,7 +52,7 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[20%] -inset-y-[20%] w-[140%] h-[140%] opacity-[0.3]"
+        className="absolute -inset-x-[20%] -inset-y-[20%] w-[140%] h-[140%] opacity-[0.15]"
         style={{
           backgroundImage: FOG_TEXTURE,
           backgroundSize: "cover",
@@ -73,7 +73,7 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[15%] -inset-y-[10%] w-[130%] h-[120%] opacity-[0.45]"
+        className="absolute -inset-x-[15%] -inset-y-[10%] w-[130%] h-[120%] opacity-[0.25]"
         style={{
           backgroundImage: FOG_TEXTURE,
           backgroundSize: "120% 120%",
@@ -96,7 +96,7 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -inset-x-[10%] top-[10%] w-[120%] h-[110%] opacity-[0.6]"
+          className="absolute -inset-x-[10%] top-[10%] w-[120%] h-[110%] opacity-[0.35]"
           style={{
             backgroundImage: FOG_TEXTURE,
             backgroundSize: "150% 150%",
@@ -113,7 +113,7 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
       <motion.div
         animate={{
           x: ["0%", "-10%", "0%"],
-          opacity: [0.3, 0.6, 0.3],
+          opacity: [0.15, 0.35, 0.15],
         }}
         transition={{
           duration: 60,
