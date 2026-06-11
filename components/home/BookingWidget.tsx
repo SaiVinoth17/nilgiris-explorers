@@ -531,7 +531,7 @@ function BookingWidgetContent() {
               href={`https://wa.me/919585219509?text=${buildWhatsAppMessage()}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center"
+              className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center touch-feedback"
             >
               Get Free Quote
               <ArrowRight className="w-5 h-5" />

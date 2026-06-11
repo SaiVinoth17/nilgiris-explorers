@@ -92,7 +92,7 @@ export default function WhatsAppWidget() {
       />
 
       {/* Floating Assistant Widget */}
-      <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end">
+      <div className="hidden sm:flex fixed bottom-6 right-6 z-[90] flex-col items-end">
         <div
           className={`bg-[#0B1D17]/95 border border-emerald-500/20 shadow-[0_8px_40px_rgba(0,0,0,0.5)] rounded-2xl w-[calc(100vw-3rem)] sm:w-[380px] overflow-hidden flex flex-col mb-4 max-h-[80vh] sm:max-h-[600px] transition-all duration-300 ease-out origin-bottom-right ${
             isOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 translate-y-4 invisible"

@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +12,17 @@ interface DestinationModalProps {
 }
 
 export default function DestinationModal({ isOpen, onClose, destination }: DestinationModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!destination) return null;
 
   return (
