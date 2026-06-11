@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface CinematicMistProps {
@@ -8,93 +8,132 @@ interface CinematicMistProps {
   opacity?: number;
 }
 
+// Highly optimized SVG procedural fog texture baked into a Data URI.
+// Rendered once by the browser into a static image buffer.
+const FOG_TEXTURE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fog'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005 0.01' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 -0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fog)'/%3E%3C/svg%3E")`;
+
 export default function CinematicMist({ position = "full", opacity = 1 }: CinematicMistProps) {
   const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const { scrollY } = useScroll();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Parallax mappings tied to window scroll
+  const parallaxY1 = useTransform(scrollY, [0, 2000], [0, -150]);
+  const parallaxY2 = useTransform(scrollY, [0, 2000], [0, -300]);
+  const parallaxY3 = useTransform(scrollY, [0, 2000], [0, 100]); // Moves down slightly
+
   if (!mounted) return null;
   if (shouldReduceMotion) return null;
 
-  // Different layout/layer structures depending on where the mist is used
   const isHero = position === "hero";
-  const isTransition = position === "bottom" || position === "top";
 
   return (
     <div
       className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${
-        position === "bottom" ? "top-auto h-[60vh]" : ""
-      } ${position === "top" ? "bottom-auto h-[60vh]" : ""}`}
+        position === "bottom" ? "top-auto h-[70vh]" : ""
+      } ${position === "top" ? "bottom-auto h-[70vh]" : ""}`}
       style={{ opacity }}
     >
-      {/* Texture blending base (Optional to give the gradients some grit if needed, but keeping it light) */}
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.015] mix-blend-overlay" />
-
-      {/* Mist Layer 1: Slow, large, deep background drift */}
+      {/* 
+        Layer 1: Deep Mountain Haze
+        Very slow infinite drift, very large scale. Not tied to scroll. 
+      */}
       <motion.div
         animate={{
-          x: ["-5%", "2%", "-5%"],
-          y: ["0%", "-2%", "0%"],
-          opacity: [0.15, 0.25, 0.15],
+          x: ["-5%", "5%", "-5%"],
         }}
         transition={{
-          duration: 45,
+          duration: 120,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[20%] -inset-y-[10%] w-[140%] h-[120%]"
+        className="absolute -inset-x-[20%] -inset-y-[20%] w-[140%] h-[140%] opacity-[0.25]"
         style={{
-          background: "radial-gradient(ellipse at 50% 60%, rgba(200, 255, 230, 0.12) 0%, transparent 60%)",
-          transformOrigin: "center",
+          backgroundImage: FOG_TEXTURE,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
-      {/* Mist Layer 2: Mid-ground, slightly faster, counter-movement for parallax */}
+      {/* 
+        Layer 2: Ambient Diagonal Fog 
+        Tied to parallaxY1. Moves upward slightly as you scroll down.
+      */}
       <motion.div
         animate={{
-          x: ["2%", "-5%", "2%"],
-          opacity: [0.1, 0.2, 0.1],
+          x: ["5%", "-5%", "5%"],
         }}
         transition={{
-          duration: 35,
+          duration: 90,
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -inset-x-[15%] top-[10%] w-[130%] h-[100%]"
+        className="absolute -inset-x-[15%] -inset-y-[10%] w-[130%] h-[120%] opacity-[0.35]"
         style={{
-          background: "radial-gradient(ellipse at 40% 70%, rgba(180, 245, 220, 0.15) 0%, transparent 55%)",
+          backgroundImage: FOG_TEXTURE,
+          backgroundSize: "120% 120%",
+          backgroundPosition: "top left",
+          y: parallaxY1,
         }}
       />
 
-      {/* Mist Layer 3: Close foreground, wispy */}
+      {/* 
+        Layer 3: Mid-ground Parallax Fog
+        Faster scroll reaction, pushes up quickly to create depth.
+      */}
       {isHero && (
         <motion.div
           animate={{
-            x: ["-3%", "4%", "-3%"],
-            scale: [1, 1.05, 1],
-            opacity: [0.1, 0.18, 0.1],
+            x: ["-2%", "2%", "-2%"],
           }}
           transition={{
-            duration: 50,
+            duration: 60,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -inset-x-[10%] top-[30%] w-[120%] h-[90%]"
+          className="absolute -inset-x-[10%] top-[20%] w-[120%] h-[100%] opacity-[0.4]"
           style={{
-            background: "radial-gradient(ellipse at 60% 80%, rgba(220, 255, 240, 0.12) 0%, transparent 65%)",
+            backgroundImage: FOG_TEXTURE,
+            backgroundSize: "150% 150%",
+            backgroundPosition: "bottom right",
+            y: parallaxY2,
           }}
         />
       )}
 
-      {/* Static Ground Fog Gradient (anchor the mist to the bottom beautifully) */}
+      {/* 
+        Layer 4: Foreground Wisps
+        Fastest layer, moves slightly downwards during scroll for reverse parallax contrast.
+      */}
+      <motion.div
+        animate={{
+          x: ["0%", "-10%", "0%"],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -inset-x-[15%] bottom-0 w-[130%] h-[60%]"
+        style={{
+          backgroundImage: FOG_TEXTURE,
+          backgroundSize: "200% 200%",
+          backgroundPosition: "bottom center",
+          y: parallaxY3,
+        }}
+      />
+
+      {/* Static Ground Fog Gradient (anchors the mist beautifully to edges) */}
       {(position === "bottom" || isHero) && (
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#0B1D17]/40 via-[#0B1D17]/10 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#0B1D17]/80 via-[#0B1D17]/20 to-transparent" />
       )}
       {position === "top" && (
-        <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#0B1D17]/40 via-[#0B1D17]/10 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-[#0B1D17]/80 via-[#0B1D17]/20 to-transparent" />
       )}
     </div>
   );
