@@ -20,7 +20,7 @@ export default function DestinationsPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-[#0B1D17]/85 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D17]/80 via-[#0B1D17]/40 to-[#0B1D17]" />
         </div>
         
         <div className="container-default relative z-10 text-center">

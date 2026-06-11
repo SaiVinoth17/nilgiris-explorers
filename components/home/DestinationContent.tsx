@@ -48,8 +48,8 @@ export default function DestinationContent() {
               sizes="100vw"
               quality={75}
             />
-            <div className="absolute inset-0 bg-[#0B1D17]/80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/60 to-transparent" />
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/40 to-transparent" />
             <AtmosphericMist opacity={0.25} />
           </div>
 
