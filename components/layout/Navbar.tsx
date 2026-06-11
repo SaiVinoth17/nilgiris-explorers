@@ -59,13 +59,13 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
           scrolled
             ? "bg-[#071410]/95 shadow-[0_4px_32px_rgba(0,0,0,0.4)] backdrop-blur-md border-b border-white/5 py-3"
-            : "bg-transparent py-6 translate-y-0"
+            : "bg-gradient-to-b from-black/60 to-transparent py-6"
         }`}
       >
         <div className="container-default flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0 touch-feedback">
-            <div className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md' : 'bg-white/90 shadow-lg'}`}>
+            <div className={`relative px-4 py-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md' : 'bg-transparent'}`}>
               <Image
                 src="/images/horizontal-logo-v3.png"
                 alt="Nilgiris Explorers"
@@ -139,13 +139,13 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg border border-[#00D26A]/20 text-white hover:bg-[#00D26A]/10 transition-colors touch-feedback"
+            className={`lg:hidden relative p-2 rounded-lg transition-colors touch-feedback text-white hover:bg-white/10`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
