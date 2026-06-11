@@ -32,8 +32,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
         {/* Additional dark vignette on sides */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
-        {/* Massive fade to black at the bottom to transition seamlessly into StoryChapters */}
-        <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
+        {/* Massive fade to transition seamlessly into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/80 to-transparent pointer-events-none z-10" />
       </div>
 
       {/* Cinematic Mist Atmosphere - Placed behind content, in front of background */}

@@ -131,10 +131,10 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
 
       {/* Static Ground Fog Gradient (anchors the mist beautifully to edges) */}
       {(position === "bottom" || isHero) && (
-        <div className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/60 to-transparent pointer-events-none" />
       )}
       {position === "top" && (
-        <div className="absolute top-0 left-0 right-0 h-[40vh] bg-gradient-to-b from-black via-black/60 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[40vh] bg-gradient-to-b from-[#0B1D17] via-[#0B1D17]/60 to-transparent pointer-events-none" />
       )}
     </div>
   );

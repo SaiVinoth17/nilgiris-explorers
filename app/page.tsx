@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
-import StoryChapters from "@/components/home/StoryChapters";
 import CinematicMist from "@/components/ui/CinematicMist";
 
 const InteractiveExplorer = dynamic(() => import("@/components/home/InteractiveExplorer"));
@@ -23,9 +22,6 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col bg-forest relative selection:bg-emerald-500/30 selection:text-white">
       {/* Chapter 1: Welcome */}
       <HeroSection />
-      
-      {/* Chapters 2-5: The Destinations Story */}
-      <StoryChapters />
 
       {/* Chapter 6: Interactive Discovery */}
       <div className="relative">
