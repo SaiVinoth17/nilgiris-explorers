@@ -86,9 +86,10 @@ export default function StoryChapters() {
               className="object-cover scale-105" // slight scale to avoid edge bleeding
               priority={index === 0}
             />
-            {/* Gradient Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent md:w-2/3" />
+            {/* Gradient Overlays for Text Readability & Seamless Transitions */}
+            <div className="absolute inset-x-0 top-0 h-[40vh] bg-gradient-to-b from-black via-black/50 to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent md:w-2/3 z-20 pointer-events-none" />
             
             <div className="absolute bottom-0 left-0 w-full h-full flex flex-col justify-end p-8 md:p-16 lg:p-24 max-w-4xl">
               <span className="text-amber-400 font-bold uppercase tracking-[0.3em] text-sm md:text-base mb-4 block">
