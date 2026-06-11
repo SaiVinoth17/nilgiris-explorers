@@ -41,10 +41,10 @@ export default function Destinations() {
         {/* Destination Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {destinations.map((dest, i) => (
-            <div
+            <button
               key={dest.id}
               onClick={() => setSelectedDestination(dest)}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer card-hover bg-[#0f2820]"
+              className="group text-left w-full block relative rounded-2xl overflow-hidden cursor-pointer card-hover bg-[#0f2820]"
             >
               {/* Image */}
               <div className="relative h-52 overflow-hidden">
@@ -52,7 +52,7 @@ export default function Destinations() {
                   src={dest.image}
                   alt={dest.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 lg:group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-transparent pointer-events-none" />
@@ -96,7 +96,7 @@ export default function Destinations() {
                   </span>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 

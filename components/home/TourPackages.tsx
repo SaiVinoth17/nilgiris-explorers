@@ -46,7 +46,7 @@ export default function TourPackages() {
                   src={pkg.image}
                   alt={pkg.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 lg:group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent pointer-events-none" />
