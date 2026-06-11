@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import StoryChapters from "@/components/home/StoryChapters";
-import FounderSection from "@/components/home/FounderSection";
+import CinematicMist from "@/components/ui/CinematicMist";
 
 const InteractiveExplorer = dynamic(() => import("@/components/home/InteractiveExplorer"));
 const HiddenGems = dynamic(() => import("@/components/home/HiddenGems"));
@@ -9,11 +9,6 @@ const JourneyRecommender = dynamic(() => import("@/components/home/JourneyRecomm
 const TrustSection = dynamic(() => import("@/components/home/TrustSection"));
 const FaqSection = dynamic(() => import("@/components/home/FaqSection"));
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
-const BookingWidget = dynamic(() => import("@/components/home/BookingWidget"));
-const WhyChooseUs = dynamic(() => import("@/components/home/WhyChooseUs"));
-const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
-const TravelGuidePreview = dynamic(() => import("@/components/home/TravelGuidePreview"));
-const TourPackages = dynamic(() => import("@/components/home/TourPackages"));
 
 import { Metadata } from "next";
 
@@ -26,35 +21,28 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col bg-forest relative selection:bg-emerald-500/30 selection:text-white">
-      {/* 1. Hero */}
+      {/* Chapter 1: Welcome */}
       <HeroSection />
       
-      {/* 2. Booking / Conversion */}
-      <BookingWidget />
-
-      {/* 3. Initial Trust Building */}
-      <WhyChooseUs />
-      <FounderSection />
-
-      {/* 4. The Emotional Pitch */}
+      {/* Chapters 2-5: The Destinations Story */}
       <StoryChapters />
 
-      {/* 5. Destinations & Exploration */}
-      <InteractiveExplorer />
-      <HiddenGems />
-
-      {/* 6. Popular Routes / Packages */}
-      <TourPackages />
-
-      {/* 7. Social Proof & Authority */}
-      <Testimonials />
-      <TrustSection />
-
-      {/* 8. Content & Guides */}
-      <TravelGuidePreview />
+      {/* Chapter 6: Interactive Discovery */}
+      <div className="relative">
+        <CinematicMist position="top" opacity={0.5} />
+        <InteractiveExplorer />
+      </div>
       
-      {/* 9. Final CTA & Recommendation */}
-      <section className="section-pad bg-[#0B1D17]">
+      {/* Local Authority & Trust */}
+      <div className="relative">
+        <CinematicMist position="bottom" opacity={0.3} />
+        <HiddenGems />
+        <TrustSection />
+      </div>
+      
+      {/* Chapter 7: The Conclusion / Planning */}
+      <section className="section-pad bg-[#0B1D17] relative">
+        <CinematicMist position="top" opacity={0.4} />
         <div className="container-default">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
@@ -68,9 +56,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. FAQ */}
       <FaqSection />
       
+      {/* Silent floating assistant */}
       <WhatsAppWidget />
     </main>
   );

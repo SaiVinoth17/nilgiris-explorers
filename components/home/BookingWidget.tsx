@@ -10,9 +10,7 @@ import { sightseeingCircuits, accommodationPackages } from "@/lib/data";
 const destinations = [
   "Ooty & Surroundings",
   "Coonoor",
-  "Ooty Lake",
   "Doddabetta Peak",
-  "Botanical Garden",
   "Avalanche Lake",
   "Pykara Lake & Falls",
   "Mudumalai Wildlife",
@@ -21,14 +19,14 @@ const destinations = [
 ];
 
 const slugMap: Record<string, string> = {
-  "ooty-lake": "Ooty Lake",
-  "doddabetta": "Doddabetta Peak",
-  "botanical-garden": "Botanical Garden",
-  "pykara": "Pykara Lake & Falls",
-  "avalanche": "Avalanche Lake",
-  "mudumalai": "Mudumalai Wildlife",
-  "coonoor": "Coonoor",
-  "ooty": "Ooty & Surroundings"
+  "ooty-lake": "Ooty & Surroundings",
+  "doddabetta-peak": "Doddabetta Peak",
+  "botanical-garden": "Ooty & Surroundings",
+  "tea-estates": "Ooty & Surroundings",
+  "pykara-lake": "Pykara Lake & Falls",
+  "avalanche-lake": "Avalanche Lake",
+  "mudumalai-reserve": "Mudumalai Wildlife",
+  "coonoor": "Coonoor"
 };
 
 const tourTypes = [

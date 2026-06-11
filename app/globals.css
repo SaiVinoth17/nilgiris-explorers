@@ -464,46 +464,6 @@ select.input-field {
   position: relative;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* ============================================================
-   LIGHTWEIGHT MIST ANIMATIONS (Hardware Accelerated)
-   ============================================================ */
-@keyframes mist-drift {
-  0% { transform: translateX(-5%) translateY(0) scale(1); opacity: 0.3; }
-  50% { transform: translateX(5%) translateY(-2%) scale(1.05); opacity: 0.5; }
-  100% { transform: translateX(-5%) translateY(0) scale(1); opacity: 0.3; }
-}
-
-@keyframes mist-drift-reverse {
-  0% { transform: translateX(5%) translateY(0) scale(1.05); opacity: 0.4; }
-  50% { transform: translateX(-5%) translateY(-1%) scale(1); opacity: 0.2; }
-  100% { transform: translateX(5%) translateY(0) scale(1.05); opacity: 0.4; }
-}
-
-.mist-layer-1 {
-  background: radial-gradient(ellipse at center, rgba(200, 220, 210, 0.15) 0%, rgba(255,255,255,0) 70%);
-  animation: mist-drift 20s infinite ease-in-out;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.mist-layer-2 {
-  background: radial-gradient(ellipse at center, rgba(180, 210, 200, 0.1) 0%, rgba(255,255,255,0) 80%);
-  animation: mist-drift-reverse 25s infinite ease-in-out;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.section-transition-fog {
-  background: linear-gradient(to bottom, transparent, rgba(11, 29, 23, 0.8) 50%, #0B1D17);
-  pointer-events: none;
-}
-
 .img-overlay::after {
   content: '';
   position: absolute;

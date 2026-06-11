@@ -180,26 +180,15 @@ export default function DestinationModal({ isOpen, onClose, destination }: Desti
                 <p className="text-white/60 text-sm">
                   Ready to experience the beauty of {destination.name}?
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                  <a 
-                    href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={onClose}
-                    className="px-6 py-3 rounded-xl border border-white/10 hover:border-emerald-500/50 hover:bg-white/5 transition-all text-white text-sm font-semibold flex items-center justify-center gap-2"
-                  >
-                    Ask on WhatsApp
-                  </a>
-                  <button 
-                    onClick={() => {
-                      onClose();
-                      window.location.href = `/#booking?dest=${destination.slug}`;
-                    }}
-                    className="btn-primary w-full sm:w-auto px-8 shadow-lg shadow-emerald-500/20 whitespace-nowrap flex items-center justify-center gap-2"
-                  >
-                    Book This Tour <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+                <a 
+                  href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking a tour to ${destination.name}. Please share details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className="btn-primary w-full sm:w-auto px-8 shadow-lg shadow-emerald-500/20 whitespace-nowrap flex items-center justify-center gap-2"
+                >
+                  Plan This Journey <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
 
             </div>
