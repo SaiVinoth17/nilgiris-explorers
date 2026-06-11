@@ -39,15 +39,17 @@ export default function DestinationContent() {
         <div key={`stop-${stop.id}`} className="relative w-full h-[150vh] md:h-[130vh]">
           {/* Sticky Background */}
           <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
-            <Image
-              src={stop.image}
-              alt={stop.name}
-              fill
-              priority={index === 0}
-              className="object-cover"
-              sizes="100vw"
-              quality={75}
-            />
+            <div className="absolute inset-0">
+              <Image
+                src={stop.image}
+                alt={stop.name}
+                fill
+                priority={index === 0}
+                className="object-cover"
+                sizes="100vw"
+                quality={75}
+              />
+            </div>
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/40 to-transparent" />
             <AtmosphericMist opacity={0.25} />

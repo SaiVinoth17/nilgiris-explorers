@@ -10,7 +10,10 @@ interface AtmosphericMistProps {
 export default function AtmosphericMist({ className = "", opacity = 0.3 }: AtmosphericMistProps) {
 
   return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${className}`}>
+    <div 
+      className={`absolute inset-0 overflow-hidden pointer-events-none z-0 ${className}`}
+      style={{ opacity }}
+    >
       {/* SVG Noise Filter for Mist Texture */}
       <svg className="hidden">
         <filter id="mist-noise">
@@ -35,8 +38,8 @@ export default function AtmosphericMist({ className = "", opacity = 0.3 }: Atmos
       />
       
       {/* Radial gradient mask to blend edges into the forest background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_10%,_#0B1D17_100%)] opacity-90" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D17] via-transparent to-[#0B1D17] opacity-60" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_#0B1D17_100%)] opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D17] via-transparent to-[#0B1D17] opacity-30" />
     </div>
   );
 }
