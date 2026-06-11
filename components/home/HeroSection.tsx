@@ -29,6 +29,11 @@ export default function HeroSection() {
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
+        
+        {/* CSS Lightweight Mist Layers */}
+        <div className="absolute inset-0 mist-layer-1" style={{ width: '150%', height: '150%', left: '-25%', top: '-25%' }} />
+        <div className="absolute inset-0 mist-layer-2" style={{ width: '150%', height: '150%', left: '-25%', top: '-25%', animationDelay: '-10s' }} />
+        
         {/* Additional dark vignette on sides */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
       </div>
