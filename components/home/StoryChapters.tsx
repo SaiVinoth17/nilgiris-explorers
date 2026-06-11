@@ -56,9 +56,9 @@ export default function StoryChapters() {
               chapters.length - 1,
               Math.max(0, Math.floor(scrolledDistance / chapterHeight))
             );
-            setActiveChapter(index);
+            setActiveChapter((prev) => prev !== index ? index : prev);
           } else {
-            setActiveChapter(0);
+            setActiveChapter((prev) => prev !== 0 ? 0 : prev);
           }
           ticking = false;
         });

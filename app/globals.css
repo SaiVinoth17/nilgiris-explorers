@@ -56,6 +56,7 @@
    ============================================================ */
 * {
   box-sizing: border-box;
+  touch-action: manipulation;
 }
 
 html {
@@ -150,23 +151,17 @@ p, span, a, li, label, input, textarea, select, button {
    GLASSMORPHISM — Forest-toned glass panels
    ============================================================ */
 .glass {
-  background: rgba(0, 210, 106, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 210, 106, 0.08);
   border: 1px solid rgba(0, 210, 106, 0.12);
 }
 
 .glass-dark {
-  background: rgba(7, 20, 16, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(7, 20, 16, 0.95);
   border: 1px solid rgba(0, 210, 106, 0.10);
 }
 
 .glass-card {
-  background: rgba(15, 40, 32, 0.70);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(15, 40, 32, 0.85);
   border: 1px solid rgba(0, 210, 106, 0.12);
 }
 

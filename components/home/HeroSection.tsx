@@ -4,7 +4,6 @@ import { ArrowRight, Play, Star, Shield, Clock, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-import AtmosphericMist from "@/components/ui/AtmosphericMist";
 
 // ... existing imports up to line 7 ...
 const trustBadges = [
@@ -34,8 +33,6 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D17]/65 via-transparent to-[#0B1D17]/35 pointer-events-none" />
       </div>
 
-      {/* Cinematic Mist Atmosphere */}
-      <AtmosphericMist opacity={0.35} />
 
       {/* Content */}
       <div className="relative z-10 container-default pt-24 pb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
