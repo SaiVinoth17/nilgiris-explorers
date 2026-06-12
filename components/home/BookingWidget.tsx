@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
 import {
-  MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car, ChevronDown, Clock
+  MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car,
 } from "lucide-react";
 import { sightseeingCircuits, accommodationPackages } from "@/lib/data";
 
@@ -44,9 +44,41 @@ const durations = ["1 Day", "2 Days", "3 Days", "4–5 Days", "1 Week", "Flexibl
 
 type WidgetTab = "tour" | "cab" | "stay";
 
+// Reusable field wrapper — ensures every label+input pair has identical layout
+function FieldGroup({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="text-[10px] font-bold text-white/40 uppercase tracking-[0.15em] leading-none">
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+// Reusable icon-prefixed input wrapper — keeps icon and field perfectly centred
+function InputWrap({ icon: Icon, iconColor, children }: {
+  icon: React.ElementType;
+  iconColor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative">
+      <Icon
+        className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none z-10 shrink-0"
+        style={{ color: iconColor }}
+        aria-hidden="true"
+      />
+      {children}
+    </div>
+  );
+}
+
 function BookingWidgetContent() {
   const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<WidgetTab>("tour");
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   // Tour Form State
   const [tourForm, setTourForm] = useState({
@@ -65,6 +97,18 @@ function BookingWidgetContent() {
       setActiveTab("tour");
     }
   }, [searchParams]);
+
+  // Intersection Observer for entrance animation — no heavy JS, just toggling a class
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Cab Form State
   const [cabForm, setCabForm] = useState({
@@ -99,451 +143,412 @@ function BookingWidgetContent() {
     return encodeURIComponent(text);
   };
 
+  const tabs: { id: WidgetTab; icon: React.ElementType; label: string }[] = [
+    { id: "tour", icon: Compass, label: "Plan Tour Package" },
+    { id: "cab",  icon: Car,     label: "Book Sightseeing Cab" },
+    { id: "stay", icon: Home,    label: "Book Ooty Stay" },
+  ];
+
+  const fieldBase =
+    "w-full h-12 pl-10 pr-4 rounded-xl text-white text-[16px] font-medium " +
+    "bg-white/5 border border-white/10 " +
+    "transition-all duration-200 ease-out " +
+    "hover:border-emerald-500/30 hover:bg-white/8 " +
+    "focus:outline-none focus:border-emerald-500 focus:bg-[#16332a]/80 focus:shadow-[0_0_0_3px_rgba(0,210,106,0.15)] " +
+    "placeholder:text-white/25 [color-scheme:dark] appearance-none";
+
+  const selectFieldBase =
+    fieldBase +
+    " cursor-pointer " +
+    "bg-[image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.35)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\")] " +
+    "bg-no-repeat bg-[right_0.75rem_center] bg-[length:1.1rem] pr-9";
+
   return (
-    <section id="booking" className="relative py-0 -mt-24 z-20">
-      {/* Lightweight Mist / Glow Effect behind the widget */}
-      <div className="absolute inset-0 flex justify-center pointer-events-none -z-10">
-        <div className="w-full max-w-6xl h-full bg-emerald-500/10 blur-[120px] rounded-full mix-blend-screen opacity-60" />
-      </div>
-
+    <section id="booking" className="relative py-0 -mt-20 z-20">
       <div className="container-default">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
+
+          {/* Subtle mist glow behind the widget */}
           <div
-          className="relative bg-[#0a1f18]/95 backdrop-blur-xl rounded-3xl p-6 sm:p-10 shadow-[0_32px_80px_rgba(0,0,0,0.8)] border border-emerald-500/20 animate-in fade-in slide-in-from-bottom-8 duration-1000"
-        >
-          {/* Top Form Switcher Tabs */}
-          <div className="flex border-b border-white/10 mb-8 overflow-x-auto scrollbar-none gap-3 pb-3">
-            <button
-              onClick={() => setActiveTab("tour")}
-              className={`flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
-                activeTab === "tour"
-                  ? "bg-emerald-500 text-white shadow-[0_0_20px_rgba(0,210,106,0.3)] transform scale-[1.02]"
-                  : "text-white/50 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <Compass className={`w-4 h-4 ${activeTab === "tour" ? "text-white" : "text-emerald-500"}`} />
-              Plan Tour Package
-            </button>
-            <button
-              onClick={() => setActiveTab("cab")}
-              className={`flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
-                activeTab === "cab"
-                  ? "bg-emerald-500 text-white shadow-[0_0_20px_rgba(0,210,106,0.3)] transform scale-[1.02]"
-                  : "text-white/50 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <Car className={`w-4 h-4 ${activeTab === "cab" ? "text-white" : "text-emerald-500"}`} />
-              Book Sightseeing Cab
-            </button>
-            <button
-              onClick={() => setActiveTab("stay")}
-              className={`flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
-                activeTab === "stay"
-                  ? "bg-emerald-500 text-white shadow-[0_0_20px_rgba(0,210,106,0.3)] transform scale-[1.02]"
-                  : "text-white/50 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <Home className={`w-4 h-4 ${activeTab === "stay" ? "text-white" : "text-emerald-500"}`} />
-              Book Ooty Cottages / Stay
-            </button>
-          </div>
+            className="absolute inset-x-8 -top-12 h-40 rounded-full blur-3xl pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at center, rgba(0,210,106,0.12) 0%, transparent 70%)",
+              transform: "translateZ(0)",
+            }}
+            aria-hidden="true"
+          />
 
-          {/* Form Switcher Body */}
-          <div className="animate-in fade-in duration-500">
-            {activeTab === "tour" && (
-              <div
-                key="tour-form"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 animate-in slide-in-from-right-4 duration-500"
-              >
-                {/* Destination */}
-                <div className="group">
-                  <label htmlFor="trip-destination" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Where do you want to go?
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <MapPin className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-emerald-400 transition-colors pointer-events-none" />
-                    <select
-                      id="trip-destination"
-                      value={tourForm.destination}
-                      onChange={(e) => setTourForm({ ...tourForm, destination: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
+          {/* Main Card */}
+          <div
+            ref={sectionRef}
+            className="relative rounded-3xl border border-emerald-500/15 overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.65)]"
+            style={{
+              background: "linear-gradient(145deg, rgba(15,40,32,0.97) 0%, rgba(11,29,23,0.99) 100%)",
+              backdropFilter: "blur(24px)",
+              // Entrance animation driven by Intersection Observer
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(24px)",
+              transition: "opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1)",
+            }}
+          >
+            {/* Subtle inner top glow line */}
+            <div
+              className="absolute top-0 inset-x-0 h-px"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(0,210,106,0.35), transparent)" }}
+              aria-hidden="true"
+            />
+
+            <div className="p-5 sm:p-7 lg:p-8">
+
+              {/* ── Tab Switcher ── */}
+              <div className="flex gap-1 mb-7 p-1 rounded-2xl bg-white/[0.04] border border-white/[0.06]">
+                {tabs.map(({ id, icon: Icon, label }) => {
+                  const isActive = activeTab === id;
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => setActiveTab(id)}
+                      className={[
+                        "relative flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold",
+                        "transition-all duration-250 whitespace-nowrap min-w-0",
+                        isActive
+                          ? "text-white"
+                          : "text-white/40 hover:text-white/70",
+                      ].join(" ")}
+                      style={{
+                        background: isActive ? "rgba(0,210,106,0.15)" : "transparent",
+                        boxShadow: isActive ? "inset 0 0 0 1px rgba(0,210,106,0.3)" : "none",
+                        transition: "all 0.2s cubic-bezier(0.4,0,0.2,1)",
+                      }}
                     >
-                      <option value="" className="bg-[#0c201a]">Select destination…</option>
-                      {destinations.map((d) => (
-                        <option key={d} value={d} className="bg-[#0c201a]">{d}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Tour Type */}
-                <div className="group">
-                  <label htmlFor="tour-type" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Type of Experience
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Compass className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-violet-400 transition-colors pointer-events-none" />
-                    <select
-                      id="tour-type"
-                      value={tourForm.tourType}
-                      onChange={(e) => setTourForm({ ...tourForm, tourType: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      <option value="" className="bg-[#0c201a]">Select tour type…</option>
-                      {tourTypes.map((t) => (
-                        <option key={t.value} value={t.label} className="bg-[#0c201a]">{t.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Travel Date */}
-                <div className="group">
-                  <label htmlFor="travel-date" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Preferred Travel Date
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Calendar className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-blue-400 transition-colors pointer-events-none" />
-                    <input
-                      id="travel-date"
-                      type="date"
-                      value={tourForm.date}
-                      min={today}
-                      onChange={(e) => setTourForm({ ...tourForm, date: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none [color-scheme:dark]"
-                    />
-                  </div>
-                </div>
-
-                {/* Duration */}
-                <div className="group">
-                  <label htmlFor="trip-duration" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Trip Duration
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Clock className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-amber-400 transition-colors pointer-events-none" />
-                    <select
-                      id="trip-duration"
-                      value={tourForm.duration}
-                      onChange={(e) => setTourForm({ ...tourForm, duration: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      <option value="" className="bg-[#0c201a]">Select duration…</option>
-                      {durations.map((d) => (
-                        <option key={d} value={d} className="bg-[#0c201a]">{d}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Travelers */}
-                <div className="group">
-                  <label htmlFor="travelers-count" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Number of Travelers
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Users className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-rose-400 transition-colors pointer-events-none" />
-                    <select
-                      id="travelers-count"
-                      value={tourForm.travelers}
-                      onChange={(e) => setTourForm({ ...tourForm, travelers: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {["1", "2", "3", "4", "5", "6", "7–10", "11–20", "20+"].map((n) => (
-                        <option key={n} value={n} className="bg-[#0c201a]">
-                          {n} {parseInt(n) === 1 ? "Traveler" : "Travelers"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Special Requests */}
-                <div className="group">
-                  <label htmlFor="special-requests" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Special Requests (optional)
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <MessageSquare className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
-                    <input
-                      id="special-requests"
-                      type="text"
-                      placeholder="Honeymoon setup, tour guides…"
-                      value={tourForm.message}
-                      onChange={(e) => setTourForm({ ...tourForm, message: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none placeholder:text-white/30"
-                    />
-                  </div>
-                </div>
+                      <Icon className="w-4 h-4 shrink-0" style={{ color: isActive ? "#00D26A" : "currentColor" }} />
+                      <span className="hidden sm:inline truncate">{label}</span>
+                    </button>
+                  );
+                })}
               </div>
-            )}
 
-            {activeTab === "cab" && (
-              <div
-                key="cab-form"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 animate-in slide-in-from-right-4 duration-500"
-              >
-                {/* Circuit Dropdown */}
-                <div className="group">
-                  <label htmlFor="cab-circuit" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Select Sightseeing Circuit
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <MapPin className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-emerald-400 transition-colors pointer-events-none" />
-                    <select
-                      id="cab-circuit"
-                      value={cabForm.circuit}
-                      onChange={(e) => setCabForm({ ...cabForm, circuit: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {sightseeingCircuits.map((c) => (
-                        <option key={c.id} value={c.name} className="bg-[#0c201a]">{c.name}</option>
-                      ))}
-                    </select>
+              {/* ── TOUR FORM ── */}
+              {activeTab === "tour" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  <FieldGroup label="Where do you want to go?">
+                    <InputWrap icon={MapPin} iconColor="#00D26A">
+                      <select
+                        id="trip-destination"
+                        value={tourForm.destination}
+                        onChange={(e) => setTourForm({ ...tourForm, destination: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        <option value="" className="bg-[#0f2820]">Select destination…</option>
+                        {destinations.map((d) => (
+                          <option key={d} value={d} className="bg-[#0f2820]">{d}</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Type of Experience">
+                    <InputWrap icon={Compass} iconColor="#a78bfa">
+                      <select
+                        id="tour-type"
+                        value={tourForm.tourType}
+                        onChange={(e) => setTourForm({ ...tourForm, tourType: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        <option value="" className="bg-[#0f2820]">Select tour type…</option>
+                        {tourTypes.map((t) => (
+                          <option key={t.value} value={t.label} className="bg-[#0f2820]">{t.label}</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Preferred Travel Date">
+                    <InputWrap icon={Calendar} iconColor="#60a5fa">
+                      <input
+                        id="travel-date"
+                        type="date"
+                        value={tourForm.date}
+                        min={today}
+                        onChange={(e) => setTourForm({ ...tourForm, date: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Trip Duration">
+                    <InputWrap icon={Calendar} iconColor="#fbbf24">
+                      <select
+                        id="trip-duration"
+                        value={tourForm.duration}
+                        onChange={(e) => setTourForm({ ...tourForm, duration: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        <option value="" className="bg-[#0f2820]">Select duration…</option>
+                        {durations.map((d) => (
+                          <option key={d} value={d} className="bg-[#0f2820]">{d}</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Number of Travelers">
+                    <InputWrap icon={Users} iconColor="#f87171">
+                      <select
+                        id="travelers-count"
+                        value={tourForm.travelers}
+                        onChange={(e) => setTourForm({ ...tourForm, travelers: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {["1", "2", "3", "4", "5", "6", "7–10", "11–20", "20+"].map((n) => (
+                          <option key={n} value={n} className="bg-[#0f2820]">
+                            {n} {parseInt(n) === 1 ? "Traveler" : "Travelers"}
+                          </option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Special Requests (optional)">
+                    <InputWrap icon={MessageSquare} iconColor="#22d3ee">
+                      <input
+                        id="special-requests"
+                        type="text"
+                        placeholder="Honeymoon setup, tour guides…"
+                        value={tourForm.message}
+                        onChange={(e) => setTourForm({ ...tourForm, message: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+                </div>
+              )}
+
+              {/* ── CAB FORM ── */}
+              {activeTab === "cab" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  <FieldGroup label="Select Sightseeing Circuit">
+                    <InputWrap icon={MapPin} iconColor="#00D26A">
+                      <select
+                        id="cab-circuit"
+                        value={cabForm.circuit}
+                        onChange={(e) => setCabForm({ ...cabForm, circuit: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {sightseeingCircuits.map((c) => (
+                          <option key={c.id} value={c.name} className="bg-[#0f2820]">{c.name}</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Preferred Cab Type">
+                    <InputWrap icon={Car} iconColor="#a78bfa">
+                      <select
+                        id="cab-type"
+                        value={cabForm.vehicle}
+                        onChange={(e) => setCabForm({ ...cabForm, vehicle: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        <option value="Hatchback (Indica)" className="bg-[#0f2820]">Standard Hatchback (Indica/Swift)</option>
+                        <option value="Sedan Premium (Etios)" className="bg-[#0f2820]">Sedan Comfort (Dzire/Etios)</option>
+                        <option value="SUV Premium (Xylo)" className="bg-[#0f2820]">Spacious SUV (Xylo/Ertiga)</option>
+                        <option value="Luxury SUV (Innova)" className="bg-[#0f2820]">Premium SUV (Toyota Innova)</option>
+                        <option value="Tempo Traveller" className="bg-[#0f2820]">Large Group Van (Tempo Traveller)</option>
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Sightseeing Date">
+                    <InputWrap icon={Calendar} iconColor="#60a5fa">
+                      <input
+                        id="cab-date"
+                        type="date"
+                        value={cabForm.date}
+                        min={today}
+                        onChange={(e) => setCabForm({ ...cabForm, date: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Number of Guests">
+                    <InputWrap icon={Users} iconColor="#f87171">
+                      <select
+                        id="cab-guests"
+                        value={cabForm.guests}
+                        onChange={(e) => setCabForm({ ...cabForm, guests: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {["1", "2", "3", "4", "5", "6", "7", "8", "9–12", "13+"].map((n) => (
+                          <option key={n} value={n} className="bg-[#0f2820]">
+                            {n} {n === "1" ? "Guest" : "Guests"}
+                          </option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Pickup Location / Hotel Address">
+                    <InputWrap icon={MessageSquare} iconColor="#22d3ee">
+                      <input
+                        id="cab-pickup"
+                        type="text"
+                        placeholder="e.g. Ooty Railway Station, Sterling Resorts…"
+                        value={cabForm.pickup}
+                        onChange={(e) => setCabForm({ ...cabForm, pickup: e.target.value })}
+                        className={`${fieldBase} sm:col-span-2`}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+                </div>
+              )}
+
+              {/* ── STAY FORM ── */}
+              {activeTab === "stay" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  <FieldGroup label="Choose Stay / Cottage Type">
+                    <InputWrap icon={Home} iconColor="#00D26A">
+                      <select
+                        id="stay-type"
+                        value={stayForm.stayType}
+                        onChange={(e) => setStayForm({ ...stayForm, stayType: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {accommodationPackages.map((s) => (
+                          <option key={s.id} value={s.name} className="bg-[#0f2820]">{s.name} (starts ₹{s.price})</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Check-In Date">
+                    <InputWrap icon={Calendar} iconColor="#60a5fa">
+                      <input
+                        id="stay-checkin"
+                        type="date"
+                        value={stayForm.checkin}
+                        min={today}
+                        onChange={(e) => setStayForm({ ...stayForm, checkin: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Check-Out Date">
+                    <InputWrap icon={Calendar} iconColor="#fbbf24">
+                      <input
+                        id="stay-checkout"
+                        type="date"
+                        value={stayForm.checkout}
+                        min={stayForm.checkin || today}
+                        onChange={(e) => setStayForm({ ...stayForm, checkout: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Rooms Required">
+                    <InputWrap icon={Users} iconColor="#f87171">
+                      <select
+                        id="stay-rooms"
+                        value={stayForm.rooms}
+                        onChange={(e) => setStayForm({ ...stayForm, rooms: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {["1", "2", "3", "4", "5+"].map((r) => (
+                          <option key={r} value={r} className="bg-[#0f2820]">
+                            {r} {r === "1" ? "Room" : "Rooms"}
+                          </option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Guests Count">
+                    <InputWrap icon={Users} iconColor="#a78bfa">
+                      <select
+                        id="stay-guests"
+                        value={stayForm.guests}
+                        onChange={(e) => setStayForm({ ...stayForm, guests: e.target.value })}
+                        className={selectFieldBase}
+                      >
+                        {["1", "2", "3", "4", "5–6", "7–10", "10+"].map((g) => (
+                          <option key={g} value={g} className="bg-[#0f2820]">{g} Guests</option>
+                        ))}
+                      </select>
+                    </InputWrap>
+                  </FieldGroup>
+
+                  <FieldGroup label="Special Requests">
+                    <InputWrap icon={MessageSquare} iconColor="#22d3ee">
+                      <input
+                        id="stay-special"
+                        type="text"
+                        placeholder="Campfire setup, breakfast included…"
+                        value={stayForm.special}
+                        onChange={(e) => setStayForm({ ...stayForm, special: e.target.value })}
+                        className={fieldBase}
+                      />
+                    </InputWrap>
+                  </FieldGroup>
+                </div>
+              )}
+
+              {/* ── Bottom Bar ── */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 pt-5 border-t border-white/[0.07]">
+                {/* Promise badge */}
+                <div className="flex-1 flex items-center gap-3 w-full sm:w-auto">
+                  <div className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ background: "rgba(0,210,106,0.12)", border: "1px solid rgba(0,210,106,0.2)" }}>
+                    <Sparkles className="w-5 h-5" style={{ color: "#00D26A" }} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-white leading-tight">
+                      {activeTab === "tour" ? "Free Custom Planning" : activeTab === "cab" ? "All-Inclusive Sightseeing Fares" : "Direct-to-Owner Cottage Rates"}
+                    </div>
+                    <div className="text-xs text-white/35 mt-0.5 leading-tight">
+                      {activeTab === "tour" && "We reply within 2 hours · No booking fees"}
+                      {activeTab === "cab" && "Includes clean vehicle, expert hill driver & fuel"}
+                      {activeTab === "stay" && "Verified properties · campfire · group setups available"}
+                    </div>
                   </div>
                 </div>
 
-                {/* Vehicle Class Selector */}
-                <div className="group">
-                  <label htmlFor="cab-type" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Preferred Cab Type
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Car className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-violet-400 transition-colors pointer-events-none" />
-                    <select
-                      id="cab-type"
-                      value={cabForm.vehicle}
-                      onChange={(e) => setCabForm({ ...cabForm, vehicle: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      <option value="Hatchback (Indica)" className="bg-[#0c201a]">Standard Hatchback (Indica/Swift)</option>
-                      <option value="Sedan Premium (Etios)" className="bg-[#0c201a]">Sedan Comfort (Dzire/Etios)</option>
-                      <option value="SUV Premium (Xylo)" className="bg-[#0c201a]">Spacious SUV (Xylo/Ertiga)</option>
-                      <option value="Luxury SUV (Innova)" className="bg-[#0c201a]">Premium SUV (Toyota Innova)</option>
-                      <option value="Tempo Traveller" className="bg-[#0c201a]">Large Group Van (Tempo Traveller)</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Travel Date */}
-                <div className="group">
-                  <label htmlFor="cab-date" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Sightseeing Date
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Calendar className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-blue-400 transition-colors pointer-events-none" />
-                    <input
-                      id="cab-date"
-                      type="date"
-                      value={cabForm.date}
-                      min={today}
-                      onChange={(e) => setCabForm({ ...cabForm, date: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none [color-scheme:dark]"
-                    />
-                  </div>
-                </div>
-
-                {/* Guests */}
-                <div className="group">
-                  <label htmlFor="cab-guests" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Number of Guests
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Users className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-rose-400 transition-colors pointer-events-none" />
-                    <select
-                      id="cab-guests"
-                      value={cabForm.guests}
-                      onChange={(e) => setCabForm({ ...cabForm, guests: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {["1", "2", "3", "4", "5", "6", "7", "8", "9–12", "13+"].map((n) => (
-                        <option key={n} value={n} className="bg-[#0c201a]">
-                          {n} {n === "1" ? "Guest" : "Guests"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Pickup point */}
-                <div className="sm:col-span-2 group">
-                  <label htmlFor="cab-pickup" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Pickup Location / Hotel Address
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <MessageSquare className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
-                    <input
-                      id="cab-pickup"
-                      type="text"
-                      placeholder="e.g. Ooty Railway Station, Lake View Hotel, Sterling Resorts..."
-                      value={cabForm.pickup}
-                      onChange={(e) => setCabForm({ ...cabForm, pickup: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none placeholder:text-white/30"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "stay" && (
-              <div
-                key="stay-form"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 animate-in slide-in-from-right-4 duration-500"
-              >
-                {/* Stay Type */}
-                <div className="group">
-                  <label htmlFor="stay-type" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Choose stay / Cottage type
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Home className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-emerald-400 transition-colors pointer-events-none" />
-                    <select
-                      id="stay-type"
-                      value={stayForm.stayType}
-                      onChange={(e) => setStayForm({ ...stayForm, stayType: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {accommodationPackages.map((s) => (
-                        <option key={s.id} value={s.name} className="bg-[#0c201a]">{s.name} (starts ₹{s.price})</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Check In Date */}
-                <div className="group">
-                  <label htmlFor="stay-checkin" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Check-In Date
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Calendar className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-blue-400 transition-colors pointer-events-none" />
-                    <input
-                      id="stay-checkin"
-                      type="date"
-                      value={stayForm.checkin}
-                      min={today}
-                      onChange={(e) => setStayForm({ ...stayForm, checkin: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none [color-scheme:dark]"
-                    />
-                  </div>
-                </div>
-
-                {/* Check Out Date */}
-                <div className="group">
-                  <label htmlFor="stay-checkout" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Check-Out Date
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Calendar className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-amber-400 transition-colors pointer-events-none" />
-                    <input
-                      id="stay-checkout"
-                      type="date"
-                      value={stayForm.checkout}
-                      min={stayForm.checkin || today}
-                      onChange={(e) => setStayForm({ ...stayForm, checkout: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none [color-scheme:dark]"
-                    />
-                  </div>
-                </div>
-
-                {/* Rooms count */}
-                <div className="group">
-                  <label htmlFor="stay-rooms" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Rooms Required
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Users className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-rose-400 transition-colors pointer-events-none" />
-                    <select
-                      id="stay-rooms"
-                      value={stayForm.rooms}
-                      onChange={(e) => setStayForm({ ...stayForm, rooms: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {["1", "2", "3", "4", "5+"].map((r) => (
-                        <option key={r} value={r} className="bg-[#0c201a]">
-                          {r} {r === "1" ? "Room" : "Rooms"}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Guests count */}
-                <div className="group">
-                  <label htmlFor="stay-guests" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Guests Count
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <Users className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-violet-400 transition-colors pointer-events-none" />
-                    <select
-                      id="stay-guests"
-                      value={stayForm.guests}
-                      onChange={(e) => setStayForm({ ...stayForm, guests: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none appearance-none cursor-pointer"
-                    >
-                      {["1", "2", "3", "4", "5–6", "7–10", "10+"].map((g) => (
-                        <option key={g} value={g} className="bg-[#0c201a]">{g} Guests</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Special Requests */}
-                <div className="group">
-                  <label htmlFor="stay-special" className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2 block group-focus-within:text-emerald-400 transition-colors">
-                    Special Stays Requests
-                  </label>
-                  <div className="relative flex items-center h-[3.5rem] bg-[#0c201a] border border-white/10 rounded-xl group-focus-within:border-emerald-500/50 transition-all shadow-inner overflow-hidden">
-                    <MessageSquare className="absolute left-4 w-5 h-5 text-white/30 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
-                    <input
-                      id="stay-special"
-                      type="text"
-                      placeholder="Campfire setup, breakfast included…"
-                      value={stayForm.special}
-                      onChange={(e) => setStayForm({ ...stayForm, special: e.target.value })}
-                      className="w-full h-full pl-12 pr-4 bg-transparent text-white/90 text-sm focus:outline-none placeholder:text-white/30"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Bottom bar */}
-          <div className="flex flex-col sm:flex-row items-center gap-6 pt-6 mt-4 border-t border-white/10">
-            {/* Promise */}
-            <div className="flex-1 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 shadow-[inset_0_0_12px_rgba(0,210,106,0.1)]">
-                <Sparkles className="w-6 h-6 text-emerald-400" />
-              </div>
-              <div>
-                <div className="text-sm md:text-base font-bold text-white tracking-wide">
-                  {activeTab === "tour" ? "Free Custom Planning" : activeTab === "cab" ? "All-Inclusive Sightseeing Cab Fares" : "Direct-to-Owner Cottage Rates"}
-                </div>
-                <div className="text-xs md:text-sm text-emerald-100/60 mt-1 font-medium">
-                  {activeTab === "tour" && "We reply directly within 2 hours • No booking fees"}
-                  {activeTab === "cab" && "Includes clean vehicle, expert hill driver, and fuel"}
-                  {activeTab === "stay" && "Verified properties, campfire, group dorms, catering setups available"}
-                </div>
+                {/* CTA Button with premium glow */}
+                <a
+                  href={`https://wa.me/919585219509?text=${buildWhatsAppMessage()}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex-shrink-0 w-full sm:w-auto flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl font-bold text-white text-[15px] overflow-hidden touch-feedback"
+                  style={{
+                    background: "linear-gradient(135deg, #00D26A 0%, #00A855 100%)",
+                    boxShadow: "0 4px 24px rgba(0,210,106,0.35), 0 0 0 0 rgba(0,210,106,0)",
+                    transition: "all 0.25s cubic-bezier(0.4,0,0.2,1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 40px rgba(0,210,106,0.55), 0 0 60px rgba(0,210,106,0.15)";
+                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(0,210,106,0.35)";
+                    (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                  }}
+                >
+                  {/* Shimmer overlay */}
+                  <span
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.15) 50%, transparent 80%)",
+                    }}
+                    aria-hidden="true"
+                  />
+                  <span className="relative">Get Free Quote</span>
+                  <ArrowRight className="relative w-5 h-5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </a>
               </div>
             </div>
-
-            {/* Send to WhatsApp */}
-            <a
-              href={`https://wa.me/919585219509?text=${buildWhatsAppMessage()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative group overflow-hidden flex items-center gap-2 justify-center rounded-xl bg-emerald-500 text-white font-bold text-[15px] px-8 h-[3.5rem] w-full sm:w-auto shadow-[0_0_30px_rgba(0,210,106,0.3)] hover:shadow-[0_0_50px_rgba(0,210,106,0.6)] transition-all duration-300 hover:scale-105"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Get Free Quote
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0" />
-            </a>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -552,9 +557,8 @@ function BookingWidgetContent() {
 
 export default function BookingWidget() {
   return (
-    <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-emerald-500">Loading booking widget...</div>}>
+    <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center text-emerald-500/50 text-sm">Loading booking widget…</div>}>
       <BookingWidgetContent />
     </Suspense>
   );
 }
-
