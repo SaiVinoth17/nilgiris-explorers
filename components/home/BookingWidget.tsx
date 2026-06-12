@@ -3,7 +3,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 import {
-  MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car, ChevronDown
+  MapPin, Calendar, Users, Compass, MessageSquare, ArrowRight, Sparkles, Home, Car, ChevronDown, Clock
 } from "lucide-react";
 import { sightseeingCircuits, accommodationPackages } from "@/lib/data";
 
@@ -507,8 +507,6 @@ function BookingWidgetContent() {
                 </div>
               </div>
             )}
-          </>
-
           </div>
 
           {/* Bottom bar */}
