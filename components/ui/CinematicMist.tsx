@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
+import FloatingParticles from "./FloatingParticles";
 
 interface CinematicMistProps {
   position?: "top" | "bottom" | "full" | "hero";
@@ -10,11 +11,10 @@ interface CinematicMistProps {
 
 // Highly optimized SVG procedural fog texture baked into a Data URI.
 // Rendered once by the browser into a static image buffer.
-// Color matrix forces RGB to pure white (1), and Alpha to the Red channel of the noise, creating pure volumetric white fog.
-const FOG_TEXTURE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fog'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.008' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.2 0 0 0 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fog)'/%3E%3C/svg%3E")`;
+// Adjusted to be slightly softer and more organic.
+const FOG_TEXTURE = `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fog'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.003 0.006' numOctaves='4' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.0 0 0 0 -0.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fog)'/%3E%3C/svg%3E")`;
 
 export default function CinematicMist({ position = "full", opacity = 1 }: CinematicMistProps) {
-  const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
 
@@ -28,7 +28,6 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
   const parallaxY3 = useTransform(scrollY, [0, 2000], [0, 150]); // Moves down slightly for foreground depth
 
   if (!mounted) return null;
-  if (shouldReduceMotion) return null;
 
   const isHero = position === "hero";
 
@@ -39,6 +38,24 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
       } ${position === "top" ? "bottom-auto h-[70vh]" : ""}`}
       style={{ opacity }}
     >
+      {/* Volumetric Light Rays (Soft radial gradients) */}
+      <motion.div
+        animate={{
+          opacity: [0.1, 0.25, 0.1],
+          scale: [1, 1.05, 1],
+          x: ["-2%", "2%", "-2%"],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -top-[20%] -left-[10%] w-[120%] h-[120%] pointer-events-none mix-blend-screen opacity-20"
+        style={{
+          background: "radial-gradient(ellipse at top right, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%)",
+        }}
+      />
+
       {/* 
         Layer 1: Deep Mountain Haze
         Very slow infinite drift, very large scale. Not tied to scroll. 
@@ -129,6 +146,9 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
         }}
       />
 
+      {/* Particles Integration */}
+      <FloatingParticles count={isHero ? 50 : 25} />
+
       {/* Static Ground Fog Gradient (anchors the mist beautifully to edges) */}
       {(position === "bottom" || isHero) && (
         <div className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/60 to-transparent pointer-events-none" />
@@ -139,4 +159,3 @@ export default function CinematicMist({ position = "full", opacity = 1 }: Cinema
     </div>
   );
 }
-
