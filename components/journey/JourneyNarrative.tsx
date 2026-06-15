@@ -1,0 +1,31 @@
+"use client";
+
+export default function JourneyNarrative() {
+  return (
+    <section className="relative py-28 md:py-40 bg-[#050A08]">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <p className="font-serif text-2xl md:text-4xl lg:text-5xl text-white/90 leading-relaxed md:leading-snug text-center">
+          For centuries, the Nilgiri Mountains have whispered to travelers. 
+          A sanctuary of rolling emerald hills, ancient forests, and skies 
+          that dance with light. This is not just a destination. 
+          <span className="text-emerald-400"> It is a feeling.</span>
+        </p>
+
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 text-center border-t border-white/10 pt-14">
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl md:text-5xl font-display font-bold text-emerald-400">10,000+</span>
+            <span className="text-white/50 font-sans tracking-wide uppercase text-sm">Travelers Guided</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl md:text-5xl font-display font-bold text-emerald-400">Since 2018</span>
+            <span className="text-white/50 font-sans tracking-wide uppercase text-sm">Local Experts</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-4xl md:text-5xl font-display font-bold text-emerald-400">4.9★</span>
+            <span className="text-white/50 font-sans tracking-wide uppercase text-sm">Average Rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

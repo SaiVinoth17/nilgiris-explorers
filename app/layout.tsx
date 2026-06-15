@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans, Geist, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import CinematicNav from "@/components/layout/CinematicNav";
 import dynamic from "next/dynamic";
+import LenisProvider from "@/lib/lenis";
 
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
-import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
+import { cn } from "@/lib/utils";
 
-// Brand Guide: Poppins SemiBold — Headings
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -17,11 +18,18 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// Brand Guide: Plus Jakarta Sans — Sub-headings & Body
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-jakarta",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -79,7 +87,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${plusJakarta.variable}`} suppressHydrationWarning>
+    <html lang="en" className={cn(poppins.variable, plusJakarta.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -165,16 +173,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="font-body antialiased bg-[#0B1D17] text-white overflow-x-clip">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
-          <Navbar />
-          <main className="pb-16 md:pb-0"> {/* Padding bottom to prevent content hiding behind mobile nav */}
+      <body className="font-body antialiased bg-[#050A08] text-white overflow-x-clip">
+        <LenisProvider>
+          <CinematicNav />
+          <main className="pb-16 md:pb-0">
             {children}
           </main>
-          <Footer />
           <WhatsAppWidget />
           <MobileBottomNav />
-        </ThemeProvider>
+        </LenisProvider>
       </body>
     </html>
   );
