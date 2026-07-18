@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { tourPackages } from '@/lib/data/packages';
 import { destinations } from '@/lib/data/destinations';
 import { blogPosts } from '@/lib/data/blog';
+import { guides } from '@/lib/seo-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nilgirisexplorers.com';
@@ -55,5 +56,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...destinationRoutes, ...locationRoutes, ...packageRoutes, ...postRoutes];
+  // Dynamic Guides
+  const guideRoutes = guides.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...destinationRoutes, ...locationRoutes, ...packageRoutes, ...postRoutes, ...guideRoutes];
 }
