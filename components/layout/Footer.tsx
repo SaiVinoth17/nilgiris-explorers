@@ -1,4 +1,3 @@
-```jsx
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -103,7 +102,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex gap-2 mt-6">
               {socialLinks.map(({ href, label, svg }) => (
-                
+                <a
                   key={label}
                   href={href}
                   aria-label={label}
@@ -163,7 +162,7 @@ export default function Footer() {
             </ul>
 
             {/* WhatsApp CTA */}
-            
+            <a
               href="https://wa.me/919585219509?text=Hello%20Nilgiris%20Explorers%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
@@ -202,7 +201,7 @@ export default function Footer() {
 
           <p className="text-white/25 text-xs tracking-wide flex items-center gap-1.5">
             <span>Designed &amp; Developed by</span>
-            
+            <a
               href="https://www.linkedin.com/in/saivinoth17/"
               target="_blank"
               rel="noopener noreferrer"
@@ -221,4 +220,3 @@ export default function Footer() {
     </footer>
   );
 }
-```
