@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function TripPlannerPage() {
   return (
-    <main className="min-h-screen pt-24 pb-20 relative bg-[#0B1D17]">
+    <main className="min-h-screen pt-24 pb-20 relative bg-forest">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -21,7 +21,7 @@ export default function TripPlannerPage() {
           fill
           className="object-cover opacity-10"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D17] via-transparent to-[#0B1D17]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest via-transparent to-forest" />
       </div>
 
       <div className="container-default relative z-10">
@@ -32,7 +32,7 @@ export default function TripPlannerPage() {
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
             Plan Your <span className="gradient-text">Perfect Getaway</span>
           </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-lg max-w-2xl mx-auto font-body">
             Tell us about your travel plans, and we'll craft a customized itinerary with a dedicated driver for a truly personalized Nilgiris experience.
           </p>
         </div>

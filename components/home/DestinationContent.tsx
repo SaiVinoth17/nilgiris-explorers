@@ -34,7 +34,7 @@ const journeyStops = [
 
 export default function DestinationContent() {
   return (
-    <section className="relative bg-[#0B1D17] w-full z-0">
+    <section className="relative bg-forest w-full z-0">
       {journeyStops.map((stop, index) => (
         <div key={`stop-${stop.id}`} className="relative w-full h-[150vh] md:h-[130vh]">
           {/* Sticky Background */}
@@ -51,18 +51,18 @@ export default function DestinationContent() {
               />
             </div>
             <div className="absolute inset-0 bg-black/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-[#0B1D17]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />
             <AtmosphericMist opacity={0.25} />
           </div>
 
           {/* Scrolling Content */}
-          <div className="absolute bottom-0 w-full h-screen flex flex-col justify-center px-4 md:px-16 lg:px-32 container-default z-10">
+          <div className="absolute bottom-0 w-full h-screen flex flex-col justify-center container-default z-10">
             <div className="max-w-3xl">
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-emerald-400 font-mono text-xl md:text-2xl font-bold">
+                <span className="text-[var(--color-brand-emerald)] font-mono text-xl md:text-2xl font-bold">
                   {(index + 1).toString().padStart(2, '0')}
                 </span>
-                <div className="h-px flex-1 max-w-[4rem] bg-emerald-500/50" />
+                <div className="h-px flex-1 max-w-[4rem] bg-[var(--color-brand-emerald)]/50" />
                 <span className="text-white/60 tracking-[0.2em] text-sm uppercase">
                   Journey Stop
                 </span>
@@ -71,7 +71,7 @@ export default function DestinationContent() {
               <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
                 {stop.name}
               </h2>
-              <h3 className="text-2xl md:text-3xl text-emerald-400 font-medium mb-8 drop-shadow-md">
+              <h3 className="text-2xl md:text-3xl text-[var(--color-brand-emerald)] font-medium mb-8 drop-shadow-md">
                 {stop.title}
               </h3>
               <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl drop-shadow">
@@ -86,7 +86,7 @@ export default function DestinationContent() {
                 ))}
               </div>
 
-              <Link href="/#booking" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold transition-all shadow-xl shadow-emerald-500/20">
+              <Link href="/#booking" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-primary">
                 Explore {stop.name} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -96,3 +96,4 @@ export default function DestinationContent() {
     </section>
   );
 }
+

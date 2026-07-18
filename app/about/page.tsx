@@ -29,7 +29,7 @@ export default function AboutPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-[#0B1D17]/85 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-forest/85 backdrop-blur-sm" />
         </div>
         
         <div className="container-default relative z-10 text-center">
@@ -44,7 +44,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Mission */}
-      <section className="section-pad section-forest">
+      <section className="section-pad bg-forest">
         <div className="container-default">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
@@ -65,9 +65,9 @@ export default function AboutPage() {
               
               <div className="mt-10 grid grid-cols-2 gap-6">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="glass-card p-6 rounded-2xl border-l-2 border-[#00D26A]">
+                  <div key={stat.label} className="glass-card p-6 rounded-2xl border-l-2 border-[var(--color-brand-emerald)]">
                     <div className="font-display text-3xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-sm font-semibold text-[#00D26A] uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-sm font-semibold text-[var(--color-brand-emerald)] uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1D17] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-transparent" />
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why We Are Different */}
-      <section className="section-pad section-deep border-y border-white/5">
+      <section className="section-pad bg-void border-y border-white/5">
         <div className="container-default">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
@@ -119,8 +119,8 @@ export default function AboutPage() {
               }
             ].map((item, i) => (
               <div key={i} className="glass-card p-8 rounded-2xl card-hover relative overflow-hidden">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style={{ background: 'rgba(0, 210, 106, 0.15)' }}>
-                  <item.icon className="w-7 h-7 text-[#00D26A]" />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-[var(--color-brand-emerald)]/15">
+                  <item.icon className="w-7 h-7 text-[var(--color-brand-emerald)]" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-4">{item.title}</h3>
                 <p className="text-white/60 leading-relaxed">{item.desc}</p>
@@ -134,7 +134,7 @@ export default function AboutPage() {
       <AboutSection />
 
       {/* CTA */}
-      <section className="section-pad section-forest relative overflow-hidden">
+      <section className="section-pad bg-forest relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,210,106,0.1)_0%,transparent_70%)]" />
         <div className="container-default relative z-10 text-center max-w-3xl mx-auto">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
@@ -157,3 +157,4 @@ export default function AboutPage() {
     </>
   );
 }
+

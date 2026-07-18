@@ -6,15 +6,22 @@ import { Clock, Users, CheckCircle, ArrowRight, Filter, Mountain, Search } from 
 import { tourPackages } from "@/lib/data";
 import Link from "next/link";
 
-const filters = ["All", "Day Tours", "Multi-Day", "Wildlife", "Romantic", "Adventure", "Custom"];
+// Expanded filters based on requirements
+const filters = [
+  "All", "Day Tours", "Multi-Day", "Wildlife", "Romantic", "Adventure", 
+  "Family", "Nature", "Photography", "Custom"
+];
 
 const badgeColors: Record<string, string> = {
-  "Best Seller": "from-[#00D26A] to-[#00A855]",
+  "Best Seller": "from-[[var(--color-brand-emerald)]] to-[#00A855]",
   "Popular": "from-blue-500 to-indigo-600",
   "Adventure": "from-amber-500 to-orange-500",
   "Wildlife": "from-green-500 to-emerald-600",
   "Romantic": "from-rose-500 to-pink-600",
-  "Customizable": "from-violet-500 to-purple-600",
+  "Group Tour": "from-purple-500 to-fuchsia-600",
+  "Heritage": "from-amber-500 to-yellow-600",
+  "Nature": "from-emerald-400 to-green-500",
+  "Premium Luxury": "from-rose-500 to-pink-600",
 };
 
 export default function ToursClient() {
@@ -24,10 +31,20 @@ export default function ToursClient() {
 
   const filteredPackages = useMemo(() => {
     return tourPackages
-      .filter((pkg) => {
-        const matchesFilter = activeFilter === "All" || pkg.badge === activeFilter || pkg.description.includes(activeFilter);
-        const matchesSearch = pkg.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                              pkg.description.toLowerCase().includes(searchQuery.toLowerCase());
+      .filter((pkg: any) => {
+        // Expanded matching to cover the requested search terms
+        const searchString = `
+          ${pkg.name} ${pkg.description} ${pkg.badge} 
+          ${pkg.highlights?.join(" ")} ${pkg.includes?.join(" ")}
+          ${pkg.familySuitability} ${pkg.coupleSuitability}
+        `.toLowerCase();
+        
+        const q = searchQuery.toLowerCase();
+        const f = activeFilter.toLowerCase();
+        
+        const matchesFilter = activeFilter === "All" || searchString.includes(f);
+        const matchesSearch = searchString.includes(q);
+        
         return matchesFilter && matchesSearch;
       })
       .sort((a, b) => {
@@ -45,7 +62,7 @@ export default function ToursClient() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[[var(--color-brand-emerald)]] to-[#0B9FD4] flex items-center justify-center">
               <Mountain className="w-4 h-4 text-white" />
             </div>
             <span className="section-label">Tour Packages</span>
@@ -64,15 +81,15 @@ export default function ToursClient() {
           <div
             className="flex flex-wrap items-center gap-2 justify-center lg:justify-start"
           >
-            <Filter className="w-4 h-4 text-white/40 text-white/40" />
+            <Filter className="w-4 h-4 text-white/40" />
             {filters.map((f) => (
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                   activeFilter === f
-                    ? "bg-[#00D26A] text-white border-[#00D26A] shadow-lg"
-                    : "glass border-gray-200 border-white/10 text-gray-600 text-white/60 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20"
+                    ? "bg-[[var(--color-brand-emerald)]] text-forest border-[[var(--color-brand-emerald)]] shadow-lg"
+                    : "glass border-white/10 text-white/60 hover:text-white hover:border-white/20"
                 }`}
               >
                 {f}
@@ -88,16 +105,16 @@ export default function ToursClient() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
               <input 
                 type="text" 
-                placeholder="Search packages..." 
+                placeholder="Search by destination, interest..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="input-field pl-10 bg-white bg-white/5 border-gray-200 border-white/10 text-gray-900 text-white"
+                className="input-field w-full pl-10 bg-white/5 border-white/10 text-white placeholder-white/30"
               />
             </div>
             <select 
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="input-field w-full sm:w-40 appearance-none bg-white bg-white/5 border-gray-200 border-white/10 text-gray-900 text-white"
+              className="input-field w-full sm:w-40 appearance-none bg-void border-white/10 text-white"
             >
               <option value="recommended">Recommended</option>
               <option value="price_asc">Price: Low to High</option>
@@ -108,7 +125,7 @@ export default function ToursClient() {
 
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {filteredPackages.map((pkg, i) => (
+          {filteredPackages.map((pkg: any, i: number) => (
             <div
               key={pkg.id}
               className="group glass-card rounded-2xl overflow-hidden card-hover flex flex-col"
@@ -121,33 +138,33 @@ export default function ToursClient() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#16332a] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-light via-transparent to-transparent" />
                 <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${badgeColors[pkg.badge] || "from-gray-600 to-gray-700"} shadow-lg`}>
                   {pkg.badge}
                 </div>
                 <div className="absolute top-3 right-3 flex items-center gap-1 glass px-2.5 py-1 rounded-lg">
-                  <Clock className="w-3 h-3 text-[#00D26A]" />
+                  <Clock className="w-3 h-3 text-[[var(--color-brand-emerald)]]" />
                   <span className="text-xs text-white font-medium">{pkg.duration}</span>
                 </div>
               </div>
 
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[#00D26A] transition-colors">
+                <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[[var(--color-brand-emerald)]] transition-colors">
                   {pkg.name}
                 </h3>
                 <p className="text-white/50 text-sm mb-4 leading-relaxed">{pkg.description}</p>
 
                 <div className="grid grid-cols-2 gap-2 mb-4">
-                  {pkg.highlights.map((h) => (
+                  {pkg.highlights.map((h: string) => (
                     <div key={h} className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-[#00D26A] flex-shrink-0" />
+                      <CheckCircle className="w-3.5 h-3.5 text-[[var(--color-brand-emerald)]] flex-shrink-0" />
                       <span className="text-xs text-white/60 truncate min-w-0 flex-1">{h}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mb-5">
-                  {pkg.includes.map((inc) => (
+                  {pkg.includes.map((inc: string) => (
                     <span key={inc} className="text-xs bg-white/5 border border-white/8 text-white/50 px-2.5 py-1 rounded-lg">
                       {inc}
                     </span>
@@ -229,3 +246,5 @@ export default function ToursClient() {
     </div>
   );
 }
+
+

@@ -112,7 +112,7 @@ export default function TestimonialsCinematic() {
           >
             {/* Large quotation mark */}
             <span
-              className="absolute top-4 left-6 md:top-6 md:left-8 text-7xl md:text-8xl font-display text-emerald-500/20 leading-none select-none pointer-events-none"
+              className="absolute top-4 left-6 md:top-6 md:left-8 text-7xl md:text-8xl font-display text-[var(--color-brand-emerald)]/20 leading-none select-none pointer-events-none"
               aria-hidden="true"
             >
               &ldquo;
@@ -194,9 +194,9 @@ export default function TestimonialsCinematic() {
                 aria-label={isPaused ? 'Resume auto-advance' : 'Pause auto-advance'}
               >
                 {isPaused ? (
-                  <Play className="w-3.5 h-3.5 md:w-4 md:h-4 text-white/60 group-hover:text-emerald-400 transition-colors" />
+                  <Play className="w-3.5 h-3.5 md:w-4 md:h-4 text-white/60 group-hover:text-[var(--color-brand-emerald)] transition-colors" />
                 ) : (
-                  <Pause className="w-3.5 h-3.5 md:w-4 md:h-4 text-white/60 group-hover:text-emerald-400 transition-colors" />
+                  <Pause className="w-3.5 h-3.5 md:w-4 md:h-4 text-white/60 group-hover:text-[var(--color-brand-emerald)] transition-colors" />
                 )}
               </button>
             </div>
@@ -224,3 +224,4 @@ export default function TestimonialsCinematic() {
     </section>
   );
 }
+

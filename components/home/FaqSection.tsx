@@ -60,7 +60,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="section-pad section-forest relative">
+    <section className="section-pad bg-forest relative">
       {/* Inject SEO Schema */}
       <script
         type="application/ld+json"
@@ -76,16 +76,16 @@ export default function FaqSection() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-6 mb-6">
             <div className="flex items-center gap-2 text-white/70 text-sm font-medium">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 text-[var(--color-brand-emerald)]" />
               Secure Booking
             </div>
             <div className="flex items-center gap-2 text-white/70 text-sm font-medium">
-              <RefreshCw className="w-4 h-4 text-emerald-400" />
+              <RefreshCw className="w-4 h-4 text-[var(--color-brand-emerald)]" />
               Free Rescheduling
             </div>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
-            <MessageCircleQuestion className="w-4 h-4" style={{ color: '#00D26A' }} />
+            <MessageCircleQuestion className="w-4 h-4 text-[var(--color-brand-emerald)]" />
             <span className="text-sm font-semibold tracking-wide text-white/80">Before You Go</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
@@ -101,7 +101,7 @@ export default function FaqSection() {
             <div
               key={index}
               className={`glass-card rounded-2xl overflow-hidden transition-all duration-300 ${
-                openIndex === index ? 'border-[#00D26A]/30 bg-[#16332a]' : 'border-white/5 hover:border-[#00D26A]/20'
+                openIndex === index ? 'border-[var(--color-brand-emerald)]/30 bg-[var(--color-brand-emerald)]/10' : 'border-white/5 hover:border-[var(--color-brand-emerald)]/20'
               }`}
             >
               <button
@@ -112,7 +112,7 @@ export default function FaqSection() {
                   {faq.question}
                 </span>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 flex-shrink-0 ${
-                  openIndex === index ? 'bg-[#00D26A] text-white rotate-180' : 'bg-white/10 text-white/50'
+                  openIndex === index ? 'bg-[var(--color-brand-emerald)] text-white rotate-180' : 'bg-white/10 text-white/50'
                 }`}>
                   <ChevronDown className="w-5 h-5" />
                 </div>
@@ -145,3 +145,4 @@ export default function FaqSection() {
     </section>
   );
 }
+

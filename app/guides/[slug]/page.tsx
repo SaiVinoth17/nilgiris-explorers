@@ -25,6 +25,12 @@ export async function generateMetadata({ params }: { params: { slug: string } | 
       url: url,
       images: [guide.image],
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.description,
+      images: [guide.image],
     }
   };
 }
@@ -48,34 +54,32 @@ export default async function GuidePage({ params }: { params: { slug: string } |
 
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Article",
-              headline: guide.title,
-              description: guide.description,
-              image: `https://nilgirisexplorers.com${guide.image}`,
-              author: {
-                "@type": "Organization",
-                name: "Nilgiris Explorers"
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "Nilgiris Explorers",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://nilgirisexplorers.com/images/logo-dark.png"
-                }
-              },
-              datePublished: "2026-01-15T08:00:00+08:00",
-              dateModified: "2026-01-15T08:00:00+08:00"
-            }),
-          }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: guide.title,
+            description: guide.description,
+            image: `https://nilgirisexplorers.com${guide.image}`,
+            author: {
+              "@type": "Organization",
+              name: "Nilgiris Explorers"
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Nilgiris Explorers",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://nilgirisexplorers.com/images/logo-dark.png"
+              }
+            },
+            datePublished: "2026-01-15T08:00:00+08:00",
+            dateModified: "2026-01-15T08:00:00+08:00"
+          }),
+        }}
+      />
       <Navbar />
       <main className="min-h-screen bg-[#0B1D17] pt-32 pb-16">
         <div className="container-default max-w-4xl mx-auto">

@@ -8,6 +8,7 @@ import LenisProvider from "@/lib/lenis";
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import { cn } from "@/lib/utils";
+import AnalyticsProvider from "@/components/providers/AnalyticsProvider";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -88,7 +89,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={cn(poppins.variable, plusJakarta.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
-      <head>
+      <body className="font-body antialiased bg-[#050A08] text-white overflow-x-clip">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -172,12 +173,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-      </head>
-      <body className="font-body antialiased bg-[#050A08] text-white overflow-x-clip">
         <LenisProvider>
           <CinematicNav />
           <main className="pb-16 md:pb-0">
-            {children}
+            <AnalyticsProvider>
+              {children}
+            </AnalyticsProvider>
           </main>
           <WhatsAppWidget />
           <MobileBottomNav />

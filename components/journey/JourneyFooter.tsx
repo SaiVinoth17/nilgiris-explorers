@@ -11,7 +11,7 @@ const CONTACT = {
 
 export default function JourneyFooter() {
   return (
-    <footer className="bg-[#050A08] relative pt-32 pb-12 overflow-hidden border-t border-white/5">
+    <footer className="bg-void relative pt-32 pb-12 overflow-hidden border-t border-white/5">
       {/* Mountain horizon SVG */}
       <div className="absolute top-0 left-0 right-0 w-full pointer-events-none opacity-20 text-emerald-900">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-24 md:h-32">
@@ -22,7 +22,7 @@ export default function JourneyFooter() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container-default relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
           
           {/* Logo & Tagline */}
@@ -49,7 +49,7 @@ export default function JourneyFooter() {
                 <li key={link}>
                   <Link 
                     href={`/${link.toLowerCase().replace(" ", "-")}`}
-                    className="text-white/50 hover:text-emerald-400 transition-colors"
+                    className="text-white/50 hover:text-[var(--color-brand-emerald)] transition-colors"
                   >
                     {link}
                   </Link>
@@ -63,12 +63,12 @@ export default function JourneyFooter() {
             <h4 className="text-white font-semibold uppercase tracking-widest text-sm mb-6">Connect</h4>
             <ul className="space-y-4 text-white/50">
               <li>
-                <a href={`tel:${CONTACT.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-emerald-400 transition-colors">
+                <a href={`tel:${CONTACT.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-[var(--color-brand-emerald)] transition-colors">
                   {CONTACT.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${CONTACT.email}`} className="hover:text-emerald-400 transition-colors">
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-[var(--color-brand-emerald)] transition-colors">
                   {CONTACT.email}
                 </a>
               </li>
@@ -92,3 +92,4 @@ export default function JourneyFooter() {
     </footer>
   );
 }
+

@@ -11,7 +11,7 @@ export default function DestinationsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-void">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/dest_ooty_lake.jpg"
@@ -20,7 +20,7 @@ export default function DestinationsPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1D17]/80 via-[#0B1D17]/40 to-[#0B1D17]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-void/80 via-void/40 to-void" />
         </div>
         
         <div className="container-default relative z-10 text-center">
@@ -28,7 +28,7 @@ export default function DestinationsPage() {
           <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
             Places To Visit In <span className="gradient-text">Ooty</span>
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg md:text-xl">
+          <p className="text-white/70 max-w-2xl mx-auto text-lg md:text-xl font-body">
             From misty peaks to serene lakes, explore the breathtaking beauty of the Blue Mountains with our expert local drivers.
           </p>
         </div>
@@ -38,15 +38,15 @@ export default function DestinationsPage() {
       <DestinationContent />
       
       {/* Additional SEO text for the destinations page */}
-      <section className="section-pad section-forest border-t border-white/5">
+      <section className="section-pad bg-forest border-t border-white/5">
         <div className="container-default max-w-4xl mx-auto text-center">
            <h2 className="font-display text-3xl font-bold text-white mb-6">
              Why Book A Dedicated <span className="gradient-text">Sightseeing Cab?</span>
            </h2>
-           <p className="text-white/60 leading-relaxed text-lg mb-8">
+           <p className="text-white/60 leading-relaxed text-lg mb-8 font-body">
              Navigating the winding hill roads of the Nilgiris requires skill and local knowledge. By booking a dedicated sightseeing taxi with Nilgiris Explorers, you avoid the hassle of public transport, the stress of driving on steep hairpin bends, and the confusion of finding parking at crowded tourist spots.
            </p>
-           <p className="text-white/60 leading-relaxed text-lg">
+           <p className="text-white/60 leading-relaxed text-lg font-body">
              Our drivers know the optimal routes, the best times to visit each attraction to avoid crowds, and can recommend authentic local dining experiences along the way. Whether you want to cover the standard Ooty local sightseeing circuit or venture off the beaten path to Emerald Lake, your itinerary is completely customizable.
            </p>
         </div>

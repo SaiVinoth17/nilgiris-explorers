@@ -24,6 +24,12 @@ export async function generateMetadata({ params }: { params: { slug: string } | 
       description: loc.description,
       url: url,
       images: [loc.heroImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: loc.title,
+      description: loc.description,
+      images: [loc.heroImage],
     }
   };
 }
@@ -46,39 +52,37 @@ export default async function LocationPage({ params }: { params: { slug: string 
 
   return (
     <>
-      <head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TouristDestination",
+            name: loc.name,
+            description: loc.description,
+            image: `https://nilgirisexplorers.com${loc.heroImage}`,
+          }),
+        }}
+      />
+      {loc.faqs && loc.faqs.length > 0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "TouristDestination",
-              name: loc.name,
-              description: loc.description,
-              image: `https://nilgirisexplorers.com${loc.heroImage}`,
-            }),
+              "@type": "FAQPage",
+              mainEntity: loc.faqs.map(faq => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.answer
+                }
+              }))
+            })
           }}
         />
-        {loc.faqs && loc.faqs.length > 0 && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: loc.faqs.map(faq => ({
-                  "@type": "Question",
-                  name: faq.question,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: faq.answer
-                  }
-                }))
-              })
-            }}
-          />
-        )}
-      </head>
+      )}
       <Navbar />
       <main className="min-h-screen bg-[#0B1D17] pt-32 pb-16">
         <div className="container-default">

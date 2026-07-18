@@ -2,7 +2,7 @@
 
 export default function HeroJourney() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#050A08] flex items-center justify-center">
+    <div className="relative h-screen w-full overflow-hidden bg-void flex items-center justify-center">
 
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
@@ -19,7 +19,7 @@ export default function HeroJourney() {
         </video>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050A08]/60 via-transparent to-[#050A08]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void" />
 
         {/* Optional Vignette */}
         <div
@@ -48,7 +48,7 @@ export default function HeroJourney() {
           Begin Journey
         </span>
 
-        <div className="w-[1px] h-10 bg-gradient-to-b from-emerald-500/50 to-transparent" />
+        <div className="w-[1px] h-10 bg-gradient-to-b from-brand-emerald/50 to-transparent" />
       </div>
 
     </div>

@@ -7,7 +7,7 @@ const displayPackages = tourPackages.slice(0, 5);
 
 function formatPrice(price: number): { text: string; color: string } {
   if (price > 0) {
-    return { text: `₹${price.toLocaleString("en-IN")}`, color: "text-emerald-400" };
+    return { text: `₹${price.toLocaleString("en-IN")}`, color: "text-[var(--color-brand-emerald)]" };
   }
   return { text: "Custom Quote", color: "text-amber-400" };
 }
@@ -18,10 +18,10 @@ function isBestSeller(tour: (typeof tourPackages)[number]): boolean {
 
 export default function ToursShowcase() {
   return (
-    <section className="relative section-pad overflow-hidden" aria-labelledby="tours-heading">
+    <section className="relative section-pad overflow-hidden bg-void" aria-labelledby="tours-heading">
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-emerald-500/[0.03] blur-[120px]" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-[var(--color-brand-emerald)]/[0.03] blur-[120px]" />
       </div>
 
       <div className="container-default relative z-10">
@@ -50,9 +50,7 @@ export default function ToursShowcase() {
                 key={tour.id}
                 className={`
                   group relative rounded-2xl p-6 md:p-8
-                  bg-white/[0.03] border border-white/[0.08]
-                  transition-colors duration-200
-                  hover:border-emerald-500/30 hover:bg-white/[0.05]
+                  glass-card
                   ${isFeatured ? "md:col-span-2" : ""}
                 `}
               >
@@ -62,7 +60,7 @@ export default function ToursShowcase() {
                 </span>
 
                 {bestSeller && (
-                  <span className="absolute top-4 left-6 tag-badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <span className="absolute top-4 left-6 tag-badge">
                     ★ Best Seller
                   </span>
                 )}
@@ -82,7 +80,7 @@ export default function ToursShowcase() {
                         <span key={h} className="flex items-center gap-2">
                           <span className="text-sm text-white/50 font-body">{h}</span>
                           {i < Math.min(tour.highlights.length, 4) - 1 && (
-                            <span className="w-1 h-1 rounded-full bg-emerald-500/40" aria-hidden="true" />
+                            <span className="w-1 h-1 rounded-full bg-[var(--color-brand-emerald)]/40" aria-hidden="true" />
                           )}
                         </span>
                       ))}
@@ -97,7 +95,7 @@ export default function ToursShowcase() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-display font-semibold text-sm rounded-full px-6 py-3 transition-colors duration-200"
+                      className="btn-primary"
                     >
                       Plan This Journey →
                     </a>
@@ -110,7 +108,7 @@ export default function ToursShowcase() {
 
         {/* View All */}
         <div className="mt-12 md:mt-16 text-center">
-          <Link href="/tours" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-display font-semibold text-base transition-colors duration-200">
+          <Link href="/tours" className="inline-flex items-center gap-2 text-[var(--color-brand-emerald)] hover:text-white font-display font-semibold text-base transition-colors duration-200">
             View All Adventures →
           </Link>
         </div>

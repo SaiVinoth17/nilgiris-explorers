@@ -48,7 +48,7 @@ const destinations = [
 
 export default function ExperiencesShowcase() {
   return (
-    <section className="relative bg-[#050A08]" aria-label="Four Worlds of Nilgiris">
+    <section className="relative bg-void" aria-label="Four Worlds of Nilgiris">
       {/* Section Header */}
       <div className="px-6 pt-24 pb-16 text-center">
         <span className="section-label mb-6">The Nilgiris Experience</span>
@@ -92,8 +92,8 @@ export default function ExperiencesShowcase() {
 
             {/* Number watermark */}
             <span
-              className="absolute top-6 right-8 z-10 font-display font-black text-white select-none pointer-events-none leading-none"
-              style={{ fontSize: "15vw", opacity: 0.04 }}
+              className="absolute top-6 right-8 z-10 font-display font-black text-white select-none pointer-events-none leading-none opacity-5"
+              style={{ fontSize: "15vw" }}
               aria-hidden="true"
             >
               {dest.number}
@@ -101,7 +101,7 @@ export default function ExperiencesShowcase() {
 
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-10 md:p-14 lg:p-20">
-              <span className="tag-badge bg-emerald/20 text-emerald border border-emerald/30 mb-4">
+              <span className="tag-badge mb-4">
                 {dest.tag}
               </span>
 
@@ -119,7 +119,7 @@ export default function ExperiencesShowcase() {
 
               <Link
                 href={`/destinations/${dest.slug}`}
-                className="group/link inline-flex items-center gap-2 mt-6 text-emerald font-display font-semibold text-sm md:text-base tracking-wide transition-colors duration-200 hover:text-emerald-300"
+                className="group/link inline-flex items-center gap-2 mt-6 text-[var(--color-brand-emerald)] font-body font-semibold text-sm md:text-base tracking-wide transition-colors duration-200 hover:text-white"
               >
                 Explore
                 <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
@@ -127,7 +127,7 @@ export default function ExperiencesShowcase() {
             </div>
 
             {/* Bottom accent line */}
-            <div className="absolute bottom-0 left-0 w-full h-[2px] z-20 bg-gradient-to-r from-transparent via-emerald/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 w-full h-[2px] z-20 bg-gradient-to-r from-transparent via-[var(--color-brand-emerald)]/40 to-transparent" />
           </div>
         ))}
       </div>

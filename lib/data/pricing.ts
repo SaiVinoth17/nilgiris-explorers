@@ -1,0 +1,111 @@
+export const vehiclePricing = {
+  hatchback: {
+    id: "hatchback",
+    name: "4 Seater (Hatchback)",
+    models: ["Swift", "i10", "Ignis"],
+    capacity: 4,
+    luggage: "2 bags",
+    baseRatePerKm: 12,
+    driverBata: 400,
+    hillCharge: 200,
+    waitingChargePerHour: 100,
+    nightDrivingCharge: 300,
+    recommendedFor: "Couples, small families",
+  },
+  sedan: {
+    id: "sedan",
+    name: "4 Seater (Sedan)",
+    models: ["Dzire", "Aspire", "Etios"],
+    capacity: 4,
+    luggage: "3 bags",
+    baseRatePerKm: 14,
+    driverBata: 400,
+    hillCharge: 250,
+    waitingChargePerHour: 100,
+    nightDrivingCharge: 300,
+    recommendedFor: "Couples, families needing boot space",
+  },
+  suv: {
+    id: "suv",
+    name: "6 Seater (SUV)",
+    models: ["Ertiga", "XL6", "Carens"],
+    capacity: 6,
+    luggage: "4 bags",
+    baseRatePerKm: 18,
+    driverBata: 500,
+    hillCharge: 300,
+    waitingChargePerHour: 150,
+    nightDrivingCharge: 400,
+    recommendedFor: "Families up to 6 members",
+  },
+  innova: {
+    id: "innova",
+    name: "7 Seater (Innova Crysta)",
+    models: ["Toyota Innova Crysta"],
+    capacity: 7,
+    luggage: "5 bags",
+    baseRatePerKm: 22,
+    driverBata: 600,
+    hillCharge: 400,
+    waitingChargePerHour: 200,
+    nightDrivingCharge: 500,
+    recommendedFor: "Premium comfort for large families",
+  },
+  tempo: {
+    id: "tempo",
+    name: "12-17 Seater (Tempo Traveller)",
+    models: ["Force Tempo Traveller"],
+    capacity: 17,
+    luggage: "10+ bags",
+    baseRatePerKm: 35,
+    driverBata: 800,
+    hillCharge: 500,
+    waitingChargePerHour: 300,
+    nightDrivingCharge: 800,
+    recommendedFor: "Large groups, corporate outings",
+  },
+  luxury: {
+    id: "luxury",
+    name: "Luxury SUV",
+    models: ["Fortuner", "Scorpio N"],
+    capacity: 6,
+    luggage: "4 bags",
+    baseRatePerKm: 32,
+    driverBata: 800,
+    hillCharge: 500,
+    waitingChargePerHour: 300,
+    nightDrivingCharge: 800,
+    recommendedFor: "VIP travel, luxury experiences",
+  }
+};
+
+export const packageTiers = {
+  budget: {
+    id: "budget",
+    name: "Budget",
+    multiplier: 1.0,
+    includes: ["Standard Hotel / Homestay", "Standard Hatchback/Sedan", "Breakfast Only"],
+    description: "Great value for money without compromising on essential comforts."
+  },
+  standard: {
+    id: "standard",
+    name: "Standard",
+    multiplier: 1.4,
+    includes: ["3-Star Hotel Accommodation", "Premium Sedan/SUV", "Breakfast & Dinner"],
+    description: "The perfect balance of comfort and affordability."
+  },
+  premium: {
+    id: "premium",
+    name: "Premium",
+    multiplier: 2.0,
+    includes: ["4-Star Resort / Premium Cottage", "Innova Crysta", "All Meals", "Dedicated Guide"],
+    description: "Elevated experiences with premium stays and dedicated assistance."
+  },
+  luxury: {
+    id: "luxury",
+    name: "Luxury",
+    multiplier: 3.5,
+    includes: ["5-Star Luxury Resort", "Luxury SUV / Innova", "All Meals & Special Dining", "VIP Entry Passes", "Spa Session"],
+    description: "Uncompromised luxury for the ultimate Nilgiris experience."
+  }
+};
