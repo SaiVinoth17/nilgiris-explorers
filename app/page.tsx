@@ -4,6 +4,7 @@ import JourneyNarrative from "@/components/journey/JourneyNarrative";
 import DestinationReveal from "@/components/journey/DestinationReveal";
 import AdventureBooking from "@/components/journey/AdventureBooking";
 import JourneyFooter from "@/components/journey/JourneyFooter";
+import Scroll3DReveal from "@/components/ui/Scroll3DReveal";
 
 
 const ExperiencesShowcase = dynamic(() => import("@/components/journey/ExperiencesShowcase"));
@@ -21,30 +22,43 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="relative bg-[#050A08] min-h-screen selection:bg-emerald-500/30 selection:text-white">
-      {/* 1. Cinematic Entry */}
+      {/* 1. Cinematic Entry — no 3D wrap, visible on load */}
       <HeroJourney />
       
-      {/* 2. Story Bridge & Vehicle Path starts */}
-
-      <JourneyNarrative />
+      {/* 2. Story Bridge */}
+      <Scroll3DReveal variant="rise">
+        <JourneyNarrative />
+      </Scroll3DReveal>
       
       {/* 3. The Four Worlds */}
-      <ExperiencesShowcase />
+      <Scroll3DReveal variant="tiltLeft">
+        <ExperiencesShowcase />
+      </Scroll3DReveal>
       
       {/* 4. Immersive Destinations */}
-      <DestinationReveal />
+      <Scroll3DReveal variant="depth" perspective={1200}>
+        <DestinationReveal />
+      </Scroll3DReveal>
       
       {/* 5. Curated Adventures */}
-      <ToursShowcase />
+      <Scroll3DReveal variant="tiltRight">
+        <ToursShowcase />
+      </Scroll3DReveal>
       
       {/* 6. Adventure Planner */}
-      <AdventureBooking />
+      <Scroll3DReveal variant="rise">
+        <AdventureBooking />
+      </Scroll3DReveal>
       
       {/* 7. Traveler Stories */}
-      <TestimonialsCinematic />
+      <Scroll3DReveal variant="depth">
+        <TestimonialsCinematic />
+      </Scroll3DReveal>
       
       {/* 8. The Horizon */}
-      <JourneyFooter />
+      <Scroll3DReveal variant="float">
+        <JourneyFooter />
+      </Scroll3DReveal>
     </div>
   );
 }
