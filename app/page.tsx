@@ -14,8 +14,30 @@ const TestimonialsCinematic = dynamic(() => import("@/components/journey/Testimo
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  title: "Nilgiris Explorers Tours & Travels | Ooty Taxi Service & Tour Packages",
+  description:
+    "Book Ooty taxi services, premium tour packages, and luxury accommodations with Nilgiris Explorers. Trusted by 10,000+ travelers for cab booking, sightseeing, and adventure trips across the Nilgiris mountains.",
+  keywords: [
+    "Ooty taxi",
+    "Ooty tour packages",
+    "Nilgiris Explorers",
+    "Ooty cab service",
+    "Ooty sightseeing",
+    "Coonoor tours",
+    "Pykara boating",
+    "Mudumalai safari",
+    "hill station tours",
+    "Nilgiris travel",
+  ],
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    title: "Nilgiris Explorers — Premium Tours & Taxi Service in Ooty",
+    description:
+      "Discover the magic of the Nilgiris with our curated tour packages, reliable cab service, and handpicked accommodations. Your mountain adventure starts here.",
+    url: "/",
+    type: "website",
   },
 };
 
