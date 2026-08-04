@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { stats } from "@/lib/data";
 import { Mountain, Award, Heart } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 function useInView(ref: React.RefObject<HTMLElement | null>, options: { once?: boolean } = {}) {
   const [isInView, setIsInView] = useState(false);
@@ -54,9 +55,7 @@ export default function AboutSection() {
         {/* Main about layout */}
         <div className="grid lg:grid-cols-2 gap-14 items-center mb-20">
           {/* Left — Brand Card (No picture) */}
-          <div
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative rounded-3xl overflow-hidden h-96 sm:h-[480px] bg-gradient-to-br from-[#16332a] to-[#0a0e1a] border border-white/5 flex flex-col justify-center items-center p-8 text-center shadow-2xl">
               {/* Glowing decorative circles */}
               <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-2xl pointer-events-none" />
@@ -72,9 +71,7 @@ export default function AboutSection() {
             </div>
 
             {/* Floating stats card */}
-            <div
-              className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-5 shadow-2xl"
-            >
+            <div className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-5 shadow-2xl">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-lg bg-[#00D26A]/20 flex items-center justify-center">
                   <Award className="w-4 h-4 text-[#00D26A]" />
@@ -95,17 +92,14 @@ export default function AboutSection() {
             </div>
 
             {/* Floating local tag */}
-            <div
-              className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2"
-            >
+            <div className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2">
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
               <span className="text-white text-sm font-medium">Ooty&apos;s Favourite Local Experts Since 2021</span>
             </div>
           </div>
 
           {/* Right — Content */}
-          <div
-          >
+          <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00D26A] to-[#0B9FD4] flex items-center justify-center">
                 <Mountain className="w-4 h-4 text-white" />
@@ -113,10 +107,15 @@ export default function AboutSection() {
               <span className="section-label">Our Story</span>
             </div>
 
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-              Born In The Mist,{" "}
-              <span className="gradient-text">Built For You</span>
-            </h2>
+            <ScrollReveal
+              baseOpacity={0.15}
+              enableBlur={true}
+              blurStrength={6}
+              baseRotation={2}
+              textClassName="font-display text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight"
+            >
+              Born In The Mist, Built For You
+            </ScrollReveal>
 
             <div className="space-y-4 text-white/60 text-base leading-relaxed">
               <p>
@@ -142,28 +141,22 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Animated Stats */}
-        <div
-          className="glass-card rounded-3xl p-8 sm:p-12"
-        >
-          <div className="text-center mb-10">
-            <h3 className="font-display text-3xl font-bold text-white">
-              Numbers That <span className="gradient-text">Tell Our Story</span>
-            </h3>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="text-center"
-              >
-                <div className="font-display text-4xl sm:text-5xl font-bold gradient-text mb-2">
-                  <CountUp target={stat.value} suffix={stat.suffix} decimals={stat.decimals || 0} />
-                </div>
-                <div className="text-white/50 text-sm font-medium">{stat.label}</div>
+        {/* Stats counter strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-white/10">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="font-display text-4xl sm:text-5xl font-bold text-white mb-1">
+                <CountUp
+                  target={s.value}
+                  suffix={s.suffix}
+                  decimals={s.value % 1 !== 0 ? 1 : 0}
+                />
               </div>
-            ))}
-          </div>
+              <div className="text-white/40 text-xs sm:text-sm font-medium uppercase tracking-wider">
+                {s.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

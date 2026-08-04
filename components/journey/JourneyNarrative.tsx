@@ -1,6 +1,7 @@
 "use client";
 
 import MaskedHeading from "@/components/ui/MaskedHeading";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function JourneyNarrative() {
   return (
@@ -29,13 +30,17 @@ export default function JourneyNarrative() {
           />
         </div>
 
-        {/* Narrative copy */}
-        <p className="font-serif text-xl md:text-3xl lg:text-4xl text-white/85 leading-relaxed md:leading-snug text-center">
-          For centuries, the Nilgiri Mountains have whispered to travelers.
-          A sanctuary of rolling emerald hills, ancient forests, and skies
-          that dance with light. This is not just a destination.{" "}
-          <span className="text-[var(--color-brand-emerald)]">It is a feeling.</span>
-        </p>
+        {/* Narrative copy with ScrollReveal */}
+        <ScrollReveal
+          as="div"
+          baseOpacity={0.1}
+          enableBlur={true}
+          blurStrength={6}
+          baseRotation={2}
+          textClassName="font-serif text-xl md:text-3xl lg:text-4xl text-white/85 leading-relaxed md:leading-snug text-center"
+        >
+          For centuries, the Nilgiri Mountains have whispered to travelers. A sanctuary of rolling emerald hills, ancient forests, and skies that dance with light. This is not just a destination. It is a feeling.
+        </ScrollReveal>
 
         {/* Stats */}
         <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 text-center border-t border-white/10 pt-14">
