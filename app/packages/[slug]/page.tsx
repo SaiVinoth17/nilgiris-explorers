@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { 
-  Star, MapPin, Clock, CalendarDays, CheckCircle2, ArrowRight, ArrowLeft, 
-  Users, Shield, MessageCircle, Utensils, Info, AlertCircle, Mountain
+  Star, MapPin, Clock, CalendarDays, CheckCircle2, ArrowLeft, 
+  Shield, MessageCircle, Utensils, Info, Mountain
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -45,13 +45,12 @@ export async function generateStaticParams() {
 
 export default async function PackageDetailsPage({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const pkg: any = tourPackages.find((p) => p.slug === resolvedParams.slug);
+  const pkg = tourPackages.find((p) => p.slug === resolvedParams.slug);
 
   if (!pkg) {
     notFound();
   }
 
-  const url = `https://nilgirisexplorers.com/packages/${pkg.slug}`;
   const whatsappText = `Hello! I'm interested in booking the "${pkg.name}" package. Please provide more details.`;
 
   return (
@@ -73,7 +72,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
             },
             itinerary: {
               "@type": "ItemList",
-              itemListElement: pkg.itinerary?.map((day: any, index: number) => ({
+              itemListElement: pkg.itinerary?.map((day, index: number) => ({
                 "@type": "ListItem",
                 position: index + 1,
                 item: {
@@ -93,7 +92,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: pkg.faqs.map((faq: any) => ({
+              mainEntity: pkg.faqs.map((faq) => ({
                 "@type": "Question",
                 name: faq.question,
                 acceptedAnswer: {
@@ -101,7 +100,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                   text: faq.answer
                 }
               }))
-            })
+            }),
           }}
         />
       )}
@@ -233,7 +232,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
                 <div>
                   <h2 className="text-3xl font-display font-bold text-white mb-8">Detailed Itinerary</h2>
                   <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-[#00D26A] before:to-transparent">
-                    {pkg.itinerary.map((day: any, idx: number) => (
+                    {pkg.itinerary.map((day, idx: number) => (
                       <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                         <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-forest bg-[#00D26A] text-forest font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
                           {idx + 1}
@@ -262,7 +261,7 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
               {/* Included Experiences */}
               {pkg.includes && (
                 <div>
-                  <h2 className="text-3xl font-display font-bold text-white mb-6">What's Included</h2>
+                  <h2 className="text-3xl font-display font-bold text-white mb-6">What&apos;s Included</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {pkg.includes.map((inc: string, i: number) => (
                       <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">

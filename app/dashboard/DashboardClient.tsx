@@ -60,7 +60,7 @@ export default function DashboardClient() {
             { icon: Calendar, label: "Upcoming", value: "1", color: "from-blue-500 to-indigo-600" },
             { icon: Star, label: "Avg Rating", value: "4.8★", color: "from-amber-500 to-orange-500" },
             { icon: CreditCard, label: "Total Spent", value: "₹10,200", color: "from-violet-500 to-purple-600" },
-          ].map(({ icon: Icon, label, value, color }, i) => (
+          ].map(({ icon: Icon, label, value, color }) => (
             <div
               key={label}
               className="glass-card rounded-xl p-4"
@@ -139,7 +139,7 @@ export default function DashboardClient() {
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 text-white mb-2">No Upcoming Trips</h3>
                   <p className="text-gray-500 text-white/50 mb-8 max-w-sm mx-auto">
-                    Looks like you haven't booked any trips yet. Discover the beauty of the Nilgiris with our premium packages.
+                    Looks like you haven&apos;t booked any trips yet. Discover the beauty of the Nilgiris with our premium packages.
                   </p>
                   <Link href="/#booking" className="btn-primary">
                     Explore Packages <ArrowRight className="w-4 h-4" />

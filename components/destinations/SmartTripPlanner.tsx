@@ -1,16 +1,43 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Calculator, Users, Clock, Car, Coffee, Camera, ChevronDown, ChevronUp, MapPin, Package, Backpack, Send, FileDown, Copy } from "lucide-react";
+import { Calculator, Users, Car, Coffee, Camera, ChevronDown, ChevronUp, MapPin, Package, Backpack, Send, FileDown, Copy } from "lucide-react";
 import { pickupLocations, accommodationPricing, foodPricing, destinationActivities } from "@/lib/data/planner";
 import { tripIntelligence } from "@/lib/data/intelligence";
 import { tourPackages } from "@/lib/data";
 import { vehiclePricing } from "@/lib/data/pricing";
 import { trackEvent, trackWhatsAppClick } from "@/lib/analytics";
 
-interface SmartTripPlannerProps {
-  destination: any;
+interface DestinationType {
+  slug: string;
+  name: string;
+  [key: string]: unknown;
 }
+
+interface SmartTripPlannerProps {
+  destination: DestinationType;
+}
+
+interface SectionHeaderProps {
+  id: string;
+  icon: React.ElementType;
+  title: string;
+  expandedSection: string | null;
+  toggleSection: (id: string) => void;
+}
+
+const SectionHeader = ({ id, icon: Icon, title, expandedSection, toggleSection }: SectionHeaderProps) => (
+  <button 
+    onClick={() => toggleSection(id)}
+    className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors border-b border-white/10"
+  >
+    <div className="flex items-center gap-3">
+      <Icon className="w-5 h-5 text-emerald-400" />
+      <span className="font-bold text-white text-lg">{title}</span>
+    </div>
+    {expandedSection === id ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+  </button>
+);
 
 export default function SmartTripPlanner({ destination }: SmartTripPlannerProps) {
   // Inputs
@@ -23,7 +50,6 @@ export default function SmartTripPlanner({ destination }: SmartTripPlannerProps)
   const [vehicle, setVehicle] = useState("sedan");
   const [accommodation, setAccommodation] = useState("standard");
   const [food, setFood] = useState("standard");
-  const [customFood, setCustomFood] = useState(0);
   const [shopping, setShopping] = useState(0);
   const [misc, setMisc] = useState(0);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
@@ -32,7 +58,7 @@ export default function SmartTripPlanner({ destination }: SmartTripPlannerProps)
   const [expandedSection, setExpandedSection] = useState<string | null>("inputs");
 
   // Destination specific activities
-  const currentActivities = destinationActivities[destination.slug as keyof typeof destinationActivities] || [];
+  const currentActivities = useMemo(() => destinationActivities[destination.slug as keyof typeof destinationActivities] || [], [destination.slug]);
 
   const toggleActivity = (actId: string) => {
     setSelectedActivities(prev => 
@@ -40,81 +66,67 @@ export default function SmartTripPlanner({ destination }: SmartTripPlannerProps)
     );
   };
 
-  // Memoized Calculations
+  // Dynamic Calculations
   const calculations = useMemo(() => {
-    const sDate = new Date(startDate);
-    const eDate = new Date(endDate);
-    const durationDays = (!isNaN(sDate.getTime()) && !isNaN(eDate.getTime()) && eDate > sDate) 
-      ? Math.max(1, Math.ceil((eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24)))
-      : 3; // default to 3 days if dates not selected
+    let durationDays = 1;
+    if (startDate && endDate) {
+      const diffTime = Math.abs(new Date(endDate).getTime() - new Date(startDate).getTime());
+      durationDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+    }
 
-    const pax = adults + children;
-    const rooms = Math.ceil(pax / 3); // Max 3 per room
+    const vData = vehiclePricing[vehicle as keyof typeof vehiclePricing] || vehiclePricing.sedan;
+    const transportCost = vData.baseRatePerKm * 100 * durationDays;
 
-    // Transportation
-    const selectedPickup = pickupLocations.find(p => p.id === pickupLocation);
-    const distanceKm = (selectedPickup?.baseDistanceKm || 0) * 2; // round trip to destination
-    const internalKm = durationDays * 50; // estimate 50km local sightseeing per day
-    const totalKm = distanceKm + internalKm;
-    
-    const vPricing = vehiclePricing[vehicle as keyof typeof vehiclePricing];
-    const transportCost = (totalKm * vPricing.baseRatePerKm) + (durationDays * vPricing.driverBata) + vPricing.hillCharge;
+    const accData = accommodationPricing[accommodation as keyof typeof accommodationPricing] || accommodationPricing.standard;
+    const accommodationCost = accData.pricePerNight * durationDays;
 
-    // Accommodation
-    const accCostPerNight = accommodationPricing[accommodation as keyof typeof accommodationPricing]?.pricePerNight || 0;
-    const accommodationCost = accCostPerNight * rooms * durationDays;
+    const fData = foodPricing[food as keyof typeof foodPricing];
+    const foodPerDay = fData ? fData.pricePerPersonPerDay : 500;
+    const totalPeople = adults + children;
+    const foodCost = foodPerDay * totalPeople * durationDays;
 
-    // Food
-    const dailyFoodPerPax = food === "custom" ? customFood : foodPricing[food as keyof typeof foodPricing]?.pricePerPersonPerDay || 0;
-    const foodCost = dailyFoodPerPax * pax * durationDays;
-
-    // Activities
-    const activityCost = selectedActivities.reduce((acc, actId) => {
-      const act = currentActivities.find(a => a.id === actId);
-      return acc + (act ? act.price * pax : 0);
+    const activityCost = selectedActivities.reduce((sum, id) => {
+      const act = currentActivities.find(a => a.id === id);
+      return sum + (act ? act.price * totalPeople : 0);
     }, 0);
 
     const total = transportCost + accommodationCost + foodCost + activityCost + shopping + misc;
 
+    const percentages = {
+      transport: total > 0 ? Math.round((transportCost / total) * 100) : 0,
+      accommodation: total > 0 ? Math.round((accommodationCost / total) * 100) : 0,
+      food: total > 0 ? Math.round((foodCost / total) * 100) : 0,
+      activities: total > 0 ? Math.round((activityCost / total) * 100) : 0,
+    };
+
     return {
       durationDays,
-      pax,
       transportCost,
       accommodationCost,
       foodCost,
       activityCost,
       total,
-      percentages: {
-        transport: Math.round((transportCost / total) * 100) || 0,
-        accommodation: Math.round((accommodationCost / total) * 100) || 0,
-        food: Math.round((foodCost / total) * 100) || 0,
-        activities: Math.round((activityCost / total) * 100) || 0,
-      }
+      percentages
     };
-  }, [startDate, endDate, adults, children, pickupLocation, vehicle, accommodation, food, customFood, shopping, misc, selectedActivities, currentActivities]);
+  }, [startDate, endDate, vehicle, accommodation, food, adults, children, selectedActivities, shopping, misc, currentActivities]);
 
-  const intel = tripIntelligence[tripType];
+  // Trip Intelligence Engine
+  const intel = useMemo(() => {
+    const data = tripIntelligence[tripType] || tripIntelligence.couple;
+    return data;
+  }, [tripType]);
 
-  const handleWhatsApp = () => {
-    trackWhatsAppClick("trip_planner", { destination: destination.slug, total: calculations.total });
-    const text = `Hello! I planned a trip using your Smart Planner.
-Destination: ${destination.name}
-Dates: ${startDate} to ${endDate} (${calculations.durationDays} days)
-Travellers: ${adults} Adults, ${children} Children
-Trip Type: ${intel.name}
-Pickup: ${pickupLocations.find(p => p.id === pickupLocation)?.name}
-Vehicle: ${vehiclePricing[vehicle as keyof typeof vehiclePricing]?.name}
-Accommodation: ${accommodationPricing[accommodation as keyof typeof accommodationPricing]?.name}
-
-*Estimated Budget:*
-Transport: ₹${calculations.transportCost}
-Stay: ₹${calculations.accommodationCost}
-Food: ₹${calculations.foodCost}
-Activities: ₹${calculations.activityCost}
-Grand Total: ₹${calculations.total}
-
-Please help me formalize this booking!`;
+  const handleWhatsAppBooking = () => {
+    trackWhatsAppClick("smart_planner", { destination: destination.name, total: calculations.total });
+    const text = `Hi Nilgiris Explorers! I planned a trip to ${destination.name} using your Smart Planner:\n\n📅 Duration: ${calculations.durationDays} Days\n👥 Travelers: ${adults} Adults, ${children} Children\n🚗 Vehicle: ${vehicle}\n🏨 Stay: ${accommodation}\n💰 Est. Budget: ₹${calculations.total.toLocaleString()}\n\nCan you help finalize this booking?`;
     window.open(`https://wa.me/919585219509?text=${encodeURIComponent(text)}`, "_blank");
+  };
+
+  const handleCopySummary = () => {
+    trackEvent("copy_trip_plan");
+    const text = `Nilgiris Trip Plan to ${destination.name}\nEst Total: ₹${calculations.total.toLocaleString()}\nDuration: ${calculations.durationDays} days`;
+    navigator.clipboard.writeText(text);
+    alert("Trip plan copied to clipboard!");
   };
 
   const handlePrint = () => {
@@ -125,19 +137,6 @@ Please help me formalize this booking!`;
   const toggleSection = (section: string) => {
     setExpandedSection(prev => prev === section ? null : section);
   };
-
-  const SectionHeader = ({ id, icon: Icon, title }: { id: string, icon: any, title: string }) => (
-    <button 
-      onClick={() => toggleSection(id)}
-      className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 transition-colors border-b border-white/10"
-    >
-      <div className="flex items-center gap-3">
-        <Icon className="w-5 h-5 text-emerald-400" />
-        <span className="font-bold text-white text-lg">{title}</span>
-      </div>
-      {expandedSection === id ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
-    </button>
-  );
 
   return (
     <div className="glass-card rounded-2xl border border-white/10 overflow-hidden flex flex-col mb-8">
@@ -156,13 +155,13 @@ Please help me formalize this booking!`;
       </div>
 
       {/* Inputs Section */}
-      <SectionHeader id="inputs" icon={Car} title="Customize Your Trip" />
+      <SectionHeader id="inputs" icon={Car} title="Customize Your Trip" expandedSection={expandedSection} toggleSection={toggleSection} />
       {expandedSection === "inputs" && (
         <div className="p-6 space-y-6 bg-black/20">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-medium text-white/60 mb-2">Trip Type</label>
-              <select className="input-field w-full text-sm bg-white/5 border-white/10 text-white h-10" value={tripType} onChange={(e) => setTripType(e.target.value as any)}>
+              <select className="input-field w-full text-sm bg-white/5 border-white/10 text-white h-10" value={tripType} onChange={(e) => setTripType(e.target.value as keyof typeof tripIntelligence)}>
                 {Object.entries(tripIntelligence).map(([k, v]) => (
                   <option key={k} value={k} className="bg-gray-900">{v.name}</option>
                 ))}
@@ -255,7 +254,7 @@ Please help me formalize this booking!`;
       )}
 
       {/* Budget Breakdown Section */}
-      <SectionHeader id="budget" icon={Calculator} title="Detailed Breakdown" />
+      <SectionHeader id="budget" icon={Calculator} title="Detailed Breakdown" expandedSection={expandedSection} toggleSection={toggleSection} />
       {expandedSection === "budget" && (
         <div className="p-6 bg-black/20">
           <div className="space-y-4">
@@ -288,7 +287,7 @@ Please help me formalize this booking!`;
       )}
 
       {/* Smart Intelligence Section */}
-      <SectionHeader id="intelligence" icon={Users} title="Smart Insights & Itinerary" />
+      <SectionHeader id="intelligence" icon={Users} title="Smart Insights & Itinerary" expandedSection={expandedSection} toggleSection={toggleSection} />
       {expandedSection === "intelligence" && (
         <div className="p-6 bg-black/20 space-y-6">
           <div className="p-4 rounded-xl bg-white/5 border border-white/10">
@@ -308,37 +307,27 @@ Please help me formalize this booking!`;
               <p className="text-sm text-white/70">{intel.insights}</p>
             </div>
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <h4 className="text-white font-bold mb-2 flex items-center gap-2"><Backpack className="w-4 h-4 text-emerald-400" /> Packing List</h4>
-              <ul className="text-sm text-white/70 space-y-1">
-                {intel.packingList.map((item, i) => <li key={i}>• {item}</li>)}
-              </ul>
+              <h4 className="text-white font-bold mb-2 flex items-center gap-2"><Backpack className="w-4 h-4 text-emerald-400" /> Packing Tip</h4>
+              <p className="text-sm text-white/70">{intel.packingList?.join(", ")}</p>
             </div>
-          </div>
-
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-            <h4 className="text-white font-bold mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-emerald-400" /> Generated Itinerary Focus</h4>
-            <ul className="text-sm text-white/70 space-y-2">
-              <li className="flex gap-3"><span className="text-emerald-400 font-bold">Morning:</span> Head to top view points before mist rolls in.</li>
-              <li className="flex gap-3"><span className="text-emerald-400 font-bold">Afternoon:</span> Engage in {intel.recommendations[0]}.</li>
-              <li className="flex gap-3"><span className="text-emerald-400 font-bold">Evening:</span> Relax with {intel.recommendations[2]}.</li>
-            </ul>
           </div>
         </div>
       )}
 
-      {/* Action Footer */}
-      <div className="p-4 bg-white/5 border-t border-white/10 flex flex-wrap gap-3 justify-end items-center">
-        <button onClick={handlePrint} className="btn-secondary px-4 py-2 text-xs flex items-center gap-2 rounded-lg bg-black/20 hover:bg-black/40 border border-white/10">
-          <FileDown className="w-4 h-4" /> Print / PDF
-        </button>
-        <button onClick={() => { navigator.clipboard.writeText(`Total Estimate: ₹${calculations.total}`); alert("Copied summary!"); }} className="btn-secondary px-4 py-2 text-xs flex items-center gap-2 rounded-lg bg-black/20 hover:bg-black/40 border border-white/10">
-          <Copy className="w-4 h-4" /> Copy
-        </button>
-        <button onClick={handleWhatsApp} className="btn-primary px-6 py-2 text-sm flex items-center gap-2 rounded-lg">
-          <Send className="w-4 h-4" /> Send My Trip Plan
+      {/* Actions */}
+      <div className="p-6 bg-white/5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex gap-2">
+          <button onClick={handleCopySummary} className="btn-secondary text-xs px-3 py-2 flex items-center gap-1.5">
+            <Copy className="w-3.5 h-3.5" /> Copy Summary
+          </button>
+          <button onClick={handlePrint} className="btn-secondary text-xs px-3 py-2 flex items-center gap-1.5">
+            <FileDown className="w-3.5 h-3.5" /> Print / Save PDF
+          </button>
+        </div>
+        <button onClick={handleWhatsAppBooking} className="btn-primary text-sm px-6 py-2.5 flex items-center gap-2">
+          <Send className="w-4 h-4" /> Book via WhatsApp
         </button>
       </div>
-
     </div>
   );
 }

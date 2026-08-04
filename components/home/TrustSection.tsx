@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Star, ShieldCheck, Map, PhoneCall, Award, ThumbsUp } from "lucide-react";
-import Link from "next/link";
 
 const reviews = [
   {
@@ -15,39 +14,37 @@ const reviews = [
   {
     name: "Priya Sharma",
     date: "1 month ago",
-    text: "Very professional and safe. As a family of four, we felt completely secure during the steep ghat road drives. Highly recommend!",
+    text: "Booked an Innova for a 3-day trip. Extremely clean vehicle and driver Sanju was courteous, punctual, and very helpful.",
     avatar: "P"
   },
   {
-    name: "Arun & Sneha",
+    name: "Anand & Family",
     date: "2 months ago",
-    text: "They planned our entire honeymoon itinerary in Ooty & Coonoor. The local expertise really shows. No hidden charges either.",
+    text: "The Pykara trip was unforgettable. Nilgiris Explorers made our vacation stress-free. Highly recommended!",
     avatar: "A"
   }
 ];
 
 export default function TrustSection() {
   return (
-    <section className="section-pad section-forest relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
-
+    <section className="section-pad relative overflow-hidden bg-[#0B1D17]">
       <div className="container-default relative z-10">
+        
+        {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-4">
-            The People
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00D26A]/30 bg-[#00D26A]/10 text-[#00D26A] text-sm font-medium tracking-wide mb-4">
+            <Star className="w-4 h-4 fill-[#00D26A]" /> Why Travelers Trust Us
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
             Born and Raised in the <span className="gradient-text">Nilgiris</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            Every road, every shortcut, every hidden waterfall — our drivers grew up here. When you travel with us, you're not hiring a service. You're gaining a friend who knows these mountains like the back of their hand.
+            Every road, every shortcut, every hidden waterfall — our drivers grew up here. When you travel with us, you&apos;re not hiring a service. You&apos;re gaining a friend who knows these mountains like the back of their hand.
           </p>
         </motion.div>
 
@@ -82,7 +79,7 @@ export default function TrustSection() {
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">They Grew Up on These Roads</h3>
-                <p className="text-white/60 text-sm leading-relaxed">Our drivers didn't learn these hairpin bends from a map. They walked them as children, rode them on cycles, and now they navigate them with decades of mountain instinct.</p>
+                <p className="text-white/60 text-sm leading-relaxed">Our drivers didn&apos;t learn these hairpin bends from a map. They walked them as children, rode them on cycles, and now they navigate them with decades of mountain instinct.</p>
               </div>
             </div>
 
@@ -95,7 +92,7 @@ export default function TrustSection() {
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">One Family, One Promise</h3>
-                <p className="text-white/60 text-sm leading-relaxed">There's no call centre, no middleman. When you message us, you're talking to the person who built this from the ground up — and who'll make sure your journey is perfect.</p>
+                <p className="text-white/60 text-sm leading-relaxed">There&apos;s no call centre, no middleman. When you message us, you&apos;re talking to the person who built this from the ground up — and who&apos;ll make sure your journey is perfect.</p>
               </div>
             </div>
 
@@ -108,91 +105,71 @@ export default function TrustSection() {
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-1">The Stories They Tell</h3>
-                <p className="text-white/60 text-sm leading-relaxed">We don't chase ratings. We chase the look on a child's face seeing a wild elephant, or the silence of a couple watching sunrise from Doddabetta.</p>
+                <p className="text-white/60 text-sm leading-relaxed">We don&apos;t chase ratings. We chase the look on a child&apos;s face seeing a wild elephant, or the silence of a couple watching sunrise from Doddabetta.</p>
               </div>
             </div>
           </div>
 
-          {/* Owner Contact Card */}
-          <div
-            className="bg-gradient-to-br from-[#0B1D17] to-emerald-950 p-8 rounded-3xl border border-emerald-500/30 flex flex-col items-center text-center shadow-2xl shadow-emerald-500/10"
-          >
-            <div className="w-24 h-24 rounded-full border-4 border-emerald-500/30 mb-4 overflow-hidden bg-white relative">
-              <Image 
-                src="/images/support-agent.png" 
-                alt="Business Owner" 
-                fill 
-                className="object-cover"
-              />
+          {/* Owner Highlight Card */}
+          <div className="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D26A]/10 rounded-full blur-[40px] pointer-events-none"></div>
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#00D26A]">
+                  <Image 
+                    src="/images/owner-logo.png" 
+                    alt="Sanju - Owner & Mountain Guide" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-lg">Sanju</h3>
+                  <p className="text-[#00D26A] text-sm">Owner & Mountain Guide</p>
+                </div>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed mb-6 italic">
+                &ldquo;When you visit the Nilgiris, you aren&apos;t just taking a taxi. You&apos;re letting a local show you their home. We treat every guest like family visiting us in the hills.&rdquo;
+              </p>
             </div>
-            <h3 className="text-2xl font-display font-bold text-white mb-1">Meet Your Guide</h3>
-            <p className="text-white/60 text-sm mb-6">Have a question about the mountains? Ask someone who lives here.</p>
-            
-            <a 
-              href="https://wa.me/919585219509?text=Hello,%20I%20need%20help%20planning%20a%20trip%20to%20the%20Nilgiris."
+            <a
+              href="https://wa.me/919585219509?text=Hi%20Sanju,%20I'd%20like%20to%20plan%20a%20trip%20to%20Ooty"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center justify-center gap-2 transition-colors mb-3"
+              className="btn-primary w-full text-center py-3 text-sm flex items-center justify-center gap-2"
             >
-              <PhoneCall className="w-5 h-5" />
-              Start a Conversation
+              <PhoneCall className="w-4 h-4" /> Speak Directly with Sanju
             </a>
-            <p className="text-emerald-400 text-xs font-medium">Usually replies within 5 minutes</p>
           </div>
         </motion.div>
 
-        {/* Google Reviews Style Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+        {/* Quick Review Ticker / Highlights */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="pt-12 border-t border-white/10"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-            <div className="flex items-center gap-3">
-              <div className="bg-white p-2 rounded-full">
-                <svg viewBox="0 0 24 24" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-xl">Traveler Stories</h3>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-white font-semibold">5.0</span>
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                  <span className="text-white/50 text-sm">(120+ Reviews)</span>
-                </div>
-              </div>
+          <div className="text-center mb-8">
+            <h3 className="text-white font-bold text-xl mb-2">What Our Guests Say</h3>
+            <div className="flex items-center justify-center gap-1">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="w-4 h-4 text-amber-400 fill-amber-400" />
+              ))}
+              <span className="text-white/70 text-sm ml-2 font-medium">4.9 / 5.0 (250+ Verified Reviews)</span>
             </div>
-            <a href="#" className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
-              Share Your Story →
-            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {reviews.map((review, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold ring-2 ring-emerald-500/50 shadow-[0_0_15px_rgba(0,210,106,0.3)]">
+              <div key={i} className="glass p-5 rounded-xl border border-white/5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-[#00D26A] font-bold text-xs flex items-center justify-center">
                     {review.avatar}
                   </div>
                   <div>
-                    <div className="text-white font-medium text-sm">{review.name}</div>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <div className="text-white/40 text-xs">{review.date}</div>
-                      <div className="flex items-center gap-1 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[10px] text-emerald-400 font-semibold tracking-wider uppercase">
-                        <ShieldCheck className="w-3 h-3" />
-                        Verified Traveler
-                      </div>
-                    </div>
+                    <div className="text-white font-semibold text-sm">{review.name}</div>
+                    <div className="text-white/40 text-xs">{review.date}</div>
                   </div>
                 </div>
                 <div className="flex mb-3">
@@ -200,7 +177,7 @@ export default function TrustSection() {
                     <Star key={s} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-white/70 text-sm leading-relaxed">"{review.text}"</p>
+                <p className="text-white/70 text-sm leading-relaxed">&ldquo;{review.text}&rdquo;</p>
               </div>
             ))}
           </div>

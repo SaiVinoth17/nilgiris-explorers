@@ -33,7 +33,7 @@ export default function TripPlannerPage() {
             Plan Your <span className="gradient-text">Perfect Getaway</span>
           </h1>
           <p className="text-white/60 text-lg max-w-2xl mx-auto font-body">
-            Tell us about your travel plans, and we'll craft a customized itinerary with a dedicated driver for a truly personalized Nilgiris experience.
+            Tell us about your travel plans, and we&apos;ll craft a customized itinerary with a dedicated driver for a truly personalized Nilgiris experience.
           </p>
         </div>
 

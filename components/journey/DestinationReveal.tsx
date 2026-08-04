@@ -4,9 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowUpRight, CloudSun, Mountain, Clock, MapPin, Compass } from "lucide-react";
-import React, { useRef } from "react";
+import React from "react";
 
-const bentoDestinations = [
+interface BentoItem {
+  id: string;
+  name: string;
+  tagline: string;
+  image: string;
+  category: string;
+  weather: string;
+  altitude: string;
+  duration: string;
+  highlights: string[];
+  className: string;
+}
+
+const bentoDestinations: BentoItem[] = [
   {
     id: "ooty",
     name: "Ooty",
@@ -57,7 +70,7 @@ const bentoDestinations = [
   },
 ];
 
-const BentoCard = ({ dest, index }: { dest: any; index: number }) => {
+const BentoCard = ({ dest, index }: { dest: BentoItem; index: number }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 

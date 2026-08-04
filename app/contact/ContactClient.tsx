@@ -84,17 +84,17 @@ export default function ContactClient() {
             <span className="section-label">Get In Touch</span>
           </div>
           <h1 className="font-display text-5xl sm:text-6xl font-bold text-white mb-4">
-            Let's Plan Your <span className="gradient-text">Perfect Trip</span>
+            Let&apos;s Plan Your <span className="gradient-text">Perfect Trip</span>
           </h1>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            Have questions? Want to customize a tour? We're just a message away. We respond directly within minutes.
+            Have questions? Want to customize a tour? We&apos;re just a message away. We respond directly within minutes.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Left — Contact Methods + Map */}
           <div className="lg:col-span-2 space-y-4">
-            {contactMethods.map((method, i) => {
+            {contactMethods.map((method) => {
               const Icon = method.icon;
               const content = (
                 <div
@@ -157,7 +157,7 @@ export default function ContactClient() {
             className="lg:col-span-3 glass-card rounded-2xl p-8"
           >
             <h2 className="font-display text-2xl font-bold text-white mb-2">Send Us a Message</h2>
-            <p className="text-white/40 text-sm mb-6">We'll respond within 2 hours during business hours.</p>
+            <p className="text-white/40 text-sm mb-6">We&apos;ll respond within 2 hours during business hours.</p>
 
             {sent ? (
               <div
@@ -165,7 +165,7 @@ export default function ContactClient() {
               >
                 <CheckCircle className="w-16 h-16 text-[#00D26A] mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-white/50">We've received your inquiry and will respond shortly.</p>
+                <p className="text-white/50">We&apos;ve received your inquiry and will respond shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

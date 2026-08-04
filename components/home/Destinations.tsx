@@ -19,7 +19,7 @@ const tagColors: Record<string, string> = {
 };
 
 export default function Destinations() {
-  const [selectedDestination, setSelectedDestination] = useState<any | null>(null);
+  const [selectedDestination, setSelectedDestination] = useState<typeof destinations[0] | null>(null);
 
   return (
     <section id="destinations" className="section-pad" style={{ background: '#0B1D17' }}>
@@ -40,7 +40,7 @@ export default function Destinations() {
 
         {/* Destination Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {destinations.map((dest, i) => (
+          {destinations.map((dest) => (
             <button
               key={dest.id}
               onClick={() => setSelectedDestination(dest)}
@@ -52,70 +52,67 @@ export default function Destinations() {
                   src={dest.image}
                   alt={dest.name}
                   fill
-                  className="object-cover transition-transform duration-700 lg:group-hover:scale-110"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f2820] via-transparent to-black/30" />
 
-                {/* Tag badge */}
-                <div className={`absolute top-3 left-3 tag-badge border text-xs ${tagColors[dest.tag] || "bg-white/10 text-white/70 border-white/20"}`}>
+                {/* Tag Badge */}
+                <span
+                  className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold border backdrop-blur-sm ${
+                    tagColors[dest.tag] || "bg-white/10 text-white border-white/20"
+                  }`}
+                >
                   {dest.tag}
-                </div>
+                </span>
 
-                {/* Rating overlay */}
-                <div className="absolute top-3 right-3 flex items-center gap-1 glass px-2 py-1 rounded-lg">
-                  <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                  <span className="text-xs font-semibold text-white">{dest.rating}</span>
+                {/* Rating */}
+                <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-xs text-white">
+                  <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                  <span className="font-semibold">{dest.rating}</span>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="font-display text-lg font-bold text-white mb-1 group-hover:text-[#00D26A] transition-colors">
+              {/* Info */}
+              <div className="p-5">
+                <h3 className="font-semibold text-white text-lg mb-1 group-hover:text-[#00D26A] transition-colors">
                   {dest.name}
                 </h3>
-                <p className="text-white/50 text-sm mb-3 line-clamp-2 leading-relaxed">
-                  {dest.description}
-                </p>
+                <p className="text-white/50 text-xs mb-3 line-clamp-1">{("tagline" in dest && typeof dest.tagline === "string") ? dest.tagline : dest.description}</p>
 
-                <div className="flex items-center justify-between text-xs text-white/40">
+                <div className="flex items-center justify-between text-xs text-white/40 pt-3 border-t border-white/6">
                   <div className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-[#00D26A]" />
-                    <span>{dest.distance}</span>
+                    <Clock className="w-3.5 h-3.5 text-[#00D26A]" />
+                    <span>{("idealDuration" in dest && typeof dest.idealDuration === "string") ? dest.idealDuration : dest.bestTime}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-blue-400" />
-                    <span>{dest.duration}</span>
+                  <div className="flex items-center gap-1 text-[#00D26A] font-semibold group-hover:translate-x-1 transition-transform">
+                    <span>Explore</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </div>
-                </div>
-
-                <div className="mt-3 pt-3 border-t border-white/6 flex items-center justify-between">
-                  <span className="text-xs text-white/30">{dest.reviews.toLocaleString()} reviews</span>
-                  <span className="text-xs font-medium text-[#00D26A] flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Book Now <ArrowRight className="w-3 h-3" />
-                  </span>
                 </div>
               </div>
             </button>
           ))}
         </div>
 
-        {/* Modal */}
-        <DestinationModal 
-          isOpen={!!selectedDestination} 
-          onClose={() => setSelectedDestination(null)} 
-          destination={selectedDestination} 
-        />
-
-        {/* CTA */}
-        <div
-          className="text-center mt-10"
-        >
-          <Link href="/#booking" className="btn-secondary text-base px-8 py-3.5">
-            View All Destinations <ArrowRight className="w-4 h-4" />
+        {/* View All Bar */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/destinations"
+            className="btn-secondary inline-flex items-center gap-2"
+          >
+            <MapPin className="w-4 h-4" />
+            Explore All 25+ Destinations in Nilgiris
           </Link>
         </div>
       </div>
+
+      {/* Destination Modal */}
+      <DestinationModal
+        isOpen={!!selectedDestination}
+        onClose={() => setSelectedDestination(null)}
+        destination={selectedDestination}
+      />
     </section>
   );
 }

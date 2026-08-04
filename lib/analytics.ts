@@ -1,20 +1,23 @@
 "use client";
 
+declare global {
+  interface Window {
+    gtag?: (command: string, action: string, params?: Record<string, unknown>) => void;
+    dataLayer?: Record<string, unknown>[];
+  }
+}
+
 // Simple global event tracker for analytics
-// Replace with Google Analytics (gtag), Mixpanel, or PostHog in production.
-export const trackEvent = (eventName: string, eventData?: Record<string, any>) => {
+export const trackEvent = (eventName: string, eventData?: Record<string, unknown>) => {
   if (typeof window !== "undefined") {
-    // Console log for development verification
     console.log(`[Analytics Event] ${eventName}`, eventData || {});
     
-    // Example gtag implementation
-    if (typeof (window as any).gtag !== "undefined") {
-      (window as any).gtag("event", eventName, eventData);
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, eventData);
     }
     
-    // Example dataLayer implementation (GTM)
-    if (typeof (window as any).dataLayer !== "undefined") {
-      (window as any).dataLayer.push({
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
         event: eventName,
         ...eventData
       });
@@ -42,7 +45,7 @@ export const trackPackageView = (packageSlug: string, packageName: string) => {
   });
 };
 
-export const trackWhatsAppClick = (context: string, details?: Record<string, any>) => {
+export const trackWhatsAppClick = (context: string, details?: Record<string, unknown>) => {
   trackEvent("whatsapp_click", {
     context,
     ...details

@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 import {
-  MapPin, Users, ArrowRight, Sparkles, HelpCircle,
-  Shield, CheckCircle2, Building, Home, BedDouble, Calendar, Star, Car
+  MapPin, ArrowRight, Sparkles, HelpCircle,
+  Shield, CheckCircle2, Home, BedDouble, Star, Car
 } from "lucide-react";
 import { sightseeingCircuits, outstationTransfers, accommodationPackages } from "@/lib/data";
 import Image from "next/image";
@@ -137,7 +137,7 @@ export default function SightseeingRates() {
 
                 {/* Single Flat Rate Display per Circuit */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {selectedCircuit.rates.map((rate, i) => (
+                  {selectedCircuit.rates.map((rate) => (
                     <div
                       key={rate.vehicle}
                       /* removed initial */
@@ -171,7 +171,7 @@ export default function SightseeingRates() {
                 <div className="mt-6 flex items-start gap-2.5 bg-[#1a284c]/20 border border-white/5 p-4 rounded-xl">
                   <HelpCircle className="w-5 h-5 text-[#0B9FD4] flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-white/40 leading-normal">
-                    <span className="font-semibold text-white/70 block mb-0.5">What's included vs. excluded:</span>
+                    <span className="font-semibold text-white/70 block mb-0.5">What&apos;s included vs. excluded:</span>
                     Includes clean sightseeing vehicle, expert hill driver, fuel, all parking, and toll fees. 
                     Excludes entry tickets to sightseeing spots (e.g. gardens, parks, boat houses) and safari fees.
                   </p>

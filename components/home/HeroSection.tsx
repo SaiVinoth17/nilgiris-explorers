@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Play, Star, Shield, Clock, Users } from "lucide-react";
+
+import { useSyncExternalStore } from "react";
+import { ArrowRight, Star, Shield, Clock, Users } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -14,13 +15,17 @@ const trustBadges = [
   { icon: Shield, value: "Living", label: "Heritage" },
 ];
 
+const emptySubscribe = () => () => {};
+const useIsMounted = () =>
+  useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
 export default function HeroSection() {
   const { scrollY } = useScroll();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsMounted();
 
   // Parallax bindings
   const yBg = useTransform(scrollY, [0, 1000], [0, 250]);

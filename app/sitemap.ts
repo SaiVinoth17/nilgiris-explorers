@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { tourPackages } from '@/lib/data/packages';
 import { destinations } from '@/lib/data/destinations';
 import { blogPosts } from '@/lib/data/blog';
-import { guides } from '@/lib/seo-data';
+import { locations, guides } from '@/lib/seo-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nilgirisexplorers.com';
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
+    priority: route === '' ? 1.0 : 0.8,
   }));
 
   // Dynamic Destinations
@@ -35,11 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
   
-  const locationRoutes = destinations.map((dest) => ({
-    url: `${baseUrl}/locations/${dest.slug}`,
+  // Dynamic Location Hubs
+  const locationRoutes = locations.map((loc) => ({
+    url: `${baseUrl}/locations/${loc.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
   // Dynamic Packages
@@ -66,5 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...destinationRoutes, ...locationRoutes, ...packageRoutes, ...postRoutes, ...guideRoutes];
+  return [
+    ...staticRoutes,
+    ...destinationRoutes,
+    ...locationRoutes,
+    ...packageRoutes,
+    ...postRoutes,
+    ...guideRoutes,
+  ];
 }

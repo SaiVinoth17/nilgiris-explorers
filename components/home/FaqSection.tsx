@@ -92,7 +92,7 @@ export default function FaqSection() {
             Everything You Need to <span className="gradient-text">Know</span>
           </h2>
           <p className="text-white/60 text-lg">
-            Planning a journey to the Nilgiris? Here's everything previous travelers wished they'd known before arriving.
+            Planning a journey to the Nilgiris? Here&apos;s everything previous travelers wished they&apos;d known before arriving.
           </p>
         </div>
 

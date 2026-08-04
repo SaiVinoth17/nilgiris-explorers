@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 
 /* ─── Animation Presets ────────────────────────────── */
 const PRESETS = {
@@ -85,7 +85,7 @@ export default function Scroll3DReveal({
 
     const tween = gsap.to(el, {
       ...preset.to,
-      ease: "none", // scrub handles easing via scroll position
+      ease: "none",
       scrollTrigger: {
         trigger: el,
         start,

@@ -1,16 +1,20 @@
 "use client";
+
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
+const emptySubscribe = () => () => {};
+const useIsMounted = () =>
+  React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsMounted();
 
   if (!mounted) {
     return <div className="w-10 h-10 rounded-full glass flex items-center justify-center"></div>;
@@ -19,7 +23,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-10 h-10 rounded-full glass flex items-center justify-center relative overflow-hidden text-gray-800 text-white"
+      className="w-10 h-10 rounded-full glass flex items-center justify-center relative overflow-hidden text-gray-800 dark:text-white"
       aria-label="Toggle Theme"
     >
       <div className="relative w-5 h-5 flex items-center justify-center">

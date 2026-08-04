@@ -47,7 +47,7 @@ export async function generateStaticParams() {
 
 export default async function DestinationPage({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const destination: any = destinations.find((d) => d.slug === resolvedParams.slug);
+  const destination = destinations.find((d) => d.slug === resolvedParams.slug);
 
   if (!destination) {
     notFound();
@@ -56,7 +56,7 @@ export default async function DestinationPage({ params }: { params: { slug: stri
   const url = `https://nilgirisexplorers.com/destinations/${destination.slug}`;
 
   // Structured Data schemas
-  const schemas = [
+  const schemas: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "TouristAttraction",
@@ -72,7 +72,7 @@ export default async function DestinationPage({ params }: { params: { slug: stri
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: destination.faqs.map((faq: any) => ({
+      mainEntity: destination.faqs.map((faq: { question: string; answer: string }) => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: {
@@ -80,7 +80,7 @@ export default async function DestinationPage({ params }: { params: { slug: stri
           text: faq.answer
         }
       }))
-    } as any);
+    });
   }
 
   return (
@@ -342,7 +342,7 @@ export default async function DestinationPage({ params }: { params: { slug: stri
                 <HelpCircle className="w-6 h-6 text-emerald-400" /> Frequently Asked Questions
               </h2>
               <div className="space-y-4">
-                {destination.faqs.map((faq: any, i: number) => (
+                {destination.faqs.map((faq: { question: string; answer: string }, i: number) => (
                   <div key={i} className="glass p-6 rounded-2xl border border-white/10">
                     <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-3">
                       <span className="text-[#00D26A] font-display">Q.</span>

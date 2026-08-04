@@ -1,29 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 
 interface FloatingParticlesProps {
   count?: number;
 }
 
+const emptySubscribe = () => () => {};
+const useIsMounted = () =>
+  useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
 export default function FloatingParticles({ count = 30 }: FloatingParticlesProps) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsMounted();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Generate particles once to prevent re-renders
   const particles = useMemo(() => {
     return Array.from({ length: count }).map((_, i) => {
-      const size = Math.random() * 3 + 1; // 1px to 4px
-      const top = Math.random() * 100; // 0% to 100%
-      const left = Math.random() * 100; // 0% to 100%
-      const duration = Math.random() * 15 + 15; // 15s to 30s
-      const delay = Math.random() * -30; // Negative delay so they start out-of-sync immediately
-      const opacity = Math.random() * 0.5 + 0.2; // 0.2 to 0.7
-      
+      const pseudoRand = (seed: number) => {
+        const x = Math.sin(seed + i * 999) * 10000;
+        return x - Math.floor(x);
+      };
+
+      const size = pseudoRand(1) * 3 + 1;
+      const top = pseudoRand(2) * 100;
+      const left = pseudoRand(3) * 100;
+      const duration = pseudoRand(4) * 15 + 15;
+      const delay = pseudoRand(5) * -30;
+      const opacity = pseudoRand(6) * 0.5 + 0.2;
+      const xShift = pseudoRand(7) * 60 - 30;
+
       return {
         id: i,
         size,
@@ -32,6 +41,7 @@ export default function FloatingParticles({ count = 30 }: FloatingParticlesProps
         duration,
         delay,
         baseOpacity: opacity,
+        xShift,
       };
     });
   }, [count]);
@@ -52,7 +62,7 @@ export default function FloatingParticles({ count = 30 }: FloatingParticlesProps
           }}
           animate={{
             y: [0, -800],
-            x: [0, Math.random() * 60 - 30, 0],
+            x: [0, p.xShift, 0],
             opacity: [0, p.baseOpacity, p.baseOpacity, 0],
           }}
           transition={{
@@ -66,7 +76,7 @@ export default function FloatingParticles({ count = 30 }: FloatingParticlesProps
               repeat: Infinity,
               ease: "linear",
               delay: p.delay,
-            }
+            },
           }}
         />
       ))}

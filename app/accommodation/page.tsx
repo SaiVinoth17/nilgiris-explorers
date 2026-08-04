@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import {
-  Home, Star, Users, CheckCircle2, ArrowRight, Shield, Coffee, Flame, Car, HelpCircle, Calendar, MessageSquare, Sparkles
+  Home, Star, CheckCircle2, ArrowRight, Coffee, Flame, Car, HelpCircle, Calendar, Sparkles
 } from "lucide-react";
 import { accommodationPackages } from "@/lib/data";
 
@@ -78,7 +78,7 @@ export default function AccommodationPage() {
             <h2 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-[#00D26A]" /> Handpicked Stays
             </h2>
-            {accommodationPackages.map((stay, index) => (
+            {accommodationPackages.map((stay) => (
               <div
                 key={stay.id}
                 className="group glass-card rounded-2xl overflow-hidden card-hover grid grid-cols-1 md:grid-cols-12 gap-0"

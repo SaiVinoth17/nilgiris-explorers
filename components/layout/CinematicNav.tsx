@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Search } from "lucide-react";
+import QuickSearchModal from "@/components/ui/QuickSearchModal";
 
 const navLinks = [
   { href: "/destinations", label: "Destinations" },
@@ -15,6 +16,7 @@ const navLinks = [
 export default function CinematicNav() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -61,6 +63,16 @@ export default function CinematicNav() {
             </div>
 
             <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="flex items-center gap-2 text-white/70 hover:text-white bg-white/5 hover:bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10 transition-all text-xs"
+                title="Search destinations & cabs (Cmd+K)"
+              >
+                <Search className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="hidden sm:inline">Search</span>
+                <kbd className="hidden sm:inline px-1 py-0.5 text-[10px] bg-black/40 rounded border border-white/10">⌘K</kbd>
+              </button>
+
               <Link
                 href="https://wa.me/919585219509?text=Hi!%20I%27d%20like%20to%20plan%20my%20Nilgiris%20journey."
                 target="_blank" rel="noopener noreferrer"
@@ -68,6 +80,7 @@ export default function CinematicNav() {
               >
                 Plan Journey
               </Link>
+
               <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden flex items-center justify-center w-10 h-10 text-white/80" aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
                 {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
@@ -84,6 +97,12 @@ export default function CinematicNav() {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={() => { setIsMenuOpen(false); setIsSearchOpen(true); }}
+            className="flex items-center gap-2 text-white/80 hover:text-emerald-400 text-xl font-bold"
+          >
+            <Search className="w-5 h-5 text-emerald-400" /> Search Destinations
+          </button>
           <Link
             href="https://wa.me/919585219509?text=Hi!%20I%27d%20like%20to%20plan%20my%20Nilgiris%20journey."
             target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}
@@ -96,6 +115,9 @@ export default function CinematicNav() {
           </a>
         </div>
       )}
+
+      {/* Quick Search Modal */}
+      <QuickSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
 }

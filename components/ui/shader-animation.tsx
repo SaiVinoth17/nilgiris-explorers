@@ -9,7 +9,7 @@ export function ShaderAnimation() {
     camera: THREE.Camera
     scene: THREE.Scene
     renderer: THREE.WebGLRenderer
-    uniforms: any
+    uniforms: Record<string, THREE.IUniform>
     animationId: number
   } | null>(null)
 
@@ -57,9 +57,9 @@ export function ShaderAnimation() {
     const scene = new THREE.Scene()
     const geometry = new THREE.PlaneGeometry(2, 2)
 
-    const uniforms = {
-      time: { type: "f", value: 1.0 },
-      resolution: { type: "v2", value: new THREE.Vector2() },
+    const uniforms: Record<string, THREE.IUniform> = {
+      time: { value: 1.0 },
+      resolution: { value: new THREE.Vector2() },
     }
 
     const material = new THREE.ShaderMaterial({

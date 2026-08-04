@@ -45,7 +45,7 @@ export default function HiddenGems() {
               Beyond The <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Tourist Trail</span>
             </h2>
             <p className="text-white/60 text-lg leading-relaxed">
-              We are born and raised in the Nilgiris. When you travel with us, we don't just take you to the famous spots — we take you to the places only locals know about.
+              We are born and raised in the Nilgiris. When you travel with us, we don&apos;t just take you to the famous spots — we take you to the places only locals know about.
             </p>
           </div>
         </div>

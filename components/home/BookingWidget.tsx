@@ -76,27 +76,23 @@ function InputWrap({ icon: Icon, iconColor, children }: {
 
 function BookingWidgetContent() {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<WidgetTab>("tour");
+  const destSlug = searchParams?.get("dest");
+  const initialDestination = (destSlug && slugMap[destSlug]) ? slugMap[destSlug] : "";
+  const initialTab: WidgetTab = (destSlug && slugMap[destSlug]) ? "tour" : "tour";
+
+  const [activeTab, setActiveTab] = useState<WidgetTab>(initialTab);
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Tour Form State
   const [tourForm, setTourForm] = useState({
-    destination: "",
+    destination: initialDestination,
     tourType: "",
     date: "",
     duration: "",
     travelers: "2",
     message: "",
   });
-
-  useEffect(() => {
-    const destSlug = searchParams?.get("dest");
-    if (destSlug && slugMap[destSlug]) {
-      setTourForm(prev => ({ ...prev, destination: slugMap[destSlug] }));
-      setActiveTab("tour");
-    }
-  }, [searchParams]);
 
   // Intersection Observer for entrance animation — no heavy JS, just toggling a class
   useEffect(() => {

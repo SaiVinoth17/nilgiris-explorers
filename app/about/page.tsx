@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Clock, Users, MapPin } from "lucide-react";
+import { ArrowRight, ShieldCheck, Clock, Users } from "lucide-react";
 import AboutSection from "@/components/home/AboutSection";
 
 export const metadata: Metadata = {
@@ -56,10 +56,10 @@ export default function AboutPage() {
                   Founded in the heart of Ooty, Nilgiris Explorers Tours & Travels is an independently owned local tourism and travel service. We are focused on providing personalized travel experiences across the entire Nilgiris region, catering to those who seek authentic, premium journeys.
                 </p>
                 <p>
-                  Today, we are proud to be recognized as Ooty's leading local experts and cab service provider. We don't just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and owner-managed network of verified local drivers ensure that your safety, comfort, and personalized service are never compromised.
+                  Today, we are proud to be recognized as Ooty&apos;s leading local experts and cab service provider. We don&apos;t just offer rides; we craft unforgettable journeys. Our fleet of meticulously maintained vehicles and owner-managed network of verified local drivers ensure that your safety, comfort, and personalized service are never compromised.
                 </p>
                 <p>
-                  Whether you're looking for a romantic honeymoon package, a thrilling wildlife safari in Mudumalai, or a simple airport transfer from Coimbatore, we bring a touch of luxury and deep local knowledge to every trip.
+                  Whether you&apos;re looking for a romantic honeymoon package, a thrilling wildlife safari in Mudumalai, or a simple airport transfer from Coimbatore, we bring a touch of luxury and deep local knowledge to every trip.
                 </p>
               </div>
               

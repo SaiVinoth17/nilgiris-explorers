@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import { MapPin, Navigation, Info, Car } from "lucide-react";
+import { MapPin, Navigation, Car } from "lucide-react";
 import Link from "next/link";
 
 const locations = [

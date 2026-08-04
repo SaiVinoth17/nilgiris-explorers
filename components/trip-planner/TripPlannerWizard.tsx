@@ -111,13 +111,9 @@ export default function TripPlannerWizard() {
 
   /* Auto-upgrade vehicle when passengers exceed capacity */
   const pax = formData.adults + formData.children;
-  const recommended = suggestVehicle(pax);
-
-  useEffect(() => {
-    const cap = vehiclePricing[formData.vehicleKey].capacity;
-    if (pax > cap) {
-      setFormData((p) => ({ ...p, vehicleKey: suggestVehicle(pax) }));
-    }
+  const activeVehicleKey = useMemo(() => {
+    const cap = vehiclePricing[formData.vehicleKey]?.capacity || 4;
+    return pax > cap ? suggestVehicle(pax) : formData.vehicleKey;
   }, [pax, formData.vehicleKey]);
 
   /* Primary destination for preview / summary */
@@ -135,7 +131,7 @@ export default function TripPlannerWizard() {
     const rooms = Math.max(1, Math.ceil(formData.adults / 2));
     const totalPax = formData.adults + formData.children;
 
-    const v = vehiclePricing[formData.vehicleKey];
+    const v = vehiclePricing[activeVehicleKey];
     const vehicleCost = (v.baseRatePerKm * EST_KM_PER_DAY + v.driverBata) * days + v.hillCharge;
     const accCost = accommodationPricing[formData.accKey].pricePerNight * rooms * nights;
     const foodCost = foodPricing[formData.foodKey].pricePerPersonPerDay * totalPax * days;
@@ -143,7 +139,7 @@ export default function TripPlannerWizard() {
     const total = vehicleCost + accCost + foodCost + sightseeingCost + MISC_FIXED;
 
     return { nights, days, rooms, totalPax, vehicleCost, accCost, foodCost, sightseeingCost, total };
-  }, [formData]);
+  }, [formData, activeVehicleKey]);
 
   const animatedTotal = useCountUp(costs.total);
 
@@ -363,7 +359,7 @@ export default function TripPlannerWizard() {
                             className={`p-3 rounded-xl border text-left text-sm transition-all relative ${formData.vehicleKey === key ? "bg-[var(--color-brand-emerald)]/15 border-[var(--color-brand-emerald)]/40" : "bg-black/20 border-white/10 hover:bg-white/5"}`}>
                             <span className={`block font-medium ${formData.vehicleKey === key ? "text-[var(--color-brand-emerald)]" : "text-white/80"}`}>{v.name.split("(")[0].trim()}</span>
                             <span className="text-[11px] text-white/40">Up to {v.capacity} pax</span>
-                            {key === recommended && <span className="absolute -top-2 right-2 text-[9px] bg-[var(--color-brand-emerald)] text-black font-bold px-1.5 py-0.5 rounded-full">Best Fit</span>}
+                            {key === activeVehicleKey && <span className="absolute -top-2 right-2 text-[9px] bg-[var(--color-brand-emerald)] text-black font-bold px-1.5 py-0.5 rounded-full">Best Fit</span>}
                           </button>
                         );
                       })}

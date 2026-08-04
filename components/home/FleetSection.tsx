@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Users, Briefcase, CheckCircle2, ArrowRight } from "lucide-react";
 import { fleet } from "@/lib/data";
 

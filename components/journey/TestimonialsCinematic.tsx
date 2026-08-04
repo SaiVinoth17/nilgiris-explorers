@@ -1,26 +1,26 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
 import { testimonials } from '@/lib/data';
 import { ChevronLeft, ChevronRight, Pause, Play, Star } from 'lucide-react';
 
 const AUTOPLAY_INTERVAL = 6000;
+
+const emptySubscribe = () => () => {};
+const useReducedMotion = () =>
+  useSyncExternalStore(
+    emptySubscribe,
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => false
+  );
 
 export default function TestimonialsCinematic() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
-  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -224,4 +224,3 @@ export default function TestimonialsCinematic() {
     </section>
   );
 }
-

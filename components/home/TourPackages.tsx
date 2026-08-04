@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Clock, Users, ArrowRight, Sparkles, MapPin, Map, Sun, Compass } from "lucide-react";
+import { Clock, Users, ArrowRight, Sparkles, MapPin, Map, Compass } from "lucide-react";
 import { tourPackages } from "@/lib/data";
 import Link from "next/link";
 
@@ -40,9 +40,8 @@ export default function TourPackages() {
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {tourPackages.map((pkg) => {
-            const distanceText = (pkg as any).distance || (pkg.duration.includes("Days") ? "300+ km route" : "Local transit");
+            const distanceText = ("distance" in pkg && typeof pkg.distance === "string") ? pkg.distance : (pkg.duration.includes("Days") ? "300+ km route" : "Local transit");
             const attractionsCount = pkg.itinerary?.reduce((acc, d) => acc + (d.locations?.length || 0), 0) || pkg.highlights.length;
-            const seasonText = pkg.bestSeason.split(" ")[0].replace(".", "");
 
             return (
               <div
@@ -168,7 +167,7 @@ export default function TourPackages() {
                 <Compass className="w-8 h-8 text-[#040A08]" />
               </div>
               <div>
-                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2">Can't find the perfect itinerary?</h3>
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2">Can&apos;t find the perfect itinerary?</h3>
                 <p className="text-white/60 text-base max-w-xl">
                   Let our local travel experts design a completely personalized Nilgiris experience tailored to your exact requirements and schedule.
                 </p>

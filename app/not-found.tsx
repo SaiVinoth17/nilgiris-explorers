@@ -8,7 +8,7 @@ export default function NotFound() {
         404
       </div>
       <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">
-        Oops! You've Explored <span className="gradient-text">Too Far</span>
+        Oops! You&apos;ve Explored <span className="gradient-text">Too Far</span>
       </h1>
       <p className="text-white/60 text-lg max-w-md mx-auto mb-10">
         The page you are looking for has either been moved, deleted, or never existed in the Nilgiris.

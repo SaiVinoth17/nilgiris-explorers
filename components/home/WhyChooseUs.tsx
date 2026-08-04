@@ -12,12 +12,7 @@ export default function WhyChooseUs() {
     <section id="why-us" className="section-pad section-forest">
       <div className="container-default">
         {/* Header */}
-        <div
-          /* removed initial */
-          /* removed whileInView */
-          /* removed viewport */
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14">
           <span className="inline-block section-label-text mb-3">
             Why Us
           </span>
@@ -26,20 +21,17 @@ export default function WhyChooseUs() {
             <span className="gradient-text">Difference</span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            We've earned the trust of 10,000+ travelers by delivering expertly curated journeys, world-class hospitality, and memories that last a lifetime.
+            We&apos;ve earned the trust of 10,000+ travelers by delivering expertly curated journeys, world-class hospitality, and memories that last a lifetime.
           </p>
         </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((feature, i) => {
+          {features.map((feature) => {
             const Icon = iconMap[feature.icon] || MapPin;
             return (
               <div
                 key={feature.title}
-                /* removed initial */
-                /* removed whileInView */
-                /* removed viewport */
                 className="group glass-card rounded-2xl p-6 cursor-default hover:-translate-y-1.5 transition-transform duration-200"
               >
                 {/* Icon */}
@@ -62,12 +54,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Stats Bar */}
-        <div
-          /* removed initial */
-          /* removed whileInView */
-          /* removed viewport */
-          className="mt-12 glass-card rounded-2xl px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 divide-x divide-white/6"
-        >
+        <div className="mt-12 glass-card rounded-2xl px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 divide-x divide-white/6">
           {[
             { val: "2,500+", label: "Tours Completed" },
             { val: "Free", label: "Itinerary Planning" },

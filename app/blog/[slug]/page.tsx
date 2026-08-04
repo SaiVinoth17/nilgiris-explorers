@@ -51,8 +51,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound();
   }
 
-  const url = `https://nilgirisexplorers.com/blog/${post.slug}`;
-
   // Find next/prev posts
   const currentIndex = blogPosts.findIndex(p => p.slug === post.slug);
   const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;

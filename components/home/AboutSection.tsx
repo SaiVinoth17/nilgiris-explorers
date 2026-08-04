@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { stats } from "@/lib/data";
 import { Mountain, Award, Heart } from "lucide-react";
 
-function useInView(ref: React.RefObject<any>, options: { once?: boolean } = {}) {
+function useInView(ref: React.RefObject<HTMLElement | null>, options: { once?: boolean } = {}) {
   const [isInView, setIsInView] = useState(false);
   useEffect(() => {
     if (!ref.current) return;
@@ -99,7 +99,7 @@ export default function AboutSection() {
               className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2"
             >
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
-              <span className="text-white text-sm font-medium">Ooty's Favourite Local Experts Since 2021</span>
+              <span className="text-white text-sm font-medium">Ooty&apos;s Favourite Local Experts Since 2021</span>
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export default function AboutSection() {
             </h3>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="text-center"

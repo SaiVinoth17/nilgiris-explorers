@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 
 import Image from "next/image";
-import { Clock, Users, CheckCircle, ArrowRight, Filter, Mountain, Search } from "lucide-react";
+import { Clock, CheckCircle, ArrowRight, Filter, Mountain, Search } from "lucide-react";
 import { tourPackages } from "@/lib/data";
 import Link from "next/link";
 
@@ -31,7 +31,7 @@ export default function ToursClient() {
 
   const filteredPackages = useMemo(() => {
     return tourPackages
-      .filter((pkg: any) => {
+      .filter((pkg) => {
         // Expanded matching to cover the requested search terms
         const searchString = `
           ${pkg.name} ${pkg.description} ${pkg.badge} 
@@ -39,82 +39,91 @@ export default function ToursClient() {
           ${pkg.familySuitability} ${pkg.coupleSuitability}
         `.toLowerCase();
         
-        const q = searchQuery.toLowerCase();
-        const f = activeFilter.toLowerCase();
-        
-        const matchesFilter = activeFilter === "All" || searchString.includes(f);
-        const matchesSearch = searchString.includes(q);
-        
-        return matchesFilter && matchesSearch;
+        const matchesSearch = searchString.includes(searchQuery.toLowerCase());
+
+        if (activeFilter === "All") return matchesSearch;
+        if (activeFilter === "Day Tours") return matchesSearch && (pkg.duration.includes("1 Day") || pkg.duration.includes("Full-Day"));
+        if (activeFilter === "Multi-Day") return matchesSearch && pkg.duration.includes("Days");
+        if (activeFilter === "Wildlife") return matchesSearch && (pkg.badge === "Wildlife" || pkg.name.includes("Mudumalai") || pkg.name.includes("Safari"));
+        if (activeFilter === "Romantic") return matchesSearch && (pkg.badge === "Romantic" || pkg.name.includes("Honeymoon") || pkg.name.includes("Couple"));
+        if (activeFilter === "Adventure") return matchesSearch && (pkg.badge === "Adventure" || pkg.name.includes("Trek") || pkg.name.includes("Jeep"));
+        if (activeFilter === "Family") return matchesSearch && (pkg.familySuitability?.includes("Family") || pkg.name.includes("Family") || pkg.badge === "Popular");
+        if (activeFilter === "Nature") return matchesSearch && (pkg.badge === "Nature" || pkg.name.includes("Pykara") || pkg.name.includes("Avalanche"));
+        if (activeFilter === "Photography") return matchesSearch && (pkg.highlights?.some(h => h.toLowerCase().includes("photo") || h.toLowerCase().includes("view")) || false);
+        if (activeFilter === "Custom") return matchesSearch && pkg.name.includes("Custom");
+
+        return matchesSearch;
       })
       .sort((a, b) => {
         if (sortBy === "price_asc") return a.price - b.price;
         if (sortBy === "price_desc") return b.price - a.price;
-        return 0; // recommended
+        return 0; // Default/recommended order
       });
   }, [activeFilter, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
-      <div className="container-default">
+    <div className="min-h-screen pt-24 pb-20 relative overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[var(--color-brand-emerald)]/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="container-default relative z-10">
         {/* Header */}
         <div
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[[var(--color-brand-emerald)]] to-[#0B9FD4] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--color-brand-emerald)] to-[#0B9FD4] flex items-center justify-center">
               <Mountain className="w-4 h-4 text-white" />
             </div>
-            <span className="section-label">Tour Packages</span>
+            <span className="section-label">Handcrafted Journeys</span>
           </div>
           <h1 className="font-display text-5xl sm:text-6xl font-bold text-white mb-4">
-            Curated <span className="gradient-text">Nilgiris Experiences</span>
+            Explore All <span className="gradient-text">Tour Packages</span>
           </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            From thrilling wildlife safaris to romantic mountain escapes — choose an experience crafted for your perfect Nilgiris journey.
+          <p className="text-white/50 max-w-xl mx-auto text-lg">
+            From 1-day sightseeing circuits to 5-day luxury honeymoons — discover the Nilgiris with Ooty&apos;s most trusted local experts.
           </p>
         </div>
 
-        {/* Search & Filters */}
-        <div className="flex flex-col lg:flex-row items-center gap-4 justify-between mb-10">
-          {/* Filters */}
-          <div
-            className="flex flex-wrap items-center gap-2 justify-center lg:justify-start"
-          >
-            <Filter className="w-4 h-4 text-white/40" />
-            {filters.map((f) => (
+        {/* Search Bar & Controls */}
+        <div className="mb-10 flex flex-col md:flex-row gap-4 justify-between items-center bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-md">
+          {/* Search Input */}
+          <div className="relative w-full md:w-96">
+            <Search className="w-4 h-4 text-white/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search tours, places (e.g. Pykara, Safari)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-black/40 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#00D26A]"
+            />
+          </div>
+
+          {/* Filter Pills Scrollable Container */}
+          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+            <Filter className="w-4 h-4 text-white/40 flex-shrink-0 hidden lg:block" />
+            {filters.map((filter) => (
               <button
-                key={f}
-                onClick={() => setActiveFilter(f)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
-                  activeFilter === f
-                    ? "bg-[[var(--color-brand-emerald)]] text-forest border-[[var(--color-brand-emerald)]] shadow-lg"
-                    : "glass border-white/10 text-white/60 hover:text-white hover:border-white/20"
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                  activeFilter === filter
+                    ? "bg-[#00D26A] text-[#0a0e1a] shadow-lg shadow-[#00D26A]/20"
+                    : "glass text-white/60 hover:text-white hover:bg-white/10"
                 }`}
               >
-                {f}
+                {filter}
               </button>
             ))}
           </div>
 
-          {/* Search & Sort */}
-          <div
-            className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto"
-          >
-            <div className="relative w-full sm:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
-              <input 
-                type="text" 
-                placeholder="Search by destination, interest..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="input-field w-full pl-10 bg-white/5 border-white/10 text-white placeholder-white/30"
-              />
-            </div>
-            <select 
+          {/* Sort Dropdown */}
+          <div className="flex items-center gap-2 w-full md:w-auto justify-end">
+            <span className="text-xs text-white/40 uppercase tracking-wider font-semibold whitespace-nowrap">Sort:</span>
+            <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="input-field w-full sm:w-40 appearance-none bg-void border-white/10 text-white"
+              className="bg-black/40 border border-white/10 text-xs font-semibold text-white/80 rounded-xl px-3 py-2 focus:outline-none focus:border-[#00D26A]"
             >
               <option value="recommended">Recommended</option>
               <option value="price_asc">Price: Low to High</option>
@@ -125,7 +134,7 @@ export default function ToursClient() {
 
         {/* Packages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {filteredPackages.map((pkg: any, i: number) => (
+          {filteredPackages.map((pkg) => (
             <div
               key={pkg.id}
               className="group glass-card rounded-2xl overflow-hidden card-hover flex flex-col"
@@ -135,87 +144,60 @@ export default function ToursClient() {
                   src={pkg.image}
                   alt={pkg.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-light via-transparent to-transparent" />
-                <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${badgeColors[pkg.badge] || "from-gray-600 to-gray-700"} shadow-lg`}>
-                  {pkg.badge}
-                </div>
-                <div className="absolute top-3 right-3 flex items-center gap-1 glass px-2.5 py-1 rounded-lg">
-                  <Clock className="w-3 h-3 text-[[var(--color-brand-emerald)]]" />
-                  <span className="text-xs text-white font-medium">{pkg.duration}</span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-black/20" />
+
+                {/* Badge */}
+                {pkg.badge && (
+                  <div className={`absolute top-3 left-3 bg-gradient-to-r ${badgeColors[pkg.badge] || "from-emerald-500 to-teal-600"} text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-lg`}>
+                    {pkg.badge}
+                  </div>
+                )}
               </div>
 
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-[[var(--color-brand-emerald)]] transition-colors">
-                  {pkg.name}
-                </h3>
-                <p className="text-white/50 text-sm mb-4 leading-relaxed">{pkg.description}</p>
+              {/* Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 text-xs text-white/40 mb-2">
+                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#00D26A]" /> {pkg.duration}</span>
+                    <span>·</span>
+                    <span>Best: {pkg.bestSeason}</span>
+                  </div>
 
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  {pkg.highlights.map((h: string) => (
-                    <div key={h} className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-[[var(--color-brand-emerald)]] flex-shrink-0" />
-                      <span className="text-xs text-white/60 truncate min-w-0 flex-1">{h}</span>
-                    </div>
-                  ))}
+                  <h3 className="font-display font-bold text-xl text-white mb-2 group-hover:text-[#00D26A] transition-colors">
+                    {pkg.name}
+                  </h3>
+
+                  <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-2">
+                    {pkg.description}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="space-y-1.5 mb-6">
+                    {pkg.highlights.slice(0, 3).map((h, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-white/70">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#00D26A] flex-shrink-0" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {pkg.includes.map((inc: string) => (
-                    <span key={inc} className="text-xs bg-white/5 border border-white/8 text-white/50 px-2.5 py-1 rounded-lg">
-                      {inc}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex-1" />
-
-                <div className="pt-4 border-t border-white/8 flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      {pkg.price > 0 ? (
-                        <>
-                          <div className="flex flex-col">
-                            <span className="text-xs text-white/50 font-medium tracking-wide uppercase mb-0.5">Starting From</span>
-                            <div className="flex items-baseline gap-2">
-                              <span className="text-2xl font-bold text-white">₹{pkg.price.toLocaleString()}</span>
-                              {pkg.originalPrice > 0 && (
-                                <span className="text-sm text-white/30 line-through">₹{pkg.originalPrice.toLocaleString()}</span>
-                              )}
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <div>
-                          <div className="text-xl font-bold gradient-text">Custom Price</div>
-                          <div className="text-xs text-white/40">Based on itinerary</div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Link
-                        href={`/packages/${pkg.slug}`}
-                        className="btn-secondary bg-white/5 text-white hover:bg-white/10 text-xs py-2.5 px-3 rounded-lg border border-white/10"
-                      >
-                        Details
-                      </Link>
-                      <a
-                        href={`https://wa.me/919585219509?text=${encodeURIComponent(`Hello! I'm interested in booking the ${pkg.name}. Please share details.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-primary text-xs py-2.5 px-4 flex items-center gap-1"
-                      >
-                        Book Now
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
+                {/* Pricing & CTA */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
+                  <div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider font-semibold">Starting From</div>
+                    <div className="text-2xl font-bold text-white">₹{pkg.price.toLocaleString()}</div>
                   </div>
-                  <div className="text-[10px] text-center text-white/40 italic">
-                    Contact us for custom tour plans and group pricing.
-                  </div>
+
+                  <Link
+                    href={`/packages/${pkg.slug}`}
+                    className="btn-primary text-xs py-2.5 px-4 flex items-center gap-1.5"
+                  >
+                    View Package <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -228,10 +210,10 @@ export default function ToursClient() {
         >
           <div className="text-5xl mb-4">🗺️</div>
           <h2 className="font-display text-3xl font-bold text-white mb-3">
-            Can't Find The Perfect Package?
+            Can&apos;t Find The Perfect Package?
           </h2>
           <p className="text-white/50 max-w-lg mx-auto mb-8 text-lg">
-            Tell us your dream Nilgiris experience. We'll craft a fully customized itinerary just for you — any dates, any budget, any destinations.
+            Tell us your dream Nilgiris experience. We&apos;ll craft a fully customized itinerary just for you — any dates, any budget, any destinations.
           </p>
           <a
             href={`https://wa.me/919585219509?text=${encodeURIComponent("Hello! I'd like to build a custom Nilgiris tour package. Please help me plan my trip.")}`}
@@ -246,5 +228,3 @@ export default function ToursClient() {
     </div>
   );
 }
-
-

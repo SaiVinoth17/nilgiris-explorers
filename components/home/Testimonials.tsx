@@ -63,7 +63,7 @@ export default function Testimonials() {
 
               {/* Review text */}
               <p className="text-white/80 text-lg sm:text-xl leading-relaxed mb-8 font-light italic">
-                "{t.review}"
+                &ldquo;{t.review}&rdquo;
               </p>
 
               {/* Customer info */}

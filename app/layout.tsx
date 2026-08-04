@@ -4,6 +4,7 @@ import "./globals.css";
 import CinematicNav from "@/components/layout/CinematicNav";
 import dynamic from "next/dynamic";
 import LenisProvider from "@/lib/lenis";
+import { generateLocalBusinessSchema, generateWebSiteSchema } from "@/lib/seo-schema";
 
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
@@ -53,6 +54,9 @@ export const metadata: Metadata = {
     "Mudumalai Wildlife Safari",
     "Avalanche Lake Tour",
     "Ooty Group Tour",
+    "Ooty Cab Booking",
+    "Best Cab in Ooty",
+    "Taxi Ooty",
   ],
   authors: [{ name: "Nilgiris Explorers" }],
   creator: "Nilgiris Explorers",
@@ -84,93 +88,22 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "google-site-verification-token",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const localBusinessSchema = generateLocalBusinessSchema();
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <html lang="en" className={cn(poppins.variable, plusJakarta.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
       <body className="font-body antialiased bg-[#050A08] text-white overflow-x-clip">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "LocalBusiness",
-                  "@id": "https://nilgirisexplorers.com/#localbusiness",
-                  name: "Nilgiris Explorers Tours & Travels",
-                  description: "Premium taxi and tour booking service in Ooty and the Nilgiris",
-                  url: "https://nilgirisexplorers.com",
-                  logo: "https://nilgirisexplorers.com/images/logo-dark.png",
-                  telephone: "+91-9585219509",
-                  priceRange: "₹₹",
-                  address: {
-                    "@type": "PostalAddress",
-                    streetAddress: "Commercial Road",
-                    addressLocality: "Ooty",
-                    addressRegion: "Tamil Nadu",
-                    postalCode: "643001",
-                    addressCountry: "IN",
-                  },
-                  geo: {
-                    "@type": "GeoCoordinates",
-                    latitude: 11.4102,
-                    longitude: 76.695,
-                  },
-                  aggregateRating: {
-                    "@type": "AggregateRating",
-                    ratingValue: "4.9",
-                    reviewCount: "10000",
-                  },
-                  openingHoursSpecification: {
-                    "@type": "OpeningHoursSpecification",
-                    dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                    opens: "00:00",
-                    closes: "23:59",
-                  },
-                },
-                {
-                  "@type": "Organization",
-                  "@id": "https://nilgirisexplorers.com/#organization",
-                  name: "Nilgiris Explorers",
-                  url: "https://nilgirisexplorers.com",
-                  logo: "https://nilgirisexplorers.com/images/logo-dark.png",
-                  contactPoint: {
-                    "@type": "ContactPoint",
-                    telephone: "+91-9585219509",
-                    contactType: "customer service",
-                    areaServed: "IN",
-                    availableLanguage: ["en", "ta", "hi"],
-                  }
-                },
-
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://nilgirisexplorers.com/#breadcrumb",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://nilgirisexplorers.com/"
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 2,
-                      "name": "Destinations",
-                      "item": "https://nilgirisexplorers.com/destinations"
-                    },
-                    {
-                      "@type": "ListItem",
-                      "position": 3,
-                      "name": "Tours",
-                      "item": "https://nilgirisexplorers.com/tours"
-                    }
-                  ]
-                }
-              ]
-            }),
+            __html: JSON.stringify([localBusinessSchema, websiteSchema]),
           }}
         />
         <LenisProvider>
