@@ -3,13 +3,15 @@
 import MaskedHeading from "@/components/ui/MaskedHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
+import ScrollVelocity from "@/components/ui/ScrollVelocity";
+
 export default function JourneyNarrative() {
   return (
     <section className="relative section-pad bg-void overflow-hidden">
       <div className="container-default max-w-5xl">
 
         {/* MaskedHeading — video fills the letterforms */}
-        <div className="mb-16">
+        <div className="mb-12">
           <MaskedHeading
             tag="h2"
             text="Born of the Blue Mountains"
@@ -27,6 +29,18 @@ export default function JourneyNarrative() {
             textScale={0.115}
             tracking={-0.03}
             weight={800}
+          />
+        </div>
+
+        {/* ScrollVelocity ticker below Born of the Blue Mountains */}
+        <div className="mb-16 py-6 border-y border-white/10 overflow-hidden">
+          <ScrollVelocity
+            texts={[
+              "OOTY • COONOOR • KOTAGIRI • AVALANCHE • PYKARA • EMERALD LAKE • DODDABETTA • MUDUMALAI",
+    "PRIVATE CAB TOURS • HIDDEN TRAILS • TEA ESTATES • SUNRISE VIEWPOINTS • CURATED EXPERIENCES • LOCAL GUIDES"
+            ]}
+            velocity={50}
+            className="font-display tracking-widest text-emerald-400/90 text-xl md:text-3xl font-bold uppercase"
           />
         </div>
 
