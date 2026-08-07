@@ -50,13 +50,19 @@
 html {
   scroll-behavior: auto;
   -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--color-void);
   color: var(--color-text-primary);
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -121,6 +127,18 @@ p, span, a, li, label, input, textarea, select, button {
 }
 @media (min-width: 768px) {
   .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
+}
+
+.section-forest {
+  background-color: var(--color-forest);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-void {
+  background-color: var(--color-void);
+  width: 100%;
 }
 
 .section-label-text {

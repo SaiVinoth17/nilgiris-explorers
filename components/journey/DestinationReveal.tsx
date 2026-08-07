@@ -184,11 +184,11 @@ const BentoCard = ({ dest, index }: { dest: BentoItem; index: number }) => {
 
 export default function DestinationReveal() {
   return (
-    <section className="bg-[#050A08] py-24 md:py-32 relative overflow-hidden">
+    <section className="bg-[#050A08] py-24 md:py-32 relative w-full max-w-full overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px]" />
+        <div className="absolute top-0 left-0 w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[40%] h-[40%] rounded-full bg-emerald-900/10 blur-[120px]" />
       </div>
 
       <div className="container-default relative z-10 px-4 md:px-8 max-w-7xl mx-auto">

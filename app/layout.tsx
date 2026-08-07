@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={cn(poppins.variable, plusJakarta.variable, playfairDisplay.variable, "font-sans", geist.variable)} suppressHydrationWarning>
-      <body className="font-body antialiased bg-[#050A08] text-white overflow-x-clip">
+      <body className="font-body antialiased bg-[#050A08] text-white w-full max-w-full relative overflow-x-clip">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <LenisProvider>
           <CinematicNav />
-          <main className="pb-16 md:pb-0">
+          <main className="pb-16 md:pb-0 w-full max-w-full relative overflow-x-clip">
             <AnalyticsProvider>
               {children}
             </AnalyticsProvider>

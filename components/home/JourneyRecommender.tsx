@@ -57,9 +57,9 @@ export default function JourneyRecommender() {
   };
 
   return (
-    <div className="glass-card rounded-3xl p-8 lg:p-12 relative overflow-hidden border border-white/10" id="recommender">
+    <div className="glass-card rounded-3xl p-8 lg:p-12 relative overflow-hidden border border-white/10 w-full max-w-full" id="recommender">
       {/* Background glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       {step !== "result" && (
         <div className="mb-8">

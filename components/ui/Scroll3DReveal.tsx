@@ -74,17 +74,22 @@ export default function Scroll3DReveal({
       return;
     }
 
-    const preset = PRESETS[variant];
+    const isMobile = window.innerWidth < 768;
+    const rawFrom = PRESETS[variant].from;
+    const fromState = {
+      ...rawFrom,
+      ...(isMobile && "x" in rawFrom ? { x: (rawFrom as { x?: number }).x! > 0 ? 12 : -12 } : {}),
+    };
 
     // Set 3D perspective on the wrapper
     gsap.set(el, {
       transformPerspective: perspective,
-      transformOrigin: preset.origin,
-      ...preset.from,
+      transformOrigin: PRESETS[variant].origin,
+      ...fromState,
     });
 
     const tween = gsap.to(el, {
-      ...preset.to,
+      ...PRESETS[variant].to,
       ease: "none",
       scrollTrigger: {
         trigger: el,
@@ -103,7 +108,7 @@ export default function Scroll3DReveal({
   return (
     <div
       ref={wrapperRef}
-      className={className}
+      className={`w-full max-w-full overflow-hidden ${className}`.trim()}
       style={{ willChange: "transform, opacity" }}
     >
       {children}

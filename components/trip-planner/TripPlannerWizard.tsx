@@ -204,8 +204,8 @@ export default function TripPlannerWizard() {
   return (
     <div className="w-full max-w-4xl mx-auto glass-card rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
       {/* Glow accents */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[var(--color-brand-emerald)]/10 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[var(--color-brand-emerald)]/5 blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 sm:w-80 h-48 sm:h-80 bg-[var(--color-brand-emerald)]/10 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-48 sm:w-80 h-48 sm:h-80 bg-[var(--color-brand-emerald)]/5 blur-[120px] rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       {/* ── Progress header (steps 1–2) ── */}
       {step < 3 && (

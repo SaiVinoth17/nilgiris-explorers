@@ -16,9 +16,9 @@ export default function InteractiveExplorer() {
   const [activeDest, setActiveDest] = useState<typeof destinations[0] | null>(null);
 
   return (
-    <section className="section-pad bg-[#0B1D17] relative overflow-hidden" id="explore">
+    <section className="section-pad bg-[#0B1D17] relative w-full max-w-full overflow-hidden" id="explore">
       {/* Background Ambience Optimized */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(0,210,106,0.15)_0%,_transparent_70%)] pointer-events-none translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-[320px] sm:w-[800px] h-[320px] sm:h-[800px] bg-[radial-gradient(circle_at_center,_rgba(0,210,106,0.15)_0%,_transparent_70%)] pointer-events-none translate-x-1/2 -translate-y-1/2" />
       
       <div className="container-default relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">

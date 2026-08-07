@@ -48,9 +48,9 @@ export default function AccommodationPage() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-20 relative overflow-hidden">
+    <div className="min-h-screen pt-24 pb-20 relative w-full max-w-full overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-10 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#00D26A]/5 to-[#0B9FD4]/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-10 left-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-gradient-to-br from-[#00D26A]/5 to-[#0B9FD4]/5 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="container-default relative z-10">
         {/* Header */}

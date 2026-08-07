@@ -18,10 +18,10 @@ const badgeColors: Record<string, string> = {
 
 export default function TourPackages() {
   return (
-    <section id="tours" className="section-pad relative overflow-hidden bg-[#040A08]">
+    <section id="tours" className="section-pad relative overflow-hidden bg-[#040A08] w-full max-w-full">
       {/* Background Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="container-default relative z-10">
         {/* Header */}

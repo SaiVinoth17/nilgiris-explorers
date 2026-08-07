@@ -181,8 +181,8 @@ export default function Navbar() {
       
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-y-0 right-0 z-40 w-full sm:w-80 flex flex-col pt-28 pb-8 px-6 lg:hidden border-l border-[var(--color-brand-emerald)]/20 bg-gradient-to-b from-forest to-void transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          mobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-y-0 right-0 z-40 w-full sm:w-80 flex flex-col pt-28 pb-8 px-6 lg:hidden border-l border-[var(--color-brand-emerald)]/20 bg-gradient-to-b from-forest to-void transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          mobileOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible pointer-events-none"
         }`}
       >
         <nav className="flex-1 space-y-2 overflow-y-auto custom-scrollbar">

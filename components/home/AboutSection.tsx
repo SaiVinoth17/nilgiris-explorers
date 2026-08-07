@@ -50,7 +50,7 @@ function CountUp({ target, suffix, decimals = 0 }: { target: number; suffix: str
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section-pad section-forest">
+    <section id="about" className="section-pad section-forest relative w-full max-w-full overflow-hidden">
       <div className="container-default">
         {/* Main about layout */}
         <div className="grid lg:grid-cols-2 gap-14 items-center mb-20">
@@ -71,7 +71,7 @@ export default function AboutSection() {
             </div>
 
             {/* Floating stats card */}
-            <div className="absolute -bottom-6 -right-4 glass-card rounded-2xl p-5 shadow-2xl">
+            <div className="absolute -bottom-6 right-0 sm:-right-4 glass-card rounded-2xl p-5 shadow-2xl">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-lg bg-[#00D26A]/20 flex items-center justify-center">
                   <Award className="w-4 h-4 text-[#00D26A]" />
@@ -92,7 +92,7 @@ export default function AboutSection() {
             </div>
 
             {/* Floating local tag */}
-            <div className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2">
+            <div className="absolute -top-4 left-0 sm:-left-4 glass-card rounded-xl px-4 py-2.5 flex items-center gap-2">
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
               <span className="text-white text-sm font-medium">Ooty&apos;s Favourite Local Experts Since 2021</span>
             </div>

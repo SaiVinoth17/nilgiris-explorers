@@ -61,14 +61,14 @@ export default function TestimonialsCinematic() {
 
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden w-full max-w-full"
       aria-label="Traveler testimonials"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#050A08] via-[#071410] to-[#050A08]" />
 
       {/* Subtle decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-emerald-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section heading */}

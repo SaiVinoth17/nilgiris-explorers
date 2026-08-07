@@ -62,9 +62,9 @@ export default function ToursClient() {
   }, [activeFilter, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen pt-24 pb-20 relative overflow-hidden">
+    <div className="min-h-screen pt-24 pb-20 relative w-full max-w-full overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[var(--color-brand-emerald)]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-[var(--color-brand-emerald)]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container-default relative z-10">
         {/* Header */}

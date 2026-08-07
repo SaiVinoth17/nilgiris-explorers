@@ -18,10 +18,10 @@ function isBestSeller(tour: (typeof tourPackages)[number]): boolean {
 
 export default function ToursShowcase() {
   return (
-    <section className="relative section-pad overflow-hidden bg-void" aria-labelledby="tours-heading">
+    <section className="relative section-pad overflow-hidden bg-void w-full max-w-full" aria-labelledby="tours-heading">
       {/* Subtle background glow */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-[var(--color-brand-emerald)]/[0.03] blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[320px] sm:w-[800px] h-[320px] sm:h-[600px] rounded-full bg-[var(--color-brand-emerald)]/[0.03] blur-[120px]" />
       </div>
 
       <div className="container-default relative z-10">

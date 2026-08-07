@@ -29,9 +29,9 @@ export default function SightseeingRates() {
   };
 
   return (
-    <section id="rates" className="section-pad section-forest relative overflow-hidden">
+    <section id="rates" className="section-pad section-forest relative w-full max-w-full overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#00D26A]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#00D26A]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-default relative z-10">
         {/* Header */}
