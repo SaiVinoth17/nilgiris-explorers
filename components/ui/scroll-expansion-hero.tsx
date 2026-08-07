@@ -53,17 +53,17 @@ const ScrollExpandMedia = ({
   const textRightX = useTransform(smoothProgress, [0, 0.55], ['0vw', '75vw']);
 
   // Content reveal transforms
-  const contentOpacity = useTransform(smoothProgress, [0.5, 0.8], [0, 1]);
-  const contentY = useTransform(smoothProgress, [0.5, 0.8], [40, 0]);
+  const contentOpacity = useTransform(smoothProgress, [0.4, 0.85], [0, 1]);
+  const contentY = useTransform(smoothProgress, [0.4, 0.85], [30, 0]);
   const mediaOverlayOpacity = useTransform(smoothProgress, [0, 0.6], [0.5, 0.15]);
 
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
 
   return (
-    <div ref={containerRef} className="relative w-full h-[220vh] bg-[#050A08]">
+    <div ref={containerRef} className="relative w-full h-[150dvh] sm:h-[180dvh] md:h-[220vh] bg-[#050A08]">
       {/* Sticky Viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-[100dvh] md:h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         
         {/* Background Image */}
         <motion.div

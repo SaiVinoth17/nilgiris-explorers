@@ -58,8 +58,8 @@ export default function Scroll3DReveal({
   variant = "rise",
   perspective = 1000,
   scrub = 0.6,
-  start = "top 90%",
-  end = "top 30%",
+  start = "top 95%",
+  end = "top 60%",
   className = "",
 }: Scroll3DRevealProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);

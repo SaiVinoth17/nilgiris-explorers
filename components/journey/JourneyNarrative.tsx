@@ -7,7 +7,7 @@ import ScrollVelocity from "@/components/ui/ScrollVelocity";
 
 export default function JourneyNarrative() {
   return (
-    <section className="relative section-pad bg-void overflow-hidden">
+    <section className="relative pt-6 pb-16 md:section-pad bg-void overflow-hidden">
       <div className="container-default max-w-5xl">
 
         {/* MaskedHeading — video fills the letterforms */}
