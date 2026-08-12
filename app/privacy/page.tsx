@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-bold text-white mb-4">5. Contact Us</h2>
             <p>
               If you have any questions about this privacy policy or our privacy practices, please contact us at: <br/>
-              <strong>Email:</strong> privacy@nilgirisexplorers.com<br/>
+              <strong>Email:</strong> nilgirisexplorers@gmail.com<br/>
               <strong>Phone:</strong> +91 95852 19509
             </p>
           </section>

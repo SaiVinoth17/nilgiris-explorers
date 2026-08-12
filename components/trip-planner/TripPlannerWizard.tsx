@@ -552,7 +552,7 @@ export default function TripPlannerWizard() {
 
                     {/* Footer */}
                     <div className="text-center text-white/30 text-[10px] border-t border-white/10 pt-4">
-                      <p>Contact: hello@nilgirisexplorers.com | +91 95852 19509</p>
+                      <p>Contact: nilgirisexplorers@gmail.com | +91 95852 19509</p>
                       <p className="mt-1">This is an automated estimate and subject to availability at the time of booking.</p>
                     </div>
                   </div>

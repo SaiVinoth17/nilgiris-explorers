@@ -23,7 +23,7 @@ export function generateLocalBusinessSchema() {
     logo: `${BASE_URL}/images/logo-dark.png`,
     image: `${BASE_URL}/opengraph-image.png`,
     telephone: "+91-9585219509",
-    email: "info@nilgirisexplorers.com",
+    email: "nilgirisexplorers@gmail.com",
     priceRange: "₹₹",
     address: {
       "@type": "PostalAddress",

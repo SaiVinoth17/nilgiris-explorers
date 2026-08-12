@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const CONTACT = {
   phone: "+91 95852 19509",
-  email: "hello@nilgirisexplorers.com",
+  email: "nilgirisexplorers@gmail.com",
   address: "Ooty, The Nilgiris, Tamil Nadu",
 };
 
