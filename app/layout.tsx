@@ -8,6 +8,7 @@ import { generateLocalBusinessSchema, generateWebSiteSchema } from "@/lib/seo-sc
 
 const WhatsAppWidget = dynamic(() => import("@/components/layout/WhatsAppWidget"));
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
+import AppFooter from "@/components/layout/AppFooter";
 import { cn } from "@/lib/utils";
 import AnalyticsProvider from "@/components/providers/AnalyticsProvider";
 
@@ -113,6 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
             </AnalyticsProvider>
           </main>
+          <AppFooter />
           <WhatsAppWidget />
           <MobileBottomNav />
         </LenisProvider>

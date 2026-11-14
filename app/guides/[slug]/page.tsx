@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Clock, Calendar, MessageCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -142,7 +141,6 @@ export default async function GuidePage({ params }: { params: { slug: string } |
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

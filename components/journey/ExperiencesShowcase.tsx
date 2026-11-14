@@ -1,135 +1,115 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
-const destinations = [
+const FlexCarousel = dynamic(() => import("@/components/ui/FlexCarousel"), { ssr: false });
+
+const carouselItems = [
   {
-    name: "Ooty",
-    tagline: "Lake Country",
-    tag: "The Classic",
-    image: "/images/dest_new_ooty_lake.png",
+    src: "/images/dest_new_ooty_lake.png",
+    alt: "Ooty — Lake Country",
+    title: "Ooty",
+    subtitle: "The Classic · 2,240m",
     slug: "ooty",
-    number: "01",
-    description:
-      "The crown jewel of the Nilgiris at 2,240m — where emerald lakes mirror misty peaks and colonial charm meets natural grandeur.",
   },
   {
-    name: "Coonoor",
-    tagline: "Tea Country",
-    tag: "Hidden Gem",
-    image: "/images/dest_new_coonoor.png",
+    src: "/images/dest_new_coonoor.png",
+    alt: "Coonoor — Tea Country",
+    title: "Coonoor",
+    subtitle: "Hidden Gem · 1,850m",
     slug: "coonoor",
-    number: "02",
-    description:
-      "Rolling carpets of tea stretch to the horizon — a quieter, more intimate Nilgiris where every viewpoint tells a story.",
   },
   {
-    name: "Pykara",
-    tagline: "Waterfall Country",
-    tag: "Untamed Nature",
-    image: "/images/stunning_pykara.png",
+    src: "/images/stunning_pykara.png",
+    alt: "Pykara — Waterfall Country",
+    title: "Pykara",
+    subtitle: "Untamed Nature · 2,100m",
     slug: "pykara",
-    number: "03",
-    description:
-      "Thundering cascades cut through ancient shola forests — Pykara is the wild, untouched heart of the Blue Mountains.",
   },
   {
-    name: "Mudumalai",
-    tagline: "Wild Frontier",
-    tag: "Wildlife",
-    image: "/images/real_mudumalai.jpg",
+    src: "/images/real_mudumalai.jpg",
+    alt: "Mudumalai — Wild Frontier",
+    title: "Mudumalai",
+    subtitle: "Wildlife Corridor · 900m",
     slug: "mudumalai",
-    number: "04",
-    description:
-      "Where the Western Ghats meet the Deccan plateau — home to tigers, elephants, and one of India's oldest wildlife sanctuaries.",
+  },
+  {
+    src: "/images/dest_new_avalanche.png",
+    alt: "Avalanche Lake — Pristine Sanctuary",
+    title: "Avalanche Lake",
+    subtitle: "Untouched Wilderness · 2,150m",
+    slug: "avalanche",
+  },
+  {
+    src: "/images/dest_new_doddabetta.png",
+    alt: "Doddabetta Peak — Queen of Heights",
+    title: "Doddabetta Peak",
+    subtitle: "Highest Peak · 2,637m",
+    slug: "doddabetta",
+  },
+  {
+    src: "/images/dest_new_tea_estates.png",
+    alt: "Kotagiri — Emerald Slopes",
+    title: "Kotagiri",
+    subtitle: "Tea Estate Haven · 1,793m",
+    slug: "kotagiri",
+  },
+  {
+    src: "/images/dest_new_botanical.png",
+    alt: "Botanical Gardens — Living Heritage",
+    title: "Botanical Gardens",
+    subtitle: "Colonial Flora · Estd 1848",
+    slug: "ooty",
   },
 ];
 
 export default function ExperiencesShowcase() {
   return (
-    <section className="relative bg-void" aria-label="Four Worlds of Nilgiris">
+    <section className="relative bg-void overflow-hidden" aria-label="The Nilgiris Experience">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[var(--color-brand-emerald)]/5 blur-[140px]" />
+      </div>
+
       {/* Section Header */}
-      <div className="px-6 pt-24 pb-16 text-center">
-        <span className="section-label mb-6">The Nilgiris Experience</span>
+      <div className="px-6 pt-20 pb-10 text-center relative z-10">
+        <span className="section-label mb-5 inline-block">The Nilgiris Experience</span>
         <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
           Four Worlds,{" "}
           <span className="gradient-text">One Mountain Range</span>
         </h2>
-        <p className="mt-5 text-base md:text-lg text-white/50 max-w-xl mx-auto font-body">
+        <p className="mt-4 text-base md:text-lg text-white/50 max-w-xl mx-auto font-body">
           Each corner of the Nilgiris holds an entirely different world — from serene
-          lakes to roaring waterfalls, from rolling tea hills to untamed wildlife corridors.
+          lakes to roaring waterfalls, rolling tea hills to untamed wildlife corridors.
         </p>
       </div>
 
-      {/* Cards — vertical stack, clean and performant */}
-      <div className="flex flex-col">
-        {destinations.map((dest) => (
-          <div
-            key={dest.slug}
-            className="relative h-[75vh] min-h-[500px] md:h-screen overflow-hidden group"
-          >
-            {/* Background image */}
-            <div className="absolute inset-0">
-              <Image
-                src={dest.image}
-                alt={`${dest.name} — ${dest.tagline}`}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                sizes="100vw"
-                quality={85}
-              />
-            </div>
+      {/* FlexCarousel Component from React Bits */}
+      <div className="w-full h-[520px] sm:h-[580px] md:h-[640px] relative overflow-hidden my-4 z-10">
+        <FlexCarousel
+          items={carouselItems}
+          preset="liquid"
+          intro="rise"
+          cardHeight={0.52}
+          gap={18}
+          radius={16}
+          squeeze={0.2}
+          focusOnClick={true}
+          captions={true}
+          autoplay={false}
+        />
+      </div>
 
-            {/* Dark overlay */}
-            <div
-              className="absolute inset-0 z-10"
-              style={{
-                background:
-                  "linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.75) 85%, rgba(5,10,8,0.95) 100%)",
-              }}
-            />
-
-            {/* Number watermark */}
-            <span
-              className="absolute top-6 right-8 z-10 font-display font-black text-white select-none pointer-events-none leading-none opacity-5"
-              style={{ fontSize: "15vw" }}
-              aria-hidden="true"
-            >
-              {dest.number}
-            </span>
-
-            {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-10 md:p-14 lg:p-20">
-              <span className="tag-badge mb-4">
-                {dest.tag}
-              </span>
-
-              <h3 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none mt-3">
-                {dest.name}
-              </h3>
-
-              <p className="font-display text-xl md:text-2xl text-white/60 mt-2 tracking-wide">
-                {dest.tagline}
-              </p>
-
-              <p className="font-body text-sm md:text-base text-white/40 mt-4 max-w-lg leading-relaxed">
-                {dest.description}
-              </p>
-
-              <Link
-                href={`/destinations/${dest.slug}`}
-                className="group/link inline-flex items-center gap-2 mt-6 text-[var(--color-brand-emerald)] font-body font-semibold text-sm md:text-base tracking-wide transition-colors duration-200 hover:text-white"
-              >
-                Explore
-                <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
-              </Link>
-            </div>
-
-            {/* Bottom accent line */}
-            <div className="absolute bottom-0 left-0 w-full h-[2px] z-20 bg-gradient-to-r from-transparent via-[var(--color-brand-emerald)]/40 to-transparent" />
-          </div>
-        ))}
+      {/* Explore Link CTA */}
+      <div className="text-center pb-20 pt-4 relative z-10">
+        <Link
+          href="/destinations"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:border-[var(--color-brand-emerald)]/40 text-[var(--color-brand-emerald)] hover:text-white transition-all duration-300 text-sm font-medium tracking-wide shadow-lg group"
+        >
+          <span>Explore All 15+ Nilgiris Destinations</span>
+          <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+        </Link>
       </div>
     </section>
   );

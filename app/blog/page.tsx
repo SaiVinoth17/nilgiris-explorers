@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight, BookMarked } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export const metadata = {
   title: "Nilgiris Travel Blog | Insider Guides & Tips",
@@ -109,7 +108,6 @@ export default function BlogListingPage() {
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }

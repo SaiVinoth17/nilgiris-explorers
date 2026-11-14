@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowLeft, MessageCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -177,7 +176,6 @@ export default async function LocationPage({ params }: { params: { slug: string 
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

@@ -78,10 +78,33 @@ export default function JourneyFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-4 pb-20 md:pb-0 text-center lg:text-left">
           <p className="text-white/40 text-sm">
             &copy; {new Date().getFullYear()} Nilgiris Explorers. All rights reserved.
           </p>
+
+          <p className="text-white/40 text-xs sm:text-sm tracking-wide">
+            <span>Designed &amp; Developed by </span>
+            <a
+              href="https://www.linkedin.com/in/saivinoth17/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-block text-white/50 font-medium tracking-wide opacity-90 transition-opacity duration-300 ease-out hover:opacity-100 hover:text-white/80 focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-white/80 focus-visible:ring-1 focus-visible:ring-[var(--color-brand-emerald)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm after:content-[''] after:absolute after:left-0 after:-bottom-px after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-white/40 after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
+            >
+              Sai Vinoth
+            </a>
+            <span> · </span>
+            <a
+              href="https://www.aevionstudio.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-block text-white/50 font-medium tracking-wide opacity-90 transition-all duration-300 ease-out hover:opacity-100 hover:text-[var(--color-brand-emerald)] focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-[var(--color-brand-emerald)] focus-visible:ring-1 focus-visible:ring-[var(--color-brand-emerald)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm after:content-[''] after:absolute after:left-0 after:-bottom-px after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[var(--color-brand-emerald)] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
+            >
+              Aevion Studios
+            </a>
+            <span>. All Rights Reserved.</span>
+          </p>
+
           <div className="flex gap-6">
             <a href="#" className="text-white/40 hover:text-white transition-colors">Instagram</a>
             <a href="#" className="text-white/40 hover:text-white transition-colors">Facebook</a>

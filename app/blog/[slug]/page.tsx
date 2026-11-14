@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, User, ArrowLeft, Share2, Tag } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -173,7 +172,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

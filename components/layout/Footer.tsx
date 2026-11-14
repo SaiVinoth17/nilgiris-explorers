@@ -194,21 +194,31 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/5">
-        <div className="container-default py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="container-default py-5 pb-24 md:pb-5 flex flex-col lg:flex-row items-center justify-between gap-4 text-center lg:text-left">
           <p className="text-white/30 text-xs">
             © 2026 Nilgiris Explorers Tours & Travels. All rights reserved.
           </p>
 
-          <p className="text-white/25 text-xs tracking-wide flex items-center gap-1.5">
-            <span>Designed &amp; Developed by</span>
+          <p className="text-white/30 text-xs tracking-wide">
+            <span>Designed &amp; Developed by </span>
             <a
               href="https://www.linkedin.com/in/saivinoth17/"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative inline-block text-white/40 font-medium tracking-wide opacity-90 transition-opacity duration-300 ease-out hover:opacity-100 hover:text-white/70 focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-white/70 focus-visible:ring-1 focus-visible:ring-[var(--color-brand-emerald)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm after:content-[''] after:absolute after:left-0 after:-bottom-px after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-white/40 after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
+              className="relative inline-block text-white/45 font-medium tracking-wide opacity-90 transition-opacity duration-300 ease-out hover:opacity-100 hover:text-white/70 focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-white/70 focus-visible:ring-1 focus-visible:ring-[var(--color-brand-emerald)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm after:content-[''] after:absolute after:left-0 after:-bottom-px after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-white/40 after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
             >
               Sai Vinoth
             </a>
+            <span> · </span>
+            <a
+              href="https://www.aevionstudio.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-block text-white/45 font-medium tracking-wide opacity-90 transition-all duration-300 ease-out hover:opacity-100 hover:text-[var(--color-brand-emerald)] focus-visible:outline-none focus-visible:opacity-100 focus-visible:text-[var(--color-brand-emerald)] focus-visible:ring-1 focus-visible:ring-[var(--color-brand-emerald)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm after:content-[''] after:absolute after:left-0 after:-bottom-px after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[var(--color-brand-emerald)] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
+            >
+              Aevion Studios
+            </a>
+            <span>. All Rights Reserved.</span>
           </p>
 
           <div className="flex items-center gap-1">

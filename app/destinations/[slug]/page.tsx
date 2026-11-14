@@ -8,7 +8,6 @@ import {
   Utensils, ShoppingBag, Info, HelpCircle
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import SmartTripPlanner from "@/components/destinations/SmartTripPlanner";
 
 export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
@@ -377,7 +376,6 @@ export default async function DestinationPage({ params }: { params: { slug: stri
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }

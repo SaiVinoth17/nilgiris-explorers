@@ -7,7 +7,6 @@ import {
   Shield, MessageCircle, Utensils, Info, Mountain
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 export async function generateMetadata({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -440,7 +439,6 @@ export default async function PackageDetailsPage({ params }: { params: { slug: s
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
